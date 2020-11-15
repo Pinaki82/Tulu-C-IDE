@@ -8,5 +8,30 @@ Tulu is configured to have a minimalistic approach suitable for those who want t
 
 If you are interested in a simple yet powerful Vim Text Editor configuration for your C/C++ codes, please clone the Git repository in your HOME directory, open Vim, and type in the command-mode ":PlugInstall" then run ":PlugUpgrade" because this configuration relies on vim-plug plugin manager.
 
+Installation:
+
+On Windows, you can download the latest release in a zip archive and extract the contents to %userprofile% directory.
+
+On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home ~/ directory or run the following script:
+
+sh tulu_c_ide_download.sh
+
+File: tulu_c_ide_download.sh
+
+Contents:
+
+#!/bin/bash
+
+cd ~/  && \
+git clone https://github.com/Pinaki82/Tulu-C-IDE  && \
+rm -rf ~/Tulu-C-IDE/.git  && \
+rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE  && \
+cd ~/Tulu-C-IDE && find ./ -maxdepth 1 -mindepth 1 -exec mv -f -t ~/ {} +  && \
+
+# https://unix.stackexchange.com/questions/50487/how-to-move-all-files-and-folders-via-mv-command
+
+rm -rf ~/Tulu-C-IDE \
+
+
 
 ![TULU_C_IDE](https://user-images.githubusercontent.com/16861933/99191990-4b7d1b80-2796-11eb-8ede-a4d9b181a950.jpg)
