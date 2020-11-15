@@ -1,0 +1,107 @@
+:set omnifunc?
+:SyntasticToggleMode
+:qa
+:ccl
+:echo strlen(getline("."))
+:help write-plugin
+:set omnifunc? 
+:.ll
+:Errors
+:.cc
+:colo blue
+::echo has("lua")
+:Project H:\codes\Vim_Ctags_db_updater\trunk\Project.vimproject
+:tag /std::vector
+:verbose set completefunc
+:verbose set omnifunc
+:ltag
+:set omnifunc
+:w
+:Project
+:colorscheme mustang_green
+:colorscheme default
+:helptags C:\Program\ Files\ (x86)\Vim\vim74\doc\
+:SyntasticInfo
+:helptags C:\Users\appuraja\vimfiles\doc\
+:cope
+:colorscheme
+::so $VIMRUNTIME/syntax/hitest.vim
+::h syn-sync
+:h :colorscheme
+:h syntax
+:set runtimepath?
+:python3
+:python
+::echo $PATH
+:set path?
+:echo has("python")
+:h syntastic
+:echo $HOME
+
+
+:Project H:\codes\Vim_Ctags_db_updater\trunk\Project.vimproject
+:w
+:SyntasticToggleMode
+:colorscheme mustang_green
+:Project
+:cope
+::so $VIMRUNTIME/syntax/hitest.vim
+::h syn-sync
+:h :colorscheme
+:h syntax
+:h syntastic
+:verbose map <F3>
+:Errors
+::verbose map <F3>
+:echo has("python")
+:helptags $VIMRUNTIME/doc
+:helptags $HOME/vimfiles/doc
+:colorscheme mustang_green
+:Errors
+:qa
+::so $VIMRUNTIME/syntax/hitest.vim
+::h syn-sync
+:h :colorscheme
+:h syntax
+:set runtimepath?
+:python3
+:python
+:echo $PATH
+:set path?
+:echo has("python")
+:helptags C:\Users\appuraja\vimfiles\doc\
+:helptags C:\Program\ Files\ (x86)\Vim\vim74\doc\
+::set omnifunc?
+:h syntastic
+:echo $HOME
+:echo $HOMEPATH
+:echo $VIMRUNTIME
+:echo $HOMEDRIVE
+:echo $MYVIMRC
+:helptags $VIMRUNTIME/doc
+:helptags $HOME/.vim/doc
+:helptags $HOME/vimfiles/doc
+:SyntasticInfo
+:pwd
+:set runtimepath?
+:set directory?
+:scriptnames
+:browse confirm e
+:browse confirm e D:\Code_Blocks\
+:Project d:Code_Blocks\project01.txt
+:Project d:\codes\Forgers_Win32\project01.txt
+:Project D:\codes\project01.txt
+:bwipeout
+:confirm bd
+:e!
+:w
+:51
+:78
+:69
+:q
+:qa
+:h crefvimdoc
+:h cref
+:h project
+:h 'statusline'
+
