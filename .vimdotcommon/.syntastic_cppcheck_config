@@ -1,0 +1,10 @@
+--enable=all
+--enable=style
+--enable=performance
+--enable=portability
+--enable=information
+--enable=unusedFunction
+--enable=missingInclude
+--inconclusive
+--force
+--suppress=missingIncludeSystem
