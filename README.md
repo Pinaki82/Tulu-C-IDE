@@ -13,9 +13,9 @@ Installation:
 On Windows, you can download the latest release in a zip archive and extract the contents to %userprofile% directory.
 
 On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home ~/ directory or run the following script:
-
+```
 sh tulu_c_ide_download.sh
-
+```
 File: tulu_c_ide_download.sh
 
 Contents:
