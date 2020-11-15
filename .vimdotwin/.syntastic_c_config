@@ -1,0 +1,12 @@
+-isystem C:\CODEBL~1\TDM-GC~1\include
+-isystem C:\CODEBL~1\TDM-GC~1\lib\gcc\X86_64~1\51B983~1.0\include
+-isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include
+-isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include\GL
+-isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include\sys
+
+-IC:\xtralibs
+-IC:\xtralibs\appu
+-IC:\xtralibs\yxml11
+
+-IC:\xtralibs\IUP\include
+-IC:\xtralibs\LIBXLS~1.0_X\LIBXLS~1\include\libxls
