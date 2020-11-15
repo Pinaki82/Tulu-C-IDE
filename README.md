@@ -19,7 +19,7 @@ sh tulu_c_ide_download.sh
 File: tulu_c_ide_download.sh
 
 Contents:
-
+```
 #!/bin/bash
 
 cd ~/  && \
@@ -31,7 +31,7 @@ cd ~/Tulu-C-IDE && find ./ -maxdepth 1 -mindepth 1 -exec mv -f -t ~/ {} +  && \
 # https://unix.stackexchange.com/questions/50487/how-to-move-all-files-and-folders-via-mv-command
 
 rm -rf ~/Tulu-C-IDE \
-
+```
 
 
 ![TULU_C_IDE](https://user-images.githubusercontent.com/16861933/99191990-4b7d1b80-2796-11eb-8ede-a4d9b181a950.jpg)
