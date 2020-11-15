@@ -1,0 +1,2 @@
+let g:syntastic_debug=3
+
