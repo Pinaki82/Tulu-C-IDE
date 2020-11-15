@@ -1,0 +1,11 @@
+set tags+=./tags;/.
+set path+=./;/
+
+
+
+set tags+=./tags;/.
+
+
+
+set path+=./;/
+
