@@ -355,6 +355,8 @@ Plug 'https://github.com/Pinaki82/vim-clang-Settings'
 
 Plug 'https://github.com/vim-scripts/stlrefvim'
 
+Plug 'https://github.com/Pinaki82/crefvim2'
+
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
