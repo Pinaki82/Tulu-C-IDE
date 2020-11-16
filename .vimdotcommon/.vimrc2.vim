@@ -353,6 +353,8 @@ Plug 'https://github.com/Pinaki82/TimeStamp2'
 
 Plug 'https://github.com/Pinaki82/vim-clang-Settings'
 
+Plug 'https://github.com/vim-scripts/stlrefvim'
+
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
