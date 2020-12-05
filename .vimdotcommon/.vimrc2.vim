@@ -329,6 +329,8 @@ Plug 'https://github.com/vim-scripts/auto-tags-gen'
 
 Plug 'https://github.com/WolfgangMehner/vim-plugins'
 
+Plug 'https://github.com/WolfgangMehner/git-support.git'
+
 Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl'
 
 Plug 'https://github.com/matze/vim-move'
