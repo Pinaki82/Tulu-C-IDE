@@ -967,57 +967,57 @@ endif
 
 " Make sure you use single quotes
 
-Plug 'https://github.com/junegunn/vim-plug'
+Plug 'https://github.com/junegunn/vim-plug.git'
 
-Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/preservim/nerdtree.git'
 
-Plug 'https://github.com/justmao945/vim-clang'
+Plug 'https://github.com/justmao945/vim-clang.git'
 
-Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/vim-syntastic/syntastic.git'
 
-Plug 'https://github.com/vim-scripts/matchparenpp'
+Plug 'https://github.com/vim-scripts/matchparenpp.git'
 
-Plug 'https://github.com/matze/vim-move'
+Plug 'https://github.com/matze/vim-move.git'
 
-Plug 'https://github.com/preservim/nerdcommenter'
+Plug 'https://github.com/preservim/nerdcommenter.git'
 
-Plug 'https://github.com/suxpert/vimcaps'
+Plug 'https://github.com/suxpert/vimcaps.git'
 
-Plug 'https://github.com/vim-scripts/AutoClose'
+Plug 'https://github.com/vim-scripts/AutoClose.git'
 
-Plug 'https://github.com/vim-scripts/auto-tags-gen'
+Plug 'https://github.com/vim-scripts/auto-tags-gen.git'
 
-Plug 'https://github.com/WolfgangMehner/vim-plugins'
+Plug 'https://github.com/WolfgangMehner/vim-plugins.git'
 
 Plug 'https://github.com/WolfgangMehner/git-support.git'
 
-Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl'
+Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl.git'
 
-Plug 'https://github.com/matze/vim-move'
+Plug 'https://github.com/matze/vim-move.git'
 
-Plug 'https://github.com/xuhdev/SingleCompile'
+Plug 'https://github.com/xuhdev/SingleCompile.git'
 
-Plug 'https://github.com/artnez/vim-wipeout'
+Plug 'https://github.com/artnez/vim-wipeout.git'
 
-Plug 'https://github.com/Pinaki82/code_complete'
+Plug 'https://github.com/Pinaki82/code_complete.git'
 
-Plug 'https://github.com/Pinaki82/artistic_styler_console_direct.vim'
+Plug 'https://github.com/Pinaki82/artistic_styler_console_direct.vim.git'
 
-Plug 'https://github.com/Pinaki82/VimLongLineMarker'
+Plug 'https://github.com/Pinaki82/VimLongLineMarker.git'
 
-Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE'
+Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git'
 
-Plug 'https://github.com/Pinaki82/vim-move-Keyboard-Shortcut'
+Plug 'https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git'
 
-Plug 'https://github.com/Pinaki82/Vim-Syntastic-Setup'
+Plug 'https://github.com/Pinaki82/Vim-Syntastic-Setup.git'
 
-Plug 'https://github.com/Pinaki82/TimeStamp2'
+Plug 'https://github.com/Pinaki82/TimeStamp2.git'
 
-Plug 'https://github.com/Pinaki82/vim-clang-Settings'
+Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
 
-Plug 'https://github.com/vim-scripts/stlrefvim'
+Plug 'https://github.com/vim-scripts/stlrefvim.git'
 
-Plug 'https://github.com/Pinaki82/crefvim2'
+Plug 'https://github.com/Pinaki82/crefvim2.git'
 
 Plug 'https://github.com/vim-scripts/YankRing.vim.git'
 
