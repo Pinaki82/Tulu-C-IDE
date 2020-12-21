@@ -15,3 +15,7 @@ else
   endif
 endif
 
+""     setting up colorscheme at startup
+" if has("gui_running")
+"     colo mustang_green
+" endif
