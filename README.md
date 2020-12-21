@@ -10,7 +10,7 @@ If you are interested in a simple yet powerful Vim Text Editor configuration for
 
 Installation:
 
-On Windows, you can download the latest release in a zip archive and extract the contents to %userprofile% directory.
+On Windows, you can download the latest version in a zip archive from the main branch or the release page (achieved releases can be a little older) and extract the contents to %userprofile% directory.
 
 On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home ~/ directory or run the following script:
 ```
