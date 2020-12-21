@@ -1189,8 +1189,6 @@ Plug 'https://github.com/WolfgangMehner/git-support.git'
 
 Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl.git'
 
-Plug 'https://github.com/matze/vim-move.git'
-
 Plug 'https://github.com/xuhdev/SingleCompile.git'
 
 Plug 'https://github.com/artnez/vim-wipeout.git'
