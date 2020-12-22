@@ -147,15 +147,15 @@ sudo apt install ninja-build
 
 [vim-plug](https://github.com/junegunn/vim-plug.git): A minimalist Vim plugin manager.
 
-[The NERDTree](https://github.com/preservim/nerdtree.git): The NERDTree is a file system explorer for the Vim editor.
+[The NERDTree](https://github.com/preservim/nerdtree.git): The NERDTree is a file system explorer for the Vim editor. `:h nerdtree`
 
-[vim-clang](https://github.com/justmao945/vim-clang.git): Use of clang to parse and complete C/C++ source files.
+[vim-clang](https://github.com/justmao945/vim-clang.git): Use of clang to parse and complete C/C++ source files. `:h clang.txt`
 
-[Syntastic](https://github.com/vim-syntastic/syntastic.git): Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user.
+[Syntastic](https://github.com/vim-syntastic/syntastic.git): Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user. `:h syntastic` `:h syntastic-checkers.txt`
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
 
-[move](https://github.com/matze/vim-move.git): 
+[move](https://github.com/matze/vim-move.git): `:h move.txt`
 ```
 <A-k>   Move current line/selection up
 <A-j>   Move current line/selection down
@@ -169,17 +169,17 @@ sudo apt install ninja-build
 
 [AutoClose](https://github.com/vim-scripts/AutoClose.git): Inserts matching bracket, paren, brace or quote.
 
-[auto tags gen](https://github.com/vim-scripts/auto-tags-gen.git): Plugin for creating tags automatically (C/C++).
+[auto tags gen](https://github.com/vim-scripts/auto-tags-gen.git): Plugin for creating tags automatically (C/C++). `:h auto_tags_gen.txt`
 
-[Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner.
+[Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner. `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
 
-[git-support](https://github.com/WolfgangMehner/git-support.git): Integration of Git for Vim/gVim.
+[git-support](https://github.com/WolfgangMehner/git-support.git): Integration of Git for Vim/gVim. `:h gitsupport`
 
-[MiniBufExpl](https://github.com/weynhamz/vim-plugin-minibufexpl.git):  Elegant buffer explorer - takes very little screen space.
+[MiniBufExpl](https://github.com/weynhamz/vim-plugin-minibufexpl.git):  Elegant buffer explorer - takes very little screen space. `:h minibufexpl`
 
-[SingleCompile](https://github.com/xuhdev/SingleCompile.git): A Vim plugin making it more convenient to compile and run a single source file.
+[SingleCompile](https://github.com/xuhdev/SingleCompile.git): A Vim plugin making it more convenient to compile and run a single source file. `:h singlecompile`
 
-[vim-wipeout](https://github.com/artnez/vim-wipeout.git): Destroy all buffers that are not open in any tabs or windows. `:Wipeout`
+[vim-wipeout](https://github.com/artnez/vim-wipeout.git): Destroy all buffers that are not open in any tabs or windows. `:Wipeout` Help file not available.
 
 [code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
 
@@ -197,11 +197,11 @@ sudo apt install ninja-build
 
 [vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): Custom Settings for the vim-clang Vim/GVim plugin.
 
-[stlrefvim](https://github.com/vim-scripts/stlrefvim.git): A C++ Standard Template Library reference manual.
+[stlrefvim](https://github.com/vim-scripts/stlrefvim.git): A C++ Standard Template Library reference manual. `:h stlrefvim.txt`
 
-[crefvim2](https://github.com/Pinaki82/crefvim2.git): CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann.
+[crefvim2](https://github.com/Pinaki82/crefvim2.git): CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann. `:h crefvim.txt` `:h crefvimdoc.txt` 
 
-[YankRing.vim](https://github.com/vim-scripts/YankRing.vim.git): Maintains a history of previous yanks, changes and deletes.
+[YankRing.vim](https://github.com/vim-scripts/YankRing.vim.git): Maintains a history of previous yanks, changes and deletes. `:h yankring.txt`
 
 [Reload-Button](https://github.com/Pinaki82/Reload-Button.git): A simple GVim plugin to reload the current buffer.
 
