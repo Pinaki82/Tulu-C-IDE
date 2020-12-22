@@ -237,8 +237,8 @@ map <C-D> <Esc>:confirm bd <CR><Esc>
 :map! <F5> <Esc>gUiw`]a
 :map! <S-F5> <Esc>guiw`]a
 
-nmap <F11> :TagbarToggle<CR>
-map <S-F11> :Tlist <Enter>
+" nmap <F11> :TagbarToggle<CR>
+" map <S-F11> :Tlist <Enter>
 
 set wrap!   " Disables Word Wrap on start
 :autocmd GUIEnter * winpos 0 0 " Starts window position to 0,0 coordinate
