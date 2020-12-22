@@ -217,9 +217,16 @@ sudo apt install ninja-build
 
 Press `<Esc>` to put Vim into Normal mode. Vim usually starts in this mode.
 
+![Esc](https://user-images.githubusercontent.com/16861933/102935301-e2db3a00-44cb-11eb-9185-840a070c6e33.png)
+
+
 ### Command Mode
 
 Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressing `<Shift+;>` type **__;__** and it will have the same effect in this setup.
+
+![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
+
+![NormalModetoCommandMode](https://user-images.githubusercontent.com/16861933/102935234-bfb08a80-44cb-11eb-8b65-fa8eba9df5d8.gif)
 
 ### Quit Vim
 
