@@ -211,5 +211,49 @@ sudo apt install ninja-build
 
 [oh-la-la](https://github.com/Pinaki82/oh-la-la.git): High contrast dark color scheme with black background.
 
+## To the First Time Users:
+
+### Normal Mode
+
+Press `<Esc>` to put Vim into Normal mode. Vim usually starts in this mode.
+
+### Command Mode
+
+Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressing `<Shift+;>` type **__;__** and it will have the same effect in this setup.
+
+### Quit Vim
+
+* Discard all changes and quit without saving anything.
+
+`:q!`
+
+* Save changes to the currently opened buffer (the file being edited. It's called buffer in Vim) then quit Vim.
+
+`:x`
+
+* Save the currently opened buffer.
+
+`:w`
+
+
+### Insert Mode
+
+Vim allows typing into the editor window in a usual manner in this mode. Other modes can allow typing, e.g., Visual mode, but for purposes like selecting texts.
+To go to Insert mode from Normal mode, press `<i>` or `<Insert>`.
+##### Insert command with specific purposes:
+
+* `<i>` : Position cursor onto the current character and switch to Insert mode.
+* `<I>` : Jump to the beginning of the line and switch to Insert mode.
+* `<a>` : Append. Move the cursor position just after the position of the current character and go to Insert mode.
+* `<A>` : Append to the EOL. Jump to the end of the line.
+* `<o>` : Insert a new line beneath the line on which the cursor is located and switch to Insert mode.
+* `<O>` : Insert a new line above the line on which the cursor is located and switch to Insert mode.
+
+### Visual Mode
+
+Press `<v>` to switch to this mode. For example, position the cursor on any text then press `<v>` then select the texts next to the character by holding the `<l>` key. Press `<x>` to cut the selection. Cut operation keeps the text in Vim's memory which is known as **_registers_**.
+
+The section operation can be done in any direction; leftwards, rightwards, upwards, and downwards. Just press `<h>` to move the cursor/selection to the left, `<l>` to move the cursor/selection to the right. In between them, `<k>` to move the cursor/selection upwards, and `<j>` to move the cursor/selection downwards.
+
 
 
