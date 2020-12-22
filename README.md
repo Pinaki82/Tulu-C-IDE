@@ -163,7 +163,7 @@ sudo apt install ninja-build
 <A-l>   Move current character/selection right
 ```
 
-[NERD Commenter](https://github.com/preservim/nerdcommenter.git): Comment functions so powerful—no comment necessary.
+[NERD Commenter](https://github.com/preservim/nerdcommenter.git): Comment functions so powerful—no comment necessary. `:h NERD_commenter.txt`
 
 [vimcaps](https://github.com/suxpert/vimcaps.git): Never be bothered by caps lock.
 
