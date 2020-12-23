@@ -268,7 +268,7 @@ Put the cursor on any character and Press Capital `<R>` to switch to this mode. 
 ![ReplaceMode](https://user-images.githubusercontent.com/16861933/103017257-58e1ae80-4569-11eb-9dcd-b5aad5883fe4.gif)
 
 ### Navigation
-Vim allows navigating through the text in Normal mode. Left, Down, Up, Left buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella that you use as a parachute while jumping off an aeroplane. For `<K>`, you raise your finger Up to show direction upwards. Not in a bad sense. :)
+Vim allows navigating through the text in Normal mode. Left, Down, Up, Left buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, you raise your finger Up 👆 to show direction upwards. Not in a bad sense. 😊
 
 Arrow keys can be used in Insert mode.
 
