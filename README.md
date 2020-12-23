@@ -671,3 +671,37 @@ Opens Vim documentation with the topic 'statusline'.
 
 -----------------------------------
 
+## Leader `\`
+
+![Bslash](https://user-images.githubusercontent.com/16861933/103035666-cdc6df80-458d-11eb-801b-219c79aa8e83.png)
+ 
+### What is "Leader Key"?
+
+In Vim, a leader key is generally (set by default) the "back-slash" key in Normal mode (not Command mode or any other mode), unless you define a different key as the leader.
+
+
+In normal mode, press `\` then type `8` (not from the num-pad). See what happens! It will turn on/off the long line marker.
+
+Various tasks can be performed in this manner. Many plugins map their functions through 'Leader' key.
+
+
+In Normal mode, press the Leader (i.e. `\` key, it's the 'backslash' key) then,
+
+`8` -> Turns off long line marker.
+
+`hl` -> Toggles Line-Column Highlight.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
