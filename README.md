@@ -344,6 +344,12 @@ AAAAA -> aaaaa
 
 -----------------------------------
 
+Mode: Insert Mode only.
+
+Makes text uppercase `F5`, and lowercase `SHIFT-F5` respectively.
+
+-----------------------------------
+
 Some code folding `<F8>` or `<Shift+F8>` or `<Space>`
 
 `<F8>=za in Normal mode`
@@ -358,7 +364,7 @@ Some code folding `<F8>` or `<Shift+F8>` or `<Space>`
 
 Mode: Normal, Insert both.
 
-Unfold everything.
+Unfolds everything.
 
 -----------------------------------
 
@@ -367,8 +373,6 @@ Unfold everything.
 Mode: Normal, Insert both.
 
 Fold/Unfold.
-
-Make text uppercase `F5`, and lowercase `SHIFT-F5` respectively.
 
 -----------------------------------
 
@@ -384,7 +388,7 @@ Reloads file.
 -----------------------------------
 
 Note: Avoid Alt key while you can, for the sake of portability.
-For example: In Linux, Alt+F8 is used to resize the window of any kind. So it cannot be used.
+For example: In Linux, `Alt+F8` is used to resize the window of any kind. So it cannot be used.
 Linux generally uses the Alt key to do different things.
 
 -----------------------------------
@@ -394,7 +398,7 @@ Linux generally uses the Alt key to do different things.
 
 Mode: Normal Mode only.
 
-Jump to this tag.
+Means: Jump to this tag.
 
 Finds the pieces of stuff from the Tags related to header files etc., and opens the header. Uses index provided by the 'tags' for searching the header.
 
