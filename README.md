@@ -403,7 +403,7 @@ Means: Jump to this tag.
 Finds the pieces of stuff from the Tags related to header files etc., and opens the header. Uses index provided by the 'tags' for searching the header.
 
 For example, put the cursor above a function name and press `Ctrl+]`, it will open the header containing the original definition.
-You can Left-click (in normal Mode) to do the same.
+You can Ctrl+Left-click (in normal Mode) to do the same.
 
 -----------------------------------
 
@@ -413,7 +413,7 @@ Mode: Normal Mode only.
 
 Jumps back to the previous tag.
 
-You can Right-click (in normal Mode) to do the same.
+You can Ctrl+Right-click (in normal Mode) to do the same.
 
 -----------------------------------
 
