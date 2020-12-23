@@ -276,6 +276,11 @@ Arrow keys can be used in Insert mode.
 
 ![Navigation](https://user-images.githubusercontent.com/16861933/103015391-5b8ed480-4566-11eb-934e-feb573130c0e.png)
 
+### Switch between Modes
+Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to any mode you want.
+
+![Esc](https://user-images.githubusercontent.com/16861933/102935301-e2db3a00-44cb-11eb-9185-840a070c6e33.png)
+
 ### Common Quirks:
 
 You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line.
