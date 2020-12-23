@@ -272,6 +272,8 @@ Vim allows navigating through the text in Normal mode. Left, Down, Up, Left butt
 
 Arrow keys can be used in Insert mode.
 
+`<O>` will position the cursor to the beginning of the line and `<$>` to the end.
+
 ![Navigation](https://user-images.githubusercontent.com/16861933/103015391-5b8ed480-4566-11eb-934e-feb573130c0e.png)
 
 
