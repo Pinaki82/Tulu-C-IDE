@@ -312,7 +312,7 @@ Try it yourself and see!
 
 `CTRL-Y` is redo
 
-`CTRL-D` is Buffer Delete (Closes the currently opened file and also deletes it from Vim's memory)
+`CTRL-D` is Buffer Delete (closes the currently opened file and also deletes it from Vim's memory)
 
 -----------------------------------
 
@@ -320,7 +320,7 @@ Try it yourself and see!
 
 Mode: Normal, Insert both.
 
-Closes the current file, but keep it in the buffer (memory).
+Closes the current file, but keeps it in the buffer (memory).
 
 -----------------------------------
 
