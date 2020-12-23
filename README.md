@@ -285,3 +285,209 @@ Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to
 
 You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line.
 
+# Custom Keymaps and Keyboard Shortcuts
+### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
+
+`:help index`
+
+`:scriptnames`
+
+`:map!`
+
+`:map`
+
+Try it yourself and see!
+
+`CTRL-X` is cut
+
+`CTRL-C` is copy
+
+`CTRL-V` is paste
+
+`CTRL-S` is save
+
+`CTRL-A` is Select all
+
+`CTRL-Z` is undo
+
+`CTRL-Y` is redo
+
+`CTRL-D` is Buffer Delete (Closes the currently opened file and also deletes it from Vim's memory)
+
+-----------------------------------
+
+`Ctrl+F4`
+
+Mode: Normal, Insert both.
+
+Closes the current file, but keep it in the buffer (memory).
+
+-----------------------------------
+
+`F5`
+
+Mode: Insert Mode only.
+
+Makes texts uppercase.
+
+aaaaa -> AAAAA
+
+-----------------------------------
+
+`Shift+F5`
+
+Mode: Insert Mode only.
+
+Makes texts lowercase.
+
+AAAAA -> aaaaa
+
+-----------------------------------
+
+Some code folding `<F8>` or `<Shift+F8>` or `<Space>`
+
+`<F8>=za in Normal mode`
+
+`<Shift+F8>=zR in Normal mode`
+
+`<Space>=zf in Normal mode`
+
+-----------------------------------
+
+`Shift+F8`
+
+Mode: Normal, Insert both.
+
+Unfold everything.
+
+-----------------------------------
+
+`F8`
+
+Mode: Normal, Insert both.
+
+Fold/Unfold.
+
+Make text uppercase `F5`, and lowercase `SHIFT-F5` respectively.
+
+-----------------------------------
+
+`F5`
+
+Mode: Normal Mode only.
+
+Reloads file.
+
+`F5` or `\rd`
+
+-----------------------------------
+-----------------------------------
+
+Note: Avoid Alt key while you can, for the sake of portability.
+For example: In Linux, Alt+F8 is used to resize the window of any kind. So it cannot be used.
+Linux generally uses the Alt key to do different things.
+
+-----------------------------------
+-----------------------------------
+
+`Ctrl+]` (In Normal Mode)
+
+Mode: Normal Mode only.
+
+Jump to this tag.
+
+Finds the pieces of stuff from the Tags related to header files etc., and opens the header. Uses index provided by the 'tags' for searching the header.
+
+For example, put the cursor above a function name and press `Ctrl+]`, it will open the header containing the original definition.
+You can Left-click (in normal Mode) to do the same.
+
+-----------------------------------
+
+`Ctrl+t` (In Normal Mode)
+
+Mode: Normal Mode only.
+
+Jumps back to the previous tag.
+
+You can Right-click (in normal Mode) to do the same.
+
+-----------------------------------
+
+`Ctrl+f` (In Normal Mode)
+
+Mode: Normal Mode only.
+
+Find.
+
+-----------------------------------
+
+`Ctrl+h` (In Normal Mode)
+
+Mode: Normal Mode only.
+
+Find and replace.
+
+-----------------------------------
+
+`\hl` (In Normal Mode)
+
+Turns Highlight Line and column ON-OFF
+
+-----------------------------------
+
+`<Alt-F11>` (In Normal Mode)
+
+Reloads Default Theme.
+
+-----------------------------------
+
+`<Ctrl-Shift-F11>` (In Normal Mode)
+
+Changes theme to MustangGreen
+
+-----------------------------------
+
+`Ctrl+n`
+
+Mode: insert Mode only.
+
+Omni completion forward.
+
+Note: Omni completion is set to Clang-Complete here.
+
+-----------------------------------
+
+`Ctrl+p`
+
+Mode: insert Mode only.
+
+Omni completion backwards.
+
+Note: Omni completion is set to Clang-Complete here.
+
+-----------------------------------
+
+`Ctrl+SpaceBar` and navigate through up-down arrow keys:
+
+An easy alternative to `Ctrl+n` and `Ctrl+p`.
+
+Mode: Insert Mode only.
+
+-----------------------------------
+
+YankRing plugin Configuration
+
+```
+:nnoremap <silent> <C-F11> :YRShow<CR>
+<C-U>YRYankCount
+```
+
+-----------------------------------
+
+Mode: Normal Mode only.
+
+Long Line Marker (or Right Border or Right Margin) ON-OFF `\8`
+
+-----------------------------------
+
+
