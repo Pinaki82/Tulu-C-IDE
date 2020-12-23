@@ -228,6 +228,8 @@ Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressin
 
 ![NormalModetoCommandMode](https://user-images.githubusercontent.com/16861933/102935234-bfb08a80-44cb-11eb-8b65-fa8eba9df5d8.gif)
 
+NOTE: We can take advantage of autocompletion with the `<TAB>` key in Command mode. After typing a few characters press `<TAB>` and navigate using the Right/Left Arrow key or even by hitting the `<TAB>` key over and over.
+
 ### Quit Vim
 
 * Discard all changes and quit without saving anything.
@@ -494,4 +496,176 @@ Long Line Marker (or Right Border or Right Margin) ON-OFF `\8`
 
 -----------------------------------
 
+## The reason for the existence of different modes in Vim:
+
+A key combination can do a particular job in one mode, but the same combination can be used in another mode to accomplish a different task, thus augmenting the potential of the keyboard.
+
+
+
+## Some useful commands (for Command mode):
+
+-----------------------------------
+
+`:echo $PATH`
+
+Reflects the folders added to the path.
+
+-----------------------------------
+
+`:echo $VIMRUNTIME`
+
+Shows the Vim installation folder.
+
+-----------------------------------
+
+`:echo $HOME`
+
+Gives the home folder e.g., `C:\Users\"your_account_name"` as you do by typing `%userprofile%` (or `~/`) at the address bar.
+
+Also,
+
+`:echo $HOMEPATH`
+
+Almost does the same thing.
+
+-----------------------------------
+
+`:echo $HOMEDRIVE`
+
+Echoes the location of the system installation drive. Generally, `C:\` on Windows.
+
+-----------------------------------
+
+`:echo $MYVIMRC`
+
+Displays the `.vimrc` file, in effect with the full path to the file.
+
+Generally, `C:\Program Files\vim\_vimrc` or `C:\Program Files (x86)\vim\_vimrc`
+
+or `/home/"your-user_account_name"/.vimrc` in Linux (`~/.vimrc`).
+
+This file is extremely crucial because Vim loads configurations at program startup from this file.
+
+To customize Vim, you can write you instructions to this file, as you can write the plugin files.
+
+-----------------------------------
+
+`:helptags $VIMRUNTIME/doc`
+
+`:helptags $HOME/.vim/doc`
+
+Creates a 'tags' file for search and navigation of help files in the plugin installation directories. Vim-Plug automatically does this for you, so you don't have to do this. However, you need to generate a 'tags' file in the runtime directory where Vim has been installed.
+
+-----------------------------------
+
+`:pwd`
+
+Echoes the present working directory of the file being edited. After startup, this is your HOME directory.
+
+-----------------------------------
+
+`:set runtimepath?`
+
+Displays a list of directories from where Vim can load plug-ins.
+
+Echoes the folders that are being used by Vim.
+
+-----------------------------------
+
+`:set directory?`
+
+Reflects the internally set directory for the temp and swap files.
+
+Echoes the set directory (for storing temp files etc.).
+
+-----------------------------------
+
+`:scriptnames`
+
+Displays the list of text-based scripts/plugins ( `_vimrc`, `.vim`, `*.vim` etc..) in use.
+
+Note: Vim plugins are essentially text files, though there exist a few shared library based plugins.
+
+-----------------------------------
+
+`:browse confirm e`
+
+Opens the GUI file browser.
+
+`:browse confirm e D:\Code_Blocks\`
+
+Opens the GUI file browser to locate the file you need in that directory.
+
+-----------------------------------
+
+`:bwipeout`
+
+This command closes all the files, wiping out the hidden memory too.
+
+When you close a file, Vim keeps it in its memory, making file hidden in the editor.
+
+-----------------------------------
+
+`:confirm bd`
+
+It means, 'Confirm Buffer Delete'. Unloads only the currently opened file.
+
+This command deletes nothing. It closes the file in the editor, wipes the hidden memory for that particular file.
+
+-----------------------------------
+
+`:e!`
+
+Command to reload a file from hard disc. Unsaved changes are discarded.
+
+Reloads the current buffer. Reloads only the currently opened file from disc.
+
+-----------------------------------
+
+`:w`
+
+Vim, by default, does not save/alter a file if it is not changed/modified. This command forces Vim to re-write the file to disc.
+
+Save (writes to disc) the file, even if the file has not been modified at all.
+
+-----------------------------------
+
+`:51`
+
+`:78`
+
+`:69`
+
+Jumps to the line number provided.
+
+-----------------------------------
+
+`:q`
+
+`:qa`
+
+Exits/Quits Vim.
+
+-----------------------------------
+
+`:h crefvimdoc`
+
+C Reference is a reference book plugin for the C language. This command opens its doc.
+
+Specific to the docs of the cref plugin.
+
+`:h cref`
+
+Opens the C Language Reference.
+Specific to cref plugin.
+
+-----------------------------------
+
+`:h 'statusline'`
+
+An example to search the manual of Vim with specific options. This option searches for the 'statusline' related topics.
+
+Opens Vim documentation with the topic 'statusline'.
+
+-----------------------------------
 
