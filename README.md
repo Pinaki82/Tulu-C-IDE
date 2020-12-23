@@ -230,6 +230,8 @@ Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressin
 
 NOTE: We can take advantage of autocompletion with the `<TAB>` key in Command mode. After typing a few characters press `<TAB>` and navigate using the Right/Left Arrow key or even by hitting the `<TAB>` key over and over.
 
+![TabAutocompletionCommandMode](https://user-images.githubusercontent.com/16861933/103034147-3f049380-458a-11eb-9a44-71c192ae2e58.gif)
+
 ### Quit Vim
 
 * Discard all changes and quit without saving anything.
