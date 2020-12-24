@@ -447,7 +447,7 @@ Turns Highlight Line and column ON-OFF
 
 -----------------------------------
 
-`<Alt-F11>` (In Normal Mode)
+`<Alt-Shift-F11>` (In Normal Mode)
 
 Reloads Default Theme.
 
