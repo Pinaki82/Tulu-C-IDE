@@ -211,6 +211,10 @@ sudo apt install ninja-build
 
 [oh-la-la](https://github.com/Pinaki82/oh-la-la.git): High contrast dark color scheme with black background.
 
+## Change the default GVim theme:
+
+In your HOME directory, there is a file `.givmrc`. Open it and uncomment some lines if you want a dark theme. Instructions provided. In Vim, `"` is used at the beginning of a line to comment it.
+
 ## To the First Time Users:
 
 ### Normal Mode
