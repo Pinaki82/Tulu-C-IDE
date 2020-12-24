@@ -691,7 +691,34 @@ In Normal mode, press the Leader (i.e. `\` key, it's the 'backslash' key) then,
 
 `hl` -> Toggles Line-Column Highlight.
 
+### Leader Timeout Quirk:
 
+Typing a leader based shortcut or any other shortcut requires some typing effort thus takes some time.
+So I set the timeout length to 4.5 seconds. you can easily see it here:- `%userprofile%\.vimdotcommon\.vimrc2.vim`
+Or,
+
+`~/.vimdotcommon/.vimrc2.vim`
+
+as:
+
+`:set timeout timeoutlen=4500`
+
+This means you get 4.5 sec to complete typing your instruction.
+
+In this approach, we take a few obvious advantages of that extended duration, but the only problem is when you have a very short shortcut such as `\t`
+you will have to wait for 4.5 sec to see the effect. But it is a trivial issue compared to the disadvantages of a short duration within which we would have to complete typing out the instruction.
+
+Here some plugins e.g., c-vim uses leader based shortcuts in Insert mode also.
+
+Thus typing `\n` looks like `n` for 4.5 sec. `printf("Hello World\n` would look like `printf("Hello Worldn` for 4.5 sec.
+
+If it happens so, try to press some other key that would not affect your shortcut.
+
+Specifically, you may try one of the 'arrow' keys (preferably the 'right-arrow', since you are moving to the right) or the 'Esc' key.
+
+If it still annoys you, try to lower the timeout-length as you prefer like,
+
+`:set timeout timeoutlen='an amount of your choice'`, that's all.
 
 
 
