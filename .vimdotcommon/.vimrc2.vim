@@ -675,8 +675,8 @@ if has("gui_running")
 :menu Settings.-Sep1-	:
 
 "                                    Setting for some Modified Default colour schemes, you will find more later
-:amenu Settings.Modified\ Default\ Themes.default\ <Alt-F11> :call <SID>ThemeDefault() <CR>
-map <M-F11> :call <SID>ThemeDefault() <CR>
+:amenu Settings.Modified\ Default\ Themes.default\ <Alt-Shift-F11> :call <SID>ThemeDefault() <CR>
+map <M-S-F11> :call <SID>ThemeDefault() <CR>
 :amenu Settings.Modified\ Installed\ Themes.MustangGreen\ <Ctrl-Shift-F11> :call ColourMustangGreen() <CR>
 
 map <C-S-F11> :call ColourMustangGreen() <CR>
@@ -723,8 +723,18 @@ endfun
 
 "                       Another function for Highlighting current line and column with coloured status line
 "                       when resuming default theme
+
 fun! <SID>ThemeDefault()
-colors default
+if g:osdetected == "Windows"
+      colors default
+  elseif g:osdetected == "Linux"
+      colors default
+  "elseif g:osdetected == "Unix"
+      "colors default
+endif
+
+
+
 :hi ColorColumn ctermbg=lightgrey guibg=lightgrey
         hi User1 guifg=#ffdad8  guibg=#880c0e
         hi User2 guifg=#000000  guibg=#F4905C
@@ -735,6 +745,7 @@ colors default
         hi User8 guifg=#ffffff  guibg=#5b7fbb
         hi User9 guifg=#ffffff  guibg=#810085
         hi User0 guifg=#ffffff  guibg=#094afe
+        call ColStline()
         :set cursorline
         :set cursorcolumn
         "   :redir => cursorline_highlight | silent highlight CursorLine | redir END
