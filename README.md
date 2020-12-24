@@ -291,7 +291,7 @@ Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to
 
 ### Common Quirks:
 
-You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line.
+You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line. `<Shift+j>` joins two lines (the selected line + the next line).
 
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
