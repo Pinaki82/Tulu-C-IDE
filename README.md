@@ -703,10 +703,10 @@ as:
 
 `:set timeout timeoutlen=4500`
 
-This means you get 4.5 sec to complete typing your instruction.
+This means you get 4.5 sec to complete typing your instruction. The default was `:set timeout timeoutlen=-1` or, `:set timeout timeoutlen=100`
 
 In this approach, we take a few obvious advantages of that extended duration, but the only problem is when you have a very short shortcut such as `\t`
-you will have to wait for 4.5 sec to see the effect. But it is a trivial issue compared to the disadvantages of a short duration within which we would have to complete typing out the instruction.
+you will have to wait for 4.5 sec to see the effect. But it is a trivial issue compared to the disadvantages of a short duration within which we would have to complete typing out some long instructions.
 
 Here some plugins e.g., c-vim uses leader based shortcuts in Insert mode also.
 
