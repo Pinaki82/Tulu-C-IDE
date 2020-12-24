@@ -39,7 +39,7 @@ syntax enable
 set grepprg=grep\ -nH\ $*
 set number        " always show line numbers
 set laststatus=2
-" :set timeout timeoutlen=4500 "   ttimeoutlen=100 "  default settings -1 not harmed under comment
+:set timeout timeoutlen=4500 "   ttimeoutlen=100 "  default settings -1 not harmed under comment
 set history=1000                " Store a ton of history (default is 20)
                                 " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
