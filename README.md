@@ -169,7 +169,7 @@ sudo apt install ninja-build
 
 [AutoClose](https://github.com/vim-scripts/AutoClose.git): Inserts matching bracket, paren, brace or quote.
 
-[auto tags gen](https://github.com/vim-scripts/auto-tags-gen.git): Plugin for creating tags automatically (C/C++). `:h auto_tags_gen.txt`
+[auto tags gen](https://github.com/Pinaki82/auto-tags-gen.git): Plugin for creating tags automatically (C/C++). `:h auto_tags_gen.txt`
 
 [Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner. `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
 
