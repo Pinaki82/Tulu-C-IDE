@@ -1234,6 +1234,8 @@ Plug 'https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git'
 
 Plug 'https://github.com/Pinaki82/oh-la-la.git'
 
+Plug 'https://github.com/Pinaki82/convert-line-endings.git'
+
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " like: Plug 'junegunn/vim-easy-align'
