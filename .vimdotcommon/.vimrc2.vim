@@ -1192,7 +1192,7 @@ Plug 'https://github.com/suxpert/vimcaps.git'
 
 Plug 'https://github.com/vim-scripts/AutoClose.git'
 
-Plug 'https://github.com/vim-scripts/auto-tags-gen.git'
+Plug 'https://github.com/Pinaki82/auto-tags-gen.git'
 
 Plug 'https://github.com/WolfgangMehner/vim-plugins.git'
 
