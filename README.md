@@ -44,6 +44,9 @@ GVim-v8.2.1145.glibc2.15-x86_64.AppImage with this configuration running on Xubu
 GVim Version 8.1.2269 (from Ubuntu repository) with this configuration running on Xubuntu 20.04.1 LTS Focal Fossa.
 ![Screenshot at 19-53-28](https://user-images.githubusercontent.com/16861933/103137019-5dce6b80-46eb-11eb-8fab-bf52636b4493.png)
 
+GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running on Windows 10 Pro 20H2 with this configuration. Yes, this configuration runs even on portable versions of GVim!
+![2020-12-25 20_01_31- No Name  - GVIM](https://user-images.githubusercontent.com/16861933/103137187-ba7e5600-46ec-11eb-8ebc-77b5e9dfcf2d.png)
+
 # Dependencies:
 
 ## Windows:
