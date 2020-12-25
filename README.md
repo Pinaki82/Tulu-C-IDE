@@ -211,7 +211,7 @@ sudo apt install ninja-build
 
 [Reload-Button](https://github.com/Pinaki82/Reload-Button.git): A simple GVim plugin to reload the current buffer.
 
-[convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): Convert Line Endings to Unix/Windows, \lnu and \lnd.
+[convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): Convert Line Endings to Unix/Windows, `\lnu` and `\lnd`.
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
