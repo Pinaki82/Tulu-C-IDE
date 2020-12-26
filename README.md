@@ -213,6 +213,9 @@ sudo apt install ninja-build
 
 [convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): Convert Line Endings to Unix/Windows, `\lnu` and `\lnd`.
 
+[AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): With this plugin, your vim comes to automatically opens popup menu for
+completions when you enter characters or move the cursor in Insert mode.
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): A dark Vim colour scheme.
