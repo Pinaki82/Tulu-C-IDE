@@ -284,7 +284,7 @@ Put the cursor on any character and Press Capital `<R>` to switch to this mode. 
 ![ReplaceMode](https://user-images.githubusercontent.com/16861933/103017257-58e1ae80-4569-11eb-9dcd-b5aad5883fe4.gif)
 
 ### Navigation
-Vim allows navigating through the text in Normal mode. Left, Down, Up, Left buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, you raise your finger Up 👆 to show direction upwards. Not in a bad sense. 😊
+Vim allows navigating through the text in Normal mode. Left, Down, Up, Left buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, remember that the __s"K"y__ (sky) is above. 😊
 
 Arrow keys can be used in Insert mode.
 
@@ -299,7 +299,7 @@ Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to
 
 ### Common Quirks:
 
-You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line. `<Shift+j>` joins two lines (the selected line + the next line). Use `k` in Normal mode to delete characters. Think of it as the Delete button. The Delete button can also be used. The deleted character will remain in the clipboard.
+You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line. `<Shift+j>` joins two lines (the selected line + the next line). Use `x` in Normal mode to delete characters. Think of it as the Delete button. The Delete button can also be used. The deleted character will remain in the clipboard.
 
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
