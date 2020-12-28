@@ -334,6 +334,8 @@ And/Or,
 
 `<Ctrl+w>` then `<h>`, `<j>`, `<k>`, `<l>`.
 
+Look at the placement of the cursor inside the windows.
+
 ![NavigateThroughTheActiveWindows](https://user-images.githubusercontent.com/16861933/103243558-42c85980-4980-11eb-8ad1-6313fa7a9c1c.gif)
 
 # Custom Keymaps and Keyboard Shortcuts
