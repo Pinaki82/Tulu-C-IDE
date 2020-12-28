@@ -382,6 +382,16 @@ Go to the LAST Line: `<Shift+g>`
 
 ![FistLineLastLine](https://user-images.githubusercontent.com/16861933/103245307-bd47a800-4985-11eb-91f7-f236257b7d2b.gif)
 
+## Go to the Beginning of the Line and the End of the Line:
+
+Type
+
+`ZERO [0]` to go to the BEGINNING of the line.
+
+`$` to go to the END of the line.
+
+![ZeroDollarBOL-EOL](https://user-images.githubusercontent.com/16861933/103245541-82923f80-4986-11eb-8317-f60a45f71e3f.gif)
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
