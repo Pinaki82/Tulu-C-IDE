@@ -366,6 +366,15 @@ Close the only active window:
 
 ![Wipeout-n-confirmbd](https://user-images.githubusercontent.com/16861933/103244645-a99b4200-4983-11eb-8c94-8645ed97a59e.gif)
 
+## Find the matching brackets:
+
+Place the cursor on a bracket, then press `<Shift+5>` i.e.,
+
+`%`
+
+![FindTheMatchingBrackets](https://user-images.githubusercontent.com/16861933/103245018-cdab5300-4984-11eb-97b2-e27f5dac94bf.gif)
+
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
