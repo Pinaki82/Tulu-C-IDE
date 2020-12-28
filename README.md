@@ -314,6 +314,16 @@ Split Vertically: `<Ctrl+w>` then `v`.
 
 ![SplittingWindows](https://user-images.githubusercontent.com/16861933/103242683-31ca1900-497d-11eb-90de-60fc2506efbb.gif)
 
+## Navigate Through the Active Buffers:
+
+In Normal mode:
+
+`<Ctrl+o>` and `<Ctrl+i>`.
+
+NOTE: `<Ctrl+o+o>` will open the last edited file.
+
+![NavigateThroughTheActiveBuffers](https://user-images.githubusercontent.com/16861933/103243149-e87ac900-497e-11eb-8118-e0144a62e06f.gif)
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
