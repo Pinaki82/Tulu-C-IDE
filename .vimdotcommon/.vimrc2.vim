@@ -10,8 +10,11 @@
 " http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
 " google: detecting os from vimscript
 if !exists("g:osdetected")
-    if has("win64") || has("win32") || has("win16")
+    if has("win64") || has("win32") || has("win16") || has("win32unix") || has("macunix")
         let g:osdetected = "Windows"
+
+        " To be used by the section: Copy Present Working Directory (pwd) to system clipboard
+        let g:osdetected2 = "Windows_n_OSX"
     else
         let g:osdetected = substitute(system('uname'), '\n', '', '')
     endif
@@ -545,7 +548,7 @@ if has("gui_running")
 "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "                       Setting for Coloured Statusline and the line-col highlight feature
 
-:amenu Settings.-Sep0-	:
+:amenu Settings.-Sep0-  :
 :amenu Settings.Restore\ Coloured\ Status\ Line :call ColStline() <CR>
 
 
@@ -591,7 +594,7 @@ endif
 if has("gui_running")
   " Execute only once
   if exists("g:highlight_line_n_column")
-	  finish
+      finish
   endif
 let g:highlight_line_n_column=0
 
@@ -672,7 +675,7 @@ if has("gui_running")
 "  ======================================================
 "  Separator
 "  ======================================================
-:menu Settings.-Sep1-	:
+:menu Settings.-Sep1-   :
 
 "                                    Setting for some Modified Default colour schemes, you will find more later
 :amenu Settings.Modified\ Default\ Themes.default\ <Alt-Shift-F11> :call <SID>ThemeDefault() <CR>
@@ -1051,12 +1054,12 @@ if g:osdetected == "Windows"
         :amenu Utilities.Open\ File\ with\ Default\ Application :silent! !explorer "%:p" <Esc>
 
     elseif g:osdetected == "Linux"
-	" how to open file manager in linux from terminal
-	" https://www.unixmen.com/open-system-file-manager-terminal
-	" how to open default calculator in linux from terminal
-	" https://askubuntu.com/questions/628026/how-to-launch-the-calculator-through-terminal
-	" man -k calculator
-	" man -k camera
+    " how to open file manager in linux from terminal
+    " https://www.unixmen.com/open-system-file-manager-terminal
+    " how to open default calculator in linux from terminal
+    " https://askubuntu.com/questions/628026/how-to-launch-the-calculator-through-terminal
+    " man -k calculator
+    " man -k camera
 
         :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
         :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
@@ -1090,25 +1093,13 @@ endif
 " https://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 
-" ============================================
-"  ******************************************
-" ============================================
-" http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
-" google: detecting os from vimscript
-
-if has("win64") || has("win32") || has("win16") || has("win32unix") || has("macunix")
-	let g:osdetected = "Windows_n_OSX"
-else
-	let g:osdetected = substitute(system('uname'), '\n', '', '')
-endif
-
-if g:osdetected == "Windows_n_OSX"
+if g:osdetected2 == "Windows_n_OSX"
     function! CopyPWDToWindowsNMacOSXClipboard()
-		:let @* = expand('%:p:h')
+        :let @* = expand('%:p:h')
     endfun
   elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
     function! CopyPWDToLinuxClipboard()
-		:let @+ = expand('%:p:h')
+        :let @+ = expand('%:p:h')
     endfun
   else
   function! CopyPWDToSystemClipboard()
@@ -1118,7 +1109,7 @@ if g:osdetected == "Windows_n_OSX"
 endif
 
 " Opens Explorer
-if g:osdetected == "Windows_n_OSX"
+if g:osdetected2 == "Windows_n_OSX"
     :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
     command Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
 elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
@@ -1323,4 +1314,3 @@ call plug#end()
 
 " auto_tags_gen plugin startup with option 1
 let g:startuptrigger = 1
-
