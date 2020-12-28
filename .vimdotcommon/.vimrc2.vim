@@ -1084,6 +1084,51 @@ endif
 
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~ Copy Present Working Directory (pwd) to system clipboard ~~~~~~~~~~~~~~
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" let @* = expand('%:p:h')
+" https://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
+" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+
+" ============================================
+"  ******************************************
+" ============================================
+" http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
+" google: detecting os from vimscript
+
+if has("win64") || has("win32") || has("win16") || has("win32unix") || has("macunix")
+	let g:osdetected = "Windows_n_OSX"
+else
+	let g:osdetected = substitute(system('uname'), '\n', '', '')
+endif
+
+if g:osdetected == "Windows_n_OSX"
+    function! CopyPWDToWindowsNMacOSXClipboard()
+		:let @* = expand('%:p:h')
+    endfun
+  elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
+    function! CopyPWDToLinuxClipboard()
+		:let @+ = expand('%:p:h')
+    endfun
+  else
+  function! CopyPWDToSystemClipboard()
+    :let @* = expand('%:p:h')
+    :let @+ = expand('%:p:h')
+  endfun
+endif
+
+" Opens Explorer
+if g:osdetected == "Windows_n_OSX"
+    :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
+    command Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
+elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
+    :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
+    command Pwdtoclip :call CopyPWDToLinuxClipboard()
+else
+    :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <CR><Esc><CR>
+    command Pwdtoclip :call CopyPWDToSystemClipboard()
+endif
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
