@@ -307,7 +307,9 @@ You can press `dd` in Normal mode to delete the entire line, `yy` to copy the li
 ## Splitting Windows (Text Areas):
 
 In Normal mode:
+
 Split Horizontally: `<Ctrl+w>` then `s`.
+
 Split Vertically: `<Ctrl+w>` then `v`.
 
 ![SplittingWindows](https://user-images.githubusercontent.com/16861933/103242683-31ca1900-497d-11eb-90de-60fc2506efbb.gif)
