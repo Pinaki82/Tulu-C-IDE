@@ -324,6 +324,18 @@ NOTE: `<Ctrl+o+o>` will open the last edited file.
 
 ![NavigateThroughTheActiveBuffers](https://user-images.githubusercontent.com/16861933/103243149-e87ac900-497e-11eb-8118-e0144a62e06f.gif)
 
+## Navigate Through the Active Windows (Text Areas):
+
+In Normal mode:
+
+`<Ctrl+w><Ctrl+w><Ctrl+w>...`
+
+And/Or,
+
+`<Ctrl+w>` then `<h>`, `<j>`, `<k>`, `<l>`.
+
+![NavigateThroughTheActiveWindows](https://user-images.githubusercontent.com/16861933/103243558-42c85980-4980-11eb-8ad1-6313fa7a9c1c.gif)
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
