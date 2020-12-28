@@ -374,6 +374,13 @@ Place the cursor on a bracket, then press `<Shift+5>` i.e.,
 
 ![FindTheMatchingBrackets](https://user-images.githubusercontent.com/16861933/103245018-cdab5300-4984-11eb-97b2-e27f5dac94bf.gif)
 
+## The FIRST Line and the LAST Line:
+
+Go to the FIRST Line: `gg`
+
+Go to the LAST Line: `<Shift+g>`
+
+![FistLineLastLine](https://user-images.githubusercontent.com/16861933/103245307-bd47a800-4985-11eb-91f7-f236257b7d2b.gif)
 
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
