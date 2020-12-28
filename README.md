@@ -304,6 +304,14 @@ Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to
 
 You can press `dd` in Normal mode to delete the entire line, `yy` to copy the line and `p` to paste the line copied to the register into the next line, `<Shift+p>` to paste it above the selected line. `<Shift+j>` joins two lines (the selected line + the next line). Use `x` in Normal mode to delete characters. Think of it as the Delete button. The Delete button can also be used. The deleted character will remain in the clipboard.
 
+## Splitting Windows (Text Areas):
+
+In Normal mode:
+Split Horizontally: `<Ctrl+w>` then `s`.
+Split Vertically: `<Ctrl+w>` then `v`.
+
+![SplittingWindows](https://user-images.githubusercontent.com/16861933/103242683-31ca1900-497d-11eb-90de-60fc2506efbb.gif)
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
