@@ -338,6 +338,34 @@ Look at the placement of the cursor inside the windows.
 
 ![NavigateThroughTheActiveWindows](https://user-images.githubusercontent.com/16861933/103243558-42c85980-4980-11eb-8ad1-6313fa7a9c1c.gif)
 
+## Close windows:
+
+In Normal mode:
+
+`<Ctrl+w>` then `<c>`.
+
+![CloseWindowCtrlW-C](https://user-images.githubusercontent.com/16861933/103244242-6391ae80-4982-11eb-890f-e47e094583af.gif)
+
+Also, in Command mode:
+
+`:close`
+
+![CloseWindowColonClose](https://user-images.githubusercontent.com/16861933/103244606-912b2780-4983-11eb-9117-2dbf990dafca.gif)
+
+Close all active windows except the selected one:
+
+`:Wipeout`
+
+`:bwipeout`
+
+Close the only active window:
+
+`:confirm bd`
+
+`bd` stands for 'buffer delete'.
+
+![Wipeout-n-confirmbd](https://user-images.githubusercontent.com/16861933/103244645-a99b4200-4983-11eb-8c94-8645ed97a59e.gif)
+
 # Custom Keymaps and Keyboard Shortcuts
 ### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
 
