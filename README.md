@@ -254,7 +254,7 @@ To
 
 These directories are required by this configuration to work properly. Otherwise, Vim would create backup files, Vim-view settings, and other temporary files in the directories where the codes will be edited. Once you have installed the plugins by issuing the commands `:PlugInstall` and `:PlugUpgrade`, make a few changes to this configuration to suit your needs. Those directories are not needed once created, and you may like a dark theme. Change the theme if you prefer a dark theme over the default white colour. `<Ctrl+Alt+F11>` and `<Ctrl+Shift+F11>` can always be used regardless of the set theme to load at startup.
 
-`"` in Vim scripts comments out a line, like `//` and `/*comment*/` in C/C++. Multiline comments are unavailable in Vim scripts.
+`"` in Vim scripts comments out a line, like `//comment` and `/*comment*/` in C/C++. Multiline comments are unavailable in Vim scripts.
 
 ## To the First Time Users:
 
