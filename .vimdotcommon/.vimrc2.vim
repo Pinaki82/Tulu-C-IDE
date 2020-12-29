@@ -10,11 +10,10 @@
 " http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
 " google: detecting os from vimscript
 if !exists("g:osdetected")
-    if has("win64") || has("win32") || has("win16") || has("win32unix") || has("macunix")
+    if has("win64") || has("win32") || has("win16") || has("win32unix")
         let g:osdetected = "Windows"
-
-        " To be used by the section: Copy Present Working Directory (pwd) to system clipboard
-        let g:osdetected2 = "Windows_n_OSX"
+    elseif has("macunix")
+        let g:osdetected = substitute(system('uname'), '\n', '', '')
     else
         let g:osdetected = substitute(system('uname'), '\n', '', '')
     endif
@@ -1093,11 +1092,11 @@ endif
 " https://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 
-if g:osdetected2 == "Windows_n_OSX"
+if g:osdetected == "Windows"
     function! CopyPWDToWindowsNMacOSXClipboard()
         :let @* = expand('%:p:h')
     endfun
-  elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
+  elseif g:osdetected == "Linux"
     function! CopyPWDToLinuxClipboard()
         :let @+ = expand('%:p:h')
     endfun
@@ -1109,10 +1108,10 @@ if g:osdetected2 == "Windows_n_OSX"
 endif
 
 " Opens Explorer
-if g:osdetected2 == "Windows_n_OSX"
+if g:osdetected == "Windows"
     :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
     command Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
-elseif (g:osdetected == "Linux") && (g:osdetected != "Windows_n_OSX")
+elseif (g:osdetected == "Linux")
     :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
     command Pwdtoclip :call CopyPWDToLinuxClipboard()
 else
