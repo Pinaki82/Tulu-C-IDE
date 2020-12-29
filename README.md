@@ -226,6 +226,28 @@ completions when you enter characters or move the cursor in Insert mode.
 
 In your HOME directory, there is a file `.givmrc`. Open it and uncomment some lines if you want a dark theme. Instructions provided. In Vim, `"` is used at the beginning of a line to comment it.
 
+## Things to do after installation:
+
+Find the script in `%userprofile%\.vim\plugin\temporary.vim` or, `~/.vim/plugin/temporary.vim` and comment out a few line as follows:
+
+Change these lines
+
+`silent execute '!mkdir "'.$HOME.'/.vimbackup"'`
+`silent execute '!mkdir "'.$HOME.'/.vimswap"'`
+`silent execute '!mkdir "'.$HOME.'/.vimviews"'`
+`silent execute '!mkdir "'.$HOME.'/.vimundo"'`
+
+To
+
+`"silent execute '!mkdir "'.$HOME.'/.vimbackup"'`
+`"silent execute '!mkdir "'.$HOME.'/.vimswap"'`
+`"silent execute '!mkdir "'.$HOME.'/.vimviews"'`
+`"silent execute '!mkdir "'.$HOME.'/.vimundo"'`
+
+These directories are required by this configuration to work properly. Otherwise, Vim would create backup files, Vim-view settings, and other temporary files in the directories where the codes will be edited. Once you have installed the plugins by issuing the commands `:PlugInstall` and `:PlugUpgrade`, make a few changes to this configuration to suit your needs. Those directories are not needed once created, and you may like a dark theme. Change the theme if you prefer a dark theme over the default white colour. `<Ctrl+Alt+F11>` and `<Ctrl+Shift+F11>` can always be used regardless of the set theme to load at startup.
+
+`"` in Vim scripts comments out a line, like `//` and `/*comment*/` in C/C++. Multiline comments are unavailable in Vim scripts.
+
 ## To the First Time Users:
 
 ### Normal Mode
