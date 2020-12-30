@@ -62,6 +62,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
  
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
+ 
+ [Java Runtime Environment](https://www.java.com/en/download/)
 
 ##### Recommended Programs:
  
@@ -84,6 +86,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
  
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
+ 
+ Java Runtime Environment.
 
 ##### Recommended Programs:
 
