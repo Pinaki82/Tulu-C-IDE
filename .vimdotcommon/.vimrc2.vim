@@ -1,4 +1,4 @@
-" Last Change: 2020-12-30  Wednesday: 11:22:05 PM
+" Last Change: 2020-12-31  Thursday: 02:44:16 AM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1207,6 +1207,50 @@ let g:acp_completeoptPreview = 1
 :amenu Plugin.ACP-auto-popup.disables\ auto-popup :AcpDisable <Esc>
 :amenu Plugin.ACP-auto-popup.suspends\ auto-popup\ temporarily :AcpLock <Esc>
 :amenu Plugin.ACP-auto-popup.resumes\ auto-popup\ previously\ suspended :AcpUnlock <Esc>
+" ====================================
+
+" ====================================
+" ========= vim-wipeout setup =======
+" ====================================
+:amenu Plugin.:Wipeout :Wipeout <CR><Esc>
+" ====================================
+
+" ========= TagbarToggle setup =======
+" ====================================
+:amenu Plugin.:TagbarToggle :TagbarToggle <CR><Esc>
+" ====================================
+
+" ====================================
+" ========= stlrefvim setup =======
+" ====================================
+:amenu Plugin.:h\ stlrefvim :h stlrefvim <CR><Esc>
+" ====================================
+
+" ====================================
+" ========= crefvim setup =======
+" ====================================
+:amenu Plugin.:h\ crefvim :h crefvim <CR><Esc>
+" ====================================
+
+" ====================================
+" ========= TaskList setup =======
+" ====================================
+:amenu Plugin.:TaskList\ \(\TODO,\ FIXME,\ XXX\)\ \(or,\ <\Leader\>\t\ then\ Esc\ and\ q\ to\ quit\) :TaskList <CR><Esc>
+" ====================================
+
+" ====================================
+" ========= BetterSearch setup =======
+" ====================================
+:amenu Plugin.-Sep2-  :
+:amenu Plugin.BetterSearch.BetterSearchChangeHighlight :BetterSearchChangeHighlight
+:amenu Plugin.BetterSearch.BetterSearchCloseWin :BetterSearchCloseWin <CR>
+:amenu Plugin.BetterSearch.BetterSearchCopyToClipBoard :BetterSearchCopyToClipBoard <CR>
+:amenu Plugin.BetterSearch.BetterSearchHighlighToggle :BetterSearchHighlighToggle <CR>
+:amenu Plugin.BetterSearch.BetterSearchHighlightLimit :BetterSearchHighlightLimit
+:amenu Plugin.BetterSearch.BetterSearchPromptOn :BetterSearchPromptOn <CR>
+:amenu Plugin.BetterSearch.BetterSearchSwitchWin :BetterSearchSwitchWin <CR>
+:amenu Plugin.BetterSearch.BetterSearchVisualSelect :BetterSearchVisualSelect <CR>
+:amenu Plugin.-Sep3-  :
 " ====================================
 
 "  ======================================================
