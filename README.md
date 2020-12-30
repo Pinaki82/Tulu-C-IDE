@@ -239,6 +239,8 @@ file names as you open/edit them in Vim.
 
 [Clear-Search-Highlight-in-Vim](https://github.com/Pinaki82/Clear-Search-Highlight-in-Vim.git): Cleans up Search Highlight.
 
+[tracktime.vim](https://github.com/Pinaki82/tracktime.vim.git): Shows how long a file is in the buffer.
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): A dark Vim colour scheme.
