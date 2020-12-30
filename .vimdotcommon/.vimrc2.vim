@@ -1,4 +1,4 @@
-" Last Change: 2020-12-21  Monday: 06:33:23 AM
+" Last Change: 2020-12-30  Wednesday: 04:14:21 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1121,6 +1121,34 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~~~~ vim-grammarous grammar check with LanguageTool ~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" check comments only in source code by default:
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0,
+            \ }
+" let g:grammarous#use_vim_spelllang = 1
+let g:grammarous#show_first_error = 1
+" ------------------------------
+" Create a folder called 'misc' where 'autoload', 'doc', 'plugin', and 'rplugin'
+" folders are located (if you are using a plugin manager) or
+" create that 'misc' folder in .vim directory.
+" Extract "languagetool-*.zip" in the 'misc' folder.
+" Download LanguageTool from https://languagetool.org/download/
+" ------------------------------
+:amenu Plugin.-Sep0-  :
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.LanguageTool\ Grammar\ Check\ (\:GrammarousCheck\) :GrammarousCheck <CR><Esc>
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.-Sep1-  :
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.British/American.LanguageTool\ Grammar\ Check\ (\:GrammarousCheck\ --lang=en-gb\ --preview\ --comments-only\) :GrammarousCheck --lang=en-gb --preview --comments-only <CR><Esc>
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.British/American.LanguageTool\ Grammar\ Check\ (\:GrammarousCheck\ --lang=en-us\ --preview\ --comments-only\) :GrammarousCheck --lang=en-us --preview --comments-only <CR><Esc>
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.-Sep2-  :
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.LanguageTool\ Grammar\ Check\ Reset\ (\:GrammarousReset\) :GrammarousReset <CR><Esc>
+:amenu Plugin.Spelling\ and\ Grammar\ in\ Comments.LanguageTool\ Grammar\ Check\ Help :GrammarousCheck --help <CR>
+:amenu Plugin.-Sep1-  :
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Trim Trailling Whitespace
 :amenu Utilities.Trim\ Trailling\ Whitespace :call <SID>StripWhite() <CR>
@@ -1272,6 +1300,8 @@ Plug 'https://github.com/Pinaki82/oh-la-la.git'
 Plug 'https://github.com/Pinaki82/convert-line-endings.git'
 
 Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+
+Plug 'https://github.com/rhysd/vim-grammarous.git'
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
