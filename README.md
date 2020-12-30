@@ -63,7 +63,7 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
  
- [Java Runtime Environment](https://www.java.com/en/download/)
+ [Java Runtime Environment](https://www.java.com/en/download/manual.jsp)
 
 ##### Recommended Programs:
  
