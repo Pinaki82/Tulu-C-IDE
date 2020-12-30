@@ -105,6 +105,7 @@ sudo apt update
 sudo apt list --upgradable
 sudo apt upgrade
 sudo apt update
+sudo apt install -f
 
 sudo apt install build-essential
 sudo apt install llvm
@@ -135,6 +136,7 @@ sudo apt install autogen
 sudo apt install autotools-dev
 sudo apt install automake
 sudo apt install meld
+sudo apt install default-jre
 ```
 
 ##### Recommended:
@@ -217,7 +219,7 @@ sudo apt install ninja-build
 completions when you enter characters or move the cursor in Insert mode.
 
 [vim-grammarous
-](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads LanguageTool on Linux, which requires Java 8+. Install Jave Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre'. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc' or `%userprofile%\.vim\misc') folder.
+](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads [LanguageTool](https://languagetool.org/download/) on Linux, which requires Java 8+. Install Java Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre`. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc` or `%userprofile%\.vim\misc`) folder.
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
