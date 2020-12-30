@@ -235,6 +235,8 @@ file names as you open/edit them in Vim.
 
 [Tagbar](https://github.com/preservim/tagbar.git): A class outline viewer for Vim. See Functions, prototypes, Classes, Macros, Structures etc. in a separate vertical window and click on an item to find them in the actual file. **Usage:** `:TagbarToggle`.
 
+[repeaterchar.vim](https://github.com/Pinaki82/repeaterchar.vim.git): Define a character and repeat it n-times. How would you write ~~~~~~~ 100-times? **Usage:** `<C-u>` then fill out the options.
+
 [Clear-Search-Highlight-in-Vim](https://github.com/Pinaki82/Clear-Search-Highlight-in-Vim.git): Cleans up Search Highlight.
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
