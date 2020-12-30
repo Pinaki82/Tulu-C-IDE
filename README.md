@@ -227,6 +227,10 @@ completions when you enter characters or move the cursor in Insert mode.
 
 [vim-bettersearch](https://github.com/kenng/vim-bettersearch.git): Notepad++ like search in Vim. `:BetterSearch<TAB>`.
 
+[MRU](https://github.com/yegappan/mru.git): The Most Recently Used (MRU) plugin provides an easy access to a list of 
+recently opened/edited files in Vim. This plugin automatically stores the 
+file names as you open/edit them in Vim.
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): A dark Vim colour scheme.
