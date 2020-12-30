@@ -1,4 +1,4 @@
-" Last Change: 2020-12-30  Wednesday: 04:14:21 PM
+" Last Change: 2020-12-30  Wednesday: 11:22:05 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1177,6 +1177,38 @@ if g:osdetected == "Windows"
 endif
 endif
 
+if g:osdetected == "Windows"
+  :tmenu icon=$HOME/.vim/bitmaps/bufferdelete.bmp 1.415 ToolBar.bufferdelete Buffer Delete (close file) (:confirm bd)
+elseif g:osdetected != "Windows"
+  :tmenu icon=$HOME/.vim/bitmaps/bufferdelete.bmp 1.415 ToolBar.bufferdelete Buffer Delete (close file) (:confirm bd)
+endif
+:amenu ToolBar.bufferdelete :confirm bd <Esc>
+
+" ====================================
+" ============= Insert Filename ======
+" ====================================
+:amenu Insert.Insert\ Filename\ <\S\-F3\> :put =expand('%:t')<Esc>
+:amenu Insert.Insert\ Filename\ with\ Full\ Path :put =expand('%:p')<Esc>
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nmap <S-F3> a<C-R>= expand('%:t')<Esc>
+imap <S-F3> <C-R>= expand('%:t')<Esc>
+" ====================================
+" ====================================
+
+" ====================================
+" ========= AutoComplPop setup =======
+" ====================================
+let g:acp_enableAtStartup = 1
+let g:acp_mappingDriven = 0
+let g:acp_completeoptPreview = 1
+
+:amenu Plugin.ACP-auto-popup.enables\ auto-popup :AcpEnable <Esc>
+:amenu Plugin.ACP-auto-popup.disables\ auto-popup :AcpDisable <Esc>
+:amenu Plugin.ACP-auto-popup.suspends\ auto-popup\ temporarily :AcpLock <Esc>
+:amenu Plugin.ACP-auto-popup.resumes\ auto-popup\ previously\ suspended :AcpUnlock <Esc>
+" ====================================
+
 "  ======================================================
 " ~~~~~~~~~~~ YankRing plugin Configuration ~~~~~~
 :nnoremap <silent> <C-F11> :YRShow<CR>
@@ -1302,6 +1334,22 @@ Plug 'https://github.com/Pinaki82/convert-line-endings.git'
 Plug 'https://github.com/vim-scripts/AutoComplPop.git'
 
 Plug 'https://github.com/rhysd/vim-grammarous.git'
+
+Plug 'https://github.com/kenng/vim-bettersearch.git'
+
+Plug 'https://github.com/yegappan/mru.git'
+
+Plug 'https://github.com/Pinaki82/Vim-MRU-Setup.git'
+
+Plug 'https://github.com/vim-scripts/TaskList.vim.git'
+
+Plug 'https://github.com/preservim/tagbar.git'
+
+Plug 'https://github.com/Pinaki82/Clear-Search-Highlight-in-Vim.git'
+
+Plug 'https://github.com/Pinaki82/repeaterchar.vim.git'
+
+Plug 'https://github.com/Pinaki82/tracktime.vim.git'
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
