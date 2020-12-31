@@ -883,23 +883,23 @@ If it still annoys you, try to lower the timeout-length as you prefer like,
 `:set timeout timeoutlen='an amount of your choice'`, that's all.
 
 
-## YankRing plugin (The multi-clipboard plugin):
+### YankRing plugin (The multi-clipboard plugin):
 
-Note: This plugin changes the default behaviour of "Normal mode -> Shift+Y copy (entire line)" in vim, so please use Normal mode then type `yy` to copy the entire line.
+**Note:** This plugin changes the default behaviour of "Normal mode -> Shift+Y copy (entire line)" in vim, so please use Normal mode then type `yy` to copy the entire line.
 
-1) What does it do?
+**1)** What does it do?
 
-If you need tons of multiple texts/lines to copy to computer's clipboard, it's impossible. Computers can remember only one thing you copied. Neither a machine will remember multiple things you need as clipboard memories, nor it will remember the set of character strings you delete. Shutdown the computer, it will forget the clipboard contents.
+If you need tons of multiple texts/lines to copy to computers' clipboard, it's impossible. Computers can remember only one thing you copied. Neither a machine will remember multiple things you need as clipboard memories, nor it will remember the set of character strings you delete. Shutdown the computer, it will forget the clipboard contents.
 
 Vim offers a method called registers to store the clipboard in a text file `%userprofile%\_viminfo` (`~/.viminfo`) so that you can access the clipboard even after you restart the machine. Vim relies on registers rather than system clipboard, though it can access the system clipboard.
 
 The obvious advantages of registers are:
 
-1. Many clipboard contents can be stored and accessed.
+_1._ Many clipboard contents can be stored and accessed.
 
-2. The line you delete can also be stored as one clipboard content.
+_2._ The line you delete can also be stored as one clipboard content.
 
-3. Stored clipboard can be used even after a system restart or any time, which, of course, cannot be done by using the conventional system clipboard once the clipboard gets cleared.
+_3._ Stored clipboard can be used even after a system restart or any time, which, of course, cannot be done by using the conventional system clipboard once the clipboard gets cleared.
 
 On the other hands, using Vim registers is tricky.
 
@@ -911,7 +911,7 @@ Shutdown the computer. The next time when you will open Vim, your clipboard hist
 
 ======================
 
-2) Usage:
+**2) Usage:**
 
 Hit escape and put GVim into normal mode. Type `v` from the keyboard, Vim will go into 'Visual Mode'. Select the portion you need and press `y`. It's copied to 'vim register' and yankring's scratch-file.
 
