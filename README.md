@@ -984,7 +984,97 @@ Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 
 ![2020-12-31 15_05_35-sfn_converter_2 c + (P__SFN_cnvrtr_src) - GVIM](https://user-images.githubusercontent.com/16861933/103404675-8686b300-4b7a-11eb-88b1-9a13200b884c.png)
 
+======================
 
+#### Autocompletion with Clang:
+
+[vim-clang](https://github.com/justmao945/vim-clang.git) plugin brings this feature using Clang in the background to parse and complete C/C++ source files. For more information, see `:h clang.txt`.
+
+![C source](http://justmao945.github.io/static/vim-clang/2014-01-12-async.gif)
+
+Vim has its own set of functions to show autocompletion menus of every type which is called Omni-Completion.
+The default shortcut to Omni-Completion is (in Insert mode) `<Ctrl+x><Ctrl+o>` or `<Ctrl+x><Ctrl+u>`.
+
+Clang can read a source code (C++/C) from the terminal and parse the code to show possible suggestions for auto-completion at any defined line/column. This plugin calls clang binary in the background. One of the notable features of vim-clang is that it is ultra-reliable and ultra-portable, and also requires minimum configuration to setup. Unlike some other 'clangd' based autocompletion plugin out there, it doesn't need too extraneous steps to install and configure. Clang binary is the only dependency. The plugin manager will take care of the installation of this plugin. It works with a wide range of clang-supported compilers on different platforms with little to no extra configuration steps. It works with MinGW compiler on Microsoft Windows while some other 'clangd' based plugins will not. Python is not a compulsory requirement. Node.js is unneeded. Complex installation scripts and makefiles are not involved in the installation. Updating the plugin doesn't break anything. Works identically on every platform and compiler that clang officially supports.
+
+What it doesn't do:
+
+It will not autocomplete filenames so include files like `#include <boost/filesystem...`. It will not take you to the header under the cursor. It will not show you an overview of the functions, classes, structures, prototypes on a separate sidebar.
+
+Function arguments will be shown on a window above the code, however, it will not autocomplete the arguments and parameters like some other plugins, although the users will get an overview of them on a small area above the code.
+
+These are some very little limitations. To overcome those deficiencies, some other plugins are included as complementary elements. Inclusion of some plugins that are small, effective still keep things less complex and serve the purpose well.
+
+Those included extra plugins are cherished by the coders across the world for many years even before clang was seen in the vicinity.
+
+As a coder, one needs portability, reliability, and a sure-fire way of working with the instruments. This plugin with three or four extra complemental scripts makes this Vim-configuration almost unbreakable yet keeping things simple.
+
+Autocompletion provided by clang at the command prompt:
+
+```
+clang -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.c:12:5 main.c \
+```
+
+```
+| awk -F: '/^COMPLETION: p/ { print $3 }'
+```
+
+Internet Search: how to use clang at cmd for autocompletion of c source files
+https://www.reddit.com/r/vim/comments/2wf3cn/basic_clang_autocompletion_query/
+
+```
+main.c
+
+#include <math.h>
+#include <stdio.h>
+#include <windows.h>
+
+int show_value(int *t);
+
+int main(int argc, char **argv) {
+  int i = 0, j = 0, k = 0;
+  printf("Hi!\n%d, %d, %d\n", i, j, k);
+  printf("%d\n", k = show_value(&j));
+  sc
+  system("pause");
+  return 0;
+}
+int show_value(int *t) {
+  int ptr = 70;
+  int *temp;
+  temp = &ptr;
+  *temp = *t + *temp + ptr;
+  return (*t);
+}
+```
+
+Another example:
+
+```
+clang++ -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.cpp:8:12 main.cpp \
+```
+
+```
+// Last Change: 2020-08-03  Monday: 07:47:06 PM
+#include <iostream>
+
+int main() {
+    char txt[500];
+    std::cout << "Hello World!";
+    std::cout << "Hi!" << std::endl;
+    std::ci
+    return 0;
+}
+
+```
+
+Usage: In Insert mode, press `<Ctrl+x><Ctrl+o>` or `<Ctrl+Space>`.
+
+Here is the video description:
+
+![vim-clang](https://user-images.githubusercontent.com/16861933/103424482-94682280-4bd2-11eb-9db7-e05b136246eb.gif)
+
+======================
 
 
 
