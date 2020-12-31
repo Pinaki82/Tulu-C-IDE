@@ -949,7 +949,28 @@ Normal mode `<C-F11>` for `:YRShow`
 
 To know more, type `:h yankring` in Command mode.
 
+#### 'vim-move' plugin -> Shift lines and selections with vim-move.
 
+By default, `<Alt+k>` and `<Alt+j>` move the current line in normal mode whereas
+`<Ctrl+k>` and `<ctrl+j>` shift a selection in visual mode.
+
+You can prefix the calls with a count, e.g., `5 <Ctrl + j>` which will then shift the line or selection relative to that number.
+
+For help, in normal mode, do
+`:h move`
+
+**Usage:**
+
+```
+<A-k>   Move current line/selection up
+<A-j>   Move current line/selection down
+<A-h>   Move current character/selection left
+<A-l>   Move current character/selection right
+```
+
+See it in action:
+
+![vim-move](https://user-images.githubusercontent.com/16861933/103403659-f8f59400-4b76-11eb-850d-b63c6b6ccc85.gif)
 
 
 
