@@ -1135,6 +1135,16 @@ Here is the video description:
 ======================
 -----------------------------------
 
+-----------------------------------
 
+#### Environment Variables / System Path Variable on Microsoft Windows:
+
+***Add a program/folder to system search path:***
+
+Some programs like [Ctags](https://github.com/universal-ctags/ctags-win32) and [Artistic Style](http://astyle.sourceforge.net/) need to be added to the PATH. Once the program (binary) folders of those utilities are added to the PATH, those programs can be accessed externally (e.g., command prompt) by any other program.
+
+![AddToPATH2](https://user-images.githubusercontent.com/16861933/103427339-6f7daa80-4be6-11eb-81b0-b2d3dfa05ff1.gif)
+
+-----------------------------------
 
 
