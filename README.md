@@ -972,7 +972,15 @@ See it in action:
 
 ![vim-move](https://user-images.githubusercontent.com/16861933/103403659-f8f59400-4b76-11eb-850d-b63c6b6ccc85.gif)
 
+#### [AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git) -> Pops up auto-completion menu from set dictionaries and opened buffers.
 
+It can also complete filename with path.
+
+Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
+
+![2020-12-31 15_03_49-sfn_converter_2 c + (P__SFN_cnvrtr_src) - GVIM](https://user-images.githubusercontent.com/16861933/103404672-8090d200-4b7a-11eb-9f72-7d0eba94c86b.png)
+
+![2020-12-31 15_05_35-sfn_converter_2 c + (P__SFN_cnvrtr_src) - GVIM](https://user-images.githubusercontent.com/16861933/103404675-8686b300-4b7a-11eb-88b1-9a13200b884c.png)
 
 
 
