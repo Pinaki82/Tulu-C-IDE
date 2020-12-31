@@ -951,12 +951,12 @@ To know more, type `:h yankring` in Command mode.
 
 #### 'vim-move' plugin -> Shift lines and selections with vim-move.
 
-By default, `<Alt+k>` and `<Alt+j>` move the current line in normal mode whereas
-`<Ctrl+k>` and `<ctrl+j>` shift a selection in visual mode.
+By default, `<Alt+k>` and `<Alt+j>` move the current line **Up** and **Down** in normal mode.
 
-You can prefix the calls with a count, e.g., `5 <Ctrl + j>` which will then shift the line or selection relative to that number.
+You can prefix the calls with a count, e.g., `5 <Alt + j>` which will then shift the line or selection relative to that number. For example, select line number 30 in Normal mode then type `5 <Alt+k>`, the line will be moved in the upward direction to line number 25.
 
-For help, in normal mode, do
+For help, in Command mode, do
+
 `:h move`
 
 **Usage:**
