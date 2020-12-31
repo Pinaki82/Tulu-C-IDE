@@ -1013,11 +1013,7 @@ As a coder, one needs portability, reliability, and a sure-fire way of working w
 Autocompletion provided by clang at the command prompt:
 
 ```
-clang -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.c:12:5 main.c \
-```
-
-```
-| awk -F: '/^COMPLETION: p/ { print $3 }'
+clang -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.c:11:5 main.c \
 ```
 
 Internet Search: how to use clang at cmd for autocompletion of c source files
@@ -1025,7 +1021,9 @@ https://www.reddit.com/r/vim/comments/2wf3cn/basic_clang_autocompletion_query/
 
 ```
 main.c
+```
 
+```
 #include <math.h>
 #include <stdio.h>
 #include <windows.h>
@@ -1047,27 +1045,86 @@ int show_value(int *t) {
   *temp = *t + *temp + ptr;
   return (*t);
 }
+
+```
+
+```
+clang: warning: \: 'linker' input unused [-Wunused-command-line-argument]
+COMPLETION: scalbln : [#double#]scalbln(<#double#>, <#long#>)
+COMPLETION: scalblnf : [#float#]scalblnf(<#float#>, <#long#>)
+COMPLETION: scalblnl : [#long double#]scalblnl(<#long double#>, <#long#>)
+COMPLETION: scalbn : [#double#]scalbn(<#double#>, <#int#>)
+COMPLETION: scalbnf : [#float#]scalbnf(<#float#>, <#int#>)
+COMPLETION: scalbnl : [#long double#]scalbnl(<#long double#>, <#int#>)
+COMPLETION: scanf : [#int#]scanf(<#const char *restrict _Format, ...#>)
+COMPLETION: scr1 : scr1
+COMPLETION: scr2 : scr2
+COMPLETION: scr3 : scr3
+COMPLETION: scr4 : scr4
+COMPLETION: scr5 : scr5
+COMPLETION: scr6 : scr6
+COMPLETION: scr7 : scr7
+COMPLETION: scr8 : scr8
 ```
 
 Another example:
 
 ```
-clang++ -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.cpp:8:12 main.cpp \
+clang++ -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-macros -Xclang -code-completion-at=main.cpp:7:11 main.cpp \
 ```
 
 ```
-// Last Change: 2020-08-03  Monday: 07:47:06 PM
+main.cpp
+```
+
+```
 #include <iostream>
 
 int main() {
     char txt[500];
-    std::cout << "Hello World!";
+    std::cout << "Test Autocompletion!";
     std::cout << "Hi!" << std::endl;
-    std::ci
+    std::c
     return 0;
 }
 
 ```
+
+```
+clang++: warning: \: 'linker' input unused [-Wunused-command-line-argument]
+COMPLETION: calloc : [#void *#]calloc(<#size_t _NumOfElements#>, <#size_t _SizeOfElements#>)
+COMPLETION: cbegin : [#decltype(std::begin(__cont))#]cbegin(<#const _Container &__cont#>)
+COMPLETION: cend : [#decltype(std::end(__cont))#]cend(<#const _Container &__cont#>)
+COMPLETION: cerr : [#ostream#]cerr
+COMPLETION: char_traits : char_traits<<#class _CharT#>>
+COMPLETION: cin : [#istream#]cin
+COMPLETION: clearerr : [#void#]clearerr(<#FILE *_File#>)
+COMPLETION: clog : [#ostream#]clog
+COMPLETION: codecvt : codecvt<<#typename _InternT#>, <#typename _ExternT#>, <#typename _StateT#>>
+COMPLETION: codecvt_base : codecvt_base
+COMPLETION: codecvt_byname : codecvt_byname<<#typename _InternT#>, <#typename _ExternT#>, <#typename _StateT#>>
+COMPLETION: collate : collate<<#typename _CharT#>>
+COMPLETION: collate_byname : collate_byname<<#typename _CharT#>>
+COMPLETION: common_type : common_type<<#typename _Tp#>>
+COMPLETION: common_type_t : common_type_t<<#typename _Tp#>>
+COMPLETION: conditional : conditional<<#bool#>, <#typename#>, <#typename#>>
+COMPLETION: conditional_t : conditional_t<<#bool _Cond#>, <#typename _Iftrue#>, <#typename _Iffalse#>>
+COMPLETION: const_mem_fun1_ref_t : const_mem_fun1_ref_t<<#typename _Ret#>, <#typename _Tp#>, <#typename _Arg#>>
+COMPLETION: const_mem_fun1_t : const_mem_fun1_t<<#typename _Ret#>, <#typename _Tp#>, <#typename _Arg#>>
+COMPLETION: const_mem_fun_ref_t : const_mem_fun_ref_t<<#typename _Ret#>, <#typename _Tp#>>
+COMPLETION: const_mem_fun_t : const_mem_fun_t<<#typename _Ret#>, <#typename _Tp#>>
+COMPLETION: copy : [#_OI#]copy(<#_II __first#>, <#_II __last#>, <#_OI __result#>)
+COMPLETION: copy : [#typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value, ostreambuf_iterator<_CharT> >::__type#]copy(<#istreambuf_iterator<_CharT> __first#>, <#istreambuf_iterator<_CharT> __last#>, <#ostreambuf_iterator<_CharT> __result#>)
+COMPLETION: copy_backward : [#_BI2#]copy_backward(<#_BI1 __first#>, <#_BI1 __last#>, <#_BI2 __result#>)
+COMPLETION: cout : [#ostream#]cout
+COMPLETION: crbegin : [#decltype(std::rbegin(__cont))#]crbegin(<#const _Container &__cont#>)
+COMPLETION: crend : [#decltype(std::rend(__cont))#]crend(<#const _Container &__cont#>)
+COMPLETION: ctype : ctype<<#typename _CharT#>>
+COMPLETION: ctype_base : ctype_base
+COMPLETION: ctype_byname : ctype_byname<<#typename _CharT#>>
+COMPLETION: current_exception : [#exception_ptr#]current_exception()
+```
+
 
 Usage: In Insert mode, press `<Ctrl+x><Ctrl+o>` or `<Ctrl+Space>`.
 
