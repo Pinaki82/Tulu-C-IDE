@@ -882,6 +882,8 @@ If it still annoys you, try to lower the timeout-length as you prefer like,
 
 `:set timeout timeoutlen='an amount of your choice'`, that's all.
 
+-----------------------------------
+-----------------------------------
 
 #### YankRing plugin (The multi-clipboard plugin):
 
