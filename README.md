@@ -883,6 +883,71 @@ If it still annoys you, try to lower the timeout-length as you prefer like,
 `:set timeout timeoutlen='an amount of your choice'`, that's all.
 
 
+## YankRing plugin (The multi-clipboard plugin):
+
+Note: This plugin changes the default behaviour of "Normal mode -> Shift+Y copy (entire line)" in vim, so please use Normal mode then type `yy` to copy the entire line.
+
+1) What does it do?
+
+If you need tons of multiple texts/lines to copy to computer's clipboard, it's impossible. Computers can remember only one thing you copied. Neither a machine will remember multiple things you need as clipboard memories, nor it will remember the set of character strings you delete. Shutdown the computer, it will forget the clipboard contents.
+
+Vim offers a method called registers to store the clipboard in a text file `%userprofile%\_viminfo` (`~/.viminfo`) so that you can access the clipboard even after you restart the machine. Vim relies on registers rather than system clipboard, though it can access the system clipboard.
+
+The obvious advantages of registers are:
+
+1. Many clipboard contents can be stored and accessed.
+
+2. The line you delete can also be stored as one clipboard content.
+
+3. Stored clipboard can be used even after a system restart or any time, which, of course, cannot be done by using the conventional system clipboard once the clipboard gets cleared.
+
+On the other hands, using Vim registers is tricky.
+
+This plugin stands as an intermediator to overcome the challenges of storing multiple clipboards.
+
+It stores its clipboard from vim registers to `%userprofile%\yankring_history_v2.txt` or (`~/yankring_history_v2.txt`).
+
+Shutdown the computer. The next time when you will open Vim, your clipboard history will be accessible again.
+
+======================
+
+2) Usage:
+
+Hit escape and put GVim into normal mode. Type `v` from the keyboard, Vim will go into 'Visual Mode'. Select the portion you need and press `y`. It's copied to 'vim register' and yankring's scratch-file.
+
+Now its time to paste the clipboard content.
+
+`<Ctrl+v>` may not work, go to Normal mode (Esc), type `p` from the keyboard.
+
+On the same line, Press `<Ctrl+p>` or `<Ctrl+n>` to choose the desired content.
+
+Always copy a portion in Visual mode.
+
+`p` means paste after the cursor and `P` means before the cursor.
+
+The line you delete typing `dd` in Normal mode or the line you copy in Normal mode by typing `yy` or `<Shift+Y>`, called yank operation, which is stored in vim registers.
+
+These are the default Vim functionalities. YankRing uses native Vim features in the background and brings some ease to the user.
+
+Deleting a line or yanking a line are Vim's native functionalities, and are not something that YankRing brings in; but, the combination of these functions and YankRing in a single place is useful, and it is quite similar to Notepad++'s multi-clipboard plugin.
+
+
+`5p` means paste the content 5-times after the cursor.
+
+`:YRShow` opens the Yankring Clipboard Monitor window.
+
+Selecting a line in that window and pressing `d` will eliminate the contents in that line.
+
+Selecting a line from the YankRing window and Typing 1-9 (not from the Numpad) will write the content of that line into the main text.
+
+`:YRSearch` searches the part of the content you are looking for.
+
+
+I mapped,
+Normal mode `<C-F11>` for `:YRShow`
+
+
+To know more, type `:h yankring` in Command mode.
 
 
 
