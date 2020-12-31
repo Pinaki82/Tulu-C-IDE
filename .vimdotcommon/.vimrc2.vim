@@ -1,4 +1,4 @@
-" Last Change: 2020-12-31  Thursday: 02:44:16 AM
+" Last Change: 2020-12-31  Thursday: 09:33:37 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1110,13 +1110,13 @@ endif
 " Opens Explorer
 if g:osdetected == "Windows"
     :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
-    command Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
+    command! Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
 elseif (g:osdetected == "Linux")
     :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
-    command Pwdtoclip :call CopyPWDToLinuxClipboard()
+    command! Pwdtoclip :call CopyPWDToLinuxClipboard()
 else
     :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <CR><Esc><CR>
-    command Pwdtoclip :call CopyPWDToSystemClipboard()
+    command! Pwdtoclip :call CopyPWDToSystemClipboard()
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1260,6 +1260,38 @@ let g:acp_completeoptPreview = 1
    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
  endfunction
 " ~~~~~~~~~~~ YankRing plugin Configuration ends ~~~~~~
+
+
+" ============================================================================
+" ======================== About & Help Menu =================================
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Open About & Help in the default internet browser.
+if g:osdetected == "Windows"
+    function! Help_n_Tutorial_and_About_open_Windows_Explorer()
+        :silent! !explorer "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md"
+    endfun
+
+    :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Windows_Explorer() <Esc>
+    command! TuluAbout :call Help_n_Tutorial_and_About_open_Windows_Explorer()
+
+    elseif g:osdetected == "Linux"
+    " https://askubuntu.com/questions/15354/how-to-open-file-with-default-application-from-command-line#:~:text=is%20not%20useful-,Show%20activity%20on%20this%20post.,in%20the%20user's%20preferred%20application.
+        function! Help_n_Tutorial_and_About_open_Xdg()
+          :silent!!xdg-open "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md" &
+          if !has("gui_running")
+              :source ~/.vimrc
+              :source ~/.vimdotcommon/.vimrc2.vim
+              :source ~/.vim/plugin/temporary.vim
+          endif
+        endfun
+
+        :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Xdg() <Esc>
+        command! TuluAbout :silent! call Help_n_Tutorial_and_About_open_Xdg()
+endif
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ============================================================================
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 "  ===========================================================
 "  ===========================================================
