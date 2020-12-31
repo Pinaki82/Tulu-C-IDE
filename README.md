@@ -984,6 +984,7 @@ Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 
 ![2020-12-31 15_05_35-sfn_converter_2 c + (P__SFN_cnvrtr_src) - GVIM](https://user-images.githubusercontent.com/16861933/103404675-8686b300-4b7a-11eb-88b1-9a13200b884c.png)
 
+-----------------------------------
 ======================
 
 #### Autocompletion with Clang:
@@ -1075,7 +1076,7 @@ Here is the video description:
 ![vim-clang](https://user-images.githubusercontent.com/16861933/103424482-94682280-4bd2-11eb-9db7-e05b136246eb.gif)
 
 ======================
-
+-----------------------------------
 
 
 
