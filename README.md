@@ -1320,7 +1320,7 @@ Without the following applications, it would have never been possible to draft t
 
 [GIMP](https://www.gimp.org/)
 
-[GIMP](https://www.gimp.org/) made it possible to create the GIF animations. [Inkscape](https://inkscape.org/) helped painting vector graphic images like arrow keys etc. The keyboard shown was designed with Inkscape.
+[GIMP](https://www.gimp.org/) made it possible to create the GIF animations. [Inkscape](https://inkscape.org/) helped painting vector graphic images like arrow keys etc. The [keyboard](https://openclipart.org/detail/326617/keyboard) shown was designed with Inkscape.
 
 [Adobe Photoshop](https://www.adobe.com/products/photoshop.html)
 
