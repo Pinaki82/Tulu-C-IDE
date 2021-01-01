@@ -1167,4 +1167,56 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 -----------------------------------
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Useful weblinks:
+
+https://snipplr.com/ for snippets and code samples.
+
+https://www.stackoverflow.com/ for good community-based help. (just don't ask anything there. Read questions and answers only. Any repeat question or irrelevant, inferior question may lead to an account suspension.)
+
+https://www.cprogramming.com/ for C/C++ tutorials.
+
+https://www.cplusplus.com/ for Standard Library functions, C/C++ documentations.
+
+https://www.thefreecountry.com/ Links to several C/C++ libraries, programming tools etc.
+
+Microsoft's MSDN library. Tips, tricks and C/C++ tutorials.
+
+Wikibooks. Find free e-books on C/C++.
+
+Wikipedia. the most extensive online free encyclopedia.
+
+https://www.kicit.com/ for buying the books authored by Yashavant Kanetkar and other renowned C/C++ experts.
+
+https://www.geeksforgeeks.org/ A Computer Science portal for enthusiasts.
+
+https://www.learncpp.com/ C/C++ tutorials.
+
+https://www.parashift.com/c++-faq-lite/ C/C++ tutorials.
+
+https://programmers.stackexchange.com/ C/C++ tutorials.
+
+https://www.codeproject.com/KB/cpp/ C/C++ tutorials.
+
+https://www.hermetic.ch/cfunlib.htm C/C++ tutorials.
+
+https://cplus.about.com/ C/C++ tutorials.
+
+https://www.programmersheaven.com/ C/C++ tutorials.
+
+https://www.tenouk.com/ C/C++ tutorials.
+
+https://www.studiesinn.com/ C/C++ tutorials.
+
+https://www.learnconline.com/2010/03/introduction.html C/C++ tutorials.
+
+https://bbb-letuscsolutions.blogspot.com/ for solutions to Yashavant Kanetkar's books.
+
+https://www.sourcecodesworld.com/ find many solved problems.
+
+https://wiki.answers.com/Q/C_Program_to_calculate_factorial miscellaneous.
+
+https://wiki.answers.com/ miscellaneous.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
