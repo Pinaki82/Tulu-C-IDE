@@ -1145,6 +1145,26 @@ Some programs like [Ctags](https://github.com/universal-ctags/ctags-win32) and [
 
 ![AddToPATH2](https://user-images.githubusercontent.com/16861933/103427339-6f7daa80-4be6-11eb-81b0-b2d3dfa05ff1.gif)
 
+Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
+
+![Splint-PATH-001](https://user-images.githubusercontent.com/16861933/103440641-4e13d180-4c6d-11eb-85c6-b740e0359704.png)
+
+![Splint-PATH-002](https://user-images.githubusercontent.com/16861933/103440649-59ff9380-4c6d-11eb-9007-40c1d24c21ee.png)
+
+![Splint-PATH-003](https://user-images.githubusercontent.com/16861933/103440652-67b51900-4c6d-11eb-9a92-69714208d933.png)
+
+![Splint-PATH-004](https://user-images.githubusercontent.com/16861933/103440659-77ccf880-4c6d-11eb-8c6a-181b961a7c32.png)
+
+![Splint-PATH-005](https://user-images.githubusercontent.com/16861933/103440662-81566080-4c6d-11eb-805c-b0670b072770.png)
+
+![Splint-PATH-006](https://user-images.githubusercontent.com/16861933/103440664-8ddab900-4c6d-11eb-8dc4-9fd6f3d7cdbc.png)
+
+![Splint-PATH-007](https://user-images.githubusercontent.com/16861933/103440669-9cc16b80-4c6d-11eb-98c7-67b85e2b1f6e.png)
+
+![Splint-PATH-008](https://user-images.githubusercontent.com/16861933/103440675-a5b23d00-4c6d-11eb-8b43-845b82f67d91.png)
+
+![Splint-PATH-009](https://user-images.githubusercontent.com/16861933/103440683-b19dff00-4c6d-11eb-8dd8-ca533d13134e.png)
+
 -----------------------------------
 
 
