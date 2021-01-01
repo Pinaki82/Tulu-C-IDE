@@ -1234,3 +1234,102 @@ vi-vim-cheat-sheet-and-tutorial.pdf, from www.viemu.com
 OReilly->Learning the vi and Vim Editors, by "Arnold Robbins, Elbert Hannah, and Linda Lamb"
 
 ----------------------------------------------------------------
+
+**Useful C/C++ Books:**
+
+**C Programming:**
+
+https://www.programiz.com/c-programming Learn C Programming.
+
+__"Let Us C"__ by _Yashavant P. Kanetkar_; nothing can be better than this book.
+__"Understanding Pointers in C"__ by _Yashavant P. Kanetkar_ is a must-have book along with __"Let Us C"__. __"Data Structures Through C"__ by _Yashavant P. Kanetkar_; complete C learning with this book.
+
+These three books above are the whole learning course divided into three parts.
+
+First Read __"Let US C"__, then __"Understanding Pointers in C"__, and then __"Data Structures Through C"__,
+to complete the entire course. You will perform better than anybody.
+
+__C Programming__ (download from wikibooks)
+
+__A Little C Primer__ (download from wikibooks)
+
+https://www.cprogramming.com/tutorial/c-tutorial.html?inl=nv C Tutorial.
+
+https://cplusplus.com/
+
+**C++ Programming:**
+
+https://www.programiz.com/cpp-programming Learn C++ Programming.
+
+__Object-Oriented Programming with C++ | 8th Edition Paperback – 24 September 2020__ or Newer, by _E Balagurusamy_.
+ISBN-10 : 9389949181
+ISBN-13 : 978-9389949186
+
+__Sams Teach Yourself C++ in 21 Days Paperback__
+ISBN-10:  0672329417 ISBN-13: 9780672329418
+ISBN-10 : 0672327112
+ISBN-13 : 978-0672327117
+(Warning: The page count is somewhat high, it's around 937 pages.)
+
+https://www.geeksforgeeks.org/c-plus-plus/ Geeks-for-Geeks C++ courses.
+
+__Jumping into C++__ by _Alex Allain_.
+ISBN-10 : 0988927802
+ISBN-13 : 978-0988927803
+
+__Exploring C++__ by _Ray Lischner_.
+ISBN-13 (pbk): 978-1-59059-749-1
+ISBN-10 (pbk): 1-59059-749-4
+ISBN-13 (electronic): 978-1-4302-1895-1
+
+__Debugging with gdb__.
+https://shop.fsf.org/books-docs/debugging-gdb-gnu-source-level-debugger-v-731
+
+https://www.eecs.umich.edu/courses/eecs373/readings/Debugger.pdf
+
+http://www.winprog.org/tutorial/ theForger's Win32 API Programming Tutorial.
+
+__Programming Windows 5e (Microsoft Programming Series) Hardcover by Charles Petzold__.
+ISBN-10 : 157231995X
+ISBN-13 : 978-1572319950
+
+https://www.cprogramming.com/tutorial/c++-tutorial.html?inl=nv C++ Tutorial.
+
+https://cplusplus.com/
+
+Extra Books:
+
+__Programming Windows__ by _Charles Petzold_, for Win32 GUI programming on Windos OS.
+
+__Windows via C/C++__ by _Jeffrey Richter_.
+
+__Go Embedded__ by _Yashavant P. Kanetkar_, for Atmel AVR microcontroller programming.
+
+
+----------------------------------------------------------------
+
+**Applications:**
+
+Without the following applications, it would have never been possible to draft this Readme file. Many thanks to their developers!
+
+[ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
+
+[Greenshot](https://getgreenshot.org/)
+
+[Inkscape](https://inkscape.org/)
+
+[GIMP](https://www.gimp.org/)
+
+[GIMP](https://www.gimp.org/) made it possible to create the GIF animations. [Inkscape](https://inkscape.org/) helped painting vector graphic images like arrow keys etc. The keyboard shown was designed with Inkscape.
+
+[Adobe Photoshop](https://www.adobe.com/products/photoshop.html)
+
+[Vim](https://www.vim.org/) The ubiquitous text editor.
+
+[Notepad2-mod](https://xhmikosr.github.io/notepad2-mod/) A modified version (fork) of Notepad2.
+
+[Notepad++](https://notepad-plus-plus.org/)
+
+[Mousepad XFCE Text Editor](https://github.com/codebrainz/mousepad) A simple text editor for the Xfce desktop environment.
+
+----------------------------------------------------------------
