@@ -1333,3 +1333,45 @@ Without the following applications, it would have never been possible to draft t
 [Mousepad XFCE Text Editor](https://github.com/codebrainz/mousepad) A simple text editor for the Xfce desktop environment.
 
 ----------------------------------------------------------------
+
+### Plugin Management
+
+[vim-plug](https://github.com/junegunn/vim-plug.git) takes care of the plugin management once the required plugins are listed on the .vimrc file.
+
+In this Vim configuration, `.vimrc` calls another script `$HOME/.vimdotcommon/.vimrc2.vim`.
+
+Find it: `%userprofile%\.vimdotcommon\.vimrc2.vim` or `~/.vimdotcommon/.vimrc2.vim`.
+
+A dedicated section is there to list the necessary plugins. The listed plugins will be installed and updated from GitHub repositories when the following commands will be issued `:PlugInstall` and `:PlugUpdate`.
+
+[vim-plug](https://github.com/junegunn/vim-plug.git) makes it easy to deal with plugins when it finds a line containing the word `Plug` at the beginning of a line followed by a link to the respective GitHub repository surrounded with single quotes `''`. For example: `Plug 'https://github.com/junegunn/vim-plug.git'` will install [vim-plug](https://github.com/junegunn/vim-plug.git) itself (although it's unnecessary since it's first loaded from the `autoload` directory).
+
+Commenting out the line will remove the plugin if the command `:PlugClean` is issued. Delete the line, it will have the same effect. Write a line like `Plug 'https://link-to-the-github-repo-of-the-plugin.git'`, and issue the command `:PlugInstall`, the plugin you need will be installed.
+
+You can install as many plugins as you want as long as a plugin you are going to instal doesn't create conflict with the existing plugins (keymaps etc.).
+
+You can also remove existing plugins, but I will strongly advise you against doing so. Very minimal and vital plugins are included. Use them, you won't regret it.
+
+----------------------------------------------------------------
+
+## A brief on Vim and C/C++
+
+For any C fanatic, the reason for the C enthusiasm is axiomatic. C will probably never be outdated. As of writing this Readme file, it's nighttime here. We are accustomed to working with a set of technology we are using at this moment. The technology may change during midnight. Jokes apart, where the technology shifts all around the year, making it somewhat difficult for the programmers to get acquainted with new programming languages which compels them to constantly update their skill to stay relevant in the market, C stays the same rock-solid. However, when it comes to developing and maintaining performance-critical applications with consistency, no language comes close to C. It's the choice of the microcontroller programmers, device driver writers, operating system developers, compiler and interpreter designers. For the performance-critical applications, those demand squeezing out the last drop of the juice from the host device, C is the only choice. The only limitation is imagination. C++ is not too different if considered as the superset of C. C never makes your knowledge obsolete thus pays for the time investment. So is Vim. Vim never changes. The founder of Vim has an inviolable affirmative user support policy. He doesn't want to pose a threat to the users where they will have to unlearn and re-learn something for which they have invested their time in decades. So learning Vim and C/C++ make the steep learning curve worth the trouble. They both are like iron, the fundamental and indispensable element that builds up the core of every newer engine. Even if technology advances, iron will remain essential. This configuration in combination with C/C++ and Vim and a wide array of critical external utilities provides the reliability we can find nowhere else. You can rest assured that your tools are evergreen and unbreakable. So that Tulu is a cute reliable soft-toy puppet.
+
+----------------------------------------------------------------
+
+## My two cents for the Vim exploiters:
+
+![ICCF in Uganda](https://www.iccf-holland.org/images/school.jpg)
+
+The very essence of morality, principalities, ethical rights to humans and creatures alike in a society is dependent on the seed sowed by our predecessors. Education and sustainability for underprivileged children is a must for building the foundation of a nation. One day, they will grow up and move this society forward. Teach them to distinguish right from the wrong, they will carry it to their future. We all should stand up against poverty, malnutrition, corruption, brutality, animal-cruelty, child labour, slavery, lack of infrastructure developments, and so on and on. It all depends on how well the children of a certain section of society was nurtured. It's not a mission to be fought by one-man-army. We all should stand together and join the fight. Bram Moolenaar took a praiseworthy approach by providing care for the underprivileged kids of Uganda. I believe his organisation should expand its reach all over the world. He provides medical care, food, education to those children who have been betrayed by their fate. We still have been left with some hope. Bram stood up. Now we all should come forward. Vim will remain the most lethal weapon in your arsenal forever. Bram will maintain Vim. Pay your tribute. Make a small donation to ICCF.
+
+Here it is: [ICCF](https://en.wikipedia.org/wiki/ICCF_Holland)
+
+Cheers and HAPPY VIMMING!
+
+----------------------------------------------------------------
+
+#### After an hour-long study, REFRESH your mood!
+
+https://youtu.be/Gi7vKjm32V4
