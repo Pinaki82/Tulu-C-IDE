@@ -1161,7 +1161,7 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 ![Splint-PATH-007](https://user-images.githubusercontent.com/16861933/103440669-9cc16b80-4c6d-11eb-98c7-67b85e2b1f6e.png)
 
-![Splint-PATH-008](https://user-images.githubusercontent.com/16861933/103440675-a5b23d00-4c6d-11eb-8b43-845b82f67d91.png)
+![Splint-PATH-008](https://user-images.githubusercontent.com/16861933/103440724-1b1e0d80-4c6e-11eb-9f59-fe7b99c00b97.png)
 
 ![Splint-PATH-009](https://user-images.githubusercontent.com/16861933/103440683-b19dff00-4c6d-11eb-8dd8-ca533d13134e.png)
 
