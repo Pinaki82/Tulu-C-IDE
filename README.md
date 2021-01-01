@@ -1169,7 +1169,7 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 ----------------------------------------------------------------
 
-Useful weblinks:
+**Useful weblinks:**
 
 https://snipplr.com/ for snippets and code samples.
 
@@ -1218,5 +1218,19 @@ https://www.sourcecodesworld.com/ find many solved problems.
 https://wiki.answers.com/Q/C_Program_to_calculate_factorial miscellaneous.
 
 https://wiki.answers.com/ miscellaneous.
+
+----------------------------------------------------------------
+
+**Useful Vim Books:**
+
+https://learnvimscriptthehardway.stevelosh.com/ Learn Vimscript the Hard Way is a book for users of the Vim editor who want to learn how to customize Vim.
+
+https://devhints.io/vimscript Vim scripting cheatsheet.
+
+Hacking Vim, by "Kim Schulz"
+
+vi-vim-cheat-sheet-and-tutorial.pdf, from www.viemu.com
+
+OReilly->Learning the vi and Vim Editors, by "Arnold Robbins, Elbert Hannah, and Linda Lamb"
 
 ----------------------------------------------------------------
