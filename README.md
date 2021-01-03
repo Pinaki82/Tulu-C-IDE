@@ -141,6 +141,7 @@ sudo apt install autotools-dev
 sudo apt install automake
 sudo apt install meld
 sudo apt install default-jre
+sudo apt install wmctrl
 ```
 
 ##### Recommended:
