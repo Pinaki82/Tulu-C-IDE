@@ -1348,9 +1348,7 @@ A dedicated section is there to list the necessary plugins. The listed plugins w
 
 Commenting out the line will remove the plugin if the command `:PlugClean` is issued. Delete the line, it will have the same effect. Write a line like `Plug 'https://link-to-the-github-repo-of-the-plugin.git'`, and issue the command `:PlugInstall`, the plugin you need will be installed.
 
-You can install as many plugins as you want as long as a plugin you are going to instal doesn't create conflict with the existing plugins (keymaps etc.).
-
-Here is a simple task for you. Add [this](https://github.com/Pinaki82/Maximised-GVim.vim.git) plugin if you want to start GVim with a maximised window.
+You can install as many plugins as you want as long as a plugin you are going to instal doesn't create conflict with the existing plugins (keymaps etc.). [Here is a simple task for you. Add [this](https://github.com/Pinaki82/Maximised-GVim.vim.git) plugin if you want to start GVim with a maximised window.]
 
 You can also remove existing plugins, but I will strongly advise you against doing so. Very minimal and vital plugins are included. Use them, you won't regret it.
 
