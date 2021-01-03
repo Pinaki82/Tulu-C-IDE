@@ -1170,6 +1170,10 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 ----------------------------------------------------------------
 
+*** Disclaimer: None of the websites I will refer and the books I will suggest is no way associated with this project "Tulu-C-IDE"; they didn't pay a penny to sponsor this project, and neither I need to monetize my Vim configuration. ****
+
+----------------------------------------------------------------
+
 **Useful weblinks:**
 
 https://snipplr.com/ for snippets and code samples.
