@@ -1350,6 +1350,8 @@ Commenting out the line will remove the plugin if the command `:PlugClean` is is
 
 You can install as many plugins as you want as long as a plugin you are going to instal doesn't create conflict with the existing plugins (keymaps etc.).
 
+Here is a simple task for you. Add [this](https://github.com/Pinaki82/Maximised-GVim.vim.git) plugin if you want to start GVim with a maximised window.
+
 You can also remove existing plugins, but I will strongly advise you against doing so. Very minimal and vital plugins are included. Use them, you won't regret it.
 
 ----------------------------------------------------------------
