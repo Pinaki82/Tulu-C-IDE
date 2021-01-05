@@ -242,6 +242,10 @@ file names as you open/edit them in Vim.
 
 [tracktime.vim](https://github.com/Pinaki82/tracktime.vim.git): Vim uptime.
 
+[indent-code](https://github.com/Pinaki82/indent-code.git): A Vim plugin to indent code.
+
+[detectIndent](https://github.com/ciaranm/detectindent.git): A Vim plugin, for automatically detecting indent settings.
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): A dark Vim colour scheme.
