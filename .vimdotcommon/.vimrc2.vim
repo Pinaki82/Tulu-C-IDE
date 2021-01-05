@@ -1,4 +1,4 @@
-" Last Change: 2020-12-31  Thursday: 09:33:37 PM
+" Last Change: 2021-01-05  Tuesday: 03:28:27 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -10,13 +10,13 @@
 " http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
 " google: detecting os from vimscript
 if !exists("g:osdetected")
-    if has("win64") || has("win32") || has("win16") || has("win32unix")
-        let g:osdetected = "Windows"
-    elseif has("macunix")
-        let g:osdetected = substitute(system('uname'), '\n', '', '')
-    else
-        let g:osdetected = substitute(system('uname'), '\n', '', '')
-    endif
+  if has("win64") || has("win32") || has("win16") || has("win32unix")
+    let g:osdetected = "Windows"
+  elseif has("macunix")
+    let g:osdetected = substitute(system('uname'), '\n', '', '')
+  else
+    let g:osdetected = substitute(system('uname'), '\n', '', '')
+  endif
 endif
 
 " After that, you can use the g:osdetected variable anywhere in your vimrc:
@@ -43,7 +43,7 @@ set number        " always show line numbers
 set laststatus=2
 :set timeout timeoutlen=4500 "   ttimeoutlen=100 "  default settings -1 not harmed under comment
 set history=1000                " Store a ton of history (default is 20)
-                                " remember more commands and search history
+" remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 set title                " change the terminal's title
 set visualbell           " don't beep
@@ -54,7 +54,7 @@ set vb t_vb=
 
 set tabstop=2     " a tab is two spaces
 set backspace=indent,eol,start
-                  " allow backspacing over everything in insert mode
+" allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set smartindent
 set copyindent    " copy the previous indentation on autoindenting
@@ -64,10 +64,10 @@ set softtabstop=2
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
-                  "    case-sensitive otherwise
+"    case-sensitive otherwise
 set expandtab     " Spaces are better than a tab character
 set smarttab      " insert tabs on the start of a line according to
-                  "    shiftwidth, not tabstop
+"    shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 set nohidden      " When I close a tab, remove the buffer
@@ -76,10 +76,10 @@ set ttyfast                   " we have a fast terminal
 set showcmd                     " Show (partial) command in status line.
 
 set formatoptions=tcrql         " t - autowrap to textwidth
-                                " c - autowrap comments to textwidth
-                                " r - autoinsert comment leader with <Enter>
-                                " q - allow formatting of comments with :gq
-                                " l - don't format already long lines
+" c - autowrap comments to textwidth
+" r - autoinsert comment leader with <Enter>
+" q - allow formatting of comments with :gq
+" l - don't format already long lines
 
 
 " Swap ; and :  Convenient. No more you will need to type Shift+: for going into command mode
@@ -91,28 +91,28 @@ nnoremap ; :
 
 " Restore cursor position to where it was before
 augroup JumpCursorOnEdit
-   au!
-   autocmd BufReadPost *
-            \ if expand("<afile>:p:h") !=? $TEMP |
-            \   if line("'\"") > 1 && line("'\"") <= line("$") |
-            \     let JumpCursorOnEdit_foo = line("'\"") |
-            \     let b:doopenfold = 1 |
-            \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-            \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-            \        let b:doopenfold = 2 |
-            \     endif |
-            \     exe JumpCursorOnEdit_foo |
-            \   endif |
-            \ endif
-   " Need to postpone using "zv" until after reading the modelines.
-   autocmd BufWinEnter *
-            \ if exists("b:doopenfold") |
-            \   exe "normal zv" |
-            \   if(b:doopenfold > 1) |
-            \       exe  "+".1 |
-            \   endif |
-            \   unlet b:doopenfold |
-            \ endif
+  au!
+  autocmd BufReadPost *
+        \ if expand("<afile>:p:h") !=? $TEMP |
+        \   if line("'\"") > 1 && line("'\"") <= line("$") |
+        \     let JumpCursorOnEdit_foo = line("'\"") |
+        \     let b:doopenfold = 1 |
+        \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+        \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+        \        let b:doopenfold = 2 |
+        \     endif |
+        \     exe JumpCursorOnEdit_foo |
+        \   endif |
+        \ endif
+  " Need to postpone using "zv" until after reading the modelines.
+  autocmd BufWinEnter *
+        \ if exists("b:doopenfold") |
+        \   exe "normal zv" |
+        \   if(b:doopenfold > 1) |
+        \       exe  "+".1 |
+        \   endif |
+        \   unlet b:doopenfold |
+        \ endif
 augroup END
 
 
@@ -121,7 +121,7 @@ augroup END
 set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 
 if !has("gui_running") && (!has('win32') && !has('win64'))
-    set term=$TERM       " Make arrow and other keys work
+  set term=$TERM       " Make arrow and other keys work
 endif
 
 set showmatch                   " show matching brackets/parenthesis
@@ -148,37 +148,37 @@ set cindent
 
 " CTRL-X is cut
 if g:osdetected == "Windows"
-    vnoremap <c-x> "+x
-""  elseif g:osdetected == "Linux"
-""    map <c-x> "+x
-""    map! <c-x> "+x
-""    nmap <c-x> "+x
-""    smap <c-x> <c-g>x
-""    vnoremap <C-X> "+x
-""    nnoremap <c-x> "+x
-""    inoremap <c-x> "+x
-""    vmap <c-x> "+c
-""    imap <c-x> "+x
+  vnoremap <c-x> "+x
+  ""  elseif g:osdetected == "Linux"
+  ""    map <c-x> "+x
+  ""    map! <c-x> "+x
+  ""    nmap <c-x> "+x
+  ""    smap <c-x> <c-g>x
+  ""    vnoremap <C-X> "+x
+  ""    nnoremap <c-x> "+x
+  ""    inoremap <c-x> "+x
+  ""    vmap <c-x> "+c
+  ""    imap <c-x> "+x
 endif
 
 " CTRL-C is copy
 if g:osdetected == "Windows"
-   vnoremap <C-C> "+y
-  elseif g:osdetected != "Windows"
-    vmap <C-c> "+yi
-   vnoremap <C-C> "+y
-    :imap <C-C> "+y
+  vnoremap <C-C> "+y
+elseif g:osdetected != "Windows"
+  vmap <C-c> "+yi
+  vnoremap <C-C> "+y
+  :imap <C-C> "+y
 endif
 
 " CTRL-V is paste
 if g:osdetected == "Windows"
-    vnoremap <C-V> "+gP
-  elseif g:osdetected != "Windows"
-    :imap <C-V> "+gP
-    imap <C-v> <C-r><C-o>+
-    nmap <<C-V>> "+gP
-    vmap <C-v> c<ESC>"+p
-    vnoremap <C-V> "+gP
+  vnoremap <C-V> "+gP
+elseif g:osdetected != "Windows"
+  :imap <C-V> "+gP
+  imap <C-v> <C-r><C-o>+
+  nmap <<C-V>> "+gP
+  vmap <C-v> c<ESC>"+p
+  vnoremap <C-V> "+gP
 endif
 
 " CTRL-S is save
@@ -203,26 +203,26 @@ xnoremap <C-A> <C-C>ggVG
 
 " CTRL-Z is undo
 if g:osdetected == "Windows"
-    vnoremap <C-Z> u
-  elseif g:osdetected != "Windows"
-     :map <C-z> u
-     nnoremap <C-Z> u
-     inoremap <C-Z> <C-O>u
-     vnoremap <C-Z> u
+  vnoremap <C-Z> u
+elseif g:osdetected != "Windows"
+  :map <C-z> u
+  nnoremap <C-Z> u
+  inoremap <C-Z> <C-O>u
+  vnoremap <C-Z> u
 endif
 
 
 " CTRL-Y is redo
 if g:osdetected == "Windows"
-    vnoremap <C-Y> ^R
-  elseif g:osdetected != "Windows"
-     :nnoremap <C-Y> :call Redo_action() <CR>
-     :vnoremap <C-Y> :call Redo_action() <CR>
-     :inoremap <C-Y> <C-O> :call Redo_action() <CR>
-     imap <C-Y> <C-O> :call Redo_action()<CR><CR>
-     fun Redo_action()
-         :redo
-     endfun
+  vnoremap <C-Y> ^R
+elseif g:osdetected != "Windows"
+  :nnoremap <C-Y> :call Redo_action() <CR>
+  :vnoremap <C-Y> :call Redo_action() <CR>
+  :inoremap <C-Y> <C-O> :call Redo_action() <CR>
+  imap <C-Y> <C-O> :call Redo_action()<CR><CR>
+  fun Redo_action()
+    :redo
+  endfun
 endif
 
 " CTRL-F4 is close
@@ -271,8 +271,8 @@ set guioptions+=b "Bottom Scrollbar always turned on
 " -----------------------------------------------------------------------------------
 autocmd BufWritePre * :call <SID>StripWhite()
 fun! <SID>StripWhite()
-    %s/[ \t]\+$//ge
-    %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
+  %s/[ \t]\+$//ge
+  %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfun
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -388,21 +388,21 @@ syn region vimFoldTryContainer
 syn region vimFoldTry
       \ start="\<try\>"
       \ end="^\s*\\\?\s*\(fina\%[lly]\|cat\%[ch]\)\>"ms=s-1,me=s-1
-      \ fold transparent
-      \ keepend
-      \ contained containedin=vimFoldTryContainer
-      \ nextgroup=vimFoldCatch,vimFoldFinally
-      \ contains=TOP
-      \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+        \ fold transparent
+        \ keepend
+        \ contained containedin=vimFoldTryContainer
+        \ nextgroup=vimFoldCatch,vimFoldFinally
+        \ contains=TOP
+        \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
 syn region vimFoldCatch
       \ start="\<cat\%[ch]\>"
       \ end="^\s*\\\?\s*\(cat\%[ch]\|fina\%[lly]\)\>"ms=s-1,me=s-1
-      \ fold transparent
-      \ keepend
-      \ contained containedin=vimFoldTryContainer
-      \ nextgroup=vimFoldCatch,vimFoldFinally
-      \ contains=TOP
-      \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+        \ fold transparent
+        \ keepend
+        \ contained containedin=vimFoldTryContainer
+        \ nextgroup=vimFoldCatch,vimFoldFinally
+        \ contains=TOP
+        \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
 syn region vimFoldFinally
       \ start="\<fina\%[lly]\>"
       \ end="\<endt\%[ry]\>"
@@ -436,23 +436,23 @@ if v:version <= 701 && exists('g:vimsyn_folding')
   if s:vimsyn_folding =~# 'f'
     " fold functions
     syn region vimFoldFunction
-      \ start="\<fu\%[nction]!\=\s\+\%(<[sS][iI][dD]>\|[sSgGbBwWtTlL]:\)\?\%(\i\|[#.]\|{.\{-1,}}\)*\ze\s*("
-      \ end="\<endfu\%[nction]\>"
-      \ transparent fold
-      \ keepend extend
-      \ containedin=ALLBUT,@vimNoFold
-      \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+          \ start="\<fu\%[nction]!\=\s\+\%(<[sS][iI][dD]>\|[sSgGbBwWtTlL]:\)\?\%(\i\|[#.]\|{.\{-1,}}\)*\ze\s*("
+          \ end="\<endfu\%[nction]\>"
+          \ transparent fold
+          \ keepend extend
+          \ containedin=ALLBUT,@vimNoFold
+          \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
   endif
 
-" fold augroups
+  " fold augroups
   if s:vimsyn_folding =~# 'a'
     syn region vimFoldAugroup
-      \ start="\<aug\%[roup]\ze\s\+\(END\>\)\@!"
-      \ end="\<aug\%[roup]\s\+END\>"
-      \ transparent fold
-      \ keepend extend
-      \ containedin=ALLBUT,@vimNoFold
-      \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+          \ start="\<aug\%[roup]\ze\s\+\(END\>\)\@!"
+          \ end="\<aug\%[roup]\s\+END\>"
+          \ transparent fold
+          \ keepend extend
+          \ containedin=ALLBUT,@vimNoFold
+          \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
   endif
   unlet s:vimsyn_folding
 endif
@@ -472,15 +472,15 @@ set mouse=a
 " set indent guides
 :match Search /\%(\_^\s*\)\@<=\%(\%1v\|\%5v\|\%9v\)\s/
 function! ToggleIndentGuides()
-    if exists('b:indent_guides')
-        call matchdelete(b:indent_guides)
-        unlet b:indent_guides
-    else
-        let pos = range(1, &l:textwidth, &l:shiftwidth)
-        call map(pos, '"\\%" . v:val . "v"')
-        let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
-        let b:indent_guides = matchadd('CursorLine', pat)
-    endif
+  if exists('b:indent_guides')
+    call matchdelete(b:indent_guides)
+    unlet b:indent_guides
+  else
+    let pos = range(1, &l:textwidth, &l:shiftwidth)
+    call map(pos, '"\\%" . v:val . "v"')
+    let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
+    let b:indent_guides = matchadd('CursorLine', pat)
+  endif
 endfunction
 
 "  ==============================================================CODE FOLDING 2 ENDS===================================
@@ -527,36 +527,36 @@ hi User0 guifg=#ffffff  guibg=#094afe
 "                 End of More useful statusline with colours
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if has("gui_running")
-"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"                       Setting for Coloured Statusline and the line col highlight feature
-"                       Highlight current line and column
-:set cursorline
-:set cursorcolumn
+  "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  "                       Setting for Coloured Statusline and the line col highlight feature
+  "                       Highlight current line and column
+  :set cursorline
+  :set cursorcolumn
 
-"   :redir => cursorline_highlight | silent highlight CursorLine | redir END
-"   :echo "CursorLine highlight: " . cursorline_highlight
-:highlight CursorLine  term=underline  guibg=#fffcd0  cterm=underline
+  "   :redir => cursorline_highlight | silent highlight CursorLine | redir END
+  "   :echo "CursorLine highlight: " . cursorline_highlight
+  :highlight CursorLine  term=underline  guibg=#fffcd0  cterm=underline
 
-"   :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-"   :echo "CursorColumn highlight: " . cursorcolumn_highlight
-:highlight CursorColumn  term=underline  guibg=#e1ffd5  cterm=underline
-
-
-"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"                       Setting for Coloured Statusline and the line-col highlight feature
-
-:amenu Settings.-Sep0-  :
-:amenu Settings.Restore\ Coloured\ Status\ Line :call ColStline() <CR>
+  "   :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+  "   :echo "CursorColumn highlight: " . cursorcolumn_highlight
+  :highlight CursorColumn  term=underline  guibg=#e1ffd5  cterm=underline
 
 
-:amenu Settings.Highlight\ Line\ and\ column\ ON-OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\hl   :call ToggleHighlightLineColumn()<cr>
+  "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  "                       Setting for Coloured Statusline and the line-col highlight feature
+
+  :amenu Settings.-Sep0-  :
+  :amenu Settings.Restore\ Coloured\ Status\ Line :call ColStline() <CR>
 
 
-nnoremap <Leader>hl :call ToggleHighlightLineColumn()<cr>
-vnoremap <Leader>hl :call ToggleHighlightLineColumn()<cr>
-inoremap <Leader>hl <Esc><Esc>:call ToggleHighlightLineColumn()<cr>
+  :amenu Settings.Highlight\ Line\ and\ column\ ON-OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\hl   :call ToggleHighlightLineColumn()<cr>
+
+
+  nnoremap <Leader>hl :call ToggleHighlightLineColumn()<cr>
+  vnoremap <Leader>hl :call ToggleHighlightLineColumn()<cr>
+  inoremap <Leader>hl <Esc><Esc>:call ToggleHighlightLineColumn()<cr>
 
 endif
 
@@ -574,18 +574,18 @@ endif
 
 "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if has("gui_running")
-"                       Function for the Coloured Statusline
-fun! ColStline()
-        hi User1 guifg=#ffdad8  guibg=#880c0e
-        hi User2 guifg=#000000  guibg=#F4905C
-        hi User3 guifg=#292b00  guibg=#f4f597
-        hi User4 guifg=#112605  guibg=#aefe7B
-        hi User5 guifg=#051d00  guibg=#7dcc7d
-        hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
-        hi User8 guifg=#ffffff  guibg=#5b7fbb
-        hi User9 guifg=#ffffff  guibg=#810085
-        hi User0 guifg=#ffffff  guibg=#094afe
-endfun
+  "                       Function for the Coloured Statusline
+  fun! ColStline()
+    hi User1 guifg=#ffdad8  guibg=#880c0e
+    hi User2 guifg=#000000  guibg=#F4905C
+    hi User3 guifg=#292b00  guibg=#f4f597
+    hi User4 guifg=#112605  guibg=#aefe7B
+    hi User5 guifg=#051d00  guibg=#7dcc7d
+    hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
+    hi User8 guifg=#ffffff  guibg=#5b7fbb
+    hi User9 guifg=#ffffff  guibg=#810085
+    hi User0 guifg=#ffffff  guibg=#094afe
+  endfun
 endif
 "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -593,420 +593,420 @@ endif
 if has("gui_running")
   " Execute only once
   if exists("g:highlight_line_n_column")
-      finish
+    finish
   endif
-let g:highlight_line_n_column=0
+  let g:highlight_line_n_column=0
 
 
-function! ToggleHighlightLineColumn()
+  function! ToggleHighlightLineColumn()
     if g:highlight_line_n_column == 1
 
-        call HighlightLineColOn()
+      call HighlightLineColOn()
 
-        let g:highlight_line_n_column = 0
+      let g:highlight_line_n_column = 0
     else
 
-        call HighlightLineColOff()
+      call HighlightLineColOff()
 
-        let g:highlight_line_n_column = 1
+      let g:highlight_line_n_column = 1
     endif
-endfunction
+  endfunction
 
 
-fun! HighlightLineColOn()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight CursorColumn  term=underline cterm=underline
-endfun
+  fun! HighlightLineColOn()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight CursorColumn  term=underline cterm=underline
+  endfun
 
-fun! HighlightLineColOff()
-        :set nocursorline
-        :set nocursorcolumn
-endfun
+  fun! HighlightLineColOff()
+    :set nocursorline
+    :set nocursorcolumn
+  endfun
 
 endif
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    " Setting up the directories {
-        "" Backup directories can be created from the temporary.vim plugin.
-        " Look at the plugin folder for the file temporary.vim containing the same lines.
-        "" Creating directories if they don't exist
-        " silent execute '!mkdir "'.$HOME.'/.vimbackup"'
-        " silent execute '!mkdir "'.$HOME.'/.vimswap"'
-        " silent execute '!mkdir "'.$HOME.'/.vimviews"'
-        " silent execute '!mkdir "'.$HOME.'/.vimundo"'
+" Setting up the directories {
+"" Backup directories can be created from the temporary.vim plugin.
+" Look at the plugin folder for the file temporary.vim containing the same lines.
+"" Creating directories if they don't exist
+" silent execute '!mkdir "'.$HOME.'/.vimbackup"'
+" silent execute '!mkdir "'.$HOME.'/.vimswap"'
+" silent execute '!mkdir "'.$HOME.'/.vimviews"'
+" silent execute '!mkdir "'.$HOME.'/.vimundo"'
 
-        set backup                      " backups are nice ...
-        " Moved to function at bottom of the file
-        set backupdir=$HOME/.vimbackup//  " but not when they clog .
-        set directory=$HOME/.vimswap//     " Same for swap files
-        set viewdir=$HOME/.vimviews//  " same for view files
-        set undodir=$HOME/.vimundo//  " same for undo
+set backup                      " backups are nice ...
+" Moved to function at bottom of the file
+set backupdir=$HOME/.vimbackup//  " but not when they clog .
+set directory=$HOME/.vimswap//     " Same for swap files
+set viewdir=$HOME/.vimviews//  " same for view files
+set undodir=$HOME/.vimundo//  " same for undo
 
-        au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
-    " }
+au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
+au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
+" }
 " }
 
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Windows Compatible {
 " http://spf13.com/post/perfect-vimrc-vim-config-file
- " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
- " across (heterogeneous) systems easier.
- if has('win32') || has('win64')
-      set runtimepath+=$HOME/\.vim,$HOME/\.vim/after,
- endif
- " }
+" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+" across (heterogeneous) systems easier.
+if has('win32') || has('win64')
+  set runtimepath+=$HOME/\.vim,$HOME/\.vim/after,
+endif
+" }
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if has("gui_running")
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " " " Color scheme
-"   ~~~~====================================COLOUR SCHEME====================================~~~~~
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"  ======================================================
-"  Separator
-"  ======================================================
-:menu Settings.-Sep1-   :
+  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " " " Color scheme
+  "   ~~~~====================================COLOUR SCHEME====================================~~~~~
+  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  "  ======================================================
+  "  Separator
+  "  ======================================================
+  :menu Settings.-Sep1-   :
 
-"                                    Setting for some Modified Default colour schemes, you will find more later
-:amenu Settings.Modified\ Default\ Themes.default\ <Alt-Shift-F11> :call <SID>ThemeDefault() <CR>
-map <M-S-F11> :call <SID>ThemeDefault() <CR>
-:amenu Settings.Modified\ Installed\ Themes.MustangGreen\ <Ctrl-Shift-F11> :call ColourMustangGreen() <CR>
+  "                                    Setting for some Modified Default colour schemes, you will find more later
+  :amenu Settings.Modified\ Default\ Themes.default\ <Alt-Shift-F11> :call <SID>ThemeDefault() <CR>
+  map <M-S-F11> :call <SID>ThemeDefault() <CR>
+  :amenu Settings.Modified\ Installed\ Themes.MustangGreen\ <Ctrl-Shift-F11> :call ColourMustangGreen() <CR>
 
-map <C-S-F11> :call ColourMustangGreen() <CR>
-fun! ColourMustangGreen()
-if g:osdetected == "Windows"
+  map <C-S-F11> :call ColourMustangGreen() <CR>
+  fun! ColourMustangGreen()
+    if g:osdetected == "Windows"
       colors Mustang_Green
-  elseif g:osdetected == "Linux"
+    elseif g:osdetected == "Linux"
       colors mustang_green
-  "elseif g:osdetected == "Unix"
+      "elseif g:osdetected == "Unix"
       "colors mustang_green
-endif
+    endif
 
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        " :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        " :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        " :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        " :highlight MatchParen  term=underline  guibg=#000000  guifg=#f16700  cterm=underline
-        " :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    " :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    " :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    " :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    " :highlight MatchParen  term=underline  guibg=#000000  guifg=#f16700  cterm=underline
+    " :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Installed\ Themes.Mustang :call ColourMustang() <CR>
-fun! ColourMustang()
-if g:osdetected == "Windows"
+  :amenu Settings.Modified\ Installed\ Themes.Mustang :call ColourMustang() <CR>
+  fun! ColourMustang()
+    if g:osdetected == "Windows"
       colors Mustang
-  elseif g:osdetected == "Linux"
+    elseif g:osdetected == "Linux"
       colors mustang
-  "elseif g:osdetected == "Unix"
+      "elseif g:osdetected == "Unix"
       "colors mustang
-endif
+    endif
 
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        " :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        " :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        " :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        " :highlight MatchParen  term=underline  guibg=#000000  guifg=#f16700  cterm=underline
-        " :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    " :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    " :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    " :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    " :highlight MatchParen  term=underline  guibg=#000000  guifg=#f16700  cterm=underline
+    " :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " " " Color scheme
+  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " " " Color scheme
 
-"                       Another function for Highlighting current line and column with coloured status line
-"                       when resuming default theme
+  "                       Another function for Highlighting current line and column with coloured status line
+  "                       when resuming default theme
 
-fun! <SID>ThemeDefault()
-if g:osdetected == "Windows"
+  fun! <SID>ThemeDefault()
+    if g:osdetected == "Windows"
       colors default
-  elseif g:osdetected == "Linux"
+    elseif g:osdetected == "Linux"
       colors default
-  "elseif g:osdetected == "Unix"
+      "elseif g:osdetected == "Unix"
       "colors default
-endif
+    endif
 
 
 
-:hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-        hi User1 guifg=#ffdad8  guibg=#880c0e
-        hi User2 guifg=#000000  guibg=#F4905C
-        hi User3 guifg=#292b00  guibg=#f4f597
-        hi User4 guifg=#112605  guibg=#aefe7B
-        hi User5 guifg=#051d00  guibg=#7dcc7d
-        hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
-        hi User8 guifg=#ffffff  guibg=#5b7fbb
-        hi User9 guifg=#ffffff  guibg=#810085
-        hi User0 guifg=#ffffff  guibg=#094afe
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        "   :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#fffcd0  cterm=underline
-        "   :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight CursorColumn  term=underline  guibg=#e1ffd5  cterm=underline
-        " autocomplete menu
-        " https://bbs.archlinux.org/viewtopic.php?id=139163
-        highlight Pmenu guifg=black guibg=darkolivegreen1
-        highlight PmenuSel guifg=white guibg=darkslategray
-endfun
+    :hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+    hi User1 guifg=#ffdad8  guibg=#880c0e
+    hi User2 guifg=#000000  guibg=#F4905C
+    hi User3 guifg=#292b00  guibg=#f4f597
+    hi User4 guifg=#112605  guibg=#aefe7B
+    hi User5 guifg=#051d00  guibg=#7dcc7d
+    hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
+    hi User8 guifg=#ffffff  guibg=#5b7fbb
+    hi User9 guifg=#ffffff  guibg=#810085
+    hi User0 guifg=#ffffff  guibg=#094afe
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    "   :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#fffcd0  cterm=underline
+    "   :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight CursorColumn  term=underline  guibg=#e1ffd5  cterm=underline
+    " autocomplete menu
+    " https://bbs.archlinux.org/viewtopic.php?id=139163
+    highlight Pmenu guifg=black guibg=darkolivegreen1
+    highlight PmenuSel guifg=white guibg=darkslategray
+  endfun
 
 
-"                       Setting for Modified Default Coloured Themes, "   some colour scheme continued
-:amenu Settings.Modified\ Default\ Themes.blue :call Colourblue() <CR>
-fun! Colourblue()
-colors blue
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#002780  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#003080  cterm=underline
-endfun
+  "                       Setting for Modified Default Coloured Themes, "   some colour scheme continued
+  :amenu Settings.Modified\ Default\ Themes.blue :call Colourblue() <CR>
+  fun! Colourblue()
+    colors blue
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#002780  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#003080  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.delek :call Colourdelek() <CR>
-fun! Colourdelek()
-colors delek
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#000055  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#110068  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.delek :call Colourdelek() <CR>
+  fun! Colourdelek()
+    colors delek
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#000055  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#110068  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.darkblue :call Colourdarkblue() <CR>
-fun! Colourdarkblue()
-colors darkblue
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#000055  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#110068  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.darkblue :call Colourdarkblue() <CR>
+  fun! Colourdarkblue()
+    colors darkblue
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#000055  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=yellow  guifg=red  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#110068  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.desert :call Colourdesert() <CR>
-fun! Colourdesert()
-colors desert
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.desert :call Colourdesert() <CR>
+  fun! Colourdesert()
+    colors desert
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.elflord :call Colourelflord() <CR>
-fun! Colourelflord()
-colors elflord
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.elflord :call Colourelflord() <CR>
+  fun! Colourelflord()
+    colors elflord
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.evening :call Coloureevening() <CR>
-fun! Coloureevening()
-colors evening
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.evening :call Coloureevening() <CR>
+  fun! Coloureevening()
+    colors evening
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.industry :call Coloureindustry() <CR>
-fun! Coloureindustry()
-colors industry
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.industry :call Coloureindustry() <CR>
+  fun! Coloureindustry()
+    colors industry
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.koehler :call Colourkoehler() <CR>
-fun! Colourkoehler()
-colors koehler
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.koehler :call Colourkoehler() <CR>
+  fun! Colourkoehler()
+    colors koehler
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.morning :call Colourmorning() <CR>
-fun! Colourmorning()
-colors morning
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.morning :call Colourmorning() <CR>
+  fun! Colourmorning()
+    colors morning
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#170101  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#191818  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.murphy :call Colourmurphy() <CR>
-fun! Colourmurphy()
-colors murphy
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#f16700  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.murphy :call Colourmurphy() <CR>
+  fun! Colourmurphy()
+    colors murphy
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#f16700  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.pablo :call Colourpablo() <CR>
-fun! Colourpablo()
-colors pablo
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.pablo :call Colourpablo() <CR>
+  fun! Colourpablo()
+    colors pablo
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ff5500  guifg=#ffff00  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.peachpuff :call Colourpeachpuff() <CR>
-fun! Colourpeachpuff()
-colors peachpuff
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.peachpuff :call Colourpeachpuff() <CR>
+  fun! Colourpeachpuff()
+    colors peachpuff
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.ron :call Colourron() <CR>
-fun! Colourron()
-colors ron
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.ron :call Colourron() <CR>
+  fun! Colourron()
+    colors ron
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.shine :call Colourshine() <CR>
-fun! Colourshine()
-colors shine
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.shine :call Colourshine() <CR>
+  fun! Colourshine()
+    colors shine
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.slate :call Colourslate() <CR>
-fun! Colourslate()
-colors slate
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.slate :call Colourslate() <CR>
+  fun! Colourslate()
+    colors slate
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.torte :call Colourtorte() <CR>
-fun! Colourtorte()
-colors torte
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.torte :call Colourtorte() <CR>
+  fun! Colourtorte()
+    colors torte
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Default\ Themes.zellner :call Colourzellner() <CR>
-fun! Colourzellner()
-colors zellner
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
-        :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
-endfun
+  :amenu Settings.Modified\ Default\ Themes.zellner :call Colourzellner() <CR>
+  fun! Colourzellner()
+    colors zellner
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#ffd2fb  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight MatchParen  term=underline  guibg=#ffff00  guifg=#ff5500  cterm=underline
+    :highlight CursorColumn  term=underline  guibg=#d9e3ff  cterm=underline
+  endfun
 
-:amenu Settings.Modified\ Installed\ Themes.oh-la-la :call Colourohlala() <CR>
-fun! Colourohlala()
-colors oh-la-la
-        call ColStline()
-        :set cursorline
-        :set cursorcolumn
-        :redir => cursorline_highlight | silent highlight CursorLine | redir END
-        :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
-        :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
-        :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
-endfun
+  :amenu Settings.Modified\ Installed\ Themes.oh-la-la :call Colourohlala() <CR>
+  fun! Colourohlala()
+    colors oh-la-la
+    call ColStline()
+    :set cursorline
+    :set cursorcolumn
+    :redir => cursorline_highlight | silent highlight CursorLine | redir END
+    :highlight CursorLine  term=underline  guibg=#1e1e1e  cterm=underline
+    :redir => cursorcolumn_highlight | silent highlight CursorColumn | redir END
+    :highlight CursorColumn  term=underline  guibg=#232323  cterm=underline
+  endfun
 
-"  =====================================================================================================END OF MODIFIED COLOUR SCHEMES
-"  ===================================================================================================================================
+  "  =====================================================================================================END OF MODIFIED COLOUR SCHEMES
+  "  ===================================================================================================================================
 
-"  ===================================================================================================================================
-        " autocomplete menu
-        " https://bbs.archlinux.org/viewtopic.php?id=139163
-        " http://codeyarns.com/2011/07/29/vim-chart-of-color-names/
-"  ===================================================================================================================================
-" highlight Pmenu ctermfg=<color> ctermbg=<color>
-highlight Pmenu guifg=black guibg=darkolivegreen1
-" highlight PmenuSel ctermfg=<color> ctermbg=<color>
-highlight PmenuSel guifg=white guibg=darkslategray
+  "  ===================================================================================================================================
+  " autocomplete menu
+  " https://bbs.archlinux.org/viewtopic.php?id=139163
+  " http://codeyarns.com/2011/07/29/vim-chart-of-color-names/
+  "  ===================================================================================================================================
+  " highlight Pmenu ctermfg=<color> ctermbg=<color>
+  highlight Pmenu guifg=black guibg=darkolivegreen1
+  " highlight PmenuSel ctermfg=<color> ctermbg=<color>
+  highlight PmenuSel guifg=white guibg=darkslategray
 
 endif
 "  ===================================================================================================================================
@@ -1018,41 +1018,41 @@ endif
 "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if has("gui_running")
-" Opens Explorer
-if g:osdetected == "Windows"
-      :amenu Utilities.Explorer\.exe :!start Explorer.exe <CR><Esc><CR>
-      " Locates in the Explorer, XP only
-      :amenu Utilities.Locate\ in\ Explorer\ (\XP\ only\) :silent !start explorer /e,,%:p:h,/select,%:p <CR><Esc><CR>
-      " Open Containing Folder XP, Win7
-      :amenu Utilities.Open\ Containing\ Folder\ (\XP\,\ Win7\) :silent !start explorer %:p:h<Esc>
-endif
+  " Opens Explorer
+  if g:osdetected == "Windows"
+    :amenu Utilities.Explorer\.exe :!start Explorer.exe <CR><Esc><CR>
+    " Locates in the Explorer, XP only
+    :amenu Utilities.Locate\ in\ Explorer\ (\XP\ only\) :silent !start explorer /e,,%:p:h,/select,%:p <CR><Esc><CR>
+    " Open Containing Folder XP, Win7
+    :amenu Utilities.Open\ Containing\ Folder\ (\XP\,\ Win7\) :silent !start explorer %:p:h<Esc>
+  endif
 
-" Opens Directory via console
-if g:osdetected == "Windows"
-        :amenu Utilities.Open\ Directory\ via\ Console :silent !start cmd.exe /k pushd %:p:h <CR><Esc><CR>
-endif
+  " Opens Directory via console
+  if g:osdetected == "Windows"
+    :amenu Utilities.Open\ Directory\ via\ Console :silent !start cmd.exe /k pushd %:p:h <CR><Esc><CR>
+  endif
 
-" Opens Directory via NERDTree Plugin
-:amenu Utilities.Open\ Directory\ via\ NERDTree\ Plugin :NERDTree %:p:h <CR><Esc><CR>
-" Put NERDTree to Command
-:amenu Utilities.Put\ NERDTree\ to\ Command\ Mode :NERDTree
-" Put NERDTreeToggle
-:amenu Utilities.NERDTreeToggle :NERDTreeToggle<CR>
+  " Opens Directory via NERDTree Plugin
+  :amenu Utilities.Open\ Directory\ via\ NERDTree\ Plugin :NERDTree %:p:h <CR><Esc><CR>
+  " Put NERDTree to Command
+  :amenu Utilities.Put\ NERDTree\ to\ Command\ Mode :NERDTree
+  " Put NERDTreeToggle
+  :amenu Utilities.NERDTreeToggle :NERDTreeToggle<CR>
 
-" Opens Useful Apps and Programs
-if g:osdetected == "Windows"
-        :amenu Utilities.notepad :silent!!start "notepad.exe" <CR><Esc><CR>
-        :amenu Utilities.Open\ with\ notepad :silent !start "notepad.exe" "%:p" <CR><Esc><CR>
-        fun Win_calculator()
-            :silent!!start "calc" <Esc>
-        endfun
-        :amenu Utilities.Calculator :call Win_calculator() <CR><Esc><CR>
+  " Opens Useful Apps and Programs
+  if g:osdetected == "Windows"
+    :amenu Utilities.notepad :silent!!start "notepad.exe" <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ notepad :silent !start "notepad.exe" "%:p" <CR><Esc><CR>
+    fun Win_calculator()
+      :silent!!start "calc" <Esc>
+    endfun
+    :amenu Utilities.Calculator :call Win_calculator() <CR><Esc><CR>
 
 
-        " Open File with Default Application
-        :amenu Utilities.Open\ File\ with\ Default\ Application :silent! !explorer "%:p" <Esc>
+    " Open File with Default Application
+    :amenu Utilities.Open\ File\ with\ Default\ Application :silent! !explorer "%:p" <Esc>
 
-    elseif g:osdetected == "Linux"
+  elseif g:osdetected == "Linux"
     " how to open file manager in linux from terminal
     " https://www.unixmen.com/open-system-file-manager-terminal
     " how to open default calculator in linux from terminal
@@ -1060,29 +1060,29 @@ if g:osdetected == "Windows"
     " man -k calculator
     " man -k camera
 
-        :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
-        :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
-        :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
+    :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
+    :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
 
-        " ---------------------------------------------- install 'cdecl' and 'cutils' first,
-        " sudo apt install cdecl
-        " sudo apt install cutils
+    " ---------------------------------------------- install 'cdecl' and 'cutils' first,
+    " sudo apt install cdecl
+    " sudo apt install cutils
 
-        :amenu Utilities.cdecl\ explain\ (\C\ pointer\ gibberish\ to\ plain\ English\)\ (\like:\ cdecl\ explain\ "int\ *p"\) :!cdecl explain "
-        :amenu Utilities.cdecl\ declare\ (\English\ to\ C\)\ (\like:\ cdecl\ declare\ "p\ as\ pointer\ to\ int"\) :!cdecl declare "
-        " ------------------------------------------------------------------------------------
+    :amenu Utilities.cdecl\ explain\ (\C\ pointer\ gibberish\ to\ plain\ English\)\ (\like:\ cdecl\ explain\ "int\ *p"\) :!cdecl explain "
+    :amenu Utilities.cdecl\ declare\ (\English\ to\ C\)\ (\like:\ cdecl\ declare\ "p\ as\ pointer\ to\ int"\) :!cdecl declare "
+    " ------------------------------------------------------------------------------------
 
-        fun! Xedit_open()
-          :silent!!xedit &
-        endfun
-        fun! Open_w_Xedit()
-          :!xedit % &
-        endfun
-        fun! Meld_diff_viewer()
-          :silent!!meld &
-        endfun
+    fun! Xedit_open()
+      :silent!!xedit &
+    endfun
+    fun! Open_w_Xedit()
+      :!xedit % &
+    endfun
+    fun! Meld_diff_viewer()
+      :silent!!meld &
+    endfun
 
-endif
+  endif
 
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1093,14 +1093,14 @@ endif
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 
 if g:osdetected == "Windows"
-    function! CopyPWDToWindowsNMacOSXClipboard()
-        :let @* = expand('%:p:h')
-    endfun
-  elseif g:osdetected == "Linux"
-    function! CopyPWDToLinuxClipboard()
-        :let @+ = expand('%:p:h')
-    endfun
-  else
+  function! CopyPWDToWindowsNMacOSXClipboard()
+    :let @* = expand('%:p:h')
+  endfun
+elseif g:osdetected == "Linux"
+  function! CopyPWDToLinuxClipboard()
+    :let @+ = expand('%:p:h')
+  endfun
+else
   function! CopyPWDToSystemClipboard()
     :let @* = expand('%:p:h')
     :let @+ = expand('%:p:h')
@@ -1109,14 +1109,14 @@ endif
 
 " Opens Explorer
 if g:osdetected == "Windows"
-    :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
-    command! Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
+  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
+  command! Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
 elseif (g:osdetected == "Linux")
-    :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
-    command! Pwdtoclip :call CopyPWDToLinuxClipboard()
+  :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
+  command! Pwdtoclip :call CopyPWDToLinuxClipboard()
 else
-    :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <CR><Esc><CR>
-    command! Pwdtoclip :call CopyPWDToSystemClipboard()
+  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <CR><Esc><CR>
+  command! Pwdtoclip :call CopyPWDToSystemClipboard()
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1126,8 +1126,8 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " check comments only in source code by default:
 let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0,
-            \ }
+      \ '*' : 1, 'help' : 0, 'markdown' : 0,
+      \ }
 " let g:grammarous#use_vim_spelllang = 1
 let g:grammarous#show_first_error = 1
 " ------------------------------
@@ -1155,7 +1155,7 @@ let g:grammarous#show_first_error = 1
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " :h GUI or :help sub-menu-priority
 if has("gui_running")
-if g:osdetected == "Windows"
+  if g:osdetected == "Windows"
     :tmenu icon=$HOME/\.vim/bitmaps/new.bmp 1.400 ToolBar.NewFile New File
     :amenu ToolBar.NewFile :confirm enew <cr>
     :tmenu icon=$HOME/\.vim/bitmaps/saveas.bmp 1.410 ToolBar.SaveAs Save As
@@ -1174,7 +1174,7 @@ if g:osdetected == "Windows"
     fun! X_window_System_Calculator()
       :silent!!xcalc &
     endfun
-endif
+  endif
 endif
 
 if g:osdetected == "Windows"
@@ -1239,6 +1239,12 @@ let g:acp_completeoptPreview = 1
 " ====================================
 
 " ====================================
+" ========= DetectIndent setup =======
+" ====================================
+:menu Plugin.DetectIndent:-\ \ \ \ :\DetectIndent   :<Esc>:<Esc>:DetectIndent<Cr>
+" ====================================
+
+" ====================================
 " ========= BetterSearch setup =======
 " ====================================
 :amenu Plugin.-Sep2-  :
@@ -1256,9 +1262,9 @@ let g:acp_completeoptPreview = 1
 "  ======================================================
 " ~~~~~~~~~~~ YankRing plugin Configuration ~~~~~~
 :nnoremap <silent> <C-F11> :YRShow<CR>
- function! YRRunAfterMaps()
-   nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
- endfunction
+function! YRRunAfterMaps()
+  nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
 " ~~~~~~~~~~~ YankRing plugin Configuration ends ~~~~~~
 
 
@@ -1267,26 +1273,26 @@ let g:acp_completeoptPreview = 1
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Open About & Help in the default internet browser.
 if g:osdetected == "Windows"
-    function! Help_n_Tutorial_and_About_open_Windows_Explorer()
-        :silent! !explorer "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md"
-    endfun
+  function! Help_n_Tutorial_and_About_open_Windows_Explorer()
+    :silent! !explorer "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md"
+  endfun
 
-    :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Windows_Explorer() <Esc>
-    command! TuluAbout :call Help_n_Tutorial_and_About_open_Windows_Explorer()
+  :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Windows_Explorer() <Esc>
+  command! TuluAbout :call Help_n_Tutorial_and_About_open_Windows_Explorer()
 
-    elseif g:osdetected == "Linux"
-    " https://askubuntu.com/questions/15354/how-to-open-file-with-default-application-from-command-line#:~:text=is%20not%20useful-,Show%20activity%20on%20this%20post.,in%20the%20user's%20preferred%20application.
-        function! Help_n_Tutorial_and_About_open_Xdg()
-          :silent!!xdg-open "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md" &
-          if !has("gui_running")
-              :source ~/.vimrc
-              :source ~/.vimdotcommon/.vimrc2.vim
-              :source ~/.vim/plugin/temporary.vim
-          endif
-        endfun
+elseif g:osdetected == "Linux"
+  " https://askubuntu.com/questions/15354/how-to-open-file-with-default-application-from-command-line#:~:text=is%20not%20useful-,Show%20activity%20on%20this%20post.,in%20the%20user's%20preferred%20application.
+  function! Help_n_Tutorial_and_About_open_Xdg()
+    :silent!!xdg-open "https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md" &
+    if !has("gui_running")
+      :source ~/.vimrc
+      :source ~/.vimdotcommon/.vimrc2.vim
+      :source ~/.vim/plugin/temporary.vim
+    endif
+  endfun
 
-        :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Xdg() <Esc>
-        command! TuluAbout :silent! call Help_n_Tutorial_and_About_open_Xdg()
+  :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Xdg() <Esc>
+  command! TuluAbout :silent! call Help_n_Tutorial_and_About_open_Xdg()
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ============================================================================
@@ -1303,9 +1309,9 @@ endif
 "  ===========================================================
 
 if g:osdetected == "Windows"
-      source $HOME/\.vim/plugin/temporary.vim
-  elseif g:osdetected != "Windows"
-      source $HOME/.vim/plugin/temporary.vim
+  source $HOME/\.vim/plugin/temporary.vim
+elseif g:osdetected != "Windows"
+  source $HOME/.vim/plugin/temporary.vim
 endif
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1318,9 +1324,9 @@ set path+=./;/
 " ------------------------------- Common Tags-----------
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
 if has("win64") || has("win32") || has("win16") || has("win32unix")
-    source $HOME\/\.vimdotwin\/\.set_tags_n_set_paths.txt
-  else
-    source $HOME\/\.vimdotlinux\/\.set_tags_n_set_paths.txt
+  source $HOME\/\.vimdotwin\/\.set_tags_n_set_paths.txt
+else
+  source $HOME\/\.vimdotlinux\/\.set_tags_n_set_paths.txt
 endif
 
 
@@ -1337,9 +1343,9 @@ endif
 " ------------------------------- OS specific Initialisation -----------
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
 if has("win64") || has("win32") || has("win16") || has("win32unix")
-    call plug#begin('$HOME\/\.vim\plugged')
-  else
-    call plug#begin('~/.vim/plugged')
+  call plug#begin('$HOME\/\.vim\plugged')
+else
+  call plug#begin('~/.vim/plugged')
 endif
 
 
@@ -1426,6 +1432,10 @@ Plug 'https://github.com/Pinaki82/Clear-Search-Highlight-in-Vim.git'
 Plug 'https://github.com/Pinaki82/repeaterchar.vim.git'
 
 Plug 'https://github.com/Pinaki82/tracktime.vim.git'
+
+Plug 'https://github.com/Pinaki82/indent-code.git'
+
+Plug 'https://github.com/ciaranm/detectindent.git'
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
