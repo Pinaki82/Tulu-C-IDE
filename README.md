@@ -1236,6 +1236,8 @@ https://learnvimscriptthehardway.stevelosh.com/ Learn Vimscript the Hard Way is 
 
 https://devhints.io/vimscript Vim scripting cheatsheet.
 
+https://dahu.github.io/vim_waz_ere/ Vim learning resources. Vim tutorials.
+
 Hacking Vim, by "Kim Schulz"
 
 vi-vim-cheat-sheet-and-tutorial.pdf, from www.viemu.com
