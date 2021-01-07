@@ -1,3 +1,4 @@
+:q!
 :set omnifunc?
 :SyntasticToggleMode
 :qa
@@ -40,7 +41,6 @@
 :h syntastic
 :echo $HOME
 :echo g:osdetectedp
-
 
 :h feature-list
 :h :version
