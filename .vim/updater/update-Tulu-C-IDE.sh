@@ -8,6 +8,7 @@ rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE ~/Tulu-C-IDE/tulu_c_ide_download.
 # https://www.tecmint.com/sync-new-changed-modified-files-rsync-linux/
 rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/autoload/* ~/.vim/autoload && \
 rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/bitmaps/* ~/.vim/bitmaps && \
+rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/updater// ~/.vim/updater &&\
 # rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/plugin/* ~/.vim/plugin && \
 # https://unix.stackexchange.com/questions/501975/why-does-rsync-keep-skipping-the-directory-i-want-to-sync
 rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vimdotcommon// ~/.vimdotcommon &&\
