@@ -35,6 +35,15 @@ REM Clone GitHub repository to a temporary directory
 @ECHO OFF
 REM https://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
 @ECHO ON
+
+REM Delete the temporarily cloned GitHub repository directory that was created for cloning the repo.
+cd ..\
+cd ..\
+cd ..\
+cd "%SYSTEMDRIVE%"
+del /f /s /q "%SYSTEMDRIVE%\git_clone_temp" 1>nul
+rmdir /s /q "%SYSTEMDRIVE%\git_clone_temp"
+
 mkdir "%SYSTEMDRIVE%\git_clone_temp"
 cd "%SYSTEMDRIVE%\git_clone_temp"
 git clone https://github.com/Pinaki82/Tulu-C-IDE.git
