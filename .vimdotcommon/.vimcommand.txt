@@ -110,4 +110,4 @@
 :h cref
 :h project
 :h 'statusline'
-
+:sort u
