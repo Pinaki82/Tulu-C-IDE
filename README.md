@@ -55,6 +55,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 
  [LLVM Clang](https://releases.llvm.org/download.html)
  
+ [git-scm](https://git-scm.com/)
+ 
  [Ctags](https://github.com/universal-ctags/ctags-win32)
  
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
@@ -66,8 +68,6 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [Java Runtime Environment](https://www.java.com/en/download/manual.jsp)
 
 ##### Recommended Programs:
- 
- [git-scm](https://git-scm.com/)
 
  [Cmake](https://cmake.org/)
  
