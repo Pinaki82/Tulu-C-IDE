@@ -1,4 +1,4 @@
-" Last Change: 2021-01-08  Friday: 02:17:09 AM
+" Last Change: 2021-01-08  Friday: 03:57:23 AM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -437,11 +437,11 @@ if v:version <= 701 && exists('g:vimsyn_folding')
     " fold functions
     syn region vimFoldFunction
           \ start="\<fu\%[nction]!\=\s\+\%(<[sS][iI][dD]>\|[sSgGbBwWtTlL]:\)\?\%(\i\|[#.]\|{.\{-1,}}\)*\ze\s*("
-          \ end="\<endfu\%[nction]\>"
-          \ transparent fold
-          \ keepend extend
-          \ containedin=ALLBUT,@vimNoFold
-          \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+            \ end="\<endfu\%[nction]\>"
+            \ transparent fold
+            \ keepend extend
+            \ containedin=ALLBUT,@vimNoFold
+            \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
   endif
 
   " fold augroups
@@ -1060,9 +1060,14 @@ if has("gui_running")
     " man -k calculator
     " man -k camera
 
+    :amenu Utilities.Open\ File\ with\ Default\ Application\ (\LINUX\ only\) :call Open_File_with_Default_Application() <CR><Esc><CR>
+    :amenu Utilities.Explore\ Current\ File's\ Directory\ (\LINUX\ only\) :call Explore_file_PWD() <CR><Esc><CR>
+    :amenu Utilities.kitty\ Terminal\ Emulator :call Kitty_Terminal_Emulator() <CR><Esc><CR>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ kitty-terminal :call Kitty_Terminal_current_file_s_dir() <CR><Esc><CR>
     :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
     :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
     :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
+    :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <CR><Esc><CR>
 
     " ---------------------------------------------- install 'cdecl' and 'cutils' first,
     " sudo apt install cdecl
@@ -1081,6 +1086,37 @@ if has("gui_running")
     fun! Meld_diff_viewer()
       :silent!!meld &
     endfun
+    fun! Open_w_Meld_diff_viewer_One_side()
+      :!meld % &
+    endfun
+    fun! Kitty_Terminal_Emulator()
+      :silent!!kitty &
+    endfun
+    fun! Open_File_with_Default_Application()
+      :!xdg-open "%:p" &
+    endfun
+    function! Kitty_Terminal_current_file_s_dir()
+      let curr_dir = expand('%:h')
+      if curr_dir == ''
+        let curr_dir = '.'
+      endif
+      :cd %:h
+      :!kitty -d "$PWD" &
+      " Failed to launch child: /home With error: Permission denied Press Enter to exit. Kitty Terminal
+      " https://github.com/kovidgoyal/kitty/issues/1930
+      execute 'lcd -'
+      " :copen
+    endfunction
+    function! Explore_file_PWD()
+      let curr_dir = expand('%:h')
+      if curr_dir == ''
+        let curr_dir = '.'
+      endif
+      :cd %:h
+      :!xdg-open "$PWD" &
+      execute 'lcd -'
+      " :copen
+    endfunction
 
   endif
 
