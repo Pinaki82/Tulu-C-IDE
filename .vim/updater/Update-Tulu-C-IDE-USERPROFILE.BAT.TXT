@@ -1,0 +1,114 @@
+@ECHO OFF
+REM Tulu-C-IDE updater
+
+REM Updater for GVim Portable provided by PortableApps
+
+REM GVim location: %USERPROFILE%\PortableApps\gVimPortable
+
+REM I assume that you haven't modified the files I list as follows:
+REM .vimrc
+REM .gvimrc
+REM .vimrc2.vim
+
+REM Please, do not blindly run this script. If you have made changes to .vimrc,
+REM .gvimrc, .vimrc2.vim, temporary.vim or any other file that you
+REM will need later, edit this script.
+REM Robocopy has been used throughout the WinBatch file.
+REM Parameters have the following meanings:
+
+REM Usage :: ROBOCOPY source destination [file [file]...] [options]
+REM :: Copy options :
+REM /E :: copy subdirectories, including Empty ones.
+REM /Z :: copy files in restartable mode.
+REM /SJ :: copy Junctions as junctions instead of as the junction targets.
+REM /SL :: copy Symbolic Links as links instead of as the link targets.
+REM /MIR :: MIRror a directory tree.
+
+REM On a heavily modified configuration, this batch file will not work.
+REM It would be a disaster to run this script in such a scenario.
+REM In case you have changed several configuration files, feel free to
+REM avoid this script. Download a zip archive from the main branch of the repo
+REM and use WinMerge to diff-merge the changes.
+@ECHO ON
+
+REM Clone GitHub repository to a temporary directory
+@ECHO OFF
+REM https://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
+@ECHO ON
+mkdir "%SYSTEMDRIVE%\git_clone_temp"
+cd "%SYSTEMDRIVE%\git_clone_temp"
+git clone https://github.com/Pinaki82/Tulu-C-IDE.git
+del "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\LICENSE"
+del "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\README.md"
+del "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\tulu_c_ide_download.sh"
+PAUSE
+
+REM Delete the .git folder in that temporary directory
+@ECHO OFF
+REM https://stackoverflow.com/questions/22948189/how-to-solve-the-directory-is-not-empty-error-when-running-rmdir-command-in-a
+@ECHO ON
+del /f /s /q "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\.git" 1>nul
+rmdir /s /q "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\.git"
+PAUSE
+
+@ECHO OFF
+REM Update part goes here:
+@ECHO ON
+mkdir "%USERPROFILE%\vim_state_backup"
+mkdir "%USERPROFILE%"
+PAUSE
+
+REM Make a backup of the present Vim state.
+@ECHO OFF
+REM https://stackoverflow.com/questions/16502283/how-do-i-fix-access-denied-with-the-move-command-in-windows-7
+REM https://pureinfotech.com/exclude-files-folders-robocopy-windows-10/
+@ECHO ON
+ROBOCOPY "%USERPROFILE%\/\.vimbackup" "%USERPROFILE%\vim_state_backup\/\.vimbackup" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\/\.vimswap" "%USERPROFILE%\vim_state_backup\/\.vimswap" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\/\.vimviews" "%USERPROFILE%\vim_state_backup\/\.vimviews" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\/\.vimundo" "%USERPROFILE%\vim_state_backup\/\.vimundo" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\/\.vim\plugged" "%USERPROFILE%\vim_state_backup\/\.vim\plugged" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\/\.vim\plugin" "%USERPROFILE%\vim_state_backup\/\.vim\plugin" /E /Z /SJ /SL /MIR
+PAUSE
+
+@ECHO OFF
+REM PREVIOUS: ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings" /XF "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\_viminfo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\gVimPortableSettings.ini" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugin\temporary.vim" /XD "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimbackup" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimswap" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimviews" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimundo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugged" /E /MIR
+@ECHO ON
+REM Copy from the temp GitHub repo download location.
+@ECHO OFF
+REM Copy files and folders individually.
+REM ROBOCOPY follows the file pointer to the directory to replace everything in the destination directory.
+REM Chances are there that it might wipe out all other files in the %USERPROFILE% directory.
+REM Copying files and folders individually seems to be the only option.
+REM For example: ROBOCOPY C:\Cabbages C:\Users\Spiderman\Kings /E /MIR will wipe all other files in Kings that are not present in cabbages.
+rem ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings" /XF "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\_viminfo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\gVimPortableSettings.ini" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugin\temporary.vim" /XD "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimbackup" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimswap" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimviews" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimundo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugged" /E /Z /SJ /SL /MIR
+REM https://www.lifewire.com/copy-command-2625842
+@ECHO ON
+COPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vimrc" "%USERPROFILE%\/\.vimrc" /V
+COPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.gvimrc" "%USERPROFILE%\/\.gvimrc" /V
+ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vim" "%USERPROFILE%\/\.vim" /E /Z /SJ /SL /MIR
+ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vimdotcommon" "%USERPROFILE%\/\.vimdotcommon" /E /Z /SJ /SL /MIR
+ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vimdotlinux" "%USERPROFILE%\/\.vimdotlinux" /E /Z /SJ /SL /MIR
+ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vimdotwin" "%USERPROFILE%\/\.vimdotwin" /E /Z /SJ /SL /MIR
+PAUSE
+
+REM Restore earlier Vim state from the backup.
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vimbackup" "%USERPROFILE%\/\.vimbackup" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vimswap" "%USERPROFILE%\/\.vimswap" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vimviews" "%USERPROFILE%\/\.vimviews" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vimundo" "%USERPROFILE%\/\.vimundo" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vim\plugged" "%USERPROFILE%\/\.vim\plugged" /E /Z /SJ /SL /MIR
+ROBOCOPY "%USERPROFILE%\vim_state_backup\/\.vim\plugin" "%USERPROFILE%\/\.vim\plugin" /E /Z /SJ /SL /MIR
+PAUSE
+
+REM Delete the temporarily cloned GitHub repository directory that was created for cloning the repo.
+cd ..\
+cd ..\
+cd ..\
+cd "%SYSTEMDRIVE%"
+del /f /s /q "%SYSTEMDRIVE%\git_clone_temp" 1>nul
+rmdir /s /q "%SYSTEMDRIVE%\git_clone_temp"
+REM Also, delete the backup directory.
+del /f /s /q "%USERPROFILE%\vim_state_backup" 1>nul
+rmdir /s /q "%USERPROFILE%\vim_state_backup"
+cmd
