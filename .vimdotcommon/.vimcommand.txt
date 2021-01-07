@@ -3,18 +3,24 @@
 :51
 :69
 :78
+:DoMatchParen
 :Errors
+:NERDTree Q:\\Code_Blocks\VS\ Code\
 :Project
 :Project D:\codes\project01.txt
 :Project H:\codes\Vim_Ctags_db_updater\trunk\Project.vimproject
 :Project d:Code_Blocks\project01.txt
 :Project d:\codes\Forgers_Win32\project01.txt
+:SyntasticCheck
 :SyntasticInfo
+:SyntasticReset
 :SyntasticToggleMode
 :browse confirm e
 :browse confirm e D:\Code_Blocks\
+:browseconfim e
 :bwipeout
 :ccl
+:cclose
 :colo blue
 :colorscheme
 :colorscheme default
@@ -47,9 +53,10 @@
 :helptags $HOME/.vim/doc
 :helptags $HOME/vimfiles/doc
 :helptags $VIMRUNTIME/doc
-:helptags C:\Program\ Files\ (x86)\Vim\vim74\doc\
-:helptags C:\Users\appuraja\vimfiles\doc\
 :ltag
+:new
+:open
+:p
 :pwd
 :python
 :python3
@@ -57,6 +64,7 @@
 :q
 :q!
 :qa
+:sav
 :scriptnames
 :set directory?
 :set omnifunc
@@ -71,4 +79,5 @@
 :verbose set omnifunc
 :version
 :w
+:w!
 cmd.exe -> vim --version
