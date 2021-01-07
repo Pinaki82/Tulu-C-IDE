@@ -90,6 +90,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
  
  Java Runtime Environment.
+ 
+ [kitty](https://sw.kovidgoyal.net/kitty/): GPU powered terminal.
 
 ##### Recommended Programs:
 
@@ -120,6 +122,7 @@ sudo apt install libomp-dev
 sudo apt install cdecl
 sudo apt install cutils
 sudo apt install vim-gtk
+sudo apt install kitty
 sudo apt install cppcheck
 sudo apt install cppcheck-gui
 sudo apt install splint
