@@ -1,4 +1,4 @@
-" Last Change: 2021-01-08  Friday: 02:11:22 AM
+" Last Change: 2021-01-08  Friday: 02:17:09 AM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1155,8 +1155,8 @@ let g:grammarous#show_first_error = 1
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" Force Overwrite Read-Only Files
-:amenu File.Force\ Overwrite\ Read-Only\ Files\ (\:w!\) :w! <CR>
+" Force-Overwrite Read-Only Files
+:amenu File.Force-Overwrite\ Read-Only\ Files\ (\:w!\) :w! <CR>
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
