@@ -840,6 +840,22 @@ An example to search the manual of Vim with specific options. This option search
 Opens Vim documentation with the topic 'statusline'.
 
 -----------------------------------
+## Get the detail of how Vim was compiled:
+-----------------------------------
+
+Open any terminal (or, CMD.EXE on MS Windows), then type:
+
+```
+vim --version
+```
+
+Check Vim version in Vim Command mode:
+
+```
+:version
+```
+
+-----------------------------------
 
 ## Leader `\`
 
