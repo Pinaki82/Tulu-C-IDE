@@ -1403,6 +1403,10 @@ The very essence of morality, principalities, ethical rights to humans and creat
 
 Here it is: [ICCF](https://en.wikipedia.org/wiki/ICCF_Holland)
 
+We will most assuredly make a difference with our collaborative initiatives. Let's work together; the victory will be ours. We are C/C++ fanatics, wandering into this world to WIN!
+
+**The Will To Win** ~ _Berton Braley_
+
 Cheers and HAPPY VIMMING!
 
 ----------------------------------------------------------------
