@@ -1,4 +1,4 @@
-" Last Change: 2021-01-08  Friday: 03:57:23 AM
+" Last Change: 2021-01-08  Friday: 02:03:37 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -437,11 +437,11 @@ if v:version <= 701 && exists('g:vimsyn_folding')
     " fold functions
     syn region vimFoldFunction
           \ start="\<fu\%[nction]!\=\s\+\%(<[sS][iI][dD]>\|[sSgGbBwWtTlL]:\)\?\%(\i\|[#.]\|{.\{-1,}}\)*\ze\s*("
-            \ end="\<endfu\%[nction]\>"
-            \ transparent fold
-            \ keepend extend
-            \ containedin=ALLBUT,@vimNoFold
-            \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
+          \ end="\<endfu\%[nction]\>"
+          \ transparent fold
+          \ keepend extend
+          \ containedin=ALLBUT,@vimNoFold
+          \ skip=+"\%(\\"\|[^"]\)\{-}\%("\|$\)\|'[^']\{-}'+ "comment to fix highlight on wiki'
   endif
 
   " fold augroups
@@ -1197,7 +1197,7 @@ let g:grammarous#show_first_error = 1
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Remove Duplicate Lines
-:amenu Utilities.Remove\ Duplicate\ Lines\ (\:sort\ u\) :sort u <CR>
+:amenu Utilities.Remove\ Duplicate\ Lines\ \[*Warning*:\ For\ lists\.\ Do\ not\ run\ it\ on\ codes\.\]\ (\:sort\ u\) :sort u <CR>
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
