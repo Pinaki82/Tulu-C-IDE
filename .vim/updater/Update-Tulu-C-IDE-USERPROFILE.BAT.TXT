@@ -1,9 +1,24 @@
 @ECHO OFF
 REM Tulu-C-IDE updater
 
-REM Updater for GVim Portable provided by PortableApps
+REM Updater for GVim (regular GVim installation)
 
-REM GVim location: %USERPROFILE%\PortableApps\gVimPortable
+REM 32-BIT VIM VERSIONS
+REM GVim location: %PROGRAMFILES(X86)%\Vim
+REM OR 64-BIT VIM VERSIONS
+REM GVim location: %PROGRAMFILES%\Vim
+REM GVim config location: %USERPROFILE%
+
+REM ***** WARNING *****
+REM Run this script from %SYSTEMDRIVE%.
+REM	Open Windows Explorer (Start Menu -> EXPLORER.EXE).
+REM In the Address Bar, type %SYSTEMDRIVE%. Copy this file
+REM to that location (Usually, C:\). Read every line before double-clicking
+REM on this BATCH script. Make necessary changes if needed. All other files
+REM except temporary.vim will be overwritten by the
+REM latest GitHub repository contents. If you have modified the configuration,
+REM please keep a backup and merge your customisation from the backup using
+REM WinMerge or VimDiff once the update is done.
 
 REM I assume that you haven't modified the files I list as follows:
 REM .vimrc
@@ -80,9 +95,6 @@ ROBOCOPY "%USERPROFILE%\/\.vim\plugged" "%USERPROFILE%\vim_state_backup\/\.vim\p
 ROBOCOPY "%USERPROFILE%\/\.vim\plugin" "%USERPROFILE%\vim_state_backup\/\.vim\plugin" /E /Z /SJ /SL /MIR
 PAUSE
 
-@ECHO OFF
-REM PREVIOUS: ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings" /XF "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\_viminfo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\gVimPortableSettings.ini" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugin\temporary.vim" /XD "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimbackup" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimswap" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimviews" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimundo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugged" /E /MIR
-@ECHO ON
 REM Copy from the temp GitHub repo download location.
 @ECHO OFF
 REM Copy files and folders individually.
@@ -90,7 +102,6 @@ REM ROBOCOPY follows the file pointer to the directory to replace everything in 
 REM Chances are there that it might wipe out all other files in the %USERPROFILE% directory.
 REM Copying files and folders individually seems to be the only option.
 REM For example: ROBOCOPY C:\Cabbages C:\Users\Spiderman\Kings /E /MIR will wipe all other files in Kings that are not present in cabbages.
-rem ROBOCOPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings" /XF "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\_viminfo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\gVimPortableSettings.ini" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugin\temporary.vim" /XD "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimbackup" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimswap" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimviews" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vimundo" "%USERPROFILE%\PortableApps\gVimPortable\Data\settings\/\.vim\plugged" /E /Z /SJ /SL /MIR
 REM https://www.lifewire.com/copy-command-2625842
 @ECHO ON
 COPY "%SYSTEMDRIVE%\git_clone_temp\Tulu-C-IDE\/\.vimrc" "%USERPROFILE%\/\.vimrc" /V
