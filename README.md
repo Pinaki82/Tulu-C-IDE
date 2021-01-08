@@ -1383,6 +1383,11 @@ You can install as many plugins as you want as long as a plugin you are going to
 You can also remove existing plugins, but I will strongly advise you against doing so. Very minimal and vital plugins are included. Use them, you won't regret it.
 
 ----------------------------------------------------------------
+### Tulu-C-IDE updater
+
+The easiest way to update **Tulu-C-IDE** is to download a _zip_ file from the main branch, extract the _zip_ archive to a local folder, compare the files in that location with the current setup, then merge the necessary changes with a diff tool. Or one can simply overwrite the existing files in the _HOME_ directory (`~/` or `%USERPROFILE%`) if so many configuration files have not been changed so far. Open the `.vim/updater` folder. There are scripts to update the package. On MS Windows, rename the WinBatch files. Files are in _.TXT_ extensions for safety. Read every line and change the script according to your requirements before you run the script.
+
+----------------------------------------------------------------
 
 ## A brief on Vim and C/C++
 
