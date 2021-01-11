@@ -1488,6 +1488,8 @@ Plug 'https://github.com/Pinaki82/indent-code.git'
 
 Plug 'https://github.com/ciaranm/detectindent.git'
 
+Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
+
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " like: Plug 'junegunn/vim-easy-align'
