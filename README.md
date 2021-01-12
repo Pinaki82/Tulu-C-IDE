@@ -249,7 +249,7 @@ file names as you open/edit them in Vim.
 
 [detectIndent](https://github.com/ciaranm/detectindent.git): A Vim plugin, for automatically detecting indent settings.
 
-[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): A Vim plugin to wrap lines in Syntastic location list (Warning) window.
+[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window.
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
 
