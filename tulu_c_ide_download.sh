@@ -3,7 +3,7 @@
 cd ~/  && \
 git clone https://github.com/Pinaki82/Tulu-C-IDE  && \
 rm -rf ~/Tulu-C-IDE/.git  && \
-rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE ~/Tulu-C-IDE/tulu_c_ide_download.sh && \
+rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE ~/Tulu-C-IDE/tulu_c_ide_download.sh ~/GIT+SSH+GPG-and-Code-Signing.md && \
 cd ~/Tulu-C-IDE && find ./ -maxdepth 1 -mindepth 1 -exec mv -f -t ~/ {} +  && \
 
 # https://unix.stackexchange.com/questions/50487/how-to-move-all-files-and-folders-via-mv-command

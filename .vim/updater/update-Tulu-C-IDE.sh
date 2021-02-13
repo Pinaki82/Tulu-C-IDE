@@ -14,7 +14,7 @@ cd ~/  && \
 rm -rf ~/Tulu-C-IDE && \
 git clone https://github.com/Pinaki82/Tulu-C-IDE  && \
 rm -rf ~/Tulu-C-IDE/.git  && \
-rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE ~/Tulu-C-IDE/tulu_c_ide_download.sh && \
+rm ~/Tulu-C-IDE/README.md ~/Tulu-C-IDE/LICENSE ~/Tulu-C-IDE/tulu_c_ide_download.sh ~/GIT+SSH+GPG-and-Code-Signing.md && \
 # https://www.tecmint.com/sync-new-changed-modified-files-rsync-linux/
 rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/autoload/* ~/.vim/autoload && \
 rsync --archive --recursive --verbose --progress ~/Tulu-C-IDE/.vim/bitmaps/* ~/.vim/bitmaps && \
