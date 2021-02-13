@@ -1013,6 +1013,165 @@ history > bashhisttxtfile.txt
 ```
 
 
+---------------------------------------------------------
+
+
+## Use KeePassXC as an SSH agent on Linux
+
+
+KeePassXC can be served as an SSH agent on Linux. This approach has some obvious advantages over storing SSH keypair on hard drives. KeePassXC will take care of the SSH passphrase which is the greatest advantage, plus, storing SSH keypairs on hard drives is less-secure than keeping them inside encrypted password database vaults which can take advantage of multifactor authentication. A KDBX vault can be protected further with a key file. The master password of a vault will unlock the database and add an SSH agent to the system keyring till a session ends. Nobody will be able to use the SSH keys until the vault gives them access to the SSH private key. Hence, nobody will be able to intercept the SSH connection without your involvement in cavalier security practises.
+
+
+So, let's checkout.
+
+
+Type the command below as usual. It will tell us whether an SSH keypair exists or not.
+
+
+```
+ls -al ~/.ssh
+```
+
+
+![2021-02-14_00-19](https://user-images.githubusercontent.com/16861933/107861590-cd034900-6e6c-11eb-8a47-0f617aefa5e1.png)
+
+
+Make sure whether the ssh-agent is running.
+
+
+```
+eval "$(ssh-agent -s)"
+```
+
+
+Or,
+
+
+```
+eval `ssh-agent -s`
+```
+
+
+![2021-02-14_00-20](https://user-images.githubusercontent.com/16861933/107861631-223f5a80-6e6d-11eb-852b-07010589f718.png)
+
+
+We need the output of the command `ssh-add -l`. See https://superuser.com/questions/1595123/how-do-i-use-keepassxc-as-an-ssh-agent
+
+
+```
+ssh-add -l
+```
+
+For the first time, you might get a warning that says the agent has not identities.
+
+
+![2021-02-14_00-20_1](https://user-images.githubusercontent.com/16861933/107861740-c0332500-6e6d-11eb-9eb6-2c117cc364cb.png)
+
+
+Well! Try to connect to a Git server as usual.
+
+
+```
+ssh -T git@github.com
+```
+
+
+Type your SSH passphrase.
+
+
+![2021-02-14_00-23](https://user-images.githubusercontent.com/16861933/107861835-831b6280-6e6e-11eb-89da-91a475ebf940.png)
+
+
+You'll be asked to type your SSH passphrase. Type it, too.
+
+
+![2021-02-14_00-25](https://user-images.githubusercontent.com/16861933/107861855-a0e8c780-6e6e-11eb-9b1d-84b74a59c4bd.png)
+
+
+Try again to get the identity of the SSH agent because that identity will be your Username in KeePassXC's SSH key vault.
+
+
+```
+ssh-add -l
+```
+
+
+You may have to add your SSH private key to the ssh-agent once again, but it doesn't harm anything.
+
+
+```
+ssh-agent sh -c 'ssh-add; ssh-add -L'
+```
+
+
+With some trial and error, you will eventually be there to get an output of the command `ssh-add -l`.
+
+
+Copy the SSH-agent ID as shown in the screenshot below. It's marked by the yellow box.
+
+
+![2021-02-14_00-29](https://user-images.githubusercontent.com/16861933/107862036-ea85e200-6e6f-11eb-86d6-7937bf2ecd05.png)
+
+
+Test your connection again.
+
+
+```
+ssh -T git@github.com
+```
+
+
+![2021-02-14_00-31](https://user-images.githubusercontent.com/16861933/107862076-3d5f9980-6e70-11eb-86ef-0cbfdb04fc1a.png)
+
+
+Install KeePassXC DEB package from the Ubuntu repository. Snap or AppImage versions will not work with the SSH agent. Ubuntu repository might contain an outdated version of the password manager so try the repository that KeePassXC team provides. The Ubuntu repo versions will also be fine for our use case.
+
+
+```
+sudo add-apt-repository ppa:phoerious/keepassxc
+sudo apt install keepassxc
+```
+
+
+After finishing the installation, open the program and follow the steps captured as screenshots.
+
+
+![2021-02-14_00-32](https://user-images.githubusercontent.com/16861933/107862237-7f3d0f80-6e71-11eb-8e0e-04111cda29f0.png)
+
+
+Go to Application Settings then enable SSH integration.
+
+
+![2021-02-14_00-33](https://user-images.githubusercontent.com/16861933/107862280-bad7d980-6e71-11eb-9384-895d3466a646.png)
+
+
+Now create a new vault. Don't use your personal password database. Create a New Entry and fill the fields as shown below. Give this entry a unique name, e.g., 'SSH-Lenovo-Y410' or 'SSH-Xubuntu-HP-Pavilion-X360' or 'SSH-DESKTOP-i5-4570S' etc. The ID of the SSH agent you copied will go to the Username field. The SSH passphrase will go to the Password field. Attach both the private and the public SSH keys to the database. You'll only need the SSH private key. As a backup, you can retain a copy of the SSH public key in the database as well. In the SSH Agent section of the vault, select `id_rsa` from the attached files and add it to the system keyring (system SSH agent). After applying changes to the database, right-click on the entry and choose 'Add Key to SSH Agent'. KeePassXC will save the database on its own. Move your private SSH key to somewhere else (it has to be a safe place), just leave the public one on the drive. Reboot your system, start the SSH-agent, open the vault, select the entry and repeat choosing 'Add Key to SSH Agent'. You are almost ready to use KeePassXC as an SSH agent at the moment. Try to get the output of the SSH-agent with `ssh-add -l` and test your connection `ssh -T git@github.com`. The demonstration may exactly not match the steps that you may have to take on your setup, however, it will be more or less similar to how I configured KeePassXC as an SSH agent on my Xubuntu laptop. KeePassXC outperforms every password managers when it comes to feature set and the ease of use. Nothing can beat KeePassXC's flexibility.
+
+
+![2021-02-14_00-35](https://user-images.githubusercontent.com/16861933/107862858-ee1c6780-6e75-11eb-9a08-35efff3da56f.png)
+
+
+![2021-02-14_00-36](https://user-images.githubusercontent.com/16861933/107862868-faa0c000-6e75-11eb-8603-3f7d18bc63a4.png)
+
+
+![2021-02-14_00-38](https://user-images.githubusercontent.com/16861933/107862874-05f3eb80-6e76-11eb-9621-4639ab883a88.png)
+
+
+![2021-02-14_00-39](https://user-images.githubusercontent.com/16861933/107862891-10ae8080-6e76-11eb-972f-f54aea2d1184.png)
+
+
+![2021-02-14_00-39-2](https://user-images.githubusercontent.com/16861933/107862897-1b691580-6e76-11eb-8fdb-9a781484294c.png)
+
+
+![photo_2021-02-14_01-09-00](https://user-images.githubusercontent.com/16861933/107862913-36d42080-6e76-11eb-94d9-80d540f01fbd.jpg)
+
+
+![2021-02-14_01-04](https://user-images.githubusercontent.com/16861933/107862904-29b73180-6e76-11eb-8d30-2ad1720e5329.png)
+
+
+---------------------------------------------------------
+
+
 Git is extremely versatile thus this document doesn't intend to be a documentation of Git itself. A comprehensive guide to Git would have been a subject to another Markdown file. Many Git tutorials can be found online. I'd request the readers to learn Git from online resources after setting up SSH and GPG with their Git server profiles.
 
 
