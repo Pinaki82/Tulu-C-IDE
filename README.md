@@ -1191,9 +1191,20 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 ![Splint-PATH-009](https://user-images.githubusercontent.com/16861933/103440683-b19dff00-4c6d-11eb-8dd8-ca533d13134e.png)
 
------------------------------------
+----------------------------------------------------------------
+
+### [Configure SSH to work with remote Git repositories from the Terminal.](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)
+
+
+Right-Click on the image below and open the link in a new tab.
+
+
+[![N|git_ssh_github](https://user-images.githubusercontent.com/16861933/107740857-0d11e100-6d32-11eb-9de0-c0cd08104e00.png)](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)
 
 ----------------------------------------------------------------
+
+----------------------------------------------------------------
+
 
 *** Disclaimer: None of the websites I will refer and the books I will suggest is no way associated with this project "Tulu-C-IDE"; they didn't pay a penny to sponsor this project, and neither I need to monetize my Vim configuration. ****
 
