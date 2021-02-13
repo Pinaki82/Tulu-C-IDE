@@ -157,6 +157,7 @@ sudo apt install regexxer
 sudo apt install vizigrep
 sudo apt install searchmonkey
 sudo apt install ninja-build
+sudo apt install xclip
 ```
 
 # Tulu-C-IDE relies on the following plugins:
