@@ -1,4 +1,4 @@
-" Last Change: 2021-01-08  Friday: 02:03:37 PM
+" Last Change: 2021-02-13  Saturday: 05:48:08 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -1344,6 +1344,29 @@ elseif g:osdetected == "Linux"
 
   :amenu Help.Tulu-C-IDE\ About\ and\ Tutorial\ \(\:TuluAbout\) :call Help_n_Tutorial_and_About_open_Xdg() <Esc>
   command! TuluAbout :silent! call Help_n_Tutorial_and_About_open_Xdg()
+endif
+
+if g:osdetected == "Windows"
+  function! GIT_SSH_GPG_open_Windows_Explorer()
+    :silent! !explorer "https://cutt.ly/4kZVSxP"
+  endfun
+
+  :amenu Help.GIT-SSH-GPG\ \(\:HelpSSHnGPG\) :call GIT_SSH_GPG_open_Windows_Explorer() <Esc>
+  command! HelpSSHnGPG :call GIT_SSH_GPG_open_Windows_Explorer()
+
+elseif g:osdetected == "Linux"
+  " https://askubuntu.com/questions/15354/how-to-open-file-with-default-application-from-command-line#:~:text=is%20not%20useful-,Show%20activity%20on%20this%20post.,in%20the%20user's%20preferred%20application.
+  function! GIT_SSH_GPG_open_Xdg()
+    :silent!!xdg-open "https://cutt.ly/4kZVSxP" &
+    if !has("gui_running")
+      :source ~/.vimrc
+      :source ~/.vimdotcommon/.vimrc2.vim
+      :source ~/.vim/plugin/temporary.vim
+    endif
+  endfun
+
+  :amenu Help.GIT-SSH-GPG\ \(\:HelpSSHnGPG\) :call GIT_SSH_GPG_open_Xdg() <Esc>
+  command! HelpSSHnGPG :silent! call GIT_SSH_GPG_open_Xdg()
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ============================================================================
