@@ -493,11 +493,11 @@ Try it yourself and see!
 
 -----------------------------------
 
-`Ctrl+F4`
+`Ctrl+F4` (MS Windows), `Shift+F4` (Linux/UNIX)
 
-Mode: Normal, Insert both.
+Mode: Normal.
 
-Closes the current file, but keeps it in the buffer (memory).
+Closes the current file, also deletes it from the buffer (memory).
 
 -----------------------------------
 
