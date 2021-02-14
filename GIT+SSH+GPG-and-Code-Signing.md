@@ -1016,6 +1016,45 @@ history > bashhisttxtfile.txt
 ---------------------------------------------------------
 
 
+### Type your SSH passphrase only once on Windows.
+
+
+On MS Windows, you have an option to save some typing efforts. Create a file .bashrc in your $HOME directory (%userprofile%) and fill the file with the following contents. You'll have to type your SSH passphrase only once, at every reboot.
+
+
+```
+# https://web.archive.org/web/20200921190557/https://docs.github.com/en/github/authenticating-to-github/working-with-ssh-key-passphrases
+
+# ~/.profile or ~/.bashrc (~/ means %userprofile%) (i.e., %userprofile%\.profile or, %userprofile%\.bashrc)
+
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+
+unset env
+
+```
+
+
+---------------------------------------------------------
+
+
 ## Use KeePassXC as an SSH agent on Linux
 
 
