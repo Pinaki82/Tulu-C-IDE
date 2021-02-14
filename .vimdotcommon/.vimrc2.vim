@@ -1,4 +1,4 @@
-" Last Change: 2021-02-13  Saturday: 05:48:08 PM
+" Last Change: 2021-02-14  Sunday: 03:55:34 PM
 " ============================================
 " Write the following line to your _vimrc or .vimrc and uncomment the line
 " source $HOME\/\.vimrc2.vim
@@ -225,12 +225,34 @@ elseif g:osdetected != "Windows"
   endfun
 endif
 
-" CTRL-F4 is close
-vnoremap <C-F4> :close <Enter>
+" ------------------------------------------------------------------
+" CTRL-F4 (SHIFT-F4 on Linux) is close
+" https://stackoverflow.com/questions/2066590/automatically-quit-vim-if-nerdtree-is-last-and-only-buffer
+
+function CloseFile()
+  if ((winnr('$') > 1))
+    echo 'Type no if you want to skip closing the file!'
+    " https://stackoverflow.com/questions/14388703/vim-mapping-with-user-input
+    if input("Unsaved changes will be lost! Proceed[y/no]? ") != "no"
+      :e!
+      :bd
+      :e!
+    endif
+  elseif ((winnr('$') <= 1))
+    "  https://vi.stackexchange.com/questions/8876/echo-message-on-startup-without-prompting
+    echo 'Cannot delete the last buffer!'
+  endif
+endfunction
+
+vnoremap <C-F4> :call CloseFile() <Enter>
+nnoremap <C-F4> :call CloseFile() <Enter>
+inoremap <C-F4> :call CloseFile() <Enter>
 if g:osdetected != "Windows"
-  vnoremap <C-F4> :close <Enter>
-  nnoremap <C-F4> :close <Enter>
+  vnoremap <S-F4> :call CloseFile() <Enter>
+  nnoremap <S-F4> :call CloseFile() <Enter>
+  inoremap <S-F4> :call CloseFile() <Enter>
 endif
+" ------------------------------------------------------------------
 
 " CTRL-D is Buffer Delete
 map <C-D> <Esc>:confirm bd <CR><Esc>
