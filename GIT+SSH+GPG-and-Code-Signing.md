@@ -1016,10 +1016,10 @@ history > bashhisttxtfile.txt
 ---------------------------------------------------------
 
 
-### Type your SSH passphrase only once on Windows.
+### Type your SSH passphrase only once on Windows
 
 
-On MS Windows, you have an option to save some typing efforts. Create a file .bashrc in your $HOME directory (%userprofile%) and fill the file with the following contents. You'll have to type your SSH passphrase only once, at every reboot.
+On MS Windows, you have an option to save some typing efforts. Create a file `.bashrc` in your `$HOME` directory (`%userprofile%`) and fill the file with the following contents. You'll have to type your SSH passphrase only once, at every reboot.
 
 
 ```
