@@ -362,7 +362,7 @@ Type the following commands:
  - Windows 10 Git Bash
 
 ```
-git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+git config --global gpg.program 'C:\Program Files (x86)\GnuPG\bin\gpg.exe'
 ```
 
  - Linux Terminal & Windows 10 Git Bash both
@@ -415,6 +415,27 @@ git config --global core.editor "'C:\Program Files\Notepad2\Notepad2.exe'"
 ```
 
 Reference: https://stackoverflow.com/questions/10564/how-can-i-set-up-an-editor-to-work-with-git-on-windows
+
+
+Add a few ornaments to Git configuration such as how Git should display colours in its terminal, your preferred Diff/Merge Tool etc.:
+
+
+```
+git config --global color.ui true
+```
+
+
+```
+git config --global color.status auto
+```
+
+
+```
+git config --global color.branch auto
+```
+
+
+Reference: https://www.tutorialspoint.com/git/git_environment.htm
 
 
 Do a final check:
@@ -670,7 +691,7 @@ Type the following commands:
  - Windows 10 Git Bash
 
 ```
-git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+git config --global gpg.program 'C:\Program Files (x86)\GnuPG\bin\gpg.exe'
 ```
 
  - Linux Terminal & Windows 10 Git Bash both
@@ -725,6 +746,14 @@ git config --global core.editor "'C:\Program Files\Notepad2\Notepad2.exe'"
 Reference: https://stackoverflow.com/questions/10564/how-can-i-set-up-an-editor-to-work-with-git-on-windows
 
 
+Change the default Diff/Merge Tool.
+
+
+```
+git config --global merge.tool 'C:\Program Files (x86)\WinMerge\WinMergeU.exe'
+```
+
+
 Do a final check:
 
 
@@ -752,6 +781,7 @@ The global config file should look somewhat similar to what you see below:
 ```
 
 You can also give the following a try. See the output.
+
 
 ```
 ~/.gitconfig
