@@ -151,6 +151,8 @@ sudo apt install wmctrl
 
 ```
 sudo apt install gitg
+sudo apt install gitk
+sudo apt install git-gui
 sudo apt install libglib2.0-doc
 sudo apt install fldiff
 sudo apt install regexxer
