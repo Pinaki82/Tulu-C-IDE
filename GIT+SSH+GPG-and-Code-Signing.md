@@ -435,7 +435,7 @@ git config --global color.branch auto
 ```
 
 
-Change the default Diff/Merge Tool.
+Change the default Diff/Merge Tool:
 
 
 ```
