@@ -435,6 +435,14 @@ git config --global color.branch auto
 ```
 
 
+Change the default Diff/Merge Tool.
+
+
+```
+git config --global merge.tool 'C:\Program Files (x86)\WinMerge\WinMergeU.exe'
+```
+
+
 Reference: https://www.tutorialspoint.com/git/git_environment.htm
 
 
