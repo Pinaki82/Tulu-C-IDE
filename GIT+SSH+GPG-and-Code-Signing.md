@@ -439,11 +439,18 @@ Change the default Diff/Merge Tool:
 
 
 ```
-git config --global merge.tool 'C:\Program Files (x86)\WinMerge\WinMergeU.exe'
+git config --global diff.tool winmerge
+git config --global difftool.winmerge.path "C:\Program Files (x86)\WinMerge\WinMergeU.exe"
+git config --global merge.tool winmerge
+git config --global mergetool.winmerge.path "C:\Program Files (x86)\WinMerge\WinMergeU.exe"
 ```
 
 
-Reference: https://www.tutorialspoint.com/git/git_environment.htm
+References:
+
+https://www.tutorialspoint.com/git/git_environment.htm
+
+https://kheri.net/configure-git-external-diff-and-merge-tool/
 
 
 Do a final check:
