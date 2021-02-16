@@ -1098,6 +1098,175 @@ sudo apt install gitg
 ---------------------------------------------------------
 
 
+### Difftool Configuration
+
+
+While the built-in Diff/Merge utilities serve the purpose well, additional programs with a graphical user interface are desired in most cases, especially, when it comes to performing Diff/Merge operations. Now we will see how to configure external Diff tools at a glance. I'll describe the steps in short. If you are curious enough, you can look at this extensively covered [article](https://kheri.net/configure-git-external-diff-and-merge-tool/) written by Arvind Chandok about configuring the default Diff/Merge Tools.
+
+
+Fire up `Git Bash` (or, any Linux Terminal application you prefer) and type:
+
+
+```
+git difftool --tool-help
+```
+
+
+It will give you an overview of how Git can be accompanied by a host of supported external Diff Tools.
+
+
+I chose [WinMerge](https://winmerge.org/) on Windows 10 and [Meld](https://meldmerge.org/) on my Xubuntu Linux setup. Set up the Diff Tool of your preference. [Meld](https://meldmerge.org/) is easy and intuitive. Even if it's slow on large directory trees with innumerable files, a single file of a few Kilobytes will not slow down the system.
+
+
+On `Git Bash`, type the following commands one-by-one. WinMerge is usually found in "C:\Program Files (x86)\WinMerge\WinMergeU.exe". Make sure it is there, otherwise, find the path to the installation folder and adjust the commands below. Path adjustment is unnecessary on Linux for installed binaries.
+
+
+ - Windows 10 Git Bash:
+
+
+```
+git config --global diff.tool winmerge
+git config --global difftool.winmerge.path "C:\Program Files (x86)\WinMerge\WinMergeU.exe"
+git config --global difftool.prompt false
+git config --global difftool.trustExitCode true
+git config --global difftool.keepBackup false
+git config --global merge.tool winmerge
+git config --global mergetool.winmerge.path "C:\Program Files (x86)\WinMerge\WinMergeU.exe"
+git config --global mergetool.prompt false
+git config --global mergetool.trustExitCode true
+git config --global mergetool.keepBackup false
+```
+
+ - Linux Terminal:
+
+```
+git config --global diff.tool meld
+git config --global difftool.prompt false
+git config --global difftool.trustExitCode true
+git config --global difftool.keepBackup false
+git config --global merge.tool meld
+git config --global mergetool.prompt false
+git config --global mergetool.trustExitCode true
+git config --global mergetool.keepBackup false
+```
+
+Now, `git config --global --edit` will produce an output quite similar to what you see here:
+
+
+ - Windows 10 Git Bash:
+
+
+```
+[winUpdater]
+	recentlySeenVersion = 2.20.1.windows.1
+[user]
+	email = axxxxxxxxxx7@gmail.com
+	name = Pxxxxx Gupta
+	signingkey = JKGHVSDTOFGEWLGH
+[commit]
+	gpgsign = true
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+[core]
+	editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[merge]
+	tool = winmerge
+[diff]
+	tool = winmerge
+[difftool "winmerge"]
+	path = C:\\Program Files (x86)\\WinMerge\\WinMergeU.exe
+[difftool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool "winmerge"]
+	path = C:\\Program Files (x86)\\WinMerge\\WinMergeU.exe
+
+```
+
+
+ - Linux Terminal:
+
+```
+[user]
+	signingkey = JKGHVSDTOFGEWLGH
+	name = Pxxxxx Gupta
+	email = axxxxxxxxxx7@gmail.com
+[commit]
+  gpgsign = true
+
+[core]
+	editor = mcedit
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+
+```
+
+
+Make a change to any file inside the repo folder [`"E:\myfirsttesgithubtrepo"` -> (where you cloned the repo: `git clone git@github.com:Pinaki82/testprivate.git`) -> `cd testprivate/`] and issue the commands below to see the differences.
+
+
+```
+git status
+git difftool
+```
+
+
+WinMerge (Meld on Linux) will be launched with a side-by-side comparison.
+
+
+There might be a situation when the diff utility still may create a backup file (`*.bak`, `*.orig` etc.) so you'll need a `.gitignore` file. Any file/(wildcard with extension) listed on that file (at each separate line) will not be considered a project element. Create that list of the embargo:
+
+
+```
+touch .gitignore
+```
+
+
+Open the file with any text editor and put the filenames+extension or the extensions started with the wildcard at separate lines.
+
+Try committing changes to the repo with the command `git commit -a`, those superfluous backup files will be excluded. Don't forget to add the file `.gitignore` to your repo.
+
+
+When you are ready, push the changes to the remote repository to make the updated revisions available to other machines as well.
+
+
+```
+git push origin main
+```
+
+Or,
+
+```
+git push origin [branch=(main)(master)(stable)(development)(etc...)]
+```
+
+
+---------------------------------------------------------
+
+
 ### Type your SSH passphrase only once on Windows
 
 
