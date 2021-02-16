@@ -1054,6 +1054,50 @@ history > bashhisttxtfile.txt
 ---------------------------------------------------------
 
 
+**Tip:** On Windows, Git comes with some useful utilities. `git-gui` and `gitk` are such notable mentions. These tools occasionally come in handy when you do not want to deal with the command-line utilities for some reason. How to reap the benefits of `gitk` and `git-gui` is something that you must know even if you rarely use them.
+
+
+`gitk` is a graphical Git commit viewer for tracking changes more tangibly through its simple GUI. `git-gui` is a built-in GUI tool for Git, for committing changes to the repository.
+
+
+Here, in our example of a private test repository, we cloned our repo with the command
+
+
+```
+git clone git@github.com:Pinaki82/testprivate.git
+```
+
+
+Let's assume we cloned it into "E:\myfirsttesgithubtrepo". Enter the directory and right-click on any blank area inside 'Windows Explorer' and select `Git Bash Here`, then issue the command
+
+```
+git clone git@github.com:Pinaki82/testprivate.git
+```
+
+And, type `ls`. It will give you an overview of the contents of the directory. The subfolder `testprivate` was cloned from GitHub servers. Git keeps its configurations and tracking database inside a folder called `.git` which can be found in the cloned repo folder. So let's enter that cloned folder `testprivate` as well, `cd testprivate/` and make a few changes, say, add a comment to a `C` file, return to Git Bash and type the commands `gitk` and `git-gui` consecutively. See what happens. The default Git tools are pretty self-explanatory and intuitive.
+
+
+How would you get those tools on Linux?
+
+
+```
+sudo apt install git
+sudo apt install gitk
+sudo apt install git-gui
+```
+
+
+```
+sudo apt install gitg
+```
+
+
+`gitg` is another simple yet excellent Git GUI tool from GNOME.
+
+
+---------------------------------------------------------
+
+
 ### Type your SSH passphrase only once on Windows
 
 
