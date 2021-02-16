@@ -603,6 +603,12 @@ cat ~/.ssh/id_rsa.pub > id_rsa.pub.txt
  - Windows 10
 
 ```
+cat ~/.ssh/id_rsa.pub > id_rsa.pub.txt
+```
+
+Or,
+
+```
 clip < ~/.ssh/id_rsa.pub
 ```
 
@@ -628,13 +634,28 @@ Steps are quite similar to what we did while adding our GPG public key to GitHub
 Sign in to GitHub and find the 'Settings' from the drop-down menu after clicking at the top-right corner of your profile as before.
 
 
+![2021-02-11 22_09_30-GitHub - Brave](https://user-images.githubusercontent.com/16861933/107767235-b076ec00-6d5a-11eb-8af2-ef87ecac87ba.png)
+
+
+![2021-02-11 22_10_47-Greenshot](https://user-images.githubusercontent.com/16861933/107767279-c2588f00-6d5a-11eb-90fb-864cc5e7d71e.png)
+
+
 Locate the section for GPG and SSH keys at the left pane.
+
+
+![2021-02-11 22_12_42-Greenshot](https://user-images.githubusercontent.com/16861933/108089435-98c39e80-709f-11eb-963b-2d4d291edb66.png)
 
 
 Click the 'New SSH key' button.
 
 
+![2021-02-11 22_12_42-Greenshot](https://user-images.githubusercontent.com/16861933/108089435-98c39e80-709f-11eb-963b-2d4d291edb66.png)
+
+
 Copy the contents of your SSH Public Key from the text file `id_rsa.pub.txt` and paste it there.
+
+
+![2021-02-11 22_15_06-Greenshot](https://user-images.githubusercontent.com/16861933/108089630-d3c5d200-709f-11eb-8e6e-08fd9b9955d5.png)
 
 
 Fill the field 'Title' with a recognisable name so that you can identify the device later.
