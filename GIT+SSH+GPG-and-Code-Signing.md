@@ -1445,7 +1445,7 @@ ssh -T git@github.com
 ![2021-02-14_00-31](https://user-images.githubusercontent.com/16861933/107862076-3d5f9980-6e70-11eb-86ef-0cbfdb04fc1a.png)
 
 
-Install KeePassXC DEB package from the Ubuntu repository. Snap or AppImage versions will not work with the SSH agent. Ubuntu repository might contain an outdated version of the password manager so try the repository that KeePassXC team provides. The Ubuntu repo versions will also be fine for our use case.
+Install KeePassXC DEB package from the Ubuntu repository. Snap or AppImage versions will not work with the SSH agent. Ubuntu repository might contain an outdated version of the password manager so try the official repository from the KeePassXC's website. The Ubuntu repo versions will also be fine for our use case.
 
 
 ```
