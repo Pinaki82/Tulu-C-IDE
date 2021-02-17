@@ -1383,7 +1383,7 @@ We need the output of the command `ssh-add -l`. See https://superuser.com/questi
 ssh-add -l
 ```
 
-For the first time, you might get a warning that says the agent has not identities.
+For the first time, you might get a warning that says the agent has no identities.
 
 
 ![2021-02-14_00-20_1](https://user-images.githubusercontent.com/16861933/107861740-c0332500-6e6d-11eb-9eb6-2c117cc364cb.png)
