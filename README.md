@@ -171,6 +171,7 @@ sudo apt install xclip
 [vim-clang](https://github.com/justmao945/vim-clang.git): Use of clang to parse and complete C/C++ source files. `:h clang.txt`
 
 [echodoc.vim](https://github.com/Shougo/echodoc.vim.git): Displays function signatures from completions in the command line. `:h echodoc`
+
 `echodoc` shows an overview of the last autocompletion (e.g., function parameter completion) in Vim's command area.
 
 ![example](https://cloud.githubusercontent.com/assets/111942/19444981/a076d748-9460-11e6-851c-f249f8110b3b.gif)
