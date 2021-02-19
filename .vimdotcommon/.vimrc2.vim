@@ -1451,7 +1451,15 @@ Plug 'https://github.com/junegunn/vim-plug.git'
 
 Plug 'https://github.com/preservim/nerdtree.git'
 
-Plug 'https://github.com/justmao945/vim-clang.git'
+" Plug 'https://github.com/justmao945/vim-clang.git'
+" ------------------------------
+" Changing windows from a vim function is not allowed anymore, since Vim 8.2.2426,7.
+" https://github.com/justmao945/vim-clang/pull/140
+" A fork of vim-clang provided by @mckellygit (https://github.com/mckellygit) can
+" be adopted as a temporary fix.
+" ------------------------------
+
+Plug 'https://github.com/mckellygit/vim-clang.git'
 
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 
@@ -1490,6 +1498,8 @@ Plug 'https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git'
 Plug 'https://github.com/Pinaki82/Vim-Syntastic-Setup.git'
 
 Plug 'https://github.com/Pinaki82/TimeStamp2.git'
+
+Plug 'https://github.com/Shougo/echodoc.vim.git'
 
 Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
 
@@ -1573,5 +1583,13 @@ call plug#end()
 " ************************ VIM-PLUG PLUGIN SETUP ENDS *******************
 " =======================================================================
 
+" ------------------- auto_tags_gen plugin settings
 " auto_tags_gen plugin startup with option 1
 let g:startuptrigger = 1
+
+" ------------------- echodoc plugin settings
+" To use echodoc, you must increase 'cmdheight' value.
+" https://github.com/Shougo/echodoc.vim.git
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+

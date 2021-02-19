@@ -170,6 +170,11 @@ sudo apt install xclip
 
 [vim-clang](https://github.com/justmao945/vim-clang.git): Use of clang to parse and complete C/C++ source files. `:h clang.txt`
 
+[echodoc.vim](https://github.com/Shougo/echodoc.vim.git): Displays function signatures from completions in the command line. `:h echodoc`
+`echodoc` shows an overview of the last autocompletion (e.g., function parameter completion) in Vim's command area.
+
+![example](https://cloud.githubusercontent.com/assets/111942/19444981/a076d748-9460-11e6-851c-f249f8110b3b.gif)
+
 [Syntastic](https://github.com/vim-syntastic/syntastic.git): Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user. `:h syntastic` `:h syntastic-checkers.txt`
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
