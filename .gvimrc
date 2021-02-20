@@ -4,14 +4,14 @@
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window.
-  set lines=29 columns=100
+  set lines=32 columns=105
 else
   " This is console Vim.
   if exists("+lines")
-    set lines=50
+    set lines=53
   endif
   if exists("+columns")
-    set columns=100
+    set columns=105
   endif
 endif
 
