@@ -1126,8 +1126,15 @@ sudo apt install git-gui
 sudo apt install gitg
 ```
 
+Or,
+
+```
+sudo apt install git-cola
+```
+
 
 `gitg` is another simple yet excellent Git GUI tool from GNOME.
+
 
 Gitg is pretty barebone at the moment. [Git Cola](https://github.com/git-cola/git-cola) comes packed with all the bells and whistles needed to control Git from a Graphical User Interface, however, it's a little slower, especially on MS Windows. There are many Git GUI frontends out there, of them, Git Cola holds nothing back from anyone, from a more freedom friendly perspective. For example, there's a free version of a Git GUI client that doesn't allow free users to deal with private repositories. Git Cola is neatly comparable to advanced GUI clients of the Git VCS like Sourcetree, GitKraken, SmartGit, GitHub Desktop, Gitbox, Tower and others.
 
