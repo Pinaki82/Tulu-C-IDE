@@ -827,7 +827,7 @@ You can also give the following a try. See the output.
 ```
 
 
-Follow the suit and add your SSH public key to your BitBucket and GitLab profiles.
+Follow the suit and add your SSH public key to your BitBucket, GitLab, and NotABug.org profiles.
 
 Test your connection.
 
@@ -843,6 +843,10 @@ ssh -T git@bitbucket.org
 ssh -T git@gitlab.com
 ```
 
+```
+ssh -T git@notabug.org
+```
+ 
 ---------------------------------------------------------
 
 
@@ -1124,6 +1128,9 @@ sudo apt install gitg
 
 
 `gitg` is another simple yet excellent Git GUI tool from GNOME.
+
+Gitg is pretty barebone at the moment. [Git Cola](https://github.com/git-cola/git-cola) comes packed with all the bells and whistles needed to control Git from a Graphical User Interface, however, it's a little slower, especially on MS Windows. There are many Git GUI frontends out there, of them, Git Cola holds nothing back from anyone, from a more freedom friendly perspective. For example, there's a free version of a Git GUI client that doesn't allow free users to deal with private repositories. Git Cola is neatly comparable to advanced GUI clients of the Git VCS like Sourcetree, GitKraken, SmartGit, GitHub Desktop, Gitbox, Tower and others.
+
 
 
 ---------------------------------------------------------

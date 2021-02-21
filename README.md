@@ -57,6 +57,12 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  
  [git-scm](https://git-scm.com/)
  
+ [Sourcetree](https://www.sourcetreeapp.com/)
+
+ Or,
+
+ [git-cola](https://github.com/git-cola/git-cola)
+ 
  [Ctags](https://github.com/universal-ctags/ctags-win32)
  
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
@@ -80,6 +86,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [LLVM Clang](https://releases.llvm.org/download.html)
 
  [Git](https://git-scm.com/download/linux)
+
+ [git-cola](https://github.com/git-cola/git-cola)
 
  [Ctags](http://ctags.sourceforge.net/)
  
@@ -130,6 +138,8 @@ sudo apt install cmake-gui
 sudo apt install cmake
 sudo apt install wget
 sudo apt install git
+sudo apt install gitk
+sudo apt install git-gui
 sudo apt install ddd
 sudo apt install valgrind
 sudo apt install astyle
@@ -149,10 +159,21 @@ sudo apt install wmctrl
 
 ##### Recommended:
 
+
 ```
 sudo apt install gitg
-sudo apt install gitk
-sudo apt install git-gui
+```
+
+
+Or,
+
+
+```
+sudo apt install git-cola
+```
+
+
+```
 sudo apt install libglib2.0-doc
 sudo apt install fldiff
 sudo apt install regexxer
