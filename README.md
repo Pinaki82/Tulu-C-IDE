@@ -241,37 +241,37 @@ sudo apt install xclip
 
 [Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
 
-[TimeStamp2](https://github.com/Pinaki82/TimeStamp2.git): Vim/GVim plugin to add/update the timestamp.
+[TimeStamp2](https://github.com/Pinaki82/TimeStamp2.git): _"Vim/GVim plugin to add/update the timestamp."_
 
-[vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): Custom Settings for the vim-clang Vim/GVim plugin.
+[vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): _"Custom Settings for the vim-clang Vim/GVim plugin."_
 
 [stlrefvim](https://github.com/vim-scripts/stlrefvim.git): A C++ Standard Template Library reference manual. `:h stlrefvim.txt`
 
-[crefvim2](https://github.com/Pinaki82/crefvim2.git): CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann. `:h crefvim.txt` `:h crefvimdoc.txt` 
+[crefvim2](https://github.com/Pinaki82/crefvim2.git): _"CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann."_ `:h crefvim.txt` `:h crefvimdoc.txt` 
 
 [YankRing.vim](https://github.com/vim-scripts/YankRing.vim.git): Maintains a history of previous yanks, changes and deletes. `:h yankring.txt`
 
-[Reload-Button](https://github.com/Pinaki82/Reload-Button.git): A simple GVim plugin to reload the current buffer.
+[Reload-Button](https://github.com/Pinaki82/Reload-Button.git): _"A simple GVim plugin to reload the current buffer."_
 
-[convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): Convert Line Endings to Unix/Windows, `\lnu` and `\lnd`.
+[convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): "_Convert Line Endings to Unix/Windows"_, `\lnu` and `\lnd`.
 
-[AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): With this plugin, your vim comes to automatically opens popup menu for
-completions when you enter characters or move the cursor in Insert mode.
+[AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): _"With this plugin, your vim comes to automatically opens popup menu for
+completions when you enter characters or move the cursor in Insert mode."_
 
 [vim-grammarous
 ](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads [LanguageTool](https://languagetool.org/download/) on Linux, which requires Java 8+. Install Java Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre`. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc` or `%userprofile%\.vim\misc`) folder.
 
 [vim-bettersearch](https://github.com/kenng/vim-bettersearch.git): Notepad++ like search in Vim. `:BetterSearch<TAB>`.
 
-[MRU](https://github.com/yegappan/mru.git): The Most Recently Used (MRU) plugin provides an easy access to a list of 
+[MRU](https://github.com/yegappan/mru.git): _"The Most Recently Used (MRU) plugin provides an easy access to a list of 
 recently opened/edited files in Vim. This plugin automatically stores the 
-file names as you open/edit them in Vim.
+file names as you open/edit them in Vim."_
 
-[TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located. **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window. Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
+[TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window. Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
 
 [Tagbar](https://github.com/preservim/tagbar.git): A class outline viewer for Vim. See Functions, prototypes, Classes, Macros, Structures etc. in a separate vertical window and click on an item to find them in the actual file. **Usage:** `:TagbarToggle`.
 
-[repeaterchar.vim](https://github.com/Pinaki82/repeaterchar.vim.git): Define a character and repeat it n-times. How would you write ~~~~~~~ 100-times? **Usage:** `<C-u>` then fill out the options.
+[repeaterchar.vim](https://github.com/Pinaki82/repeaterchar.vim.git): _"Define a character and repeat it n-times."_ How would you write ~~~~~~~ 100-times? **Usage:** `<C-u>` then fill out the options.
 
 [Clear-Search-Highlight-in-Vim](https://github.com/Pinaki82/Clear-Search-Highlight-in-Vim.git): Cleans up Search Highlight.
 
@@ -279,15 +279,15 @@ file names as you open/edit them in Vim.
 
 [indent-code](https://github.com/Pinaki82/indent-code.git): A Vim plugin to indent code.
 
-[detectIndent](https://github.com/ciaranm/detectindent.git): A Vim plugin, for automatically detecting indent settings.
+[detectIndent](https://github.com/ciaranm/detectindent.git): _"A Vim plugin, for automatically detecting indent settings."_
 
-[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window.
+[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window."_
 
-[Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): This is a modified version of the awesome mustang colorscheme by hcalves, published on deviantART.
+[Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): _"This is a modified version of the awesome mustang colorscheme by hcalves, published on [deviantART](http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484)."_
 
-[mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): A dark Vim colour scheme.
+[mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): _"A dark Vim colour scheme."_
 
-[oh-la-la](https://github.com/Pinaki82/oh-la-la.git): High contrast dark color scheme with black background.
+[oh-la-la](https://github.com/Pinaki82/oh-la-la.git): _"High contrast dark color scheme with black background."_
 
 ## Change the default GVim theme:
 
