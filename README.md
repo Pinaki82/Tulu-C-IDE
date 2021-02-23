@@ -494,7 +494,7 @@ Type
 ![ZeroDollarBOL-EOL](https://user-images.githubusercontent.com/16861933/103245541-82923f80-4986-11eb-8317-f60a45f71e3f.gif)
 
 # Custom Keymaps and Keyboard Shortcuts
-### The following commands can come handy if inserted to the Vim Commandline in Command Mode:
+### The following commands can come in handy if typed into the Vim Commandline in Command Mode:
 
 `:help index`
 
@@ -520,7 +520,7 @@ Try it yourself and see!
 
 `CTRL-Y` is redo
 
-`CTRL-D` is Buffer Delete (closes the currently opened file and also deletes it from Vim's memory)
+`CTRL-D` is Buffer Delete (closes the currently opened file and also deletes it from Vim's memory). However, deleting the buffer will not delete the file from the disc.
 
 -----------------------------------
 
@@ -550,7 +550,7 @@ Makes texts lowercase.
 
 AAAAA -> aaaaa
 
------------------------------------
+----------- Means, ------------------------
 
 Mode: Insert Mode only.
 
@@ -595,8 +595,8 @@ Reloads file.
 -----------------------------------
 -----------------------------------
 
-Note: Avoid Alt key while you can, for the sake of portability.
-For example: In Linux, `Alt+F8` is used to resize the window of any kind. So it cannot be used.
+Note: Avoid the Alt key while you can, for sake of portability.
+For example: In some Linux 'Desktop Managers', `Alt+F8` is used to resize the window of any kind. So it cannot be used.
 Linux generally uses the Alt key to do different things.
 
 -----------------------------------
@@ -606,7 +606,7 @@ Linux generally uses the Alt key to do different things.
 
 Mode: Normal Mode only.
 
-Means: Jump to this tag.
+Means: Jump to the corresponding tag found in the index of the 'tags' file.
 
 Finds the pieces of stuff from the Tags related to header files etc., and opens the header. Uses index provided by the 'tags' for searching the header.
 
