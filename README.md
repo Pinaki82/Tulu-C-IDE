@@ -726,7 +726,7 @@ Shows the Vim installation folder.
 
 `:echo $HOME`
 
-Gives the home folder e.g., `C:\Users\"your_account_name"` as you do by typing `%userprofile%` (or `~/`) at the address bar.
+Echoes out the home folder e.g., `C:\Users\"your_account_name"` as you do by typing `%userprofile%` (or `~/`) at the address bar.
 
 Also,
 
@@ -752,7 +752,7 @@ or `/home/"your-user_account_name"/.vimrc` in Linux (`~/.vimrc`).
 
 This file is extremely crucial because Vim loads configurations at program startup from this file.
 
-To customize Vim, you can write you instructions to this file, as you can write the plugin files.
+To customize Vim, you can write your instructions to this file, as you would do to write the plugin files.
 
 -----------------------------------
 
@@ -790,7 +790,7 @@ Echoes the set directory (for storing temp files etc.).
 
 Displays the list of text-based scripts/plugins ( `_vimrc`, `.vim`, `*.vim` etc..) in use.
 
-Note: Vim plugins are essentially text files, though there exist a few shared library based plugins.
+Note: Vim plugins are essentially text files, though there exist a few shared library based complied binary (*.dll, *.so) plugins.
 
 -----------------------------------
 
@@ -808,7 +808,7 @@ Opens the GUI file browser to locate the file you need in that directory.
 
 This command closes all the files, wiping out the hidden memory too.
 
-When you close a file, Vim keeps it in its memory, making file hidden in the editor.
+When you close a file, Vim keeps the file in its memory, making the file hidden in the editor.
 
 -----------------------------------
 
@@ -824,7 +824,7 @@ This command deletes nothing. It closes the file in the editor, wipes the hidden
 
 Command to reload a file from hard disc. Unsaved changes are discarded.
 
-Reloads the current buffer. Reloads only the currently opened file from disc.
+Reloads the current buffer. Reloads only the currently opened file from the disc.
 
 -----------------------------------
 
@@ -863,7 +863,7 @@ Specific to the docs of the cref plugin.
 `:h cref`
 
 Opens the C Language Reference.
-Specific to cref plugin.
+Specific to the cref plugin.
 
 -----------------------------------
 
@@ -897,7 +897,7 @@ Check Vim version in Vim Command mode:
  
 ### What is "Leader Key"?
 
-In Vim, a leader key is generally (set by default) the "back-slash" key in Normal mode (not Command mode or any other mode), unless you define a different key as the leader.
+In Vim, a leader key is generally (set by default) the "back-slash" key in Normal mode or Insert mode (not Command mode), unless you define a different key as the leader.
 
 
 In normal mode, press `\` then type `8` (not from the num-pad). See what happens! It will turn on/off the long line marker.
