@@ -6,13 +6,13 @@ My own Vim/GVim configuration to turn Vim into a minimalistic C/C++ code editor 
 
 Tulu is configured to have a minimalistic approach suitable for those who want to configure their own Vim Text Editor further after having all the core functions they will require to get a fully working C/C++ code editor.
 
-If you are interested in a simple yet powerful Vim Text Editor configuration for your C/C++ codes, please clone the Git repository in your HOME directory, open Vim, and type in the command-mode ":PlugInstall" then run ":PlugUpgrade" because this configuration relies on vim-plug plugin manager.
+If you are interested in a simple yet powerful Vim Text Editor configuration for your C/C++ codes, please clone the Git repository in your `HOME` directory, open Vim, and type in the command-mode `:PlugInstall` then run `:PlugUpgrade` because this configuration relies on vim-plug plugin manager.
 
-Installation:
+### Installation:
 
-On Windows, you can download the latest version in a zip archive from the main branch or the release page (achieved releases can be a little older) and extract the contents to %userprofile% directory.
+On Windows, you can download the latest version in a zip archive from the main branch or the release page (achieved releases can be a little older) and extract the contents to `%userprofile%` directory.
 
-On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home ~/ directory or run the following script:
+On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home `~/` directory or run the following script:
 ```
 sh tulu_c_ide_download.sh
 ```
@@ -185,13 +185,13 @@ sudo apt install xclip
 
 # Tulu-C-IDE relies on the following plugins:
 
-[vim-plug](https://github.com/junegunn/vim-plug.git): A minimalist Vim plugin manager.
+[vim-plug](https://github.com/junegunn/vim-plug.git): _"A minimalist Vim plugin manager."_
 
-[The NERDTree](https://github.com/preservim/nerdtree.git): The NERDTree is a file system explorer for the Vim editor. `:h nerdtree`
+[The NERDTree](https://github.com/preservim/nerdtree.git): _"The NERDTree is a file system explorer for the Vim editor."_ `:h nerdtree`
 
-[vim-clang](https://github.com/justmao945/vim-clang.git): Use of clang to parse and complete C/C++ source files. `:h clang.txt`
+[vim-clang](https://github.com/justmao945/vim-clang.git): _"Use of clang to parse and complete C/C++ source files."_ `:h clang.txt`
 
-[echodoc.vim](https://github.com/Shougo/echodoc.vim.git): Displays function signatures from completions in the command line.
+[echodoc.vim](https://github.com/Shougo/echodoc.vim.git): _"Displays function signatures from completions in the command line."_
 
 `:h echodoc`
 
@@ -199,7 +199,7 @@ sudo apt install xclip
 
 ![example](https://cloud.githubusercontent.com/assets/111942/19444981/a076d748-9460-11e6-851c-f249f8110b3b.gif)
 
-[Syntastic](https://github.com/vim-syntastic/syntastic.git): Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user. `:h syntastic` `:h syntastic-checkers.txt`
+[Syntastic](https://github.com/vim-syntastic/syntastic.git): _"Syntastic is a syntax checking plugin for [Vim](https://www.vim.org/) created by [Martin Grenfell](https://github.com/scrooloose). It runs files through external syntax checkers and displays any resulting errors to the user."_ `:h syntastic` `:h syntastic-checkers.txt`
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
 
@@ -211,35 +211,35 @@ sudo apt install xclip
 <A-l>   Move current character/selection right
 ```
 
-[NERD Commenter](https://github.com/preservim/nerdcommenter.git): Comment functions so powerful—no comment necessary. `:h NERD_commenter.txt`
+[NERD Commenter](https://github.com/preservim/nerdcommenter.git): _"Comment functions so powerful—no comment necessary."_ `:h NERD_commenter.txt`
 
-[vimcaps](https://github.com/suxpert/vimcaps.git): Never be bothered by caps lock.
+[vimcaps](https://github.com/suxpert/vimcaps.git): _"Never be bothered by caps lock."_
 
 [AutoClose](https://github.com/vim-scripts/AutoClose.git): Inserts matching bracket, paren, brace or quote.
 
-[auto tags gen](https://github.com/Pinaki82/auto-tags-gen.git): Plugin for creating tags automatically (C/C++). `:h auto_tags_gen.txt`
+[auto tags gen](https://github.com/Pinaki82/auto-tags-gen.git): _"Plugin for creating tags automatically (C/C++)."_ `:h auto_tags_gen.txt`
 
-[Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner. `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
+[Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): _"This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner."_ `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
 
-[git-support](https://github.com/WolfgangMehner/git-support.git): Integration of Git for Vim/gVim. `:h gitsupport`
+[git-support](https://github.com/WolfgangMehner/git-support.git): _"Integration of Git for Vim/gVim."_ `:h gitsupport`
 
 [MiniBufExpl](https://github.com/weynhamz/vim-plugin-minibufexpl.git):  Elegant buffer explorer - takes very little screen space. `:h minibufexpl`
 
 [SingleCompile](https://github.com/xuhdev/SingleCompile.git): A Vim plugin making it more convenient to compile and run a single source file. `:h singlecompile`
 
-[vim-wipeout](https://github.com/artnez/vim-wipeout.git): Destroy all buffers that are not open in any tabs or windows. `:Wipeout` Help file not available.
+[vim-wipeout](https://github.com/artnez/vim-wipeout.git): _"Destroy all buffers that are not open in any tabs or windows."_ `:Wipeout` ** Help file not available.
 
 [code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
 
-[artistic_styler_console_direct.vim](https://github.com/Pinaki82/artistic_styler_console_direct.vim.git): Artistic Style code formatter plugin for Vim/GVim.
+[artistic_styler_console_direct.vim](https://github.com/Pinaki82/artistic_styler_console_direct.vim.git): _"Artistic Style code formatter plugin for Vim/GVim."_
 
-[VimLongLineMarker](https://github.com/Pinaki82/VimLongLineMarker.git): Long Line Marker for Vim/GVim.
+[VimLongLineMarker](https://github.com/Pinaki82/VimLongLineMarker.git): _"Long Line Marker for Vim/GVim."_
 
-[Omni-Completion-at-CTRL-SPACE](https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git): Vim/GVim Omni Completion at CTRL+SPACE. Can be customised.
+[Omni-Completion-at-CTRL-SPACE](https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git): _"Vim/GVim Omni Completion at CTRL+SPACE. Can be customised."_
 
-[vim-move-Keyboard-Shortcut](https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git): Custom Keyboard Shortcut for [vim-move](https://github.com/matze/vim-move.git) plugin.
+[vim-move-Keyboard-Shortcut](https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git): _"Custom Keyboard Shortcut for [vim-move](https://github.com/matze/vim-move.git) plugin."_
 
-[Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin.
+[Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
 
 [TimeStamp2](https://github.com/Pinaki82/TimeStamp2.git): Vim/GVim plugin to add/update the timestamp.
 
