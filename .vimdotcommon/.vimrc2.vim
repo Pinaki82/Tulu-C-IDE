@@ -1451,15 +1451,19 @@ Plug 'https://github.com/junegunn/vim-plug.git'
 
 Plug 'https://github.com/preservim/nerdtree.git'
 
-" Plug 'https://github.com/justmao945/vim-clang.git'
+Plug 'https://github.com/justmao945/vim-clang.git'
 " ------------------------------
 " Changing windows from a vim function is not allowed anymore, since Vim 8.2.2426,7.
 " https://github.com/justmao945/vim-clang/pull/140
 " A fork of vim-clang provided by @mckellygit (https://github.com/mckellygit) can
 " be adopted as a temporary fix.
-" ------------------------------
 
-Plug 'https://github.com/mckellygit/vim-clang.git'
+" Plug 'https://github.com/mckellygit/vim-clang.git'
+
+" The issue (https://github.com/justmao945/vim-clang/issues/142#issue-812186251)
+" has been fixed and the patch committed by @mckellygit has been merged with
+" the master branch by @justmao945.
+" ------------------------------
 
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 
