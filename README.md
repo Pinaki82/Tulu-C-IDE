@@ -1054,11 +1054,11 @@ Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 Vim has its own set of functions to show autocompletion menus of every type which is called Omni-Completion.
 The default shortcut to Omni-Completion is (in Insert mode) `<Ctrl+x><Ctrl+o>` or `<Ctrl+x><Ctrl+u>`.
 
-Clang can read a source code (C++/C) from the terminal and parse the code to show possible suggestions for auto-completion at any defined line/column. This plugin calls clang binary in the background. One of the notable features of vim-clang is that it is ultra-reliable and ultra-portable, and also requires minimum configuration to setup. Unlike some other 'clangd' based autocompletion plugin out there, it doesn't need too extraneous steps to install and configure. Clang binary is the only dependency. The plugin manager will take care of the installation of this plugin. It works with a wide range of clang-supported compilers on different platforms with little to no extra configuration steps. It works with MinGW compiler on Microsoft Windows while some other 'clangd' based plugins will not. Python is not a compulsory requirement. Node.js is unneeded. Complex installation scripts and makefiles are not involved in the installation. Updating the plugin doesn't break anything. Works identically on every platform and compiler that clang officially supports.
+Clang can read a source code (C++/C) from the terminal and parse the code to show possible suggestions for auto-completion at any defined line/column. This plugin calls clang binary in the background. One of the notable features of vim-clang is that it is ultra-reliable and ultra-portable, and also requires minimum configuration to setup. Unlike some other 'clangd' based autocompletion plugin out there, it doesn't need too extraneous steps to install and configure. Clang binary is the only dependency. The plugin manager will take care of the installation of this plugin. It works with a wide range of clang-supported compilers on different platforms with little to no extra configuration steps. It works with MinGW compiler on Microsoft Windows while some other 'clangd' based plugins will not. Python is not a compulsory requirement. Node.js is unneeded. Complex installation scripts and makefiles are not involved in the installation. Updating the plugin doesn't break anything. Works identically on every platform with compilers that clang officially supports.
 
 What it doesn't do:
 
-It will not autocomplete filenames so include files like `#include <boost/filesystem...`. It will not take you to the header under the cursor. It will not show you an overview of the functions, classes, structures, prototypes on a separate sidebar.
+It will not autocomplete filenames so it will not autocomplete include files, e.g., `#include <boost/filesystem...`. It will not take you to the header under the cursor. It will not show you an overview of the functions, classes, structures, prototypes on a separate sidebar.
 
 Function arguments will be shown on a window above the code, however, it will not autocomplete the arguments and parameters like some other plugins, although the users will get an overview of them on a small area above the code.
 
@@ -1199,7 +1199,7 @@ Here is the video description:
 
 ***Add a program/folder to system search path:***
 
-Some programs like [Ctags](https://github.com/universal-ctags/ctags-win32) and [Artistic Style](http://astyle.sourceforge.net/) need to be added to the PATH. Once the program (binary) folders of those utilities are added to the PATH, those programs can be accessed externally (e.g., command prompt) by any other program.
+Some programs like [Ctags](https://github.com/universal-ctags/ctags-win32) and [Artistic Style](http://astyle.sourceforge.net/) need to be added to the PATH. Once the program folders (containing the binary) of those utilities are added to the PATH, those programs can be accessed externally (e.g., command prompt) by any other program.
 
 ![AddToPATH2](https://user-images.githubusercontent.com/16861933/103427339-6f7daa80-4be6-11eb-81b0-b2d3dfa05ff1.gif)
 
@@ -1246,7 +1246,7 @@ Right-Click on the image below and open the link in a new tab.
 
 https://snipplr.com/ for snippets and code samples.
 
-https://www.stackoverflow.com/ for good community-based help. (just don't ask anything there. Read questions and answers only. Any repeat question or irrelevant, inferior question may lead to an account suspension.)
+https://www.stackoverflow.com/ for good community-based help. (Just don't ask anything there. Read questions and answers only. Any repeat question or irrelevant, inferior question may lead to an account suspension.)
 
 https://www.cprogramming.com/ for C/C++ tutorials.
 
@@ -1319,7 +1319,7 @@ OReilly->Learning the vi and Vim Editors, by "Arnold Robbins, Elbert Hannah, and
 https://www.programiz.com/c-programming Learn C Programming.
 
 __"Let Us C"__ by _Yashavant P. Kanetkar_; nothing can be better than this book.
-__"Understanding Pointers in C"__ by _Yashavant P. Kanetkar_ is a must-have book along with __"Let Us C"__. __"Data Structures Through C"__ by _Yashavant P. Kanetkar_; complete C learning with this book.
+__"Understanding Pointers in C"__ by _Yashavant P. Kanetkar_ is a must-have book along with __"Let Us C"__. __"Data Structures Through C"__ by _Yashavant P. Kanetkar_; completes the C learning journey.
 
 These three books above are the whole learning course divided into three parts.
 
@@ -1376,7 +1376,7 @@ https://cplusplus.com/
 
 Extra Books:
 
-__Programming Windows__ by _Charles Petzold_, for Win32 GUI programming on Windos OS.
+__Programming Windows__ by _Charles Petzold_, for Win32 GUI programming on Windows OS.
 
 __Windows via C/C++__ by _Jeffrey Richter_.
 
@@ -1438,7 +1438,7 @@ The easiest way to update **Tulu-C-IDE** is to download a _zip_ file from the ma
 
 ## A brief on Vim and C/C++
 
-For any C fanatic, the reason for the C enthusiasm is axiomatic. C will probably never be outdated. As of writing this Readme file, it's nighttime here. We are accustomed to working with a set of technology we are using at this moment. The technology may change during midnight. Jokes apart, where the technology shifts all around the year, making it somewhat difficult for the programmers to get acquainted with new programming languages which compel them to constantly update their skill to stay relevant in the market, C stays the same rock-solid. C evolves into a better version of the earlier standards. However, when it comes to developing and maintaining performance-critical applications with consistency, no language comes close to C. It's the choice of the microcontroller programmers, device driver writers, operating system developers, compiler and interpreter designers. For the performance-critical applications, those demand squeezing out the last drop of the juice from the host device, C is the only choice. The only limitation is imagination. C++ is not too different if considered as the superset of C. C never makes your knowledge obsolete thus pays for the time investment. So is Vim. Vim never changes, only improves over time. The founder of Vim has an inviolable affirmative user support policy. He doesn't want to pose a threat to the users where they will have to unlearn and re-learn something for which they have invested their time in decades. So learning Vim and C/C++ makes the steep learning curve worth the trouble. They both are like iron, the fundamental and indispensable element that builds up the core of every newer engine. Even if technology advances, iron will remain essential. This configuration in combination with C/C++ and Vim and a wide array of critical external utilities provides the reliability we can find nowhere else. You can rest assured that your tools are evergreen and unbreakable. So that Tulu; he is a cute, adorable, reliable soft-toy puppet. 🐕
+For any C fanatic, the reason for the C enthusiasm is axiomatic. C will probably never be outdated. As of writing this Readme file, it's nighttime here. We are accustomed to working with a set of technology we are using at this moment. The technology may change during midnight. Jokes apart, where the technology shifts all around the year, making it somewhat difficult for the programmers to get acquainted with new programming languages which compel them to constantly update their skill to stay relevant in the market, C stays the same rock-solid. C evolves into a better version of the earlier standards. Nevertheless, when it comes to developing and maintaining performance-critical applications with consistency, no language comes close to C. It's the choice of the microcontroller programmers, device driver writers, operating system developers, compiler and interpreter designers. For the performance-critical applications, those demand squeezing out the last drop of the juice from the host device, C is the only choice. The only limitation is imagination. C++ is not too different if considered as the superset of C. C never makes your knowledge obsolete thus pays for the time investment. So is Vim. Vim never changes, only improves over time. The founder of Vim has an inviolable affirmative user support policy. He doesn't want to pose a threat to the users where they will have to unlearn and re-learn something for which they have invested their time in decades. So learning Vim and C/C++ makes the steep learning curve worth the trouble. They both are like iron, the fundamental and indispensable element that builds up the core of every newer engine. Even if technology advances, iron will remain essential. This configuration in combination with C/C++ and Vim and a wide array of critical external utilities provides the reliability we can find nowhere else. You can rest assured that your tools are evergreen and unbreakable. So is Tulu; he is a cute, adorable, reliable soft-toy puppet. 🐕
 
 ----------------------------------------------------------------
 
@@ -1446,7 +1446,7 @@ For any C fanatic, the reason for the C enthusiasm is axiomatic. C will probably
 
 ![ICCF in Uganda](https://www.iccf-holland.org/images/school.jpg)
 
-The very essence of morality, principalities, ethical rights to humans and creatures alike in a society is dependent on the seed sowed by our predecessors. Education and sustainability for underprivileged children is a must for building the foundation of a nation. One day, they will grow up and move this society forward. Teach them to distinguish right from the wrong, they will carry it to their future. We all should stand up against poverty, malnutrition, corruption, brutality, animal-cruelty, child labour, slavery, lack of infrastructure developments, and so on and on. It all depends on how well the children of a certain section of society was nurtured. It's not a mission to be fought by one-man-army. We all should stand together and join the fight. Bram Moolenaar took a praiseworthy approach by providing care for the underprivileged kids of Uganda. I wish his organisation would have expanded its reach all over the world. He provides medical care, food, education to those children who have been betrayed by their fate. We still have been left with some hope. Bram stood up. Now we all should come forward. Vim will remain the most lethal weapon in your arsenal forever. Bram will maintain Vim. Pay your tribute. Make a small donation to ICCF.
+The very essence of morality, principalities, ethical rights to humans and creatures alike in a society is dependent on the seed sowed by our predecessors. Education and sustainability for underprivileged children is a must for building the foundation of a nation. One day, they will grow up and move this society forward. Teach them to distinguish right from the wrong, they will carry it to their future. We all should stand up against poverty, malnutrition, corruption, brutality, animal-cruelty, child labour, slavery, lack of infrastructure developments, and so on and on. It all depends on how well the children of a certain section of society was nurtured. It's not a mission to be fought by one-man-army. We all should stand together and join the fight. [Bram Moolenaar](https://en.wikipedia.org/wiki/Bram_Moolenaar) took a praiseworthy approach by providing care for the underprivileged kids of Uganda. I wish his organisation would have expanded its reach all over the world. He provides medical care, food, education to those children who have been betrayed by their fate. We still have been left with some hope. Bram stood up. Now we all should come forward. Vim will remain the most lethal weapon in your arsenal forever. Bram will maintain Vim. Pay your tribute. Make a small donation to ICCF.
 
 Here it is: [ICCF](https://en.wikipedia.org/wiki/ICCF_Holland)
 
