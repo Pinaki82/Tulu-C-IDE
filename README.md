@@ -319,11 +319,11 @@ To
 `"silent execute '!mkdir "'.$HOME.'/.vimundo"'`
 
 
-These directories are required by this configuration to work properly. Otherwise, Vim would create backup files, Vim-view settings, and other temporary files in the directories where the codes will be edited. Once you have installed the plugins by issuing the commands `:PlugInstall` and `:PlugUpgrade`, make a few changes to this configuration to suit your needs. Those directories are not needed once created, and you may like a dark theme. Change the theme if you prefer a dark theme over the default white colour. `<Ctrl+Alt+F11>` and `<Ctrl+Shift+F11>` can always be used regardless of the set theme to load at startup.
+These directories are required by this configuration ([Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git)) to work properly. Otherwise, Vim would create backup files, Vim-view settings, and other temporary files in the directories where the codes will be edited. Once you have installed the plugins by issuing the commands `:PlugInstall` and `:PlugUpgrade`, make a few changes to this configuration to suit your needs. Those directories are not needed once created, and you may like a dark theme. Change the theme if you prefer a dark theme over the default white colour. `<Ctrl+Alt+F11>` and `<Ctrl+Shift+F11>` can always be used regardless of the set theme to load at startup.
 
 `"` in Vim scripts comments out a line, like `//comment` and `/*comment*/` in C/C++. Multiline comments are unavailable in Vim scripts.
 
-On Linux, the plugin [auto-tags-gen](https://github.com/Pinaki82/auto-tags-gen.git) needs to be build from source. It's easy. Open the directory `~/.vim/plugged/auto-tags-gen` with you file manager. Open terminal in this location. On Xubuntu, `<F4>` will launch the terminal in the selected directory. Type `make`, then move the file `libauto_tag_gen.so` to `~/.vim/plugged/auto-tags-gen/plugin` folder.
+On Linux, the plugin [auto-tags-gen](https://github.com/Pinaki82/auto-tags-gen.git) needs to be build from source. It's easy. Open the directory `~/.vim/plugged/auto-tags-gen` with you file manager. Open terminal in this location. On Xubuntu, `<F4>` will launch the terminal in the selected directory. Type `make`, then move the file `libauto_tag_gen.so` to `~/.vim/plugged/auto-tags-gen/plugin` folder. Then type `make clean`. It will delete the intermediate object files.
 
 ## To the First Time Users:
 
@@ -336,13 +336,13 @@ Press `<Esc>` to put Vim into Normal mode. Vim usually starts in this mode.
 
 ### Command Mode
 
-Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressing `<Shift+;>` type **__;__** and it will have the same effect in this setup.
+Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressing `<Shift+;>` type **__`;`__** and it will have the same effect in this setup.
 
 ![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
 
 ![NormalModetoCommandMode](https://user-images.githubusercontent.com/16861933/102935234-bfb08a80-44cb-11eb-8b65-fa8eba9df5d8.gif)
 
-NOTE: We can take advantage of autocompletion with the `<TAB>` key in Command mode. After typing a few characters press `<TAB>` and navigate using the Right/Left Arrow key or even by hitting the `<TAB>` key over and over.
+**NOTE:** We can take advantage of autocompletion with the `<TAB>` key in **Command mode**. After typing a few characters press `<TAB>` and navigate using the Right/Left Arrow key or even by hitting the `<TAB>` key over and over.
 
 ![TabAutocompletionCommandMode](https://user-images.githubusercontent.com/16861933/103034147-3f049380-458a-11eb-9a44-71c192ae2e58.gif)
 
@@ -378,7 +378,7 @@ To go to Insert mode from Normal mode, press `<i>` or `<Insert>`.
 
 Press `<v>` to switch to this mode. For example, position the cursor on any text then press `<v>` then select the texts next to the character by holding the `<l>` key. Press `<x>` to cut the selection. Cut operation keeps the text in Vim's memory which is known as **_registers_**.
 
-The section operation can be done in any direction; leftwards, rightwards, upwards, and downwards. Just press `<h>` to move the cursor/selection to the left, `<l>` to move the cursor/selection to the right. In between them, `<k>` to move the cursor/selection upwards, and `<j>` to move the cursor/selection downwards.
+The selection operation can be done in any direction; leftwards, rightwards, upwards, and downwards. Just press `<h>` to move the cursor/selection to the left, `<l>` to move the cursor/selection to the right. In between them, `<k>` to move the cursor/selection upwards, and `<j>` to move the cursor/selection downwards.
 
 ### Replace Mode
 Put the cursor on any character and Press Capital `<R>` to switch to this mode. Type over the text to replace with what you want. Small case `<r>` will also take you to the replace mode but it will replace only a single character.
@@ -386,11 +386,11 @@ Put the cursor on any character and Press Capital `<R>` to switch to this mode. 
 ![ReplaceMode](https://user-images.githubusercontent.com/16861933/103017257-58e1ae80-4569-11eb-9dcd-b5aad5883fe4.gif)
 
 ### Navigation
-Vim allows navigating through the text in Normal mode. Left, Down, Up, Left buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, remember that the __s"K"y__ (sky) is above. 😊
+Vim allows navigating through the text in Normal mode. Left, Down, Up, Right buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, remember that the __s"K"y__ (sky) is above. 😊
 
 Arrow keys can be used in Insert mode.
 
-`<O>` will position the cursor to the beginning of the line and `<$>` to the end.
+`<0>` (**ZERO**) will position the cursor to the beginning of the line and `<$>` to the end.
 
 ![Navigation](https://user-images.githubusercontent.com/16861933/103015391-5b8ed480-4566-11eb-934e-feb573130c0e.png)
 
