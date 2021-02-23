@@ -672,7 +672,7 @@ ssh -T git@github.com
 You'll be asked to add GitHub to known hosts, allow it. Type the passphrase when needed.
 
 
-**NOTE:** Before you connect to any code hosting server and adding the host to the 'allow list' on your machine, verify the SSH fingerprint of that server. There are con Git servers that want to deceive you and target you with a ['Man-in-the-middle attack'](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). Make sure you are connecting to the right server. Almost every Git server on the planet will provide you with the information of their SSH fingerprint. First verify, then type 'yes'. Here's an example:
+**NOTE:** Before you connect to any code hosting server and add the host to the 'allow list' on your machine, verify the SSH fingerprint of that server. There are con Git servers that want to deceive you and target you with a ['Man-in-the-middle attack'](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). Make sure you are connecting to the right server. Almost every Git server on the planet will provide you with the information of their SSH fingerprint. First verify, then type 'yes'. Here's an example:
 
 ![2021-02-22 20_35_22-MINGW64__c_Users_AppuRaja](https://user-images.githubusercontent.com/16861933/108823735-d9af3c00-75e6-11eb-984c-673a8b02309b.png)
 
