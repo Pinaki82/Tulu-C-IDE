@@ -200,7 +200,7 @@ sudo apt install xclip
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
 
-[vim-unimpaired]([GitHub - tpope/vim-unimpaired: unimpaired.vim: Pairs of handy bracket mappings](https://github.com/tpope/vim-unimpaired.git)): *"unimpaired.vim: Pairs of handy bracket mappings"*
+[vim-unimpaired](https://github.com/tpope/vim-unimpaired.git): *"unimpaired.vim: Pairs of handy bracket mappings"*
 
 'unimpaired.vim' comes in handy while switching to buffers. Usually we type `:bu <TAB>` or `:buffer <TAB>` (i.e., colon + buffer/bu + space + TAB) in command mode to switch to a different buffer. 'unimpaired.vim' maps `[b` (i.e., `[` then `b` , or better described as `[` +`b`) in Normal mode to have the same effect.
 
@@ -223,11 +223,11 @@ sudo apt install xclip
 
 [Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): _"This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner."_ `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
 
-[gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)): *"👣 Asynchronously control git repositories in Neovim/Vim 8"*
+[gina.vim](https://github.com/lambdalisue/gina.vim.git): *"👣 Asynchronously control git repositories in Neovim/Vim 8"*
 
-I bundled a Git plugin [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) so that you can perform Git operations without leaving the editor if you ever need to use Git from the Vim editor instead of using Git from the terminal window. Git's native terminal user interface is much straightforward (in my humble opinion) than any GUI Git client. GVim with any Git plugin is not an exception to the rule. Use Git from the terminal/console. [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) can perform so many Git operations, except for `'Gina push`' (equivalent Git command: `git push`).
+I bundled a Git plugin [gina.vim](https://github.com/lambdalisue/gina.vim.git) so that you can perform Git operations without leaving the editor if you ever need to use Git from the Vim editor instead of using Git from the terminal window. Git's native terminal user interface is much straightforward (in my humble opinion) than any GUI Git client. GVim with any Git plugin is not an exception to the rule. Use Git from the terminal/console. [gina.vim](https://github.com/lambdalisue/gina.vim.git) can perform so many Git operations, except for `'Gina push`' (equivalent Git command: `git push`).
 
-**NOTE:** If you plan to use [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) with a portable version of GVim, please copy the .gitconfig file from your `$HOME` directory (`%USERPROFILE%` on MS Windows and `~/` on Linux) to the respective portable application folder so that GVim can find the config file at startup. For example, `%USERPROFILE%\PortableApps\gVimPortable\Data\settings`. Copy `%USERPROFILE%\.gitconfig` to `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.gitconfig`.
+**NOTE:** If you plan to use [gina.vim](https://github.com/lambdalisue/gina.vim.git) with a portable version of GVim, please copy the .gitconfig file from your `$HOME` directory (`%USERPROFILE%` on MS Windows and `~/` on Linux) to the respective portable application folder so that GVim can find the config file at startup. For example, `%USERPROFILE%\PortableApps\gVimPortable\Data\settings`. Copy `%USERPROFILE%\.gitconfig` to `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.gitconfig`.
 
 To configure SSH and Git on your system and create a GPG ID with a backup, follow '[GIT+SSH+GPG-and-Code-Signing.md](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)'.
 
@@ -435,7 +435,7 @@ NOTE: `<Ctrl+o+o>` will open the last edited file.
 
 To switch to a different buffer, we can also type `:bu <TAB>` or `:buffer <TAB>` (i.e., colon + buffer + space + TAB) in command mode.
 
-**NOTE:** The bundled plugin '[unimpaired.vim]([GitHub - tpope/vim-unimpaired: unimpaired.vim: Pairs of handy bracket mappings](https://github.com/tpope/vim-unimpaired.git))' maps `[b` (i.e., `[` then `b` , or better described as `[` +`b`) in Normal mode to switch between buffers.
+**NOTE:** The bundled plugin '[unimpaired.vim](https://github.com/tpope/vim-unimpaired.git)' maps `[b` (i.e., `[` then `b` , or better described as `[` +`b`) in Normal mode to switch between buffers.
 
 ## Navigate Through the Active Windows (Text Areas):
 
@@ -1093,7 +1093,7 @@ https://www.reddit.com/r/vim/comments/2wf3cn/basic_clang_autocompletion_query/
 main.c
 ```
 
-```
+```c
 #include <math.h>
 #include <stdio.h>
 #include <windows.h>
@@ -1146,7 +1146,7 @@ clang++ -target x86_64-pc-windows-gnu -fsyntax-only -Xclang -code-completion-mac
 main.cpp
 ```
 
-```
+```cpp
 #include <iostream>
 
 int main() {
