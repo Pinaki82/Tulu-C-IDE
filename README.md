@@ -13,12 +13,15 @@ If you are interested in a simple yet powerful Vim Text Editor configuration for
 On Windows, you can download the latest version in a zip archive from the main branch or the release page (achieved releases can be a little older) and extract the contents to `%userprofile%` directory.
 
 On Linux, you can either download the latest release in a .tar.gz archive and extract the contents to your home `~/` directory or run the following script:
+
 ```
 sh tulu_c_ide_download.sh
 ```
+
 File: tulu_c_ide_download.sh
 
 Contents:
+
 ```
 #!/bin/bash
 
@@ -32,7 +35,6 @@ cd ~/Tulu-C-IDE && find ./ -maxdepth 1 -mindepth 1 -exec mv -f -t ~/ {} +  && \
 
 rm -rf ~/Tulu-C-IDE \
 ```
-
 
 ![TULU_C_IDE](https://user-images.githubusercontent.com/16861933/99191990-4b7d1b80-2796-11eb-8ede-a4d9b181a950.jpg)
 
@@ -54,35 +56,35 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [TDM-GCC](https://jmeubank.github.io/tdm-gcc/) (or any other MinGW-GCC compiler variant added to your system search path)
 
  [LLVM Clang](https://releases.llvm.org/download.html)
- 
+
  [git-scm](https://git-scm.com/)
- 
+
  [Sourcetree](https://www.sourcetreeapp.com/)
 
  Or,
 
  [git-cola](https://github.com/git-cola/git-cola)
- 
+
  [Ctags](https://github.com/universal-ctags/ctags-win32)
- 
+
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
- 
+
  [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
- 
+
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
- 
+
  [Java Runtime Environment](https://www.java.com/en/download/manual.jsp)
 
 ##### Recommended Programs:
 
  [Cmake](https://cmake.org/)
- 
+
  [WinMerge](https://winmerge.org/?lang=en)
 
 ## Linux:
- 
+
  [GCC](https://gcc.gnu.org/)
- 
+
  [LLVM Clang](https://releases.llvm.org/download.html)
 
  [Git](https://git-scm.com/download/linux)
@@ -90,15 +92,15 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
  [git-cola](https://github.com/git-cola/git-cola)
 
  [Ctags](http://ctags.sourceforge.net/)
- 
+
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
- 
+
  [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
- 
+
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
- 
+
  Java Runtime Environment.
- 
+
  [kitty](https://sw.kovidgoyal.net/kitty/): GPU powered terminal.
 
 ##### Recommended Programs:
@@ -108,7 +110,6 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 [wget](https://www.gnu.org/software/wget/)
 
 [Meld](https://meldmerge.org/)
-
 
 If you are on an Ubuntu or an Ubuntu derivative Linux system, you can try the following or refer to this repository: [Xubuntu-minimum-shell-config](https://github.com/Pinaki82/Xubuntu-minimum-shell-config.git)
 
@@ -159,19 +160,15 @@ sudo apt install wmctrl
 
 ##### Recommended:
 
-
 ```
 sudo apt install gitg
 ```
 
-
 Or,
-
 
 ```
 sudo apt install git-cola
 ```
-
 
 ```
 sudo apt install libglib2.0-doc
@@ -203,7 +200,12 @@ sudo apt install xclip
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
 
+[vim-unimpaired]([GitHub - tpope/vim-unimpaired: unimpaired.vim: Pairs of handy bracket mappings](https://github.com/tpope/vim-unimpaired.git)): *"unimpaired.vim: Pairs of handy bracket mappings"*
+
+'unimpaired.vim' comes in handy while switching to buffers. Usually we type `:bu <TAB>` or `:buffer <TAB>` (i.e., colon + buffer/bu + space + TAB) in command mode to switch to a different buffer. 'unimpaired.vim' maps `[b` (i.e., `[` then `b` , or better described as `[` +`b`) in Normal mode to have the same effect.
+
 [move](https://github.com/matze/vim-move.git): `:h move.txt`
+
 ```
 <A-k>   Move current line/selection up
 <A-j>   Move current line/selection down
@@ -221,7 +223,13 @@ sudo apt install xclip
 
 [Vim plug-ins](https://github.com/WolfgangMehner/vim-plugins.git): _"This repository hosts the latest development versions of various Vim plug-ins. Currently maintained by Wolfgang Mehner."_ `:h csupport` `:h vimsupport` `awksupport` `:h bashdbintegration` `:h bashsupport` `:h latexsupport` `:h luaref51` `:h luaref52` `:h luaref53` `:h luasupport` `:h perlsupport` `:h templatesupport` `:h toolbox` `:h toolboxcmake` `:h toolboxdoxygen` `:h toolboxmake`
 
-[git-support](https://github.com/WolfgangMehner/git-support.git): _"Integration of Git for Vim/gVim."_ `:h gitsupport`
+[gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)): *"👣 Asynchronously control git repositories in Neovim/Vim 8"*
+
+I bundled a Git plugin [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) so that you can perform Git operations without leaving the editor if you ever need to use Git from the Vim editor instead of using Git from the terminal window. Git's native terminal user interface is much straightforward (in my humble opinion) than any GUI Git client. GVim with any Git plugin is not an exception to the rule. Use Git from the terminal/console. [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) can perform so many Git operations, except for `'Gina push`' (equivalent Git command: `git push`).
+
+**NOTE:** If you plan to use [gina.vim]([GitHub - lambdalisue/gina.vim: 👣 Asynchronously control git repositories in Neovim/Vim 8](https://github.com/lambdalisue/gina.vim.git)) with a portable version of GVim, please copy the .gitconfig file from your `$HOME` directory (`%USERPROFILE%` on MS Windows and `~/` on Linux) to the respective portable application folder so that GVim can find the config file at startup. For example, `%USERPROFILE%\PortableApps\gVimPortable\Data\settings`. Copy `%USERPROFILE%\.gitconfig` to `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.gitconfig`.
+
+To configure SSH and Git on your system and create a GPG ID with a backup, follow '[GIT+SSH+GPG-and-Code-Signing.md](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)'.
 
 [MiniBufExpl](https://github.com/weynhamz/vim-plugin-minibufexpl.git):  Elegant buffer explorer - takes very little screen space. `:h minibufexpl`
 
@@ -307,7 +315,6 @@ Change these lines
 
 `silent execute '!mkdir "'.$HOME.'/.vimundo"'`
 
-
 To
 
 `"silent execute '!mkdir "'.$HOME.'/.vimbackup"'`
@@ -317,7 +324,6 @@ To
 `"silent execute '!mkdir "'.$HOME.'/.vimviews"'`
 
 `"silent execute '!mkdir "'.$HOME.'/.vimundo"'`
-
 
 These directories are required by this configuration ([Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git)) to work properly. Otherwise, Vim would create backup files, Vim-view settings, and other temporary files in the directories where the codes will be edited. Once you have installed the plugins by issuing the commands `:PlugInstall` and `:PlugUpgrade`, make a few changes to this configuration to suit your needs. Those directories are not needed once created, and you may like a dark theme. Change the theme if you prefer a dark theme over the default white colour. `<Ctrl+Alt+F11>` and `<Ctrl+Shift+F11>` can always be used regardless of the set theme to load at startup.
 
@@ -332,7 +338,6 @@ On Linux, the plugin [auto-tags-gen](https://github.com/Pinaki82/auto-tags-gen.g
 Press `<Esc>` to put Vim into Normal mode. Vim usually starts in this mode.
 
 ![Esc](https://user-images.githubusercontent.com/16861933/102935301-e2db3a00-44cb-11eb-9185-840a070c6e33.png)
-
 
 ### Command Mode
 
@@ -360,11 +365,11 @@ Press _Colon_ i.e., `<Shift+;>` to put Vim into Command mode. Instead of Pressin
 
 `:w`
 
-
 ### Insert Mode
 
 Vim allows typing into the editor window in a usual manner in this mode. Other modes can allow typing, e.g., Visual mode, but for purposes like selecting texts.
 To go to Insert mode from Normal mode, press `<i>` or `<Insert>`.
+
 ##### Insert command with specific purposes:
 
 * `<i>` : Position cursor onto the current character and switch to Insert mode.
@@ -381,11 +386,13 @@ Press `<v>` to switch to this mode. For example, position the cursor on any text
 The selection operation can be done in any direction; leftwards, rightwards, upwards, and downwards. Just press `<h>` to move the cursor/selection to the left, `<l>` to move the cursor/selection to the right. In between them, `<k>` to move the cursor/selection upwards, and `<j>` to move the cursor/selection downwards.
 
 ### Replace Mode
+
 Put the cursor on any character and Press Capital `<R>` to switch to this mode. Type over the text to replace with what you want. Small case `<r>` will also take you to the replace mode but it will replace only a single character.
 
 ![ReplaceMode](https://user-images.githubusercontent.com/16861933/103017257-58e1ae80-4569-11eb-9dcd-b5aad5883fe4.gif)
 
 ### Navigation
+
 Vim allows navigating through the text in Normal mode. Left, Down, Up, Right buttons are mapped to `<H>` `<J>` `<K>` `<L>` keys respectively. Mnemonics: Remember that `<H>` is at the Left side and `<L>` is at the Right. Think of `<J>` as an Umbrella ☂️ that you use as a parachute 🪂 while jumping off an aeroplane. For `<K>`, remember that the __s"K"y__ (sky) is above. 😊
 
 Arrow keys can be used in Insert mode.
@@ -395,6 +402,7 @@ Arrow keys can be used in Insert mode.
 ![Navigation](https://user-images.githubusercontent.com/16861933/103015391-5b8ed480-4566-11eb-934e-feb573130c0e.png)
 
 ### Switch between Modes
+
 Press `<Esc>` key to switch to Normal mode first. Now you are ready to switch to any mode you want.
 
 ![Esc](https://user-images.githubusercontent.com/16861933/102935301-e2db3a00-44cb-11eb-9185-840a070c6e33.png)
@@ -424,6 +432,10 @@ In Normal mode:
 NOTE: `<Ctrl+o+o>` will open the last edited file.
 
 ![NavigateThroughTheActiveBuffers](https://user-images.githubusercontent.com/16861933/103243149-e87ac900-497e-11eb-8118-e0144a62e06f.gif)
+
+To switch to a different buffer, we can also type `:bu <TAB>` or `:buffer <TAB>` (i.e., colon + buffer + space + TAB) in command mode.
+
+**NOTE:** The bundled plugin '[unimpaired.vim]([GitHub - tpope/vim-unimpaired: unimpaired.vim: Pairs of handy bracket mappings](https://github.com/tpope/vim-unimpaired.git))' maps `[b` (i.e., `[` then `b` , or better described as `[` +`b`) in Normal mode to switch between buffers.
 
 ## Navigate Through the Active Windows (Text Areas):
 
@@ -494,6 +506,7 @@ Type
 ![ZeroDollarBOL-EOL](https://user-images.githubusercontent.com/16861933/103245541-82923f80-4986-11eb-8317-f60a45f71e3f.gif)
 
 # Custom Keymaps and Keyboard Shortcuts
+
 ### The following commands can come in handy if typed into the Vim Commandline in Command Mode:
 
 `:help index`
@@ -593,6 +606,7 @@ Reloads file.
 `F5` or `\rd`
 
 -----------------------------------
+
 -----------------------------------
 
 Note: Avoid the Alt key while you can, for sake of portability.
@@ -600,6 +614,7 @@ For example: In some Linux 'Desktop Managers', `Alt+F8` is used to resize the wi
 Linux generally uses the Alt key to do different things.
 
 -----------------------------------
+
 -----------------------------------
 
 `Ctrl+]` (In Normal Mode)
@@ -705,8 +720,6 @@ Long Line Marker (or Right Border or Right Margin) ON-OFF `\8`
 ## The reason for the existence of different modes in Vim:
 
 A key combination can do a particular job in one mode, but the same combination can be used in another mode to accomplish a different task, thus augmenting the potential of the keyboard.
-
-
 
 ## Some useful commands (for Command mode):
 
@@ -874,7 +887,9 @@ An example to search the manual of Vim with specific options. This option search
 Opens Vim documentation with the topic 'statusline'.
 
 -----------------------------------
+
 ## Get the detail of how Vim was compiled:
+
 -----------------------------------
 
 Open any terminal (or, CMD.EXE on MS Windows), then type:
@@ -894,16 +909,14 @@ Check Vim version in Vim Command mode:
 ## Leader `\`
 
 ![Bslash](https://user-images.githubusercontent.com/16861933/103035666-cdc6df80-458d-11eb-801b-219c79aa8e83.png)
- 
+
 ### What is "Leader Key"?
 
 In Vim, a leader key is generally (set by default) the "back-slash" key in Normal mode or Insert mode (not Command mode), unless you define a different key as the leader.
 
-
 In normal mode, press `\` then type `8` (not from the num-pad). See what happens! It will turn on/off the long line marker.
 
 Various tasks can be performed in this manner. Many plugins map their functions through 'Leader' key.
-
 
 In Normal mode, press the Leader (i.e. `\` key, it's the 'backslash' key) then,
 
@@ -941,6 +954,7 @@ If it still annoys you, try to lower the timeout-length as you prefer like,
 `:set timeout timeoutlen='an amount of your choice'`, that's all.
 
 -----------------------------------
+
 -----------------------------------
 
 #### YankRing plugin (The multi-clipboard plugin):
@@ -991,7 +1005,6 @@ These are the default Vim functionalities. YankRing uses native Vim features in 
 
 Deleting a line or yanking a line are Vim's native functionalities, and are not something that YankRing brings in; but, the combination of these functions and YankRing in a single place is useful, and it is quite similar to Notepad++'s multi-clipboard plugin.
 
-
 `5p` means paste the content 5-times after the cursor.
 
 `:YRShow` opens the Yankring Clipboard Monitor window.
@@ -1002,10 +1015,8 @@ Selecting a line from the YankRing window and Typing 1-9 (not from the Numpad) w
 
 `:YRSearch` searches the part of the content you are looking for.
 
-
 I mapped,
 Normal mode `<C-F11>` for `:YRShow`
-
 
 To know more, type `:h yankring` in Command mode.
 
@@ -1043,6 +1054,7 @@ Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 ![2020-12-31 15_05_35-sfn_converter_2 c + (P__SFN_cnvrtr_src) - GVIM](https://user-images.githubusercontent.com/16861933/103404675-8686b300-4b7a-11eb-88b1-9a13200b884c.png)
 
 -----------------------------------
+
 ======================
 
 #### Autocompletion with Clang:
@@ -1103,7 +1115,6 @@ int show_value(int *t) {
   *temp = *t + *temp + ptr;
   return (*t);
 }
-
 ```
 
 ```
@@ -1145,7 +1156,6 @@ int main() {
     std::c
     return 0;
 }
-
 ```
 
 ```
@@ -1182,7 +1192,6 @@ COMPLETION: ctype_base : ctype_base
 COMPLETION: ctype_byname : ctype_byname<<#typename _CharT#>>
 COMPLETION: current_exception : [#exception_ptr#]current_exception()
 ```
-
 
 Usage: In Insert mode, press `<Ctrl+x><Ctrl+o>` or `<Ctrl+Space>`.
 
@@ -1227,16 +1236,13 @@ Add [Splint](https://splint.org/) to PATH. It's slightly convoluted.
 
 ### [Configure SSH to work with remote Git repositories from the Terminal.](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)
 
-
 Right-Click on the image below and open the link in a new tab.
-
 
 [![N|git_ssh_github](https://user-images.githubusercontent.com/16861933/107740857-0d11e100-6d32-11eb-9de0-c0cd08104e00.png)](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/GIT%2BSSH%2BGPG-and-Code-Signing.md)
 
 ----------------------------------------------------------------
 
 ----------------------------------------------------------------
-
 
 *** Disclaimer: None of the websites I will refer and the books I will suggest is no way associated with this project "Tulu-C-IDE"; they didn't pay a penny to sponsor this project, and neither I need to monetize my Vim configuration. ****
 
@@ -1382,7 +1388,6 @@ __Windows via C/C++__ by _Jeffrey Richter_.
 
 __Go Embedded__ by _Yashavant P. Kanetkar_, for Atmel AVR microcontroller programming.
 
-
 ----------------------------------------------------------------
 
 **Applications:**
@@ -1409,6 +1414,14 @@ Without the following applications, it would have never been possible to draft t
 
 [Mousepad XFCE Text Editor](https://github.com/codebrainz/mousepad) A simple text editor for the Xfce desktop environment.
 
+[Mark Text ](https://marktext.app/) A Simple and Elegant Markdown Editor.
+
+https://dillinger.io/ Dillinger is an online cloud-enabled, HTML5, buzzword-filled Markdown editor.
+
+[Markdown2PDF](https://md2pdf.netlify.app/) (online)
+
+[StackEdit](https://stackedit.io/) Rich Markdown editor. (online)
+
 ----------------------------------------------------------------
 
 ### Plugin Management
@@ -1430,6 +1443,7 @@ You can install as many plugins as you want as long as a plugin you are going to
 You can also remove existing plugins, but I will strongly advise you against doing so. Very minimal and vital plugins are included. Use them, you won't regret it.
 
 ----------------------------------------------------------------
+
 ### Tulu-C-IDE updater
 
 The easiest way to update **Tulu-C-IDE** is to download a _zip_ file from the main branch, extract the _zip_ archive to a local folder, compare the files in that location with the current setup, then merge the necessary changes with a diff tool. Or one can simply overwrite the existing files in the _HOME_ directory (`~/` or `%USERPROFILE%`) if so many configuration files have not been changed so far. Open the `.vim/updater` folder. There are scripts to update the package. On MS Windows, rename the WinBatch files. Files are in _.TXT_ extensions for safety. Read every line and change the script according to your requirements before you run any of the scripts.

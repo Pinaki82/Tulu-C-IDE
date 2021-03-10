@@ -4,18 +4,10 @@
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window.
-  set lines=32 columns=105
-else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=53
-  endif
-  if exists("+columns")
-    set columns=105
-  endif
+  set lines=34 columns=115
 endif
 
-""     setting up a dark colorscheme at startup
+""     setting up a dark colorscheme at startup (GUI. GVim)
 " if has("gui_running")
 "     colo mustang_green
 " endif

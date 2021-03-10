@@ -1469,6 +1469,8 @@ Plug 'https://github.com/vim-syntastic/syntastic.git'
 
 Plug 'https://github.com/vim-scripts/matchparenpp.git'
 
+Plug 'https://github.com/tpope/vim-unimpaired.git'
+
 Plug 'https://github.com/matze/vim-move.git'
 
 Plug 'https://github.com/preservim/nerdcommenter.git'
@@ -1481,7 +1483,7 @@ Plug 'https://github.com/Pinaki82/auto-tags-gen.git'
 
 Plug 'https://github.com/WolfgangMehner/vim-plugins.git'
 
-Plug 'https://github.com/WolfgangMehner/git-support.git'
+Plug 'https://github.com/lambdalisue/gina.vim.git'
 
 Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl.git'
 

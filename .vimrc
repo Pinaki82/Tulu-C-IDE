@@ -33,4 +33,25 @@ endfunction
 source $HOME\/\.vimdotcommon\/\.vimrc2.vim
 " ============================================
 
+" ============================================
+" how to start vim with a specific width and height
+" https://superuser.com/questions/419372/how-do-i-set-the-default-window-size-in-vim
 
+
+if !has("gui_running")
+  " When the GUI is not running and Vim is started from the terminal.
+  if exists("+lines")
+    set lines=34
+  endif
+  if exists("+columns")
+    set columns=115
+  endif
+endif
+" ============================================
+
+" ============================================
+""     setting up a dark colorscheme at startup (Terminal)
+" if !has("gui_running")
+"     colo mustang_green
+" endif
+" ============================================
