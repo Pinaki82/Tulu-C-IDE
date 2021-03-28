@@ -1,0 +1,710 @@
+================================================================================
+*** A handful of LLC/LLVM command-line flags are provided here for the
+*** convenience to configure Tulu-C-IDE so that it can autocomplete
+*** codes being written for different compiler backend targets and different
+*** MCU/CPU units.
+License: Boost Software License v1.0
+Link to Tulu-C-IDE on GitHub:
+https://github.com/Pinaki82/Tulu-C-IDE.git
+================================================================================
+
+
+https://stackoverflow.com/questions/15036909/clang-how-to-list-supported-target-architectures
+llc -march=armeb -mattr=help
+llc -march=arm -mattr=help
+llc --version | grep Default
+llc --version | grep armeb
+llc --version | grep Default
+llvm-config --host-target
+clang -v 2>&1 | grep Target
+clang-11 -print-targets
+clang -print-targets
+================================================================================
+
+================================================================================
+llc -march=armeb -mattr=help
+Available CPUs for this target:
+
+  arm1020e      - Select the arm1020e processor.
+  arm1020t      - Select the arm1020t processor.
+  arm1022e      - Select the arm1022e processor.
+  arm10e        - Select the arm10e processor.
+  arm10tdmi     - Select the arm10tdmi processor.
+  arm1136j-s    - Select the arm1136j-s processor.
+  arm1136jf-s   - Select the arm1136jf-s processor.
+  arm1156t2-s   - Select the arm1156t2-s processor.
+  arm1156t2f-s  - Select the arm1156t2f-s processor.
+  arm1176j-s    - Select the arm1176j-s processor.
+  arm1176jz-s   - Select the arm1176jz-s processor.
+  arm1176jzf-s  - Select the arm1176jzf-s processor.
+  arm710t       - Select the arm710t processor.
+  arm720t       - Select the arm720t processor.
+  arm7tdmi      - Select the arm7tdmi processor.
+  arm7tdmi-s    - Select the arm7tdmi-s processor.
+  arm8          - Select the arm8 processor.
+  arm810        - Select the arm810 processor.
+  arm9          - Select the arm9 processor.
+  arm920        - Select the arm920 processor.
+  arm920t       - Select the arm920t processor.
+  arm922t       - Select the arm922t processor.
+  arm926ej-s    - Select the arm926ej-s processor.
+  arm940t       - Select the arm940t processor.
+  arm946e-s     - Select the arm946e-s processor.
+  arm966e-s     - Select the arm966e-s processor.
+  arm968e-s     - Select the arm968e-s processor.
+  arm9e         - Select the arm9e processor.
+  arm9tdmi      - Select the arm9tdmi processor.
+  cortex-a12    - Select the cortex-a12 processor.
+  cortex-a15    - Select the cortex-a15 processor.
+  cortex-a17    - Select the cortex-a17 processor.
+  cortex-a32    - Select the cortex-a32 processor.
+  cortex-a35    - Select the cortex-a35 processor.
+  cortex-a5     - Select the cortex-a5 processor.
+  cortex-a53    - Select the cortex-a53 processor.
+  cortex-a55    - Select the cortex-a55 processor.
+  cortex-a57    - Select the cortex-a57 processor.
+  cortex-a7     - Select the cortex-a7 processor.
+  cortex-a72    - Select the cortex-a72 processor.
+  cortex-a73    - Select the cortex-a73 processor.
+  cortex-a75    - Select the cortex-a75 processor.
+  cortex-a76    - Select the cortex-a76 processor.
+  cortex-a76ae  - Select the cortex-a76ae processor.
+  cortex-a77    - Select the cortex-a77 processor.
+  cortex-a78    - Select the cortex-a78 processor.
+  cortex-a8     - Select the cortex-a8 processor.
+  cortex-a9     - Select the cortex-a9 processor.
+  cortex-m0     - Select the cortex-m0 processor.
+  cortex-m0plus - Select the cortex-m0plus processor.
+  cortex-m1     - Select the cortex-m1 processor.
+  cortex-m23    - Select the cortex-m23 processor.
+  cortex-m3     - Select the cortex-m3 processor.
+  cortex-m33    - Select the cortex-m33 processor.
+  cortex-m35p   - Select the cortex-m35p processor.
+  cortex-m4     - Select the cortex-m4 processor.
+  cortex-m55    - Select the cortex-m55 processor.
+  cortex-m7     - Select the cortex-m7 processor.
+  cortex-r4     - Select the cortex-r4 processor.
+  cortex-r4f    - Select the cortex-r4f processor.
+  cortex-r5     - Select the cortex-r5 processor.
+  cortex-r52    - Select the cortex-r52 processor.
+  cortex-r7     - Select the cortex-r7 processor.
+  cortex-r8     - Select the cortex-r8 processor.
+  cortex-x1     - Select the cortex-x1 processor.
+  cyclone       - Select the cyclone processor.
+  ep9312        - Select the ep9312 processor.
+  exynos-m3     - Select the exynos-m3 processor.
+  exynos-m4     - Select the exynos-m4 processor.
+  exynos-m5     - Select the exynos-m5 processor.
+  generic       - Select the generic processor.
+  iwmmxt        - Select the iwmmxt processor.
+  krait         - Select the krait processor.
+  kryo          - Select the kryo processor.
+  mpcore        - Select the mpcore processor.
+  mpcorenovfp   - Select the mpcorenovfp processor.
+  neoverse-n1   - Select the neoverse-n1 processor.
+  sc000         - Select the sc000 processor.
+  sc300         - Select the sc300 processor.
+  strongarm     - Select the strongarm processor.
+  strongarm110  - Select the strongarm110 processor.
+  strongarm1100 - Select the strongarm1100 processor.
+  strongarm1110 - Select the strongarm1110 processor.
+  swift         - Select the swift processor.
+  xscale        - Select the xscale processor.
+
+Available features for this target:
+
+  32bit                    - Prefer 32-bit Thumb instrs.
+  8msecext                 - Enable support for ARMv8-M Security Extensions.
+  a12                      - Cortex-A12 ARM processors.
+  a15                      - Cortex-A15 ARM processors.
+  a17                      - Cortex-A17 ARM processors.
+  a32                      - Cortex-A32 ARM processors.
+  a35                      - Cortex-A35 ARM processors.
+  a5                       - Cortex-A5 ARM processors.
+  a53                      - Cortex-A53 ARM processors.
+  a55                      - Cortex-A55 ARM processors.
+  a57                      - Cortex-A57 ARM processors.
+  a7                       - Cortex-A7 ARM processors.
+  a72                      - Cortex-A72 ARM processors.
+  a73                      - Cortex-A73 ARM processors.
+  a75                      - Cortex-A75 ARM processors.
+  a76                      - Cortex-A76 ARM processors.
+  a77                      - Cortex-A77 ARM processors.
+  a8                       - Cortex-A8 ARM processors.
+  a9                       - Cortex-A9 ARM processors.
+  aclass                   - Is application profile ('A' series).
+  acquire-release          - Has v8 acquire/release (lda/ldaex  etc) instructions.
+  aes                      - Enable AES support.
+  armv2                    - ARMv2 architecture.
+  armv2a                   - ARMv2a architecture.
+  armv3                    - ARMv3 architecture.
+  armv3m                   - ARMv3m architecture.
+  armv4                    - ARMv4 architecture.
+  armv4t                   - ARMv4t architecture.
+  armv5t                   - ARMv5t architecture.
+  armv5te                  - ARMv5te architecture.
+  armv5tej                 - ARMv5tej architecture.
+  armv6                    - ARMv6 architecture.
+  armv6-m                  - ARMv6m architecture.
+  armv6j                   - ARMv7a architecture.
+  armv6k                   - ARMv6k architecture.
+  armv6kz                  - ARMv6kz architecture.
+  armv6s-m                 - ARMv6sm architecture.
+  armv6t2                  - ARMv6t2 architecture.
+  armv7-a                  - ARMv7a architecture.
+  armv7-m                  - ARMv7m architecture.
+  armv7-r                  - ARMv7r architecture.
+  armv7e-m                 - ARMv7em architecture.
+  armv7k                   - ARMv7a architecture.
+  armv7s                   - ARMv7a architecture.
+  armv7ve                  - ARMv7ve architecture.
+  armv8-a                  - ARMv8a architecture.
+  armv8-m.base             - ARMv8mBaseline architecture.
+  armv8-m.main             - ARMv8mMainline architecture.
+  armv8-r                  - ARMv8r architecture.
+  armv8.1-a                - ARMv81a architecture.
+  armv8.1-m.main           - ARMv81mMainline architecture.
+  armv8.2-a                - ARMv82a architecture.
+  armv8.3-a                - ARMv83a architecture.
+  armv8.4-a                - ARMv84a architecture.
+  armv8.5-a                - ARMv85a architecture.
+  armv8.6-a                - ARMv86a architecture.
+  avoid-movs-shop          - Avoid movs instructions with shifter operand.
+  avoid-partial-cpsr       - Avoid CPSR partial update for OOO execution.
+  bf16                     - Enable support for BFloat16 instructions.
+  cde                      - Support CDE instructions.
+  cdecp0                   - Coprocessor 0 ISA is CDEv1.
+  cdecp1                   - Coprocessor 1 ISA is CDEv1.
+  cdecp2                   - Coprocessor 2 ISA is CDEv1.
+  cdecp3                   - Coprocessor 3 ISA is CDEv1.
+  cdecp4                   - Coprocessor 4 ISA is CDEv1.
+  cdecp5                   - Coprocessor 5 ISA is CDEv1.
+  cdecp6                   - Coprocessor 6 ISA is CDEv1.
+  cdecp7                   - Coprocessor 7 ISA is CDEv1.
+  cheap-predicable-cpsr    - Disable +1 predication cost for instructions updating CPSR.
+  cortex-a78               - Cortex-A78 ARM processors.
+  cortex-x1                - Cortex-X1 ARM processors.
+  crc                      - Enable support for CRC instructions.
+  crypto                   - Enable support for Cryptography extensions.
+  d32                      - Extend FP to 32 double registers.
+  db                       - Has data barrier (dmb/dsb) instructions.
+  dfb                      - Has full data barrier (dfb) instruction.
+  disable-postra-scheduler - Don't schedule again after register allocation.
+  dont-widen-vmovs         - Don't widen VMOVS to VMOVD.
+  dotprod                  - Enable support for dot product instructions.
+  dsp                      - Supports DSP instructions in ARM and/or Thumb2.
+  execute-only             - Enable the generation of execute only code..
+  expand-fp-mlx            - Expand VFP/NEON MLA/MLS instructions.
+  exynos                   - Samsung Exynos processors.
+  fp-armv8                 - Enable ARMv8 FP.
+  fp-armv8d16              - Enable ARMv8 FP with only 16 d-registers.
+  fp-armv8d16sp            - Enable ARMv8 FP with only 16 d-registers and no double precision.
+  fp-armv8sp               - Enable ARMv8 FP with no double precision.
+  fp16                     - Enable half-precision floating point.
+  fp16fml                  - Enable full half-precision floating point fml instructions.
+  fp64                     - Floating point unit supports double precision.
+  fpao                     - Enable fast computation of positive address offsets.
+  fpregs                   - Enable FP registers.
+  fpregs16                 - Enable 16-bit FP registers.
+  fpregs64                 - Enable 64-bit FP registers.
+  fullfp16                 - Enable full half-precision floating point.
+  fuse-aes                 - CPU fuses AES crypto operations.
+  fuse-literals            - CPU fuses literal generation operations.
+  hwdiv                    - Enable divide instructions in Thumb.
+  hwdiv-arm                - Enable divide instructions in ARM mode.
+  i8mm                     - Enable Matrix Multiply Int8 Extension.
+  iwmmxt                   - ARMv5te architecture.
+  iwmmxt2                  - ARMv5te architecture.
+  krait                    - Qualcomm Krait processors.
+  kryo                     - Qualcomm Kryo processors.
+  lob                      - Enable Low Overhead Branch extensions.
+  long-calls               - Generate calls via indirect call instructions.
+  loop-align               - Prefer 32-bit alignment for loops.
+  m3                       - Cortex-M3 ARM processors.
+  mclass                   - Is microcontroller profile ('M' series).
+  mp                       - Supports Multiprocessing extension.
+  muxed-units              - Has muxed AGU and NEON/FPU.
+  mve                      - Support M-Class Vector Extension with integer ops.
+  mve.fp                   - Support M-Class Vector Extension with integer and floating ops.
+  mve1beat                 - Model MVE instructions as a 1 beat per tick architecture.
+  mve2beat                 - Model MVE instructions as a 2 beats per tick architecture.
+  mve4beat                 - Model MVE instructions as a 4 beats per tick architecture.
+  nacl-trap                - NaCl trap.
+  neon                     - Enable NEON instructions.
+  neon-fpmovs              - Convert VMOVSR, VMOVRS, VMOVS to NEON.
+  neonfp                   - Use NEON for single precision FP.
+  no-branch-predictor      - Has no branch predictor.
+  no-movt                  - Don't use movt/movw pairs for 32-bit imms.
+  no-neg-immediates        - Convert immediates and instructions to their negated or complemented equivalent when the immediate does not fit in the encoding..
+  noarm                    - Does not support ARM mode execution.
+  nonpipelined-vfp         - VFP instructions are not pipelined.
+  perfmon                  - Enable support for Performance Monitor extensions.
+  prefer-ishst             - Prefer ISHST barriers.
+  prefer-vmovsr            - Prefer VMOVSR.
+  prof-unpr                - Is profitable to unpredicate.
+  r4                       - Cortex-R4 ARM processors.
+  r5                       - Cortex-R5 ARM processors.
+  r52                      - Cortex-R52 ARM processors.
+  r7                       - Cortex-R7 ARM processors.
+  ras                      - Enable Reliability, Availability and Serviceability extensions.
+  rclass                   - Is realtime profile ('R' series).
+  read-tp-hard             - Reading thread pointer from register.
+  reserve-r9               - Reserve R9, making it unavailable as GPR.
+  ret-addr-stack           - Has return address stack.
+  sb                       - Enable v8.5a Speculation Barrier.
+  sha2                     - Enable SHA1 and SHA256 support.
+  slow-fp-brcc             - FP compare + branch is slow.
+  slow-load-D-subreg       - Loading into D subregs is slow.
+  slow-odd-reg             - VLDM/VSTM starting with an odd register is slow.
+  slow-vdup32              - Has slow VDUP32 - prefer VMOV.
+  slow-vgetlni32           - Has slow VGETLNi32 - prefer VMOV.
+  slowfpvfmx               - Disable VFP / NEON FMA instructions.
+  slowfpvmlx               - Disable VFP / NEON MAC instructions.
+  soft-float               - Use software floating point features..
+  splat-vfp-neon           - Splat register from VFP to NEON.
+  strict-align             - Disallow all unaligned memory access.
+  swift                    - Swift ARM processors.
+  thumb-mode               - Thumb mode.
+  thumb2                   - Enable Thumb2 instructions.
+  trustzone                - Enable support for TrustZone security extensions.
+  use-misched              - Use the MachineScheduler.
+  v4t                      - Support ARM v4T instructions.
+  v5t                      - Support ARM v5T instructions.
+  v5te                     - Support ARM v5TE, v5TEj, and v5TExp instructions.
+  v6                       - Support ARM v6 instructions.
+  v6k                      - Support ARM v6k instructions.
+  v6m                      - Support ARM v6M instructions.
+  v6t2                     - Support ARM v6t2 instructions.
+  v7                       - Support ARM v7 instructions.
+  v7clrex                  - Has v7 clrex instruction.
+  v8                       - Support ARM v8 instructions.
+  v8.1a                    - Support ARM v8.1a instructions.
+  v8.1m.main               - Support ARM v8-1M Mainline instructions.
+  v8.2a                    - Support ARM v8.2a instructions.
+  v8.3a                    - Support ARM v8.3a instructions.
+  v8.4a                    - Support ARM v8.4a instructions.
+  v8.5a                    - Support ARM v8.5a instructions.
+  v8.6a                    - Support ARM v8.6a instructions.
+  v8m                      - Support ARM v8M Baseline instructions.
+  v8m.main                 - Support ARM v8M Mainline instructions.
+  vfp2                     - Enable VFP2 instructions.
+  vfp2sp                   - Enable VFP2 instructions with no double precision.
+  vfp3                     - Enable VFP3 instructions.
+  vfp3d16                  - Enable VFP3 instructions with only 16 d-registers.
+  vfp3d16sp                - Enable VFP3 instructions with only 16 d-registers and no double precision.
+  vfp3sp                   - Enable VFP3 instructions with no double precision.
+  vfp4                     - Enable VFP4 instructions.
+  vfp4d16                  - Enable VFP4 instructions with only 16 d-registers.
+  vfp4d16sp                - Enable VFP4 instructions with only 16 d-registers and no double precision.
+  vfp4sp                   - Enable VFP4 instructions with no double precision.
+  virtualization           - Supports Virtualization extension.
+  vldn-align               - Check for VLDn unaligned access.
+  vmlx-forwarding          - Has multiplier accumulator forwarding.
+  vmlx-hazards             - Has VMLx hazards.
+  wide-stride-vfp          - Use a wide stride when allocating VFP registers.
+  xscale                   - ARMv5te architecture.
+  zcz                      - Has zero-cycle zeroing instructions.
+
+Use +feature to enable a feature, or -feature to disable it.
+For example, llc -mcpu=mycpu -mattr=+feature1,-feature2
+
+
+================================================================================
+llc -march=arm -mattr=help
+Available CPUs for this target:
+
+  arm1020e      - Select the arm1020e processor.
+  arm1020t      - Select the arm1020t processor.
+  arm1022e      - Select the arm1022e processor.
+  arm10e        - Select the arm10e processor.
+  arm10tdmi     - Select the arm10tdmi processor.
+  arm1136j-s    - Select the arm1136j-s processor.
+  arm1136jf-s   - Select the arm1136jf-s processor.
+  arm1156t2-s   - Select the arm1156t2-s processor.
+  arm1156t2f-s  - Select the arm1156t2f-s processor.
+  arm1176j-s    - Select the arm1176j-s processor.
+  arm1176jz-s   - Select the arm1176jz-s processor.
+  arm1176jzf-s  - Select the arm1176jzf-s processor.
+  arm710t       - Select the arm710t processor.
+  arm720t       - Select the arm720t processor.
+  arm7tdmi      - Select the arm7tdmi processor.
+  arm7tdmi-s    - Select the arm7tdmi-s processor.
+  arm8          - Select the arm8 processor.
+  arm810        - Select the arm810 processor.
+  arm9          - Select the arm9 processor.
+  arm920        - Select the arm920 processor.
+  arm920t       - Select the arm920t processor.
+  arm922t       - Select the arm922t processor.
+  arm926ej-s    - Select the arm926ej-s processor.
+  arm940t       - Select the arm940t processor.
+  arm946e-s     - Select the arm946e-s processor.
+  arm966e-s     - Select the arm966e-s processor.
+  arm968e-s     - Select the arm968e-s processor.
+  arm9e         - Select the arm9e processor.
+  arm9tdmi      - Select the arm9tdmi processor.
+  cortex-a12    - Select the cortex-a12 processor.
+  cortex-a15    - Select the cortex-a15 processor.
+  cortex-a17    - Select the cortex-a17 processor.
+  cortex-a32    - Select the cortex-a32 processor.
+  cortex-a35    - Select the cortex-a35 processor.
+  cortex-a5     - Select the cortex-a5 processor.
+  cortex-a53    - Select the cortex-a53 processor.
+  cortex-a55    - Select the cortex-a55 processor.
+  cortex-a57    - Select the cortex-a57 processor.
+  cortex-a7     - Select the cortex-a7 processor.
+  cortex-a72    - Select the cortex-a72 processor.
+  cortex-a73    - Select the cortex-a73 processor.
+  cortex-a75    - Select the cortex-a75 processor.
+  cortex-a76    - Select the cortex-a76 processor.
+  cortex-a76ae  - Select the cortex-a76ae processor.
+  cortex-a77    - Select the cortex-a77 processor.
+  cortex-a78    - Select the cortex-a78 processor.
+  cortex-a8     - Select the cortex-a8 processor.
+  cortex-a9     - Select the cortex-a9 processor.
+  cortex-m0     - Select the cortex-m0 processor.
+  cortex-m0plus - Select the cortex-m0plus processor.
+  cortex-m1     - Select the cortex-m1 processor.
+  cortex-m23    - Select the cortex-m23 processor.
+  cortex-m3     - Select the cortex-m3 processor.
+  cortex-m33    - Select the cortex-m33 processor.
+  cortex-m35p   - Select the cortex-m35p processor.
+  cortex-m4     - Select the cortex-m4 processor.
+  cortex-m55    - Select the cortex-m55 processor.
+  cortex-m7     - Select the cortex-m7 processor.
+  cortex-r4     - Select the cortex-r4 processor.
+  cortex-r4f    - Select the cortex-r4f processor.
+  cortex-r5     - Select the cortex-r5 processor.
+  cortex-r52    - Select the cortex-r52 processor.
+  cortex-r7     - Select the cortex-r7 processor.
+  cortex-r8     - Select the cortex-r8 processor.
+  cortex-x1     - Select the cortex-x1 processor.
+  cyclone       - Select the cyclone processor.
+  ep9312        - Select the ep9312 processor.
+  exynos-m3     - Select the exynos-m3 processor.
+  exynos-m4     - Select the exynos-m4 processor.
+  exynos-m5     - Select the exynos-m5 processor.
+  generic       - Select the generic processor.
+  iwmmxt        - Select the iwmmxt processor.
+  krait         - Select the krait processor.
+  kryo          - Select the kryo processor.
+  mpcore        - Select the mpcore processor.
+  mpcorenovfp   - Select the mpcorenovfp processor.
+  neoverse-n1   - Select the neoverse-n1 processor.
+  sc000         - Select the sc000 processor.
+  sc300         - Select the sc300 processor.
+  strongarm     - Select the strongarm processor.
+  strongarm110  - Select the strongarm110 processor.
+  strongarm1100 - Select the strongarm1100 processor.
+  strongarm1110 - Select the strongarm1110 processor.
+  swift         - Select the swift processor.
+  xscale        - Select the xscale processor.
+
+Available features for this target:
+
+  32bit                    - Prefer 32-bit Thumb instrs.
+  8msecext                 - Enable support for ARMv8-M Security Extensions.
+  a12                      - Cortex-A12 ARM processors.
+  a15                      - Cortex-A15 ARM processors.
+  a17                      - Cortex-A17 ARM processors.
+  a32                      - Cortex-A32 ARM processors.
+  a35                      - Cortex-A35 ARM processors.
+  a5                       - Cortex-A5 ARM processors.
+  a53                      - Cortex-A53 ARM processors.
+  a55                      - Cortex-A55 ARM processors.
+  a57                      - Cortex-A57 ARM processors.
+  a7                       - Cortex-A7 ARM processors.
+  a72                      - Cortex-A72 ARM processors.
+  a73                      - Cortex-A73 ARM processors.
+  a75                      - Cortex-A75 ARM processors.
+  a76                      - Cortex-A76 ARM processors.
+  a77                      - Cortex-A77 ARM processors.
+  a8                       - Cortex-A8 ARM processors.
+  a9                       - Cortex-A9 ARM processors.
+  aclass                   - Is application profile ('A' series).
+  acquire-release          - Has v8 acquire/release (lda/ldaex  etc) instructions.
+  aes                      - Enable AES support.
+  armv2                    - ARMv2 architecture.
+  armv2a                   - ARMv2a architecture.
+  armv3                    - ARMv3 architecture.
+  armv3m                   - ARMv3m architecture.
+  armv4                    - ARMv4 architecture.
+  armv4t                   - ARMv4t architecture.
+  armv5t                   - ARMv5t architecture.
+  armv5te                  - ARMv5te architecture.
+  armv5tej                 - ARMv5tej architecture.
+  armv6                    - ARMv6 architecture.
+  armv6-m                  - ARMv6m architecture.
+  armv6j                   - ARMv7a architecture.
+  armv6k                   - ARMv6k architecture.
+  armv6kz                  - ARMv6kz architecture.
+  armv6s-m                 - ARMv6sm architecture.
+  armv6t2                  - ARMv6t2 architecture.
+  armv7-a                  - ARMv7a architecture.
+  armv7-m                  - ARMv7m architecture.
+  armv7-r                  - ARMv7r architecture.
+  armv7e-m                 - ARMv7em architecture.
+  armv7k                   - ARMv7a architecture.
+  armv7s                   - ARMv7a architecture.
+  armv7ve                  - ARMv7ve architecture.
+  armv8-a                  - ARMv8a architecture.
+  armv8-m.base             - ARMv8mBaseline architecture.
+  armv8-m.main             - ARMv8mMainline architecture.
+  armv8-r                  - ARMv8r architecture.
+  armv8.1-a                - ARMv81a architecture.
+  armv8.1-m.main           - ARMv81mMainline architecture.
+  armv8.2-a                - ARMv82a architecture.
+  armv8.3-a                - ARMv83a architecture.
+  armv8.4-a                - ARMv84a architecture.
+  armv8.5-a                - ARMv85a architecture.
+  armv8.6-a                - ARMv86a architecture.
+  avoid-movs-shop          - Avoid movs instructions with shifter operand.
+  avoid-partial-cpsr       - Avoid CPSR partial update for OOO execution.
+  bf16                     - Enable support for BFloat16 instructions.
+  cde                      - Support CDE instructions.
+  cdecp0                   - Coprocessor 0 ISA is CDEv1.
+  cdecp1                   - Coprocessor 1 ISA is CDEv1.
+  cdecp2                   - Coprocessor 2 ISA is CDEv1.
+  cdecp3                   - Coprocessor 3 ISA is CDEv1.
+  cdecp4                   - Coprocessor 4 ISA is CDEv1.
+  cdecp5                   - Coprocessor 5 ISA is CDEv1.
+  cdecp6                   - Coprocessor 6 ISA is CDEv1.
+  cdecp7                   - Coprocessor 7 ISA is CDEv1.
+  cheap-predicable-cpsr    - Disable +1 predication cost for instructions updating CPSR.
+  cortex-a78               - Cortex-A78 ARM processors.
+  cortex-x1                - Cortex-X1 ARM processors.
+  crc                      - Enable support for CRC instructions.
+  crypto                   - Enable support for Cryptography extensions.
+  d32                      - Extend FP to 32 double registers.
+  db                       - Has data barrier (dmb/dsb) instructions.
+  dfb                      - Has full data barrier (dfb) instruction.
+  disable-postra-scheduler - Don't schedule again after register allocation.
+  dont-widen-vmovs         - Don't widen VMOVS to VMOVD.
+  dotprod                  - Enable support for dot product instructions.
+  dsp                      - Supports DSP instructions in ARM and/or Thumb2.
+  execute-only             - Enable the generation of execute only code..
+  expand-fp-mlx            - Expand VFP/NEON MLA/MLS instructions.
+  exynos                   - Samsung Exynos processors.
+  fp-armv8                 - Enable ARMv8 FP.
+  fp-armv8d16              - Enable ARMv8 FP with only 16 d-registers.
+  fp-armv8d16sp            - Enable ARMv8 FP with only 16 d-registers and no double precision.
+  fp-armv8sp               - Enable ARMv8 FP with no double precision.
+  fp16                     - Enable half-precision floating point.
+  fp16fml                  - Enable full half-precision floating point fml instructions.
+  fp64                     - Floating point unit supports double precision.
+  fpao                     - Enable fast computation of positive address offsets.
+  fpregs                   - Enable FP registers.
+  fpregs16                 - Enable 16-bit FP registers.
+  fpregs64                 - Enable 64-bit FP registers.
+  fullfp16                 - Enable full half-precision floating point.
+  fuse-aes                 - CPU fuses AES crypto operations.
+  fuse-literals            - CPU fuses literal generation operations.
+  hwdiv                    - Enable divide instructions in Thumb.
+  hwdiv-arm                - Enable divide instructions in ARM mode.
+  i8mm                     - Enable Matrix Multiply Int8 Extension.
+  iwmmxt                   - ARMv5te architecture.
+  iwmmxt2                  - ARMv5te architecture.
+  krait                    - Qualcomm Krait processors.
+  kryo                     - Qualcomm Kryo processors.
+  lob                      - Enable Low Overhead Branch extensions.
+  long-calls               - Generate calls via indirect call instructions.
+  loop-align               - Prefer 32-bit alignment for loops.
+  m3                       - Cortex-M3 ARM processors.
+  mclass                   - Is microcontroller profile ('M' series).
+  mp                       - Supports Multiprocessing extension.
+  muxed-units              - Has muxed AGU and NEON/FPU.
+  mve                      - Support M-Class Vector Extension with integer ops.
+  mve.fp                   - Support M-Class Vector Extension with integer and floating ops.
+  mve1beat                 - Model MVE instructions as a 1 beat per tick architecture.
+  mve2beat                 - Model MVE instructions as a 2 beats per tick architecture.
+  mve4beat                 - Model MVE instructions as a 4 beats per tick architecture.
+  nacl-trap                - NaCl trap.
+  neon                     - Enable NEON instructions.
+  neon-fpmovs              - Convert VMOVSR, VMOVRS, VMOVS to NEON.
+  neonfp                   - Use NEON for single precision FP.
+  no-branch-predictor      - Has no branch predictor.
+  no-movt                  - Don't use movt/movw pairs for 32-bit imms.
+  no-neg-immediates        - Convert immediates and instructions to their negated or complemented equivalent when the immediate does not fit in the encoding..
+  noarm                    - Does not support ARM mode execution.
+  nonpipelined-vfp         - VFP instructions are not pipelined.
+  perfmon                  - Enable support for Performance Monitor extensions.
+  prefer-ishst             - Prefer ISHST barriers.
+  prefer-vmovsr            - Prefer VMOVSR.
+  prof-unpr                - Is profitable to unpredicate.
+  r4                       - Cortex-R4 ARM processors.
+  r5                       - Cortex-R5 ARM processors.
+  r52                      - Cortex-R52 ARM processors.
+  r7                       - Cortex-R7 ARM processors.
+  ras                      - Enable Reliability, Availability and Serviceability extensions.
+  rclass                   - Is realtime profile ('R' series).
+  read-tp-hard             - Reading thread pointer from register.
+  reserve-r9               - Reserve R9, making it unavailable as GPR.
+  ret-addr-stack           - Has return address stack.
+  sb                       - Enable v8.5a Speculation Barrier.
+  sha2                     - Enable SHA1 and SHA256 support.
+  slow-fp-brcc             - FP compare + branch is slow.
+  slow-load-D-subreg       - Loading into D subregs is slow.
+  slow-odd-reg             - VLDM/VSTM starting with an odd register is slow.
+  slow-vdup32              - Has slow VDUP32 - prefer VMOV.
+  slow-vgetlni32           - Has slow VGETLNi32 - prefer VMOV.
+  slowfpvfmx               - Disable VFP / NEON FMA instructions.
+  slowfpvmlx               - Disable VFP / NEON MAC instructions.
+  soft-float               - Use software floating point features..
+  splat-vfp-neon           - Splat register from VFP to NEON.
+  strict-align             - Disallow all unaligned memory access.
+  swift                    - Swift ARM processors.
+  thumb-mode               - Thumb mode.
+  thumb2                   - Enable Thumb2 instructions.
+  trustzone                - Enable support for TrustZone security extensions.
+  use-misched              - Use the MachineScheduler.
+  v4t                      - Support ARM v4T instructions.
+  v5t                      - Support ARM v5T instructions.
+  v5te                     - Support ARM v5TE, v5TEj, and v5TExp instructions.
+  v6                       - Support ARM v6 instructions.
+  v6k                      - Support ARM v6k instructions.
+  v6m                      - Support ARM v6M instructions.
+  v6t2                     - Support ARM v6t2 instructions.
+  v7                       - Support ARM v7 instructions.
+  v7clrex                  - Has v7 clrex instruction.
+  v8                       - Support ARM v8 instructions.
+  v8.1a                    - Support ARM v8.1a instructions.
+  v8.1m.main               - Support ARM v8-1M Mainline instructions.
+  v8.2a                    - Support ARM v8.2a instructions.
+  v8.3a                    - Support ARM v8.3a instructions.
+  v8.4a                    - Support ARM v8.4a instructions.
+  v8.5a                    - Support ARM v8.5a instructions.
+  v8.6a                    - Support ARM v8.6a instructions.
+  v8m                      - Support ARM v8M Baseline instructions.
+  v8m.main                 - Support ARM v8M Mainline instructions.
+  vfp2                     - Enable VFP2 instructions.
+  vfp2sp                   - Enable VFP2 instructions with no double precision.
+  vfp3                     - Enable VFP3 instructions.
+  vfp3d16                  - Enable VFP3 instructions with only 16 d-registers.
+  vfp3d16sp                - Enable VFP3 instructions with only 16 d-registers and no double precision.
+  vfp3sp                   - Enable VFP3 instructions with no double precision.
+  vfp4                     - Enable VFP4 instructions.
+  vfp4d16                  - Enable VFP4 instructions with only 16 d-registers.
+  vfp4d16sp                - Enable VFP4 instructions with only 16 d-registers and no double precision.
+  vfp4sp                   - Enable VFP4 instructions with no double precision.
+  virtualization           - Supports Virtualization extension.
+  vldn-align               - Check for VLDn unaligned access.
+  vmlx-forwarding          - Has multiplier accumulator forwarding.
+  vmlx-hazards             - Has VMLx hazards.
+  wide-stride-vfp          - Use a wide stride when allocating VFP registers.
+  xscale                   - ARMv5te architecture.
+  zcz                      - Has zero-cycle zeroing instructions.
+
+Use +feature to enable a feature, or -feature to disable it.
+For example, llc -mcpu=mycpu -mattr=+feature1,-feature2
+
+
+================================================================================
+llc --version | grep Default
+Default target: x86_64-pc-msys
+
+================================================================================
+llc --version | grep armeb
+armeb      - ARM (big endian)
+
+================================================================================
+llc --version | grep Default
+Default target: x86_64-pc-msys
+
+================================================================================
+llvm-config --host-target
+x86_64-pc-windows-msys
+
+================================================================================
+clang -v 2>&1 | grep Target
+Target: x86_64-pc-windows-msys
+
+================================================================================
+clang-11 -print-targets
+  Registered Targets:
+    aarch64    - AArch64 (little endian)
+    aarch64_32 - AArch64 (little endian ILP32)
+    aarch64_be - AArch64 (big endian)
+    amdgcn     - AMD GCN GPUs
+    arm        - ARM
+    arm64      - ARM64 (little endian)
+    arm64_32   - ARM64 (little endian ILP32)
+    armeb      - ARM (big endian)
+    avr        - Atmel AVR Microcontroller
+    bpf        - BPF (host endian)
+    bpfeb      - BPF (big endian)
+    bpfel      - BPF (little endian)
+    hexagon    - Hexagon
+    lanai      - Lanai
+    mips       - MIPS (32-bit big endian)
+    mips64     - MIPS (64-bit big endian)
+    mips64el   - MIPS (64-bit little endian)
+    mipsel     - MIPS (32-bit little endian)
+    msp430     - MSP430 [experimental]
+    nvptx      - NVIDIA PTX 32-bit
+    nvptx64    - NVIDIA PTX 64-bit
+    ppc32      - PowerPC 32
+    ppc64      - PowerPC 64
+    ppc64le    - PowerPC 64 LE
+    r600       - AMD GPUs HD2XXX-HD6XXX
+    riscv32    - 32-bit RISC-V
+    riscv64    - 64-bit RISC-V
+    sparc      - Sparc
+    sparcel    - Sparc LE
+    sparcv9    - Sparc V9
+    systemz    - SystemZ
+    thumb      - Thumb
+    thumbeb    - Thumb (big endian)
+    wasm32     - WebAssembly 32-bit
+    wasm64     - WebAssembly 64-bit
+    x86        - 32-bit X86: Pentium-Pro and above
+    x86-64     - 64-bit X86: EM64T and AMD64
+    xcore      - XCore
+
+
+================================================================================
+clang -print-targets
+  Registered Targets:
+    aarch64    - AArch64 (little endian)
+    aarch64_32 - AArch64 (little endian ILP32)
+    aarch64_be - AArch64 (big endian)
+    amdgcn     - AMD GCN GPUs
+    arm        - ARM
+    arm64      - ARM64 (little endian)
+    arm64_32   - ARM64 (little endian ILP32)
+    armeb      - ARM (big endian)
+    avr        - Atmel AVR Microcontroller
+    bpf        - BPF (host endian)
+    bpfeb      - BPF (big endian)
+    bpfel      - BPF (little endian)
+    hexagon    - Hexagon
+    lanai      - Lanai
+    mips       - MIPS (32-bit big endian)
+    mips64     - MIPS (64-bit big endian)
+    mips64el   - MIPS (64-bit little endian)
+    mipsel     - MIPS (32-bit little endian)
+    msp430     - MSP430 [experimental]
+    nvptx      - NVIDIA PTX 32-bit
+    nvptx64    - NVIDIA PTX 64-bit
+    ppc32      - PowerPC 32
+    ppc64      - PowerPC 64
+    ppc64le    - PowerPC 64 LE
+    r600       - AMD GPUs HD2XXX-HD6XXX
+    riscv32    - 32-bit RISC-V
+    riscv64    - 64-bit RISC-V
+    sparc      - Sparc
+    sparcel    - Sparc LE
+    sparcv9    - Sparc V9
+    systemz    - SystemZ
+    thumb      - Thumb
+    thumbeb    - Thumb (big endian)
+    wasm32     - WebAssembly 32-bit
+    wasm64     - WebAssembly 64-bit
+    x86        - 32-bit X86: Pentium-Pro and above
+    x86-64     - 64-bit X86: EM64T and AMD64
+    xcore      - XCore
+================================================================================
+
+
+clang --target=avr -mmcu=atmega328p
+https://lists.llvm.org/pipermail/llvm-dev/2020-March/140262.html
+https://lists.llvm.org/pipermail/llvm-dev/2020-March/140320.html
+================================================================================
