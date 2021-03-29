@@ -708,3 +708,306 @@ clang --target=avr -mmcu=atmega328p
 https://lists.llvm.org/pipermail/llvm-dev/2020-March/140262.html
 https://lists.llvm.org/pipermail/llvm-dev/2020-March/140320.html
 ================================================================================
+
+
+llc -march=avr -mattr=help
+
+Available CPUs for this target:
+
+  at43usb320      - Select the at43usb320 processor.
+  at43usb355      - Select the at43usb355 processor.
+  at76c711        - Select the at76c711 processor.
+  at86rf401       - Select the at86rf401 processor.
+  at90c8534       - Select the at90c8534 processor.
+  at90can128      - Select the at90can128 processor.
+  at90can32       - Select the at90can32 processor.
+  at90can64       - Select the at90can64 processor.
+  at90pwm1        - Select the at90pwm1 processor.
+  at90pwm161      - Select the at90pwm161 processor.
+  at90pwm2        - Select the at90pwm2 processor.
+  at90pwm216      - Select the at90pwm216 processor.
+  at90pwm2b       - Select the at90pwm2b processor.
+  at90pwm3        - Select the at90pwm3 processor.
+  at90pwm316      - Select the at90pwm316 processor.
+  at90pwm3b       - Select the at90pwm3b processor.
+  at90pwm81       - Select the at90pwm81 processor.
+  at90s1200       - Select the at90s1200 processor.
+  at90s2313       - Select the at90s2313 processor.
+  at90s2323       - Select the at90s2323 processor.
+  at90s2333       - Select the at90s2333 processor.
+  at90s2343       - Select the at90s2343 processor.
+  at90s4414       - Select the at90s4414 processor.
+  at90s4433       - Select the at90s4433 processor.
+  at90s4434       - Select the at90s4434 processor.
+  at90s8515       - Select the at90s8515 processor.
+  at90s8535       - Select the at90s8535 processor.
+  at90scr100      - Select the at90scr100 processor.
+  at90usb1286     - Select the at90usb1286 processor.
+  at90usb1287     - Select the at90usb1287 processor.
+  at90usb162      - Select the at90usb162 processor.
+  at90usb646      - Select the at90usb646 processor.
+  at90usb647      - Select the at90usb647 processor.
+  at90usb82       - Select the at90usb82 processor.
+  at94k           - Select the at94k processor.
+  ata5272         - Select the ata5272 processor.
+  ata5505         - Select the ata5505 processor.
+  ata5790         - Select the ata5790 processor.
+  ata5795         - Select the ata5795 processor.
+  ata6285         - Select the ata6285 processor.
+  ata6286         - Select the ata6286 processor.
+  ata6289         - Select the ata6289 processor.
+  atmega103       - Select the atmega103 processor.
+  atmega128       - Select the atmega128 processor.
+  atmega1280      - Select the atmega1280 processor.
+  atmega1281      - Select the atmega1281 processor.
+  atmega1284      - Select the atmega1284 processor.
+  atmega1284p     - Select the atmega1284p processor.
+  atmega1284rfr2  - Select the atmega1284rfr2 processor.
+  atmega128a      - Select the atmega128a processor.
+  atmega128rfa1   - Select the atmega128rfa1 processor.
+  atmega128rfr2   - Select the atmega128rfr2 processor.
+  atmega16        - Select the atmega16 processor.
+  atmega161       - Select the atmega161 processor.
+  atmega162       - Select the atmega162 processor.
+  atmega163       - Select the atmega163 processor.
+  atmega164a      - Select the atmega164a processor.
+  atmega164p      - Select the atmega164p processor.
+  atmega164pa     - Select the atmega164pa processor.
+  atmega165       - Select the atmega165 processor.
+  atmega165a      - Select the atmega165a processor.
+  atmega165p      - Select the atmega165p processor.
+  atmega165pa     - Select the atmega165pa processor.
+  atmega168       - Select the atmega168 processor.
+  atmega168a      - Select the atmega168a processor.
+  atmega168p      - Select the atmega168p processor.
+  atmega168pa     - Select the atmega168pa processor.
+  atmega169       - Select the atmega169 processor.
+  atmega169a      - Select the atmega169a processor.
+  atmega169p      - Select the atmega169p processor.
+  atmega169pa     - Select the atmega169pa processor.
+  atmega16a       - Select the atmega16a processor.
+  atmega16hva     - Select the atmega16hva processor.
+  atmega16hva2    - Select the atmega16hva2 processor.
+  atmega16hvb     - Select the atmega16hvb processor.
+  atmega16hvbrevb - Select the atmega16hvbrevb processor.
+  atmega16m1      - Select the atmega16m1 processor.
+  atmega16u2      - Select the atmega16u2 processor.
+  atmega16u4      - Select the atmega16u4 processor.
+  atmega2560      - Select the atmega2560 processor.
+  atmega2561      - Select the atmega2561 processor.
+  atmega2564rfr2  - Select the atmega2564rfr2 processor.
+  atmega256rfr2   - Select the atmega256rfr2 processor.
+  atmega32        - Select the atmega32 processor.
+  atmega323       - Select the atmega323 processor.
+  atmega324a      - Select the atmega324a processor.
+  atmega324p      - Select the atmega324p processor.
+  atmega324pa     - Select the atmega324pa processor.
+  atmega325       - Select the atmega325 processor.
+  atmega3250      - Select the atmega3250 processor.
+  atmega3250a     - Select the atmega3250a processor.
+  atmega3250p     - Select the atmega3250p processor.
+  atmega3250pa    - Select the atmega3250pa processor.
+  atmega325a      - Select the atmega325a processor.
+  atmega325p      - Select the atmega325p processor.
+  atmega325pa     - Select the atmega325pa processor.
+  atmega328       - Select the atmega328 processor.
+  atmega328p      - Select the atmega328p processor.
+  atmega329       - Select the atmega329 processor.
+  atmega3290      - Select the atmega3290 processor.
+  atmega3290a     - Select the atmega3290a processor.
+  atmega3290p     - Select the atmega3290p processor.
+  atmega3290pa    - Select the atmega3290pa processor.
+  atmega329a      - Select the atmega329a processor.
+  atmega329p      - Select the atmega329p processor.
+  atmega329pa     - Select the atmega329pa processor.
+  atmega32a       - Select the atmega32a processor.
+  atmega32c1      - Select the atmega32c1 processor.
+  atmega32hvb     - Select the atmega32hvb processor.
+  atmega32hvbrevb - Select the atmega32hvbrevb processor.
+  atmega32m1      - Select the atmega32m1 processor.
+  atmega32u2      - Select the atmega32u2 processor.
+  atmega32u4      - Select the atmega32u4 processor.
+  atmega32u6      - Select the atmega32u6 processor.
+  atmega406       - Select the atmega406 processor.
+  atmega48        - Select the atmega48 processor.
+  atmega48a       - Select the atmega48a processor.
+  atmega48p       - Select the atmega48p processor.
+  atmega48pa      - Select the atmega48pa processor.
+  atmega64        - Select the atmega64 processor.
+  atmega640       - Select the atmega640 processor.
+  atmega644       - Select the atmega644 processor.
+  atmega644a      - Select the atmega644a processor.
+  atmega644p      - Select the atmega644p processor.
+  atmega644pa     - Select the atmega644pa processor.
+  atmega644rfr2   - Select the atmega644rfr2 processor.
+  atmega645       - Select the atmega645 processor.
+  atmega6450      - Select the atmega6450 processor.
+  atmega6450a     - Select the atmega6450a processor.
+  atmega6450p     - Select the atmega6450p processor.
+  atmega645a      - Select the atmega645a processor.
+  atmega645p      - Select the atmega645p processor.
+  atmega649       - Select the atmega649 processor.
+  atmega6490      - Select the atmega6490 processor.
+  atmega6490a     - Select the atmega6490a processor.
+  atmega6490p     - Select the atmega6490p processor.
+  atmega649a      - Select the atmega649a processor.
+  atmega649p      - Select the atmega649p processor.
+  atmega64a       - Select the atmega64a processor.
+  atmega64c1      - Select the atmega64c1 processor.
+  atmega64hve     - Select the atmega64hve processor.
+  atmega64m1      - Select the atmega64m1 processor.
+  atmega64rfr2    - Select the atmega64rfr2 processor.
+  atmega8         - Select the atmega8 processor.
+  atmega8515      - Select the atmega8515 processor.
+  atmega8535      - Select the atmega8535 processor.
+  atmega88        - Select the atmega88 processor.
+  atmega88a       - Select the atmega88a processor.
+  atmega88p       - Select the atmega88p processor.
+  atmega88pa      - Select the atmega88pa processor.
+  atmega8a        - Select the atmega8a processor.
+  atmega8hva      - Select the atmega8hva processor.
+  atmega8u2       - Select the atmega8u2 processor.
+  attiny10        - Select the attiny10 processor.
+  attiny102       - Select the attiny102 processor.
+  attiny104       - Select the attiny104 processor.
+  attiny11        - Select the attiny11 processor.
+  attiny12        - Select the attiny12 processor.
+  attiny13        - Select the attiny13 processor.
+  attiny13a       - Select the attiny13a processor.
+  attiny15        - Select the attiny15 processor.
+  attiny1634      - Select the attiny1634 processor.
+  attiny167       - Select the attiny167 processor.
+  attiny20        - Select the attiny20 processor.
+  attiny22        - Select the attiny22 processor.
+  attiny2313      - Select the attiny2313 processor.
+  attiny2313a     - Select the attiny2313a processor.
+  attiny24        - Select the attiny24 processor.
+  attiny24a       - Select the attiny24a processor.
+  attiny25        - Select the attiny25 processor.
+  attiny26        - Select the attiny26 processor.
+  attiny261       - Select the attiny261 processor.
+  attiny261a      - Select the attiny261a processor.
+  attiny28        - Select the attiny28 processor.
+  attiny4         - Select the attiny4 processor.
+  attiny40        - Select the attiny40 processor.
+  attiny4313      - Select the attiny4313 processor.
+  attiny43u       - Select the attiny43u processor.
+  attiny44        - Select the attiny44 processor.
+  attiny44a       - Select the attiny44a processor.
+  attiny45        - Select the attiny45 processor.
+  attiny461       - Select the attiny461 processor.
+  attiny461a      - Select the attiny461a processor.
+  attiny48        - Select the attiny48 processor.
+  attiny5         - Select the attiny5 processor.
+  attiny828       - Select the attiny828 processor.
+  attiny84        - Select the attiny84 processor.
+  attiny84a       - Select the attiny84a processor.
+  attiny85        - Select the attiny85 processor.
+  attiny861       - Select the attiny861 processor.
+  attiny861a      - Select the attiny861a processor.
+  attiny87        - Select the attiny87 processor.
+  attiny88        - Select the attiny88 processor.
+  attiny9         - Select the attiny9 processor.
+  atxmega128a1    - Select the atxmega128a1 processor.
+  atxmega128a1u   - Select the atxmega128a1u processor.
+  atxmega128a3    - Select the atxmega128a3 processor.
+  atxmega128a3u   - Select the atxmega128a3u processor.
+  atxmega128a4u   - Select the atxmega128a4u processor.
+  atxmega128b1    - Select the atxmega128b1 processor.
+  atxmega128b3    - Select the atxmega128b3 processor.
+  atxmega128c3    - Select the atxmega128c3 processor.
+  atxmega128d3    - Select the atxmega128d3 processor.
+  atxmega128d4    - Select the atxmega128d4 processor.
+  atxmega16a4     - Select the atxmega16a4 processor.
+  atxmega16a4u    - Select the atxmega16a4u processor.
+  atxmega16c4     - Select the atxmega16c4 processor.
+  atxmega16d4     - Select the atxmega16d4 processor.
+  atxmega16e5     - Select the atxmega16e5 processor.
+  atxmega192a3    - Select the atxmega192a3 processor.
+  atxmega192a3u   - Select the atxmega192a3u processor.
+  atxmega192c3    - Select the atxmega192c3 processor.
+  atxmega192d3    - Select the atxmega192d3 processor.
+  atxmega256a3    - Select the atxmega256a3 processor.
+  atxmega256a3b   - Select the atxmega256a3b processor.
+  atxmega256a3bu  - Select the atxmega256a3bu processor.
+  atxmega256a3u   - Select the atxmega256a3u processor.
+  atxmega256c3    - Select the atxmega256c3 processor.
+  atxmega256d3    - Select the atxmega256d3 processor.
+  atxmega32a4     - Select the atxmega32a4 processor.
+  atxmega32a4u    - Select the atxmega32a4u processor.
+  atxmega32c4     - Select the atxmega32c4 processor.
+  atxmega32d4     - Select the atxmega32d4 processor.
+  atxmega32e5     - Select the atxmega32e5 processor.
+  atxmega32x1     - Select the atxmega32x1 processor.
+  atxmega384c3    - Select the atxmega384c3 processor.
+  atxmega384d3    - Select the atxmega384d3 processor.
+  atxmega64a1     - Select the atxmega64a1 processor.
+  atxmega64a1u    - Select the atxmega64a1u processor.
+  atxmega64a3     - Select the atxmega64a3 processor.
+  atxmega64a3u    - Select the atxmega64a3u processor.
+  atxmega64a4u    - Select the atxmega64a4u processor.
+  atxmega64b1     - Select the atxmega64b1 processor.
+  atxmega64b3     - Select the atxmega64b3 processor.
+  atxmega64c3     - Select the atxmega64c3 processor.
+  atxmega64d3     - Select the atxmega64d3 processor.
+  atxmega64d4     - Select the atxmega64d4 processor.
+  atxmega8e5      - Select the atxmega8e5 processor.
+  avr1            - Select the avr1 processor.
+  avr2            - Select the avr2 processor.
+  avr25           - Select the avr25 processor.
+  avr3            - Select the avr3 processor.
+  avr31           - Select the avr31 processor.
+  avr35           - Select the avr35 processor.
+  avr4            - Select the avr4 processor.
+  avr5            - Select the avr5 processor.
+  avr51           - Select the avr51 processor.
+  avr6            - Select the avr6 processor.
+  avrtiny         - Select the avrtiny processor.
+  avrxmega1       - Select the avrxmega1 processor.
+  avrxmega2       - Select the avrxmega2 processor.
+  avrxmega3       - Select the avrxmega3 processor.
+  avrxmega4       - Select the avrxmega4 processor.
+  avrxmega5       - Select the avrxmega5 processor.
+  avrxmega6       - Select the avrxmega6 processor.
+  avrxmega7       - Select the avrxmega7 processor.
+  m3000           - Select the m3000 processor.
+
+Available features for this target:
+
+  addsubiw      - Enable 16-bit register-immediate addition and subtraction instructions.
+  avr0          - The device is a part of the avr0 family.
+  avr1          - The device is a part of the avr1 family.
+  avr2          - The device is a part of the avr2 family.
+  avr25         - The device is a part of the avr25 family.
+  avr3          - The device is a part of the avr3 family.
+  avr31         - The device is a part of the avr31 family.
+  avr35         - The device is a part of the avr35 family.
+  avr4          - The device is a part of the avr4 family.
+  avr5          - The device is a part of the avr5 family.
+  avr51         - The device is a part of the avr51 family.
+  avr6          - The device is a part of the avr6 family.
+  avrtiny       - The device is a part of the avrtiny family.
+  break         - The device supports the `BREAK` debugging instruction.
+  des           - The device supports the `DES k` encryption instruction.
+  eijmpcall     - The device supports the `EIJMP`/`EICALL` instructions.
+  elpm          - The device supports the ELPM instruction.
+  elpmx         - The device supports the `ELPM Rd, Z[+]` instructions.
+  ijmpcall      - The device supports `IJMP`/`ICALL`instructions.
+  jmpcall       - The device supports the `JMP` and `CALL` instructions.
+  lpm           - The device supports the `LPM` instruction.
+  lpmx          - The device supports the `LPM Rd, Z[+]` instruction.
+  memmappedregs - The device has CPU registers mapped in data address space.
+  movw          - The device supports the 16-bit MOVW instruction.
+  mul           - The device supports the multiplication instructions.
+  rmw           - The device supports the read-write-modify instructions: XCH, LAS, LAC, LAT.
+  smallstack    - The device has an 8-bit stack pointer.
+  special       - Enable use of the entire instruction set - used for debugging.
+  spm           - The device supports the `SPM` instruction.
+  spmx          - The device supports the `SPM Z+` instruction.
+  sram          - The device has random access memory.
+  tinyencoding  - The device has Tiny core specific instruction encodings.
+  xmega         - The device is a part of the xmega family.
+  xmegau        - The device is a part of the xmegau family.
+
+Use +feature to enable a feature, or -feature to disable it.
+For example, llc -mcpu=mycpu -mattr=+feature1,-feature2
