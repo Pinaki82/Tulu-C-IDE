@@ -291,6 +291,26 @@ file names as you open/edit them in Vim."_
 
 [syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window."_
 
+[SnipMate](https://github.com/garbas/vim-snipmate.git): _"SnipMate aims to provide support for textual snippets, similar to TextMate or other Vim plugins like [UltiSnips](https://github.com/sirver/ultisnips). For example, in C, typing `for<tab>` could be expanded to"_
+
+```
+for (i = 0; i < count; i++) {
+    /* code */
+}
+```
+
+**NOTE:** SnipMate depends on the following plugins:
+
+SnipMate Dependencies:
+
+[vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git)
+
+[tlib_vim](https://github.com/tomtom/tlib_vim.git)
+
+[vim-snipmate](https://github.com/honza/vim-snippets.git): __"snipMate & UltiSnip Snippets"__
+
+Dependencies will be installed along with the plugin by the [vim-plug](https://github.com/junegunn/vim-plug.git) plugin manager.
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): _"This is a modified version of the awesome mustang colorscheme by hcalves, published on [deviantART](http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484)."_
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): _"A dark Vim colour scheme."_

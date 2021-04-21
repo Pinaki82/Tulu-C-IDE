@@ -1551,6 +1551,14 @@ Plug 'https://github.com/ciaranm/detectindent.git'
 
 Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
 
+Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+
+Plug 'https://github.com/tomtom/tlib_vim.git'
+
+Plug 'https://github.com/garbas/vim-snipmate.git'
+
+Plug 'https://github.com/honza/vim-snippets.git'
+
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " like: Plug 'junegunn/vim-easy-align'
@@ -1598,4 +1606,16 @@ let g:startuptrigger = 1
 " https://github.com/Shougo/echodoc.vim.git
 set cmdheight=2
 let g:echodoc_enable_at_startup = 1
+
+" ------------------- SnipMate Plugin settings
+" ----- Fix: The legacy SnipMate parser is deprecated. Please see :h SnipMate-deprecate.
+" https://www.wiserfirst.com/blog/vim-tip-snipmate-legacy-parser-warning/
+let g:snipMate = { 'snippet_version' : 1 }
+
+" Scope aliases simply say "whenever this scope is loaded, also load this other scope:
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+let g:snipMate.scope_aliases['c'] = 'c,ino,pde'
+let g:snipMate.scope_aliases['cpp'] = 'c,ino,pde'
 
