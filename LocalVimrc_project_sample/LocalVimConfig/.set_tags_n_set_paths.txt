@@ -1,0 +1,53 @@
+set tags+=./tags;/.
+set path+=./;/
+
+set tags+=C:\ESP8266_RTOS_SDK\components
+set tags+=C:\ESP8266_RTOS_SDK\components\app_update\include
+set tags+=C:\ESP8266_RTOS_SDK\components\bootloader_support\include
+set tags+=C:\ESP8266_RTOS_SDK\components\bootloader_support\include_priv
+set tags+=C:\ESP8266_RTOS_SDK\components\coap\libcoap\include\coap2
+set tags+=C:\ESP8266_RTOS_SDK\components\console
+set tags+=C:\ESP8266_RTOS_SDK\components\console\argtable3
+set tags+=C:\ESP8266_RTOS_SDK\components\console\linenoise
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_common\include
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_event\include
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_event\private_include
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\esp8266
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\include
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\private_include
+set tags+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\xtensa
+set tags+=C:\ESP8266_RTOS_SDK\components\freertos\include\freertos
+set tags+=C:\ESP8266_RTOS_SDK\components\freertos\include\freertos\private
+set tags+=C:\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos
+set tags+=C:\ESP8266_RTOS_SDK\components\esp8266\include
+set tags+=C:\ESP8266_RTOS_SDK\components\spi_flash\include
+
+
+set tags+=./tags;/.
+
+
+set path+=C:\ESP8266_RTOS_SDK\components
+set path+=C:\ESP8266_RTOS_SDK\components\app_update\include
+set path+=C:\ESP8266_RTOS_SDK\components\bootloader_support\include
+set path+=C:\ESP8266_RTOS_SDK\components\bootloader_support\include_priv
+set path+=C:\ESP8266_RTOS_SDK\components\coap\libcoap\include\coap2
+set path+=C:\ESP8266_RTOS_SDK\components\console
+set path+=C:\ESP8266_RTOS_SDK\components\console\argtable3
+set path+=C:\ESP8266_RTOS_SDK\components\console\linenoise
+set path+=C:\ESP8266_RTOS_SDK\components\esp_common\include
+set path+=C:\ESP8266_RTOS_SDK\components\esp_event\include
+set path+=C:\ESP8266_RTOS_SDK\components\esp_event\private_include
+set path+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\esp8266
+set path+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\include
+set path+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\private_include
+set path+=C:\ESP8266_RTOS_SDK\components\esp_gdbstub\xtensa
+set path+=C:\ESP8266_RTOS_SDK\components\freertos\include\freertos
+set path+=C:\ESP8266_RTOS_SDK\components\freertos\include\freertos\private
+set path+=C:\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos
+set path+=C:\ESP8266_RTOS_SDK\components\esp8266\include
+set path+=C:\ESP8266_RTOS_SDK\components\spi_flash\include
+
+
+
+set path+=./;/
+

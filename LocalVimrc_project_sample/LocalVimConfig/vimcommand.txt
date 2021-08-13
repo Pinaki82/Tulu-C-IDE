@@ -1,0 +1,83 @@
+:.cc
+:.ll
+:51
+:69
+:78
+:DoMatchParen
+:Errors
+:NERDTree Q:\\Code_Blocks\VS\ Code\
+:Project
+:Project D:\codes\project01.txt
+:Project H:\codes\Vim_Ctags_db_updater\trunk\Project.vimproject
+:Project d:Code_Blocks\project01.txt
+:Project d:\codes\Forgers_Win32\project01.txt
+:SyntasticCheck
+:SyntasticInfo
+:SyntasticReset
+:SyntasticToggleMode
+:browse confirm e
+:browse confirm e D:\Code_Blocks\
+:browseconfim e
+:bwipeout
+:ccl
+:cclose
+:colo blue
+:colorscheme
+:colorscheme default
+:colorscheme mustang_green
+:confirm bd
+:cope
+:e!
+:echo $HOME
+:echo $HOMEDRIVE
+:echo $HOMEPATH
+:echo $MYVIMRC
+:echo $PATH
+:echo $VIMRUNTIME
+:echo g:osdetectedp
+:echo has("lua")
+:echo has("python")
+:echo has("python3")
+:echo strlen(getline("."))
+:h 'statusline'
+:h :colorscheme
+:h :version
+:h cref
+:h crefvimdoc
+:h feature-list
+:h project
+:h syn-sync
+:h syntastic
+:h syntax
+:help write-plugin
+:helptags $HOME/.vim/doc
+:helptags $HOME/vimfiles/doc
+:helptags $VIMRUNTIME/doc
+:ltag
+:new
+:open
+:p
+:pwd
+:python
+:python3
+:python3 import sys; print(sys.version)
+:q
+:q!
+:qa
+:sav
+:scriptnames
+:set directory?
+:set omnifunc
+:set omnifunc?
+:set path?
+:set runtimepath?
+:so $VIMRUNTIME/syntax/hitest.vim
+:sort u
+:tag /std::vector
+:verbose map <F3>
+:verbose set completefunc
+:verbose set omnifunc
+:version
+:w
+:w!
+cmd.exe -> vim --version
