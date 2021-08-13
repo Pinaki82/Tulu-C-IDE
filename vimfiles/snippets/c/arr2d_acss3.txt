@@ -1,0 +1,17 @@
+/* accessing elements of a 2D array by METHOD 03 */
+void access_2D_array_elements_method_03(int q[][no_of_columns], int row, int col) {
+  /*
+  meaning of q[][no_of_columns] :
+  just an array in which you store + access your array elements.
+  Note: You need to mention the no_of_columns.
+  no_of_columns is an int number.
+  */
+  int i, j;
+  for(i=0; i<=row-1; i+=1) {
+    for(j=0; j<=col-1; j+=1) {
+      printf("%d ",q[i][j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+}

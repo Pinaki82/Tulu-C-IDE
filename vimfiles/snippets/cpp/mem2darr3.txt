@@ -1,0 +1,78 @@
+/*
+ * An example program of dynamic memory allocation for a 2D array
+ * solely using pointers.
+ * Method 3: We'll have to simulate the 2D array (of pointers) with another pointer,
+ * and this will be a pointer to a pointer.
+ * The idea is to first create a one dimensional array of pointers (row basis),
+ * and then,
+ * for each array entry (each row's base address/pointers),
+ * create another one dimensional array of pointers (column basis).
+ *
+ * We can create an array of pointers also dynamically using a double pointer.
+ * Once we have an array pointers allocated dynamically, we can dynamically
+ * allocate memory and for every row.
+ * * * * * * * * * * * * * * The HEART of this method is: * * * * * * * * * * *
+ * that the arr[i][j] is same as          *(*(arr+i)+j) and also,
+ * its vice-versa e.g.,                   *(*(arr+i)+j) is same as arr[i][j]
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+#include <errno.h> /* required */
+#include <math.h>
+#include <stdio.h> /* required */
+#include <stdlib.h> /* required */
+#include <string.h>
+
+  int **arr, row, col, i, j; /*  **arr is a 2D array, essentially a
+                                    collection of some array (of pointers).*/
+
+  printf("maximum number of rows?\n");
+  scanf("%d", &row);
+  printf("maximum number of col?\n");
+  scanf("%d", &col);
+
+  arr = (int **)malloc((size_t)row * sizeof(int *));  /* memory allocation,
+                                                            row basis */
+  if(arr==NULL) {
+    printf("\ndynamic memory allocation failed\n");
+    system("PAUSE");
+    exit(EXIT_FAILURE);
+  }
+  for(i=0; i<=row-1; i++) {
+    arr[i]=(int *)malloc((size_t)col * sizeof(int));  /* memory allocation,
+                                                            column basis */
+    if(arr[i]==NULL) {
+      printf("\ndynamic memory allocation failed\n");
+      system("PAUSE");
+      exit(EXIT_FAILURE);
+    }
+  }
+  for(i = 0; i<=row-1; i++) {
+    for(j = 0; j<=col-1; j++) {
+      arr[i][j] ='\0';  /* filling the entire array with a NULL */
+    }
+  }
+
+
+  printf("......input the elements........\n");
+  for(i=0; i<=row-1; i++) {
+    for(j=0; j<=col-1 ; j++) {
+      scanf("%d", (*(arr+i)+j)); /* NOTE: Note that arr[i][j] is same as *(*(arr+i)+j) */
+      /* http://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+       * 3) Using pointer to a pointer */
+    }
+  }
+
+  printf("\nyour input was:\n");
+  for(i=0; i<=row-1 ; i++) {
+    for(j=0; j<=col-1 ; j++) {
+      printf("%d.%d. arr=%d\n",i,j,*(*(arr+i)+j)); /* NOTE: Note that arr[i][j] is same as *(*(arr+i)+j) */
+    }
+  }
+
+  for(i = 0; i<=row-1; i++) {
+    free(arr[i]); /* very much essential */
+    arr[i] = NULL;
+  }
+  free(arr); /* very much essential */
+  arr = NULL;

@@ -1,0 +1,15 @@
+/* accessing elements of a 2D array by METHOD 01 */
+void access_2D_array_elements_method_01(int *q, int row, int col) {
+  /*
+  meaning of *q :
+  a pointer in which you store + access your array elements.
+  */
+  int i, j;
+  for(i=0; i<=row-1; i+=1) {
+    for(j=0; j<=col-1; j+=1) {
+      printf("%d ",*(q+i*col+j));
+    }
+    printf("\n");
+  }
+  printf("\n");
+}

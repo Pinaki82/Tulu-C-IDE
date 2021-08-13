@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<makefile>
+
+<!-- When the Compiler is MinGw32 -->
+<if cond="FORMAT=='mingw'">
+       <!-- mingw32-gcc or mingw32-g++ -->
+</if>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- HERE OUR PROJECT GOES -->
+<exe id="hellow_world_gtk3">
+  <app-type> gui </app-type>
+  <!-- Compiler Specific -->
+  <if cond="FORMAT=='mingw'">
+    <cflags>-Wall -Wextra -mms-bitfields</cflags>
+    <define> GTK_DISABLE_SINGLE_INCLUDES </define>
+    <define> GDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED </define>
+    <define> GSEAL_ENABLE </define>
+
+    <ldflags>-mwindows</ldflags>
+
+    <lib-path> "C:\codeblocks\TDM-GCC-64\x86_64-w64-mingw32\lib" </lib-path>
+    <lib-path> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\lib" </lib-path>
+
+    <sys-lib> user32 -lkernel32 -lshell32 -lgdi32 -lcomctl32 -lole32 </sys-lib>
+    <sys-lib> gtk-3.dll -lgobject-2.0.dll -lglib-2.0.dll -lgio-2.0.dll </sys-lib>
+    <sys-lib> asprintf.dll -latk-1.0.dll -lcairo.dll -lcairo-gobject.dll </sys-lib>
+    <sys-lib> cairo-script-interpreter.dll -lcharset.dll -lcroco-0.6.dll </sys-lib>
+    <sys-lib> ffi.dll -lfontconfig.dll -lfreetype.dll -lgailutil-3.dll </sys-lib>
+    <sys-lib> gdk_pixbuf-2.0.dll -lgdk-3.dll -lgettextlib.dll </sys-lib>
+    <sys-lib> gettextpo.dll -lgettextsrc.dll -lglib-2.0.dll </sys-lib>
+    <sys-lib> gmodule-2.0.dll -lgobject-2.0.dll -lgthread-2.0.dll </sys-lib>
+    <sys-lib> gtk-3.dll -liconv.dll -lintl.dll -ljasper.dll </sys-lib>
+    <sys-lib> jpeg.dll -llzma.dll -lpango-1.0.dll -lpangocairo-1.0.dll </sys-lib>
+    <sys-lib> pangowin32-1.0.dll -lpixman-1.dll -lpng.dll -lpng16 -lpng16.dll </sys-lib>
+    <sys-lib> rsvg-2.dll -ltiff.dll -lxml2.dll -lz.dll </sys-lib>
+    
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\gtk-3.0" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\cairo" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\glib-2.0" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\lib\glib-2.0\include" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\lib\libffi-3.0.13\include" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\pango-1.0" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\lib\gtk-3.0\include" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\atk-1.0" </include>
+    <include> "C:\xtralibs\gtk+-bundle_3.10.4-20131202_win64\include\gdk-pixbuf-2.0" </include>
+  </if>
+  <if cond="FORMAT=='msvc'">
+  </if>
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+
+    <!-- COMMON -->
+    <win32-res> resource.rc </win32-res>
+       <sources>
+                  main.c
+                  gtk3.c
+       </sources>
+
+</exe>
+<!-- HERE OUR PROJECT ENDS -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</makefile>
+

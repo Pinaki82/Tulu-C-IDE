@@ -1,0 +1,56 @@
+#include <errno.h> /* required */
+#include <stdint.h> /* required */
+#include <stdio.h> /* required */
+#include <stdlib.h> /* required */
+
+/* declare your array as: int **array, enough. */
+int **Make2DintArray(int arraySizeX, int arraySizeY); /* use as: array=Make2DintArray(row, col); */
+void free2DintArray(int **theArray, int arraySizeX); /* use as: free2DintArray(array, row); */
+
+/*
+ * * * * * * * * * * * INPUT and OUTPUT * * * * * * * * * * * * *
+ * NOTE: only use, scanf("%d", &array[i][j]);
+ * you cannot use (array+i*col+j) or any other pointer arithmetic
+ * during the input.
+ *
+ * NOTE: only use, printf("%d.%d. array=%d\n",i,j,array[i][j]);
+ * you cannot use *(array+i*col+j) or any other pointer arithmetic
+ * during the output.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+int **Make2DintArray(int arraySizeX, int arraySizeY) {
+  int **theArray, i, j;
+  theArray = (int **)malloc((size_t)arraySizeX*sizeof(int *));
+  if(theArray==NULL) {
+    printf("\ndynamic memory allocation failed\n");
+    system("PAUSE");
+    exit(EXIT_FAILURE);
+  }
+  for(i=0; i<=arraySizeX-1; i++) {
+    theArray[i] = (int *)malloc((size_t)arraySizeY*sizeof(int));
+    if(theArray[i]==NULL) {
+      printf("\ndynamic memory allocation failed\n");
+      system("PAUSE");
+      exit(EXIT_FAILURE);
+    }
+  }
+  for(i=0; i<=arraySizeX-1; i++) {
+    for(j=0; j<=arraySizeY-1; j++) {
+      theArray[i][j] = 0;  /* filling the entire array with a temporary number */
+    }
+    return theArray;
+  }
+  return theArray;
+}
+
+void free2DintArray(int **theArray, int arraySizeX) {
+  int i;
+  for(i=0; i<=arraySizeX-1; i++) {
+    free(theArray[i]);
+    theArray[i]=NULL;
+  }
+  free(theArray);
+  theArray=NULL;
+}
+

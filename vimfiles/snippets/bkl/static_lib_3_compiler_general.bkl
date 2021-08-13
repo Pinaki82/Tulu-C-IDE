@@ -1,0 +1,269 @@
+<?xml version="1.0" ?>
+<!--
+===========================================
+LIB
+===========================================
+-->
+<makefile>
+
+          <requires version="0.2.9"/>
+          <include file="presets\simple.bkl"/>
+
+<!-- When the Compiler is MinGw32 -->
+<if cond="FORMAT=='mingw'">
+       <!-- mingw32-gcc or mingw32-g++ -->
+       <include file="presets\minimalist.bkl"/>
+</if>
+<!-- ~~~~~~~~~~~~~~~~~ PCH ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!--
+in the static lib's C section write:
+#include "pch.h"
+#include "StaticLib.h"
+and create pch.h as follows:
+#ifndef  __PCH_H__
+#define  __PCH_H__
+
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#include <limits.h>
+
+#endif  /* __PCH_H__ */
+-->
+    <template id="pchbase">
+        <precomp-headers>on</precomp-headers>
+        <precomp-headers-header>pch.h</precomp-headers-header>
+    </template>
+
+<!-- ~~~~~~~~~~ since bakefile cannot tackle pch generation for gcc through its own native tags ~~~~~~~~~~~~~~~ -->
+<action id="pch">
+    <if cond="FORMAT=='mingw'">
+        <command> mingw32-gcc -Wall -Wextra -pedantic -O -O1 -O2 -c pch.h -s </command>
+        <!-- or -->
+        <!-- <command> mingw32-gcc -Wall -Wextra -pedantic -O -O1 -O2 -c pch.h -s -o pch.h.gch </command> -->
+
+        <!-- for C++ -->
+        <!-- <command> mingw32-g++ -Wall -Wextra -pedantic -O -O1 -O2 -c pch.hpp -s </command> -->
+        <!-- or -->
+        <!-- <command> mingw32-g++ -Wall -Wextra -pedantic -O -O1 -O2 -c pch.hpp -s -o pch.h.gch </command> -->
+    </if>
+</action>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- <set var="BUILDDIR">
+        <if cond="TOOLSET=='win32'">build_$(COMPILER)</if>
+        <if cond="TOOLSET!='win32'">.</if>
+     </set> --> <!-- uncomment if you need to set separate build dir for each target.
+                       also uncomment <dirname>$(id)</dirname> below -->
+
+    <template id="static_lib_3_compiler" template_append="pchbase" template="simple">
+        <warnings>max</warnings> <!-- no, default, max -->
+        <!-- <define>SOMEMACRO</define> -->
+        <libname>my_StaticLib</libname>  <!-- must resemble your dll's name and dll id -->
+
+        <!-- <dirname>$(id)</dirname> -->
+
+            <!-- Compiler Specific -->
+            <if cond="FORMAT=='mingw'">
+                    <cflags>-Wall -Wextra -pedantic -O -O2</cflags> <!-- compiler specific flags. Optimizartions, warning flags etc. -->
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>-s</ldflags> --> <!-- note: stripe bytes causes Avast antivirus to behave very badly -->
+                     <!-- <ldflags>-mwindows</ldflags> -->
+                     <sys-lib> user32 -lkernel32 -lshell32 -lgdi32 -lcomctl32 -lole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                           idea, it's done here only for the sake of simplicity;
+                            in real bakefile, an <option> would be used -->
+                     <!--<library>mylib</library> -->
+            </if>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <if cond="FORMAT=='dmars'">
+                     <include> "C:\dm\include\" </include>
+                     <include> "C:\dm\stlport\stlport\" </include>
+                     <cflags> -mn -WD -W- -s </cflags>
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>-L/SUBSYSTEM:WINDOWS</ldflags> -->
+                     <sys-lib> user32.lib kernel32.lib shell32 gdi32.lib comctl32.lib ole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                            idea, it's done here only for the sake of simplicity;
+                             in real bakefile, an <option> would be used -->
+            </if>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <if cond="FORMAT=='msvc'">
+                     <!--    <include> "C:\xxxx\include\" </include> -->
+                     <!--   <include> "C:\xx\yyy\zzzz\" </include> -->
+					 <cflags> /TC /W4 </cflags> <!-- C -->
+                     <!--    <cflags> /TP /W4 </cflags> --> <!-- C++ -->
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>/SUBSYSTEM:CONSOLE</ldflags> -->
+                     <!-- <ldflags>/SUBSYSTEM:WINDOWS</ldflags> -->
+                     <sys-lib> user32.lib kernel32.lib shell32.lib gdi32.lib comctl32.lib ole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                           idea, it's done here only for the sake of simplicity;
+                            in real bakefile, an <option> would be used -->
+                     <!-- embed manifest when building with msvc nmake -->
+                                     <!-- use the name of your generated exe. look at exe id -->
+            </if>
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+
+  <!-- COMMON -->
+    <!-- <win32-res> resource.rc </win32-res> -->
+    <precomp-headers-gen>StaticLib.c</precomp-headers-gen>
+    <sources> StaticLib.c </sources>
+	<include>C:\xtralibs\appu</include>
+
+<!-- HERE OUR PROJECT ENDS -->
+    </template>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- HERE OUR TARGET GOES -->
+<!-- Targets cannot be specified by command-line switch by this method
+      so comment/uncomment and modify suitably.
+	  remember that you can use almost every tags here like above. -->
+
+<lib id="my_StaticLib" template="static_lib_3_compiler">  <!-- you dll's name, may vary from the source name, its on your choice -->
+     <!-- IMPORTANT: if not required comment the next line containing <debug-info>  -->
+     <!-- <debug-info>on</debug-info>  --> <!-- IMPORTANT: on/off  -->
+     <if cond="FORMAT=='mingw'">
+           <!--   <ldflags>-s</ldflags> --> <!-- uncomment when building release version  -->
+     </if>
+</lib>
+
+<!-- ==================================================================================================================== -->
+<!-- =============================================== Executable that loads the dll ====================================== -->
+<!--
+===========================================
+EXE
+===========================================
+-->
+<!--
+in the EXE's source do:
+#include "pch.h"
+#include "StaticLib.h"
+-->
+
+<!-- <set var="BUILDDIR">
+        <if cond="TOOLSET=='win32'">build_$(COMPILER)</if>
+        <if cond="TOOLSET!='win32'">.</if>
+     </set> --> <!-- uncomment if you need to set separate build dir for each target.
+                       also uncomment <dirname>$(id)</dirname> below -->
+
+    <template id="plain_exe_3_compiler" template_append="pchbase" template="simple">
+        <app-type>console</app-type>
+        <warnings>max</warnings> <!-- no, default, max -->
+
+        <!-- <exename>new_executable_name</exename> --> <!-- default is <exe id="..  , but you can change it here -->
+
+		<!-- <dirname>$(id)</dirname> -->
+
+            <!-- Compiler Specific -->
+            <if cond="FORMAT=='mingw'">
+                    <cflags>-Wall -Wextra -pedantic -O -O2</cflags>
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>-s</ldflags> --> <!-- note: stripe bytes causes Avast antivirus to behave very badly -->
+                     <!-- <ldflags>-mwindows</ldflags> -->
+                     <sys-lib> user32 -lkernel32 -lshell32 -lgdi32 -lcomctl32 -lole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                           idea, it's done here only for the sake of simplicity;
+                            in real bakefile, an <option> would be used -->
+                     <!--<library>mylib</library> -->
+            </if>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <if cond="FORMAT=='dmars'">
+                     <include> "C:\dm\include\" </include>
+                     <include> "C:\dm\stlport\stlport\" </include>
+                     <cflags> -WA -W- -s </cflags>
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>-L/SUBSYSTEM:WINDOWS</ldflags> -->
+                     <sys-lib> user32.lib kernel32.lib shell32 gdi32.lib comctl32.lib ole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                            idea, it's done here only for the sake of simplicity;
+                             in real bakefile, an <option> would be used -->
+            </if>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <if cond="FORMAT=='msvc'">
+                     <!--    <include> "C:\xxxx\include\" </include> -->
+                     <!--   <include> "C:\xx\yyy\zzzz\" </include> -->
+                     <cflags> /TC /W4 </cflags> <!-- C -->
+                     <!--    <cflags> /TP /W4 </cflags> --> <!-- C++ -->
+                     <!-- <define>SOMEMACRO</define> -->
+                     <!-- <include>../include/foo</include> -->
+                     <!-- <include>C:\xtralibs\appu</include> -->
+                     <!-- <headers>utils.h additionalheader.h</headers> -->
+                     <!-- <ldflags>/SUBSYSTEM:CONSOLE</ldflags> -->
+                     <!-- <ldflags>/SUBSYSTEM:WINDOWS</ldflags> -->
+                     <sys-lib> user32.lib kernel32.lib shell32.lib gdi32.lib comctl32.lib ole32 </sys-lib>
+                     <!-- <sys-lib>png</sys-lib> -->
+                     <!-- <sys-lib>z</sys-lib> -->
+                     <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+                           idea, it's done here only for the sake of simplicity;
+                            in real bakefile, an <option> would be used -->
+                     <!-- embed manifest when building with msvc nmake -->
+                                     <!-- use the name of your generated exe. look at exe id -->
+                     <postlink-command> mt.exe -manifest $(id).exe.manifest -outputresource:$(id).exe;1 </postlink-command>
+            </if>
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+
+  <!-- COMMON -->
+    <!-- <win32-res> resource.rc </win32-res> -->
+    <precomp-headers-gen>useit.c</precomp-headers-gen>
+    <sources> useit.c </sources>
+    <library>my_StaticLib</library> <!-- link your static library -->
+	  <include>C:\xtralibs\appu</include>
+
+<!-- HERE OUR PROJECT ENDS -->
+    </template>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- HERE OUR TARGET GOES -->
+<!-- Targets cannot be specified by command-line switch by this method
+      so comment/uncomment and modify the exe id suitably.
+	  remember that you can use almost every tags here like above. -->
+
+<exe id="testingapp"  template="plain_exe_3_compiler">
+     <!-- IMPORTANT: if not required comment the next line containing <debug-info>  -->
+     <!-- <debug-info>on</debug-info>  --> <!-- IMPORTANT: on/off  -->
+     <if cond="FORMAT=='mingw'">
+           <!--   <ldflags>-s</ldflags> --> <!-- uncomment when building release version  -->
+     </if>
+     <if cond="FORMAT=='msvc'">
+             <postlink-command> del $(id).exe.manifest </postlink-command>
+     </if>
+     <pic>on</pic>
+</exe>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</makefile>

@@ -1,0 +1,25 @@
+/* describe your code here */
+#include  <Arduino.h> /* Necessary */
+
+/* ---------------------------------------------
+ * Add include directives.
+ * Define preprocessor directives.
+ * Declare Function Prototypes.
+ * Declare Global Variables, Class etc.
+ * ---------------------------------------------
+*/
+
+void setup() {
+  /* put your setup code here, to run once: */
+  /* pinMode and other permanent setups goes here.
+     Setup will not be changed untill Arduino/AVR re-boots */
+
+}
+
+void loop() {
+  /* put your main code here, to run repeatedly: */
+  /* Here goes your main code loop.
+     Runs repeatedly untill reset or shut down */
+
+}
+

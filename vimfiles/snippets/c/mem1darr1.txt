@@ -1,0 +1,35 @@
+/* An example program of dynamic memory allocation for an 1D array
+ *
+ * NOTE: use it within the function you need, but don't create a
+ * dedicated memory allocation function with it.
+*/
+
+#include <errno.h> /* required */
+#include <stdint.h> /* required */
+#include <stdio.h> /* required */
+#include <stdlib.h> /* required */
+
+int *p, max_elemnt, i;
+
+printf("maximum number of elements?\n");
+scanf("%d", &max_elemnt);
+
+p = (int *)malloc((size_t)max_elemnt *sizeof(int));
+if(p==NULL) {
+  printf("Memory allocation failed. Goodbye.\n");
+  system("PAUSE");
+  exit(EXIT_FAILURE);
+}
+
+printf("......input the elements........\n");
+for(i=0; i<=max_elemnt-1; i++) {
+  scanf("%d", (p+i)); /* you can use &p[i] also */
+}
+
+printf("\nyour input was:\n");
+for(i=0; i<=max_elemnt-1 ; i++) {
+  printf("%d. p=%d\n",i,*(p+i)); /* you can use p[i] also */
+}
+
+free(p);
+p = NULL;

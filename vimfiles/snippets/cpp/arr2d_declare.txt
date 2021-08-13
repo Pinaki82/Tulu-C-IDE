@@ -1,0 +1,10 @@
+/*
+no_of_rows, no_of_columns are int numbers.
+elements are numbers or chars also.
+*/
+int/char/float/etc.. variable_name[no_of_rows][no_of_columns]= {
+  {element01,element02,  ,  }, /* These braces are very necessary. */
+  { , , ,   },
+  { , , ,   },
+  { , , , element_last}
+};

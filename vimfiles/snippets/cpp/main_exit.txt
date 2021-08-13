@@ -1,0 +1,4 @@
+  std::cin.ignore();
+  std::cin.get();
+
+  return EXIT_SUCCESS;

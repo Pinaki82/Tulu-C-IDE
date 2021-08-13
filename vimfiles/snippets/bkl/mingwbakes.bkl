@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<!--
+=======================================
+GUI
+=======================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+	<exe id="window_click">
+    <set var="CC"> mingw32-g++ </set> <!--totally optional/when u need 2 specify the linker mingw32-g++ of ur choice -->
+    <cflags> -Wall -Wextra -O -O2 </cflags>
+    <app-type> gui </app-type>
+    <sources> window_click.c </sources>
+    <ldflags> -mwindows </ldflags>
+   </exe>
+</makefile>
+
+<!--
+=======================================
+CONSOLE
+=======================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+	<exe id="window_click">
+    <set var="CC"> mingw32-g++ </set> <!--totally optional/when u need 2 specify the linker mingw32-g++ of ur choice -->
+    <cflags> -Wall -Wextra -O -O2 </cflags>
+    <app-type> console </app-type>
+    <sources> hello.c </sources>
+   </exe>
+</makefile>
+<!--
+===========================================
+.lib
+===========================================
+-->
+<lib id="foo">
+  <set var="CC"> mingw32-g++ </set> <!--totally optional/when u need 2 specify the linker mingw32-g++ of ur choice -->
+  <libname>foo$(COMPILER)_$(DBGFLAG)</libname>
+  <sources>foo.c bar.c</sources>
+</lib>
+<!--
+===========================================
+.dll
+===========================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+    <dll id="easy_dll">
+        <set var="CC"> mingw32-g++ </set> <!--totally optional/when u need 2 specify the linker mingw32-g++ of ur choice -->
+        <sources>easy_dll.c</sources>
+        <so_version>1.0.3</so_version>
+        <libname>easy_dll</libname>
+        <dllname>easy_dll</dllname>
+        <install-to>$(LIBDIR)</install-to>
+    </dll>
+   <exe id="useit">
+       <set var="CC"> mingw32-g++ </set> <!--totally optional/when u need 2 specify the linker mingw32-g++ of ur choice -->
+       <sources>useit.c</sources>
+       <library>easy_dll</library>
+       <install-to>$(BINDIR)</install-to>
+       <pic>on</pic>
+   </exe>
+</makefile>
+<!--
+===========================================
+GUI, Globally set Compiler+Linker (same)
+===========================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+<set var="CC"> mingw32-gcc </set> <!-- Set Compiler+Linker (must be same) -->
+
+	<exe id="window_click">
+    <cflags> -Wall -Wextra -O -O2 </cflags>
+    <app-type> gui </app-type>
+    <sources> window_click.c </sources>
+    <ldflags> -mwindows </ldflags>
+   </exe>
+</makefile>
+<!--
+===========================================
+GUI, Globally set "both C and C++" Compiler+Linker
+===========================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+<set var="CC"> mingw32-gcc </set> <!-- Compiler+Linker for C is the same (mingw32-gcc) (will be the linker as well as the compiler, further changes impossible)-->
+<set var="CXX"> mingw32-g++ </set> <!-- Compiler+Linker for C++ is the same (mingw32-g++) (will be the linker as well as the compiler, further changes impossible)-->
+
+	<exe id="window_click">
+    <cflags> -Wall -Wextra -O -O2 </cflags>
+    <app-type> gui </app-type>
+    <sources> window_click.c </sources>
+    <ldflags> -mwindows </ldflags>
+   </exe>
+   
+ 	<exe id="window_pheno">
+    <cflags> -Wall -Wextra -O -O2 </cflags>
+    <app-type> gui </app-type>
+    <sources> window_pheno.cpp </sources>
+    <ldflags> -mwindows </ldflags>
+   </exe>
+</makefile>
+<!--
+===========================================
+minimalist.bkl
+A template to be used with mingw
+===========================================
+-->
+<?xml version="1.0" ?>
+
+<!-- mingw32-gcc or mingw32-g++ -->
+<if cond="FORMAT=='mingw'">
+<template id="minimalist">
+
+    <set var="CC">mingw32-gcc</set>
+    <set var="CXX">mingw32-g++</set>
+
+</template>
+</if>
+<!--
+===========================================
+use_minimalist.bkl
+using the template minimalist.bkl with mingw
+===========================================
+-->
+<?xml version="1.0" ?>
+<makefile>
+<if cond="FORMAT=='mingw'">
+<include file="minimalist.bkl"/>
+</if>
+
+  <exe id="AA" template="minimalist">
+    <app-type>gui</app-type>
+    <sources>AA.c</sources>
+    <ldflags>-lgdi32</ldflags>
+   </exe>
+</makefile>
+<!--
+===========================================
+
+===========================================
+-->
+

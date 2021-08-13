@@ -1,0 +1,53 @@
+/*
+ * * * * * * * * * * * * 1D way. * * * * * * * * * * * *
+ * An example snippet of dynamic memory allocation for a 2D array.
+ * Method 1: Treating a 2D array as a whole 1D array (a collection of pointers).
+ *
+ * NOTE: use it within the function you need, but don't create a
+ * dedicated memory allocation function with it.
+*/
+
+#include <errno.h> /* required */
+#include <stdint.h> /* required */
+#include <stdio.h> /* required */
+#include <stdlib.h> /* required */
+
+int *mypntr, row, col, i, j; /*  *mypntr is an 1D array (a collection of
+                                   pointers) but we will use it as a 2D array.*/
+
+printf("maximum number of rows?\n");
+scanf("%d", &row);
+printf("maximum number of col?\n");
+scanf("%d", &col);
+
+mypntr = (int *)malloc((size_t)(row *col) * sizeof(int)); /* memory allocation */
+if(mypntr==NULL) { /* in case memory allocation fails */
+  printf("Memory allocation failed. Goodbye.\n");
+  system("PAUSE");
+  exit(EXIT_FAILURE);
+}
+for(i=0; i<=row-1; i++) {
+  for(j=0; j<=col-1; j++) {
+    mypntr[i*row +j] = 0; /* filling the entire array with a temporary number */
+  }
+}
+
+printf("......input the elements........\n");
+for(i=0; i<=row-1; i++) {
+  for(j=0; j<=col-1 ; j++) {
+    scanf("%d", (mypntr+i*col+j)); /* NOTE: you cannot use mypntr[i][j] or
+                                        anything else */
+  }
+}
+
+printf("\nyour input was:\n");
+for(i=0; i<=row-1 ; i++) {
+  for(j=0; j<=col-1 ; j++) {
+    printf("%d.%d. mypntr=%d\n",i,j,*(mypntr+i*col+j)); /* NOTE: you cannot
+                                                             use mypntr[i][j] or
+                                                             anything else */
+  }
+}
+
+free(mypntr); /* very much essential */
+mypntr = NULL; /* very much essential */

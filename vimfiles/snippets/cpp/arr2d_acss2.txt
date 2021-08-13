@@ -1,0 +1,22 @@
+/* accessing elements of a 2D array by METHOD 02 */
+void access_2D_array_elements_method_02(int (*q)[no_of_columns], int row, int col) {
+  /*
+  meaning of (*q)[no_of_columns] :
+  a pointer meant for storage + accessing the addresses
+  of a bunch of 1D arrays and their elements.
+  Here, actually a 2D array is broken into the pieces of 1D arrays.
+  Notice that ' q ' is itself an array (1D),
+  and you need to mention the no_of_columns.
+  no_of_columns is an int number.
+  */
+  int *p; /* another pointer to store + access the base address of ' q ' */
+  int i, j;
+  for(i=0; i<=row-1; i+=1) {
+    p=*q+i;
+    for(j=0; j<=col-1; j+=1) {
+      printf("%d ",*(p+j));
+    }
+    printf("\n");
+  }
+  printf("\n");
+}

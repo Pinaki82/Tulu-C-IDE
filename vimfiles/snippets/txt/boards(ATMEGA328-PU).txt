@@ -1,0 +1,36 @@
+
+# Path: "C:\Program Files (x86)\Arduino\hardware\arduino\avr"
+
+############################################################## Modified Version for Low cost ATMEGA328-PU ##############################################################
+
+uno328-pu.name=Arduino Uno R3 targetting ATMEGA328-PU (no-pico power) on Breadboard
+
+uno328-pu.vid.0=0x2341
+uno328-pu.pid.0=0x0043
+uno328-pu.vid.1=0x2341
+uno328-pu.pid.1=0x0001
+uno328-pu.vid.2=0x2A03
+uno328-pu.pid.2=0x0043
+
+uno328-pu.upload.tool=avrdude
+uno328-pu.upload.protocol=arduino
+uno328-pu.upload.maximum_size=32256
+uno328-pu.upload.maximum_data_size=2048
+uno328-pu.upload.speed=115200
+
+uno328-pu.bootloader.tool=avrdude
+uno328-pu.bootloader.low_fuses=0xFF
+uno328-pu.bootloader.high_fuses=0xDE
+uno328-pu.bootloader.extended_fuses=0x05
+uno328-pu.bootloader.unlock_bits=0x3F
+uno328-pu.bootloader.lock_bits=0x0F
+uno328-pu.bootloader.path=optiboot
+uno328-pu.bootloader.file=optiboot/optiboot_atmega328.hex
+
+uno328-pu.build.mcu=atmega328
+uno328-pu.build.f_cpu=16000000L
+uno328-pu.build.board=AVR_UNO
+uno328-pu.build.core=arduino
+uno328-pu.build.variant=standard
+
+##############################################################

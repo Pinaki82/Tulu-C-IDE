@@ -1,0 +1,1 @@
+avrdude -F -v -v -v -c stk500v1 -p m328 -P COM3 -b 19200 -D -U flash:w:"Blink.hex":i 

@@ -1,0 +1,3 @@
+  //The following two lines are hack for omnicppcomplete in vim.
+  using namespace std;
+  cin.ignore(); //end of hack.
