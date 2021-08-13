@@ -1495,3 +1495,30 @@ Cheers and HAPPY VIMMING!
 #### After an hour-long study, REFRESH your mood!
 
 https://youtu.be/Gi7vKjm32V4
+
+
+--------
+
+_"SOMETIMES YOU WILL NEVER KNOW THE VALUE OF A MOMENT UNTIL IT BECOMES A MEMORY."_
+
+![IMG_20210524_230203-sketch](https://user-images.githubusercontent.com/16861933/129360913-cb522429-caa1-4c53-a5c2-9c96ba146234.jpg)
+
+### In Commemoration of a Revered Man:
+
+The man who inspired me to publish my work [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) passed away on 9th May 2021. Tulu was adopted and looked after by a man, Chandra Sekhar Gupta, whose enthralling life encouraged countless young children to stand on their own feet in their future. He often used to cite a famous speech of [Narendranath Datta](https://en.wikipedia.org/wiki/Swami_Vivekananda), _"We must have life-building, man making, character making and assimilation of ideas. We want that **education** by which character is formed, strength of mind is increased, the intellect is expanded and by which one can **stand on one’s own feet**."_ I heard two very inspiring quotes from him, one of which was stated by J. F. Kennedy, and the other was from Martin Luther King Jr.
+
+_“Our **progress as a nation** can be no swifter than our **progress in education**.”_ – J. F. Kennedy.
+
+_"I have the audacity to believe that peoples everywhere can have three meals a day for their bodies, **education** and culture **of their minds**, and dignity, equality, and freedom for their spirits. I believe that what self-centered men have torn down, men other-centered can build up."_ – Martin Luther King Jr.
+
+He started the journey of his career as a schoolteacher. Destiny landed him somewhere else. During his lifetime, he helped countless financially challenged students coming from economically backward societies to get established.
+
+What we need now is true computer literacy in the field of system programming languages like C/C++/Rust, etc. We need **autonomy** through **automation**, preserving the ability to think on our own on our part. Thus, we will need more programmers who can create, contribute, and examine codes. It may be true that we all work in a multitude of areas. Despite that, it's likely to be a reason to invest our time in learning to code. Because we all need computers that can assist us at some point in time. Regardless of our work domain, rudimentary programming skills in C/C++ will make this so sought after dream of **self-sufficiency** come true.
+
+In every walk of life, we cannot imagine spending a day without the aid of machines. Unfortunately, most of those devices are dead-ended roads. It's the need of the hour to cultivate a culture of developing indigenous manufacturing facilities. However, this requires automation and robotics to get involved. Fortunately, many open-source platforms like [Arduino](https://www.arduino.cc/), [PlatformIO-Vim](https://docs.platformio.org/en/latest//integration/ide/vim.html), [ARM Mbed](https://os.mbed.com/) from 'os.mbed' have already paved the path for our little children to play with. Not always we need postdoctoral researchers to automate basic tasks to reap the benefit of computer-controlled machines. We need more automation in the Cottage Industries, Small Scale Industrial Sectors, time saver Home Automation fields, Food Processing Industries, Agriculture, and so on. We need a more open society where we can contribute more openly to make things better without obstacles. We need to make our children stand on their feet by making them financially independent, without which we cannot envision an economically independent nation. We can teach them robotics and microcontroller programming at the school level. It's not rocket science. Public laboratories and public libraries exist. We need more and more public libraries of parts in remote locations where we can share electronic components. Only then we will be able to draft more working blueprints of electronics projects for the intended goal of industrial growth. We need to utilise human resources. So _'investment in knowledge always pays'_.
+
+We are mortal beings. We die. The vibe reincarnates and manifests into ten thousand forms or maybe more. All it takes is a man with eagerness to carry some 'lithium-6 deuteride' (pun indeed) in his desire. A desire to carry on the fusion process, which can combine two protons. A craving to ignite the deuterium that releases neurons and energy with a potential and preparedness to illuminate millions of shadowed homes. It's that chain reaction of vibe. All it takes is the determination to cut the Gordian Knot of social and psychological stagnancy. At least, we can try to make one person's life better, though we cannot make everyone prosperous. The idea reincarnates. Come forward. The vibe will never disappear.
+
+I dedicate [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) as a Memorial to Chandra Sekhar Gupta. [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) is a project in commemoration of my father, who left us only with his words of enlightenment.
+
+--------
