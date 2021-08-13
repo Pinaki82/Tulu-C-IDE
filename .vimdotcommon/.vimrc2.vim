@@ -1452,6 +1452,7 @@ Plug 'https://github.com/junegunn/vim-plug.git'
 Plug 'https://github.com/preservim/nerdtree.git'
 
 Plug 'https://github.com/justmao945/vim-clang.git'
+
 " ------------------------------
 " Changing windows from a vim function is not allowed anymore, since Vim 8.2.2426,7.
 " https://github.com/justmao945/vim-clang/pull/140
@@ -1551,13 +1552,23 @@ Plug 'https://github.com/ciaranm/detectindent.git'
 
 Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
 
-Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+" https://vi.stackexchange.com/questions/2094/how-to-make-vimrc-settings-applicable-for-a-directory-tree-only
+Plug 'https://github.com/embear/vim-localvimrc.git'
 
-Plug 'https://github.com/tomtom/tlib_vim.git'
+Plug 'https://github.com/drmingdrmer/xptemplate.git'
 
-Plug 'https://github.com/garbas/vim-snipmate.git'
+" ------------------- Tabnine
+if g:osdetected != "Windows"
+  " First, open any Linux Terminal in the 'plugged' directory, then
+  " Run git clone --depth 1 https://github.com/codota/tabnine-vim in your Terminal Emulator
+  " Now, uncomment the line below (delete the " i.e., the 'double quote') and re-launch GVim
 
-Plug 'https://github.com/honza/vim-snippets.git'
+  " ---------------------------------------------
+  " Plug 'https://github.com/codota/tabnine-vim'
+  " ---------------------------------------------
+
+  set rtp+=$HOME\/\.vim\/\plugged\/\tabnine-vim
+endif
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -1606,16 +1617,4 @@ let g:startuptrigger = 1
 " https://github.com/Shougo/echodoc.vim.git
 set cmdheight=2
 let g:echodoc_enable_at_startup = 1
-
-" ------------------- SnipMate Plugin settings
-" ----- Fix: The legacy SnipMate parser is deprecated. Please see :h SnipMate-deprecate.
-" https://www.wiserfirst.com/blog/vim-tip-snipmate-legacy-parser-warning/
-let g:snipMate = { 'snippet_version' : 1 }
-
-" Scope aliases simply say "whenever this scope is loaded, also load this other scope:
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
-let g:snipMate.scope_aliases['c'] = 'c,ino,pde'
-let g:snipMate.scope_aliases['cpp'] = 'c,ino,pde'
 
