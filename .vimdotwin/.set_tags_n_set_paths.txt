@@ -1,33 +1,14 @@
 set tags+=./tags;/.
 set path+=./;/
 
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\tags;
-set tags+=C:\TDM-GCC-64\lib\gcc\x86_64-w64-mingw32\9.2.0\include\c++\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\ddk\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\gdiplus\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\GL\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\KHR\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\psdk_inc\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sdks\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sec_api\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sys\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\wrl\tags;
-set tags+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\wrl\wrappers\tags;
+set tags+=C:\msys64\mingw64\x86_64-w64-mingw32\include;
+set tags+=C:\msys64\mingw64\include;
+set tags+=C:\msys64\mingw64\include\c++\10.3.0;
 
 set tags+=./tags;/.
 
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\;
-set path+=C:\TDM-GCC-64\lib\gcc\x86_64-w64-mingw32\9.2.0\include\c++\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\ddk\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\gdiplus\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\GL\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\KHR\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\psdk_inc\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sdks\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sec_api\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\sys\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\wrl\;
-set path+=C:\TDM-GCC-64\x86_64-w64-mingw32\include\wrl\wrappers\;
+set path+=C:\msys64\mingw64\x86_64-w64-mingw32\include\;
+set path+=C:\msys64\mingw64\include\;
+set path+=C:\msys64\mingw64\include\c++\10.3.0\;
 
 set path+=./;/
-

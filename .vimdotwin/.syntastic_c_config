@@ -1,8 +1,6 @@
--isystem C:\CODEBL~1\TDM-GC~1\include
--isystem C:\CODEBL~1\TDM-GC~1\lib\gcc\X86_64~1\51B983~1.0\include
--isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include
--isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include\GL
--isystem C:\CODEBL~1\TDM-GC~1\X86_64~1\include\sys
+-isystem C:\msys64\mingw64\x86_64-w64-mingw32\include
+-isystem C:\msys64\mingw64\include
+-isystem C:\msys64\mingw64\include\c++\10.3.0
 
 -IC:\xtralibs
 -IC:\xtralibs\appu
