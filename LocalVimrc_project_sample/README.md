@@ -12,7 +12,58 @@
 
 Localvimrc is undeniably indispensable in extraordinary circumstances where cross-compilers (e.g., GNU-ARM, GNU-AVR, ESP-IDF, Extensa-esp32-elf, PlatformIO, Arduino-CLI) are involved. System-wide Vim configuration can lead to countless problems in a few use-case scenarios because different compilers with similar header/include files can conflict. Use the folder '**LocalVimrc_project_sample**' as a base for your custom projects targetting compilers for different CPU/MCU architectures. Things won't go out of hand as long as the compiler for the target processor is GCC-based and Clang has support for that target.
 
+## Espressif ESP8266 (NodeMCU) SDK Setup Guide on Windows 10
+
+We will be using the native SDK provided by Espressif Systems. C is the recommended programming language. A custom version of the MSYS2 terminal is needed to build, upload codes to the microcontroller, and monitor the output through the UART channel.
+
 ### Directory Structure and Usage:
+
+###### A brief overview of the steps to follow for programming an ESP8266 compatible development board:
+
+Requirements:
+
+1. MSYS2 package provided by Espressif Systems (includes a Python2.7 based UART monitor and a Python2.7 based custom build-tool).
+2. Toolchain and Compiler for ESP8266 MCUs.
+3. [esp-open-rtos](https://github.com/SuperHouse/esp-open-rtos).
+4. LLVM Clang (for that, I would suggest the regular MSYS2 with LLVM-Clang and GCC added to the system path.
+5. [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) with a custom '.lvimrc'.
+6. A Development Board such as ESP8266 NodeMCU.
+
+Before we start, let's have a look at some core features of ESP8266 without being too meticulous. We will not discuss the detailed specifications.
+
+Specifications:
+
+1. ESP8266 is a 32-bit Xtensa Tensilica L106 32-bit RISC processor of a modified Harvard Architecture family.
+
+2. Clock speed: 80MHz.
+
+3. Memory: 32 KiB instruction, 80 KiB user data. That is:
+- 32 KiB instruction RAM
+
+- 32 KiB instruction cache RAM
+
+- 80 KiB user-data RAM
+
+- 16 KiB ETS system-data RAM
+
+- External QSPI flash: up to 16 MiB is supported (512 KiB to 4 MiB typically included). Most clones come with 2MB External Flash chips.
+4. 17 GPIO pins.
+
+5. Buil-in WiFi (BlueTooth not available).
+
+6. Software implemented I2C, provided via a [library](https://github.com/espressif/ESP8266_RTOS_SDK/tree/master/components/esp8266/driver) in the ESP8266_RTOS_SDK.
+
+7. Serial Peripheral Interface (SPI).
+
+8. I2S interfaces with DMA (sharing pins with GPIO).
+
+9. UART pins.
+
+10. One 10-bit ADC pin.
+
+11. Micro-USB connector via CH340G USB-to-TTL converter IC. Development boards (such as NodeMCU) come with an onboard USB (Android phone micro-USB type connector), powered by an additional USB to Serial converter IC (CH340G on most knockoff boards). ESP8266 doesn't have any native USB or I2C interface, although software I2C has been implemented.
+
+##### Steps:
 
 Download MSYS2 for ESP8266 'esp32_win32_msys2_environment_and_toolchain-20181001.zip' from https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20181001.zip
 
@@ -20,7 +71,212 @@ Instructions are available at https://docs.espressif.com/projects/esp8266-rtos-s
 
 Download the Toolchain and the SDK: https://github.com/espressif/ESP8266_RTOS_SDK
 
-Follow the instructions. Build the first project, 'getting_started'.
+Toolchain:
+
+Delete the old 'xtensa-esp32-elf' dir in `/msys32/opt`.
+
+Extract 'xtensa-lx106-elf-gcc8_4_0-esp-2020r3-win32.zip' to `/msys32/opt` directory.
+
+Rename the folder 'xtensa-lx106-elf' to 'xtensa-esp32-elf'. Now the path to the compiler should be `/msys32/opt/xtensa-esp32-elf`.
+
+SDK:
+
+Open 'mingw32.exe'.
+
+In the MSYS2 (Espressif provided) Terminal type:
+
+```
+mkdir -p ~/esp
+cd ~/esp
+git clone --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
+
+echo 'export IDF_PATH=~/esp/ESP8266_RTOS_SDK' >> ~/.profile
+echo 'export SDK_PATH=~/esp/ESP8266_RTOS_SDK' >> ~/.profile
+echo 'export BIN_PATH=~/esp/ESP8266_RTOS_SDK/bin' >> ~/.profile
+```
+
+Edit
+
+`~/.bashrc`
+
+with Vim,
+
+```
+vim ~/.bashrc
+```
+
+or,
+
+```
+notepad ~/.bashrc
+```
+
+Add the following lines:
+
+```
+export IDF_PATH=~/esp/ESP8266_RTOS_SDK
+export SDK_PATH=~/esp/ESP8266_RTOS_SDK
+export BIN_PATH=~/esp/ESP8266_RTOS_SDK/bin
+```
+
+Close your text editor. In the MSYS2 Terminal, type:
+
+```
+cp ~/esp/ESP8266_RTOS_SDK/requirements.txt /
+```
+
+Check the version number of Python:
+
+```
+python --version
+```
+
+The output will be somewhat like this:
+
+`==>> Python 2.7.15`
+
+Now, type the commands below:
+
+```
+python2.7 -m pip install --user -r $IDF_PATH/requirements.txt
+python -m pip install esptool
+python -m pip install setuptools
+rm /requirements.txt
+```
+
+Clang support:
+Since the version of MSYS2 supplied by Espressif is way too old, LLVM-Clang cannot be downloaded for such an archaic version. Use your regular MSYS2 installation's Clang by adding the path to Clang executable to the system path.
+
+Close MSYS (mingw32.exe) and Exit.
+
+Relaunch MSYS (mingw32.exe).
+
+Copy their 'get-started/hello_world' program to somewhere else. I copied it to ~/esp. It could be /n/codes/esp/ or /d/code_test/esp_projs etc., but make sure you copy the contents of your 'LocalVimrc_project_sample' into that location as well.
+
+```
+cp -r $IDF_PATH/examples/get-started/hello_world ~/esp
+```
+
+Build the First Project:
+
+```
+cd ~/esp/hello_world
+make menuconfig
+```
+
+'Serial flasher config' requires a change depending on the COM port connected to the development board. Do not change any other parameter in the menuconfig utility wizard. For other projects, you may need to change other parameters.
+
+'Serial flasher config' -> 'Default serial port'
+
+```
+<ARROW> <ARROW> <ARROW> <ARROW> <ARROW> <ARROW> <TAB> <TAB> <TAB> <TAB> <TAB> <TAB> <ENTER>
+
+< Save > then -> < Exit >
+```
+
+```
+make
+```
+
+Or, upload to the ESP8266 board:
+
+```
+make flash
+```
+
+Monitor the output:
+
+```
+make monitor
+```
+
+Done.
+
+Erase flash:
+
+```
+make erase_flash
+```
+
+Some Make commands (to avoid fiddling with the menuconfig utility over and again):
+
+```
+make monitor ESPPORT=COM5
+```
+
+```
+make flash ESPBAUD=9600
+```
+
+```
+make monitor MONITORBAUD=9600
+```
+
+References:
+
+https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/index.html#install-the-required-python-packages
+
+https://github.com/espressif/ESP8266_RTOS_SDK
+
+https://www.freecodecamp.org/news/how-to-get-started-with-freertos-and-esp8266-7a16035ddd71/
+
+https://www.youtube.com/watch?v=pWo-ErpVZC4
+
+https://github.com/esp8266/esp8266-wiki
+
+https://github.com/pfalcon/esp-open-sdk
+
+Creating a Bash Alias: https://davidwalsh.name/alias-bash
+
+`notepad ~/.bash_profile`
+
+Relaunch MSYS2
+
+###### Create a Start Menu Shortcut:
+
+Go to Windows Explorer Address Bar:
+
+%programdata%\Microsoft\Windows\Start Menu\Programs
+
+R-Click. Copy mingw32.exe.
+
+R-Click. Paste shortcut Here.
+
+Rename the shortcut to esp8266.
+
+R-Click. Copy esp8266.
+
+Paste esp8266 to
+
+%programdata%\Microsoft\Windows\Start Menu\Programs.
+
+Copy N:\esp32_win32_msys2_environment_and_toolchain-20181001\msys32\home\AppuRaja\esp\ESP8266_RTOS_SDK
+
+Paste shortcut there.
+
+R-Click. Copy ESP8266_RTOS_SDK shortcut.
+
+Go to Windows Explorer Address Bar again and type:
+
+%programdata%\Microsoft\Windows\Start Menu\Programs
+
+R-Click and Paste that copied shortcut.
+
+Create Projects in other directories:
+
+`cp -r $IDF_PATH/examples/peripherals/adc /q/codes/esp`
+
+CH340G Windows Driver:
+
+https://www.drivereasy.com/knowledge/ch340g-driver-download-and-update-in-windows/
+
+https://www.arduined.eu/tag/ch340g/
+
+---
+
+### Vim, Autocompletion, Code Checking:
+
+Follow the instructions. Build the first project, 'get_started'.
 
 In my case, it is "N:\esp32_win32_msys2_environment_and_toolchain-20181001\msys32\home\XxxxXxxx\esp" where I keep my ESP8266 projects.
 Copy the entire folder ESP8266_RTOS_SDK to C:\ drive.
@@ -36,7 +292,25 @@ In C:\ESP8266_RTOS_SDK, keep only the following files and folders for your refer
 
 The directory 'components' will be used by Vim-Clang for autocompletion and Syntastic for code checking.
 
-Navigate to the ''components' directory through CMD and list all the sub-directories there. Redirect the output to a text file.
+Create a Windows Registry file 'openCMDhere.reg' with the following contents:
+
+```
+Windows Registry Editor Version 5.00
+
+; Open CMD Here
+; 'Open Terminal Here' MS equivalent
+
+; https://github.com/microsoft/terminal/issues/1060
+; https://stackoverflow.com/questions/27632612/comment-in-reg-file
+; https://docs.microsoft.com/en-us/previous-versions/windows/embedded/gg469889(v=winembedded.80)?redirectedfrom=MSDN
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here\command]
+@="C:\\Windows\\system32\\cmd.exe"
+```
+
+Now you can R-Click and select 'Open CMD Here'.
+
+Navigate to the 'components' directory through CMD (or R-Click and select 'Open CMD Here' inside the 'components' directory) and list all the sub-directories there. Redirect the output to a text file.
 
 https://stackoverflow.com/questions/35560540/batch-file-to-list-directories-recursively-in-windows-as-in-linux
 
@@ -49,580 +323,12 @@ You'll get an output quite similar to:
 ```
 C:\ESP8266_RTOS_SDK\components\app_update
 C:\ESP8266_RTOS_SDK\components\bootloader
-C:\ESP8266_RTOS_SDK\components\bootloader_support
-C:\ESP8266_RTOS_SDK\components\coap
-C:\ESP8266_RTOS_SDK\components\console
-C:\ESP8266_RTOS_SDK\components\esp_common
-C:\ESP8266_RTOS_SDK\components\esp_event
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub
-C:\ESP8266_RTOS_SDK\components\esp_http_client
-C:\ESP8266_RTOS_SDK\components\esp_http_server
-C:\ESP8266_RTOS_SDK\components\esp_https_ota
-C:\ESP8266_RTOS_SDK\components\esp_ringbuf
-C:\ESP8266_RTOS_SDK\components\esp8266
-C:\ESP8266_RTOS_SDK\components\esp-tls
-C:\ESP8266_RTOS_SDK\components\esptool_py
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl
-C:\ESP8266_RTOS_SDK\components\fatfs
-C:\ESP8266_RTOS_SDK\components\freemodbus
-C:\ESP8266_RTOS_SDK\components\freertos
-C:\ESP8266_RTOS_SDK\components\heap
-C:\ESP8266_RTOS_SDK\components\http_parser
-C:\ESP8266_RTOS_SDK\components\jsmn
-C:\ESP8266_RTOS_SDK\components\json
-C:\ESP8266_RTOS_SDK\components\libsodium
-C:\ESP8266_RTOS_SDK\components\log
-C:\ESP8266_RTOS_SDK\components\lwip
-C:\ESP8266_RTOS_SDK\components\mbedtls
-C:\ESP8266_RTOS_SDK\components\mdns
-C:\ESP8266_RTOS_SDK\components\mqtt
-C:\ESP8266_RTOS_SDK\components\newlib
-C:\ESP8266_RTOS_SDK\components\nvs_flash
-C:\ESP8266_RTOS_SDK\components\openssl
-C:\ESP8266_RTOS_SDK\components\partition_table
-C:\ESP8266_RTOS_SDK\components\protobuf-c
-C:\ESP8266_RTOS_SDK\components\protocomm
-C:\ESP8266_RTOS_SDK\components\pthread
-C:\ESP8266_RTOS_SDK\components\spi_flash
-C:\ESP8266_RTOS_SDK\components\spi_ram
-C:\ESP8266_RTOS_SDK\components\spiffs
-C:\ESP8266_RTOS_SDK\components\tcp_transport
-C:\ESP8266_RTOS_SDK\components\tcpip_adapter
-C:\ESP8266_RTOS_SDK\components\vfs
-C:\ESP8266_RTOS_SDK\components\wear_levelling
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant
-C:\ESP8266_RTOS_SDK\components\app_update\include
-C:\ESP8266_RTOS_SDK\components\app_update\test
-C:\ESP8266_RTOS_SDK\components\bootloader\subproject
-C:\ESP8266_RTOS_SDK\components\bootloader\subproject\main
-C:\ESP8266_RTOS_SDK\components\bootloader_support\include
-C:\ESP8266_RTOS_SDK\components\bootloader_support\include_priv
-C:\ESP8266_RTOS_SDK\components\bootloader_support\src
-C:\ESP8266_RTOS_SDK\components\coap\libcoap
-C:\ESP8266_RTOS_SDK\components\coap\port
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\build-env
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\doc
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\examples
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\ext
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\include
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\m4
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\man
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\scripts
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\src
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\tests
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\examples\contiki
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\examples\lwip
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\ext\tinydtls
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\include\coap2
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\tests\oss-fuzz
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32\coap-client
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32\coap-rd
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32\coap-server
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32\install
-C:\ESP8266_RTOS_SDK\components\coap\libcoap\win32\testdriver
-C:\ESP8266_RTOS_SDK\components\coap\port\include
-C:\ESP8266_RTOS_SDK\components\coap\port\include\coap
-C:\ESP8266_RTOS_SDK\components\console\argtable3
-C:\ESP8266_RTOS_SDK\components\console\linenoise
-C:\ESP8266_RTOS_SDK\components\esp-tls\private_include
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\include
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\lib
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\source
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\wolfssl
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\wolfssl\wolfssl
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\wolfssl\wolfssl\openssl
-C:\ESP8266_RTOS_SDK\components\esp-wolfssl\wolfssl\wolfssl\wolfssl\wolfcrypt
-C:\ESP8266_RTOS_SDK\components\esp8266\driver
-C:\ESP8266_RTOS_SDK\components\esp8266\firmware
-C:\ESP8266_RTOS_SDK\components\esp8266\include
-C:\ESP8266_RTOS_SDK\components\esp8266\ld
-C:\ESP8266_RTOS_SDK\components\esp8266\lib
-C:\ESP8266_RTOS_SDK\components\esp8266\source
-C:\ESP8266_RTOS_SDK\components\esp8266\test
-C:\ESP8266_RTOS_SDK\components\esp8266\include\driver
-C:\ESP8266_RTOS_SDK\components\esp8266\include\esp_private
-C:\ESP8266_RTOS_SDK\components\esp8266\include\esp8266
-C:\ESP8266_RTOS_SDK\components\esp8266\include\rom
-C:\ESP8266_RTOS_SDK\components\esp8266\include\soc
-C:\ESP8266_RTOS_SDK\components\esp8266\include\xtensa
-C:\ESP8266_RTOS_SDK\components\esp8266\include\xtensa\config
-C:\ESP8266_RTOS_SDK\components\esp8266\include\xtensa\tie
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\ecdsa
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\flasher_stub
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\pyaes
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\test
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\test\elf2image
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\test\images
-C:\ESP8266_RTOS_SDK\components\esptool_py\esptool\test\images\esp8266_sdk
-C:\ESP8266_RTOS_SDK\components\esp_common\include
-C:\ESP8266_RTOS_SDK\components\esp_common\src
-C:\ESP8266_RTOS_SDK\components\esp_event\include
-C:\ESP8266_RTOS_SDK\components\esp_event\private_include
-C:\ESP8266_RTOS_SDK\components\esp_event\test
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub\esp8266
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub\include
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub\private_include
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub\src
-C:\ESP8266_RTOS_SDK\components\esp_gdbstub\xtensa
-C:\ESP8266_RTOS_SDK\components\esp_https_ota\include
-C:\ESP8266_RTOS_SDK\components\esp_https_ota\src
-C:\ESP8266_RTOS_SDK\components\esp_http_client\include
-C:\ESP8266_RTOS_SDK\components\esp_http_client\lib
-C:\ESP8266_RTOS_SDK\components\esp_http_client\test
-C:\ESP8266_RTOS_SDK\components\esp_http_client\lib\include
-C:\ESP8266_RTOS_SDK\components\esp_http_server\include
-C:\ESP8266_RTOS_SDK\components\esp_http_server\src
-C:\ESP8266_RTOS_SDK\components\esp_http_server\src\port
-C:\ESP8266_RTOS_SDK\components\esp_http_server\src\util
-C:\ESP8266_RTOS_SDK\components\esp_http_server\src\port\esp8266
-C:\ESP8266_RTOS_SDK\components\esp_ringbuf\include
-C:\ESP8266_RTOS_SDK\components\esp_ringbuf\include\freertos
-C:\ESP8266_RTOS_SDK\components\fatfs\diskio
-C:\ESP8266_RTOS_SDK\components\fatfs\port
-C:\ESP8266_RTOS_SDK\components\fatfs\src
-C:\ESP8266_RTOS_SDK\components\fatfs\test
-C:\ESP8266_RTOS_SDK\components\fatfs\test_fatfs_host
-C:\ESP8266_RTOS_SDK\components\fatfs\vfs
-C:\ESP8266_RTOS_SDK\components\fatfs\port\freertos
-C:\ESP8266_RTOS_SDK\components\fatfs\port\linux
-C:\ESP8266_RTOS_SDK\components\fatfs\test_fatfs_host\sdkconfig
-C:\ESP8266_RTOS_SDK\components\freemodbus\common
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus
-C:\ESP8266_RTOS_SDK\components\freemodbus\port
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_master
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_slave
-C:\ESP8266_RTOS_SDK\components\freemodbus\common\include
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus\ascii
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus\functions
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus\include
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus\rtu
-C:\ESP8266_RTOS_SDK\components\freemodbus\modbus\tcp
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_master\modbus_controller
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_master\port
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_slave\modbus_controller
-C:\ESP8266_RTOS_SDK\components\freemodbus\tcp_slave\port
-C:\ESP8266_RTOS_SDK\components\freertos\freertos
-C:\ESP8266_RTOS_SDK\components\freertos\include
-C:\ESP8266_RTOS_SDK\components\freertos\port
-C:\ESP8266_RTOS_SDK\components\freertos\test
-C:\ESP8266_RTOS_SDK\components\freertos\include\freertos
-C:\ESP8266_RTOS_SDK\components\freertos\include\freertos\private
-C:\ESP8266_RTOS_SDK\components\freertos\port\esp8266
-C:\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include
-C:\ESP8266_RTOS_SDK\components\freertos\port\esp8266\include\freertos
-C:\ESP8266_RTOS_SDK\components\heap\include
-C:\ESP8266_RTOS_SDK\components\heap\port
-C:\ESP8266_RTOS_SDK\components\heap\src
-C:\ESP8266_RTOS_SDK\components\heap\test
-C:\ESP8266_RTOS_SDK\components\heap\port\esp8266
-C:\ESP8266_RTOS_SDK\components\heap\port\esp8266\include
-C:\ESP8266_RTOS_SDK\components\heap\port\esp8266\include\priv
-C:\ESP8266_RTOS_SDK\components\http_parser\include
-C:\ESP8266_RTOS_SDK\components\http_parser\src
-C:\ESP8266_RTOS_SDK\components\jsmn\include
-C:\ESP8266_RTOS_SDK\components\jsmn\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON
-C:\ESP8266_RTOS_SDK\components\json\cJSON\.github
-C:\ESP8266_RTOS_SDK\components\json\cJSON\fuzzing
-C:\ESP8266_RTOS_SDK\components\json\cJSON\library_config
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests
-C:\ESP8266_RTOS_SDK\components\json\cJSON\fuzzing\inputs
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\inputs
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\json-patch-tests
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\auto
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\docs
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\release
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_1
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_2
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_3
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_1\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_1\test
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_1\test\test_runners
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_2\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_2\test
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_2\test\test_runners
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_3\helper
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_3\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\examples\example_3\test
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras\eclipse
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras\fixture
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras\fixture\src
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras\fixture\test
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\extras\fixture\test\main
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test\expectdata
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test\spec
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test\targets
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test\testdata
-C:\ESP8266_RTOS_SDK\components\json\cJSON\tests\unity\test\tests
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\port
-C:\ESP8266_RTOS_SDK\components\libsodium\port_include
-C:\ESP8266_RTOS_SDK\components\libsodium\test
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\contrib
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\dist-build
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\m4
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\msvc-scripts
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\packaging
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\test
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\build
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\properties
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2010
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2012
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2013
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2015
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2017
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2010\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2012\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2013\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2015\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\builds\msvc\vs2017\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\packaging\dotnet-core
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\packaging\nuget
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\packaging\dotnet-core\recipes
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_auth
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_box
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_generichash
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_hash
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_kdf
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_kx
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_onetimeauth
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_pwhash
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_scalarmult
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_secretbox
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_shorthash
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_sign
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_verify
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\include
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\randombytes
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\sodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\aes256gcm
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\chacha20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\xchacha20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\aes256gcm\aesni
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\chacha20poly1305\sodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_aead\xchacha20poly1305\sodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_auth\hmacsha256
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_auth\hmacsha512
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_auth\hmacsha512256
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_box\curve25519xchacha20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_box\curve25519xsalsa20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\curve25519
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\hchacha20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\hsalsa20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\salsa
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\curve25519\ref10
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\hsalsa20\ref2
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_core\salsa\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_generichash\blake2b
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_generichash\blake2b\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_hash\sha256
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_hash\sha512
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_hash\sha256\cp
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_hash\sha512\cp
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_kdf\blake2b
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_onetimeauth\poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_onetimeauth\poly1305\donna
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_onetimeauth\poly1305\sse2
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_pwhash\argon2
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_pwhash\scryptsalsa208sha256
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_pwhash\scryptsalsa208sha256\nosse
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_pwhash\scryptsalsa208sha256\sse
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_scalarmult\curve25519
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_scalarmult\curve25519\donna_c64
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_scalarmult\curve25519\ref10
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_scalarmult\curve25519\sandy2x
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_secretbox\xchacha20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_secretbox\xsalsa20poly1305
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_shorthash\siphash24
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_shorthash\siphash24\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_sign\ed25519
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_sign\ed25519\ref10
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\aes128ctr
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\chacha20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa2012
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa208
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\xchacha20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\xsalsa20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\aes128ctr\nacl
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\chacha20\dolbeau
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\chacha20\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa20\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa20\xmm6
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa20\xmm6int
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa2012\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_stream\salsa208\ref
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\crypto_verify\sodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\include\sodium
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\include\sodium\private
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\randombytes\nativeclient
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\randombytes\salsa20
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\src\libsodium\randombytes\sysrandom
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\test\default
-C:\ESP8266_RTOS_SDK\components\libsodium\libsodium\test\quirks
-C:\ESP8266_RTOS_SDK\components\libsodium\port\crypto_hash_mbedtls
-C:\ESP8266_RTOS_SDK\components\libsodium\port_include\sodium
-C:\ESP8266_RTOS_SDK\components\log\include
-C:\ESP8266_RTOS_SDK\components\log\test
-C:\ESP8266_RTOS_SDK\components\lwip\apps
-C:\ESP8266_RTOS_SDK\components\lwip\include
-C:\ESP8266_RTOS_SDK\components\lwip\lwip
-C:\ESP8266_RTOS_SDK\components\lwip\port
-C:\ESP8266_RTOS_SDK\components\lwip\test_afl_host
-C:\ESP8266_RTOS_SDK\components\lwip\weekend_test
-C:\ESP8266_RTOS_SDK\components\lwip\apps\dhcpserver
-C:\ESP8266_RTOS_SDK\components\lwip\apps\ping
-C:\ESP8266_RTOS_SDK\components\lwip\apps\sntp
-C:\ESP8266_RTOS_SDK\components\lwip\include\apps
-C:\ESP8266_RTOS_SDK\components\lwip\include\apps\dhcpserver
-C:\ESP8266_RTOS_SDK\components\lwip\include\apps\ping
-C:\ESP8266_RTOS_SDK\components\lwip\include\apps\sntp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\.github
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\doc
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\.github\workflows
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\doc\doxygen
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\doc\doxygen\output
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\api
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\core
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\netif
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\altcp_tls
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\http
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\lwiperf
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\mdns
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\mqtt
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\netbiosns
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\smtp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\snmp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\sntp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\tftp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\http\fs
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\http\makefsdata
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\apps\http\fs\img
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\core\ipv4
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\core\ipv6
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\lwip
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\netif
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat\posix
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat\stdc
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat\posix\arpa
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat\posix\net
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\compat\posix\sys
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\lwip\apps
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\lwip\priv
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\lwip\prot
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\netif\ppp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\include\netif\ppp\polarssl
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\netif\ppp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\src\netif\ppp\polarssl
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\sockets
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs\arp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs\icmp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs\ipv6
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs\tcp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\fuzz\inputs\udp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\api
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\arch
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\core
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\dhcp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\etharp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\ip4
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\ip6
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\mdns
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\mqtt
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\tcp
-C:\ESP8266_RTOS_SDK\components\lwip\lwip\test\unit\udp
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\debug
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\freertos
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\netif
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\arch
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\arpa
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\debug
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\netif
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\netinet
-C:\ESP8266_RTOS_SDK\components\lwip\port\esp8266\include\sys
-C:\ESP8266_RTOS_SDK\components\lwip\test_afl_host\in_dhcp_client
-C:\ESP8266_RTOS_SDK\components\lwip\test_afl_host\in_dhcp_server
-C:\ESP8266_RTOS_SDK\components\lwip\test_afl_host\in_dns
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls
-C:\ESP8266_RTOS_SDK\components\mbedtls\port
-C:\ESP8266_RTOS_SDK\components\mbedtls\test
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\.github
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\configs
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\doxygen
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\include
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\library
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\scripts
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\visualc
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\doxygen\input
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\include\mbedtls
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\aes
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\hash
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\pkey
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\random
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\ssl
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\test
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\util
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\programs\x509
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\scripts\data_files
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\.jenkins
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\configs
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\git-scripts
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\scripts
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\suites
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files\dir1
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files\dir2
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files\dir3
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files\dir4
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\tests\data_files\dir-maxpath
-C:\ESP8266_RTOS_SDK\components\mbedtls\mbedtls\visualc\VS2010
-C:\ESP8266_RTOS_SDK\components\mbedtls\port\dynamic
-C:\ESP8266_RTOS_SDK\components\mbedtls\port\esp8266
-C:\ESP8266_RTOS_SDK\components\mbedtls\port\include
-C:\ESP8266_RTOS_SDK\components\mbedtls\port\include\esp8266
-C:\ESP8266_RTOS_SDK\components\mbedtls\port\include\mbedtls
-C:\ESP8266_RTOS_SDK\components\mdns\include
-C:\ESP8266_RTOS_SDK\components\mdns\private_include
-C:\ESP8266_RTOS_SDK\components\mdns\test
-C:\ESP8266_RTOS_SDK\components\mdns\test_afl_fuzz_host
-C:\ESP8266_RTOS_SDK\components\mdns\test_afl_fuzz_host\in
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt
-C:\ESP8266_RTOS_SDK\components\mqtt\test
-C:\ESP8266_RTOS_SDK\components\mqtt\weekend_test
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\.github
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\ci
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\include
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\lib
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\.github\workflows
-C:\ESP8266_RTOS_SDK\components\mqtt\esp-mqtt\lib\include
-C:\ESP8266_RTOS_SDK\components\newlib\newlib
-C:\ESP8266_RTOS_SDK\components\newlib\platform_include
-C:\ESP8266_RTOS_SDK\components\newlib\src
-C:\ESP8266_RTOS_SDK\components\newlib\newlib\port
-C:\ESP8266_RTOS_SDK\components\newlib\newlib\port\include
-C:\ESP8266_RTOS_SDK\components\newlib\newlib\port\include\sys
-C:\ESP8266_RTOS_SDK\components\newlib\platform_include\sys
-C:\ESP8266_RTOS_SDK\components\nvs_flash\host_test
-C:\ESP8266_RTOS_SDK\components\nvs_flash\include
-C:\ESP8266_RTOS_SDK\components\nvs_flash\mock
-C:\ESP8266_RTOS_SDK\components\nvs_flash\nvs_partition_generator
-C:\ESP8266_RTOS_SDK\components\nvs_flash\src
-C:\ESP8266_RTOS_SDK\components\nvs_flash\test
-C:\ESP8266_RTOS_SDK\components\nvs_flash\test_nvs_host
-C:\ESP8266_RTOS_SDK\components\nvs_flash\host_test\fixtures
-C:\ESP8266_RTOS_SDK\components\nvs_flash\host_test\nvs_page_test
-C:\ESP8266_RTOS_SDK\components\nvs_flash\host_test\nvs_page_test\main
-C:\ESP8266_RTOS_SDK\components\nvs_flash\mock\int
-C:\ESP8266_RTOS_SDK\components\nvs_flash\nvs_partition_generator\testdata
-C:\ESP8266_RTOS_SDK\components\openssl\include
-C:\ESP8266_RTOS_SDK\components\openssl\library
-C:\ESP8266_RTOS_SDK\components\openssl\platform
-C:\ESP8266_RTOS_SDK\components\openssl\include\internal
-C:\ESP8266_RTOS_SDK\components\openssl\include\openssl
-C:\ESP8266_RTOS_SDK\components\openssl\include\platform
-C:\ESP8266_RTOS_SDK\components\partition_table\test_gen_esp32part_host
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\build-cmake
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\m4
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\protobuf-c
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\protoc-c
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t\generated-code
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t\generated-code2
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t\issue220
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t\issue251
-C:\ESP8266_RTOS_SDK\components\protobuf-c\protobuf-c\t\version
-C:\ESP8266_RTOS_SDK\components\protocomm\include
-C:\ESP8266_RTOS_SDK\components\protocomm\proto
-C:\ESP8266_RTOS_SDK\components\protocomm\proto-c
-C:\ESP8266_RTOS_SDK\components\protocomm\python
-C:\ESP8266_RTOS_SDK\components\protocomm\src
-C:\ESP8266_RTOS_SDK\components\protocomm\include\common
-C:\ESP8266_RTOS_SDK\components\protocomm\include\security
-C:\ESP8266_RTOS_SDK\components\protocomm\include\transports
-C:\ESP8266_RTOS_SDK\components\protocomm\src\common
-C:\ESP8266_RTOS_SDK\components\protocomm\src\security
-C:\ESP8266_RTOS_SDK\components\protocomm\src\transports
-C:\ESP8266_RTOS_SDK\components\pthread\include
-C:\ESP8266_RTOS_SDK\components\pthread\test
-C:\ESP8266_RTOS_SDK\components\spiffs\include
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs
-C:\ESP8266_RTOS_SDK\components\spiffs\test
-C:\ESP8266_RTOS_SDK\components\spiffs\test_spiffs_host
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs\afltests
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs\docs
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs\src
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs\src\default
-C:\ESP8266_RTOS_SDK\components\spiffs\spiffs\src\test
-C:\ESP8266_RTOS_SDK\components\spiffs\test_spiffs_host\sdkconfig
-C:\ESP8266_RTOS_SDK\components\spi_flash\include
-C:\ESP8266_RTOS_SDK\components\spi_flash\port
-C:\ESP8266_RTOS_SDK\components\spi_flash\src
-C:\ESP8266_RTOS_SDK\components\spi_flash\test
-C:\ESP8266_RTOS_SDK\components\spi_flash\include\priv
-C:\ESP8266_RTOS_SDK\components\spi_ram\include
-C:\ESP8266_RTOS_SDK\components\tcpip_adapter\include
-C:\ESP8266_RTOS_SDK\components\tcp_transport\include
-C:\ESP8266_RTOS_SDK\components\tcp_transport\private_include
-C:\ESP8266_RTOS_SDK\components\tcp_transport\test
-C:\ESP8266_RTOS_SDK\components\vfs\include
-C:\ESP8266_RTOS_SDK\components\vfs\test
-C:\ESP8266_RTOS_SDK\components\vfs\include\sys
-C:\ESP8266_RTOS_SDK\components\wear_levelling\doc
-C:\ESP8266_RTOS_SDK\components\wear_levelling\include
-C:\ESP8266_RTOS_SDK\components\wear_levelling\private_include
-C:\ESP8266_RTOS_SDK\components\wear_levelling\test
-C:\ESP8266_RTOS_SDK\components\wear_levelling\test_wl_host
-C:\ESP8266_RTOS_SDK\components\wear_levelling\test_wl_host\sdkconfig
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\include
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\proto
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\proto-c
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\python
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\src
-C:\ESP8266_RTOS_SDK\components\wifi_provisioning\include\wifi_provisioning
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\include
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\port
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\test
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\include\esp_supplicant
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\include\utils
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\port\include
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\ap
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\common
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\crypto
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\drivers
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\eap_peer
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\esp_supplicant
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\rsn_supp
-C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\tls
+
+...
+...
+...
+...
+
 C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\utils
 C:\ESP8266_RTOS_SDK\components\wpa_supplicant\src\wps
 ```
