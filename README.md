@@ -53,33 +53,31 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 
 ## Windows:
 
- [TDM-GCC](https://jmeubank.github.io/tdm-gcc/) (or any other MinGW-GCC compiler variant added to your system search path)
+ [TDM-GCC](https://jmeubank.github.io/tdm-gcc/) (or any other MinGW-GCC compiler variant added to your system search path). I recommend **[MSYS2](https://www.msys2.org/)**.
 
  [LLVM Clang](https://releases.llvm.org/download.html)
+ 
+ Install LLVM-Clang from the MSYS2 package manager if you have installed MSYS2.
 
- [git-scm](https://git-scm.com/)
+ [git-scm](https://git-scm.com/) (use the MSYS2 package)
 
- [Sourcetree](https://www.sourcetreeapp.com/)
+ [Sourcetree](https://www.sourcetreeapp.com/) or [git-cola](https://github.com/git-cola/git-cola)
 
- Or,
+ [Ctags](https://github.com/universal-ctags/ctags-win32) (Install the MSYS2 package if you are using MSYS2)
 
- [git-cola](https://github.com/git-cola/git-cola)
-
- [Ctags](https://github.com/universal-ctags/ctags-win32)
-
- [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
+ [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code (MSYS2 package available).
 
  [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
 
- [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
+ [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter (MSYS2 package available).
 
  [Java Runtime Environment](https://www.java.com/en/download/manual.jsp)
 
+ [WinMerge](https://winmerge.org/?lang=en) or, [Meld](https://meldmerge.org/) (MSYS2 package available: `mingw-w64-x86_64-meld3`)
+
 ##### Recommended Programs:
 
- [Cmake](https://cmake.org/)
-
- [WinMerge](https://winmerge.org/?lang=en)
+ [Cmake](https://cmake.org/) (MSYS2 package available)
 
 ## Linux:
 
@@ -99,6 +97,8 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
 
+[Meld](https://meldmerge.org/)
+
  Java Runtime Environment.
 
  [kitty](https://sw.kovidgoyal.net/kitty/): GPU powered terminal.
@@ -108,8 +108,6 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 [Cmake](https://cmake.org/)
 
 [wget](https://www.gnu.org/software/wget/)
-
-[Meld](https://meldmerge.org/)
 
 If you are on an Ubuntu or an Ubuntu derivative Linux system, you can try the following or refer to this repository: [Xubuntu-minimum-shell-config](https://github.com/Pinaki82/Xubuntu-minimum-shell-config.git)
 
@@ -289,33 +287,33 @@ file names as you open/edit them in Vim."_
 
 [detectIndent](https://github.com/ciaranm/detectindent.git): _"A Vim plugin, for automatically detecting indent settings."_
 
-[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window."_
+[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window."_ (NOTE: Find `.vimrc2.vim`, search for the line containing `" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'`, then uncomment the line to install.)
 
-[SnipMate](https://github.com/garbas/vim-snipmate.git): _"SnipMate aims to provide support for textual snippets, similar to TextMate or other Vim plugins like [UltiSnips](https://github.com/sirver/ultisnips). For example, in C, typing `for<tab>` could be expanded to"_
+[XPTemplate](https://github.com/drmingdrmer/xptemplate.git): _"Code snippets engine for Vim, And snippets library. Write codes in a smooth, quick and comfortable way."_
+
+Type `for<CTRL+\>`, the snippet will be expanded to
 
 ```
-for (i = 0; i < count; i++) {
-    /* code */
+for (i = 0; i < len; ++i){
+    /* cursor */
 }
 ```
 
-**NOTE:** SnipMate depends on the following plugins:
+Press `<tab>`,`<tab>`.. to navigate through "i", "0", "len" and finally stop at "`/* cursor */`"
 
-SnipMate Dependencies:
+**Usage:** In a blank space, type `<CTRL+r><CTRL+r><CTRL+\>` sequentially to see the default templates and the related keywords. You can also add your own templates.
 
-[vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git)
+[Localvimrc](https://github.com/embear/vim-localvimrc.git): As the name suggests...
 
-[tlib_vim](https://github.com/tomtom/tlib_vim.git)
-
-[vim-snipmate](https://github.com/honza/vim-snippets.git): __"snipMate & UltiSnip Snippets"__
-
-Dependencies will be installed along with the plugin by the [vim-plug](https://github.com/junegunn/vim-plug.git) plugin manager.
+You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (termed as 'local' directory). For example, if you need to open a C file from D:\mycodes\tstprj\esp8266 and if you keep a .lvimrc at the root of your project folder i.e. 'mycodes', the Localvimrc plugin will load your custom Vim configuration from there.
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): _"This is a modified version of the awesome mustang colorscheme by hcalves, published on [deviantART](http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484)."_
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): _"A dark Vim colour scheme."_
 
 [oh-la-la](https://github.com/Pinaki82/oh-la-la.git): _"High contrast dark color scheme with black background."_
+
+[Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. May work on Linux. Find the line `" ------------------- Tabnine` in the .vimrc2.vim file and follow the instructions written after that.
 
 ## Change the default GVim theme:
 

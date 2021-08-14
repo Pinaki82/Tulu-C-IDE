@@ -1550,7 +1550,7 @@ Plug 'https://github.com/Pinaki82/indent-code.git'
 
 Plug 'https://github.com/ciaranm/detectindent.git'
 
-Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
+" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
 
 " https://vi.stackexchange.com/questions/2094/how-to-make-vimrc-settings-applicable-for-a-directory-tree-only
 Plug 'https://github.com/embear/vim-localvimrc.git'
