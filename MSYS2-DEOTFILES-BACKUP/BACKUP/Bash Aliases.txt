@@ -1,0 +1,2 @@
+https://davidwalsh.name/alias-bash
+Creating a Basic Alias

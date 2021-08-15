@@ -1,0 +1,23 @@
+User Variables:
+
+LARCH_PATH
+C:\splint-3.1.2\lib
+
+LCLIMPORTDIR
+C:\splint-3.1.2\imports
+
+=========================================================
+
+System Variables:
+Path:
+
+C:\msys64\mingw64\bin
+
+C:\Program Files (x86)\Vim\vim82
+C:\gdbgui_windows
+C:\splint-3.1.2\bin
+C:\Program Files (x86)\Gpg4win\..\GnuPG\bin
+
+C:\msys64\usr\bin
+C:\msys64\usr\x86_64-pc-msys\bin
+C:\msys64

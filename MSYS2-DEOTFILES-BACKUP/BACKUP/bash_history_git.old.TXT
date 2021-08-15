@@ -1,0 +1,715 @@
+git status
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+cd Xubuntu-minimum-shell-config/
+git status 
+git commit -a
+git push origin main
+git status 
+git status 
+git add shell/virus-scan-clamav.sh 
+git status 
+git status 
+git status 
+git commit -a
+git status 
+git push origin main
+git push --delete origin 59
+git tag
+git status 
+git tag
+git checkout main 
+git pull
+git status 
+git tag
+git tag 60
+git push origin --tags 60
+git push --delete origin 59
+git push --delete origin 60
+cd Tulu-C-IDE/
+git checkout 
+git status 
+git pull
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+cd Xubuntu-minimum-shell-config/
+git status
+git add shell/YouTube-SMTube.sh 
+git status
+git difftool
+git commit -a
+git push origin main
+git push --delete origin 60
+git status
+git checkout
+git pull
+git checkout
+git pull
+git status
+git checkout
+git pull
+git status
+git commit -a
+git push origin main
+git push --delete origin 62
+git status
+git checkout
+git pull
+cd Xubuntu-minimum-shell-config/
+git status
+git status
+git difftool
+git commit -a
+git push origin main
+git push --delete origin 63
+git status
+git checkout
+git pull
+cd Xubuntu-minimum-shell-config/
+git status
+git checkout
+git status
+git add PortablePrograms/Laeqed.desktop.txt 
+git status
+git add PortablePrograms/laeqed.sh 
+git add shell/LATeX-Equation-Editor-Base.sh 
+git status
+git commit -a
+git push --delete origin 64
+git push origin main
+git status
+git checkout
+git tag -a 65 -m "v65"
+git push --tags
+git push --delete origin 60
+git push --delete origin 61
+git push --delete origin 62
+git push --delete origin 63
+git push --delete origin 64
+git push --delete origin 65
+git checkout
+git push origin main
+git pull
+git checkout
+git pull
+git pull
+cd Xubuntu-minimum-shell-config/
+git checkout
+git pull
+git status
+git add shell/LATEX/ .
+git status
+git commit -a
+git push --delete origin 65
+git status
+git push origin main
+git status
+git checkout
+git checkout
+git pull
+git status
+git checkout
+cd Xubuntu-minimum-shell-config/
+git status
+git add .laeqed.sh 
+git add .languagetool.sh 
+git status
+git add .local/share/applications/ .
+git status
+git add .local/share/icons/ .
+git status
+git commit -a
+git status
+git push origin main
+git push --delete origin 66
+git status
+git checkout
+git pull
+git checkout
+git status
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+git status
+cd Xubuntu-minimum-shell-config/
+git status
+git checkout
+git pull
+cd Xubuntu-minimum-shell-config/
+git status
+git add shell/DTP.sh 
+git status
+git status
+git commit -a
+git status
+git push origin main
+git push --delete origin 67
+git checkout
+git pull
+cd ..
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+clear
+cd Xubuntu-minimum-shell-config/
+git status
+git add .local/share/ .
+git status
+git commit -a
+git push origin main
+git push --delete origin 68
+git status
+git checkout
+git pull
+git history
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+cd ..
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+cd Xubuntu-minimum-shell-config/
+git status
+git difftool
+git commit -a
+git status
+git push origin main
+git push --delete origin 69
+git status
+git difftool
+git commit -a
+git push origin main
+git status
+git checkout
+git pull
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+git status
+git push origin master 
+git status
+git status
+git status
+git status
+git status
+cd G:\
+ls
+git status
+git checkout main
+git status
+git pull
+git checkout experimentation 
+git pull
+git switch main 
+git merge experimentation 
+git merge experimentation 
+git switch experimentation 
+git merge main 
+git push
+git status
+git status
+git diff README.md
+git difftool
+git status
+git push origin --tags 2021.03.10-10:25PM
+git push origin --tags "2021.03.10-10:25PM"
+git status
+git difftool
+git status
+git difftool
+git commit -a
+git push origin main 
+git status
+git checkout 
+git pull 
+git status
+git difftool
+git commit -a
+git status
+git push origin main 
+git status
+git status
+git status
+git commit -a
+git status
+git push origin main 
+git push --delete origin 70
+git status
+git status
+git checkout
+git pull
+git tag
+git tag -d 70
+git tag
+git status
+git checkout
+git pull
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+cd Xubuntu-minimum-shell-config/
+git status
+git difftool
+git commit -a
+git status
+git push origin main 
+git status
+git push --delete origin 71
+git status
+git checkout 
+git pull
+git tag
+git tag -d 71
+git status
+git checkout 
+git status
+git checkout
+git pull
+git status
+git commit -a
+git status
+git add shell/ .
+git status
+git commit -a
+git status
+git push origin main 
+git push --delete origin 72
+git status
+git checkout
+git pull
+git tag
+git tag -d 72
+git pull
+cd Desktop/
+ssh -T git@ssh.codegiant.io
+git clone git@ssh.codegiant.io:Pinaki82/Pinaki82/dsdsdsdsdsdsds.git
+cd dsdsdsdsdsdsds/
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+git push origin master
+git status
+git branch
+git push origin main
+git push -u origin main 
+git status
+git add .
+git status
+git commit -m "add main.c"
+git push -u origin main 
+git pull
+git status
+git status
+git checkout
+git status
+git commit -m "header inclusion"
+git status
+git commit -a
+git status
+git push -u origin main 
+git pull
+git status
+git commit -a
+git status
+git push -u origin main 
+git status
+git checkout 
+git pull
+git checkout 
+git status
+git clone git@ssh.codegiant.io:Pinaki82/Pinaki82/hghhfhghgfhghgh.git
+cd hghhfhghgfhghgh/
+git status
+git add .
+git commit -a
+git status
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git pull
+git status
+git commit -a
+git push -u origin main 
+git pull
+git commit -a
+git push -u origin main 
+git pull
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git status
+git status
+git checkout experimentation 
+git merge main
+git push -u origin main 
+git push -u origin experimentation 
+git status
+ssh -T git@bitbucket.org
+git gc --auto
+git gc
+git fsck
+git status
+git checkout
+git push
+git pull
+git clone git@ssh.codegiant.io:Pinaki82/Pinaki82/mnmnmnmnmnmnmnm.git
+cd mnmnmnmnmnmnmnm/
+git init
+git remote add origin git@ssh.codegiant.io:Pinaki82/Pinaki82/mnmnmnmnmnmnmnm.git
+git add .
+git commit
+git push -u origin main 
+git status
+git add .
+git status
+git commit -a
+git push -u origin main 
+gpg --no-version --armor --sign WAIVER
+git mv mnmnmnmnmnmnmnm.md mnmnmnmnmnmnmnm.md
+touch mnmnmnmnmnmnmnm.md
+git status
+git add .
+git commit -a
+git status
+git add .
+git status
+git commit -a
+git status
+git push -u origin main 
+git status
+git commit -a
+git status
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git status
+git push -u origin main 
+git commit -a
+git push -u origin main 
+git commit -a
+git push -u origin main 
+git commit -a
+git push -u origin main 
+git status
+git pull
+git status
+git add .
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git push -u origin main 
+git status
+git status
+git status
+git status
+git status
+git commit -a
+git push -u origin main 
+git status
+git status
+git checkout
+git pull
+clear
+git status
+git add Xubuntu_General/icons-n-themes.txt 
+git add shell/lock-desktop-folder.BAT.txt 
+git add shell/lock-desktop-folder.sh 
+git status
+git status
+git status
+git commit -a
+git push -u origin main 
+git push --delete origin 73
+git tag
+git status
+git add .local/share/icons/NOTE.txt 
+git add .themes/ .
+git status
+git commit -a
+git status
+git push -u origin main 
+git status
+git tag
+git tag -d 73
+git tag
+git status
+git status
+git commit -a
+git push -u origin main 
+git status
+git checkout
+git tag
+git pull
+git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
+git tag
+cd Xubuntu-minimum-shell-config/
+git tag
+git status
+git checkout
+ssh -T git@codeberg.org
+git status
+git checkout
+git tag
+git pull
+git status
+git status
+git commit -a
+git status
+git add shell/ .
+git status
+git commit -a
+git status
+git commit -a
+git status
+git tag
+git push --delete origin 74
+git push -u origin main 
+git tag
+git tag -d 74
+git tag
+git status 
+git checkout
+git pull
+git status 
+git checkout
+git pull
+git pull
+git status 
+git checkout
+git init
+git add .
+git clone git@github.com:Pinaki82/gVimPortable.git
+git status
+git add .
+git status
+git commit -a
+git push -u origin main 
+git status
+git commit -a
+git status
+git push -u origin main 
+git status
+git push origin 1
+git tag 1 main
+git push origin 1
+git status
+git commit -a
+git push -u origin main 
+echo $HOME
+cd ~/
+ssh -T git@gitlab.com
+cd /n/
+ls
+git status
+git difftool
+git pull
+git push
+git config --global diff.tool meld
+git config --global merge.tool meld
+./ex001.exe 
+gdb ./ex001.exe
+fish
+which clang
+git init main
+git init .
+git init
+git add .
+git commit -a
+git add .
+git diff
+git commit -a
+git add .
+git commit -a
+git status
+git remote add origin git@ssh.codegiant.io:Pinaki82/Pinaki82/template-platformio-4-arduino-simple-serial-echo.git
+git add .
+git commit -a
+git push -u origin main
+git push -u origin master
+git branch main master
+git push -u origin main
+git branch -d master
+git switch master
+git switch main
+git branch -d master
+git push origin --delete master
+git push -u origin main
+git push origin --delete master
+git add .
+git status
+git commit -a
+git push -u origin main
+git status
+git add .
+git commit -a
+git add .
+git commit -a
+git push -u origin main
+git status
+git add .
+git commit -a
+git add .
+git commit -a
+git push -u origin main
+git add .
+git commit -a
+git push -u origin main
+fish
+pacman -Syu
+make
+cd Src/
+uno_local.exe --help
+ls
+uno_local.exe --help
+git clone https://github.com/Pinaki82/Tulu-C-IDE.git
+git clone https://github.com/Pinaki82/Tulu-C-IDE.git
+git clone https://github.com/Pinaki82/Tulu-C-IDE.git
+git add .
+git commit -a
+git push -u origin main
+git status
+ssh -T git@github.com
+git status 
+git status 
+git commit -a
+git push -u origin main
+git push origin main
+git status
+git status
+git commit -a
+git push origin main
+git status
+git pull
+git checkout main 
+git status
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git add vimfiles/ .
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git status
+git add LocalVimrc_project_sample/ .
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git status
+git pull
+exit
+git status
+git status
+git add .conkyrc 
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git status
+clear
+git status
+git difftool
+git add .
+git status
+git commit -a
+git status
+git push origin main
+git status
+git pull
+git status
+git status
+git pull
+git status
+git pull
+git status
+git rm shell/Flint++.txt 
+git add shell/Cpplint-n-Flint++.txt 
+git status
+git commit -a
+git status
+git push origin main
+git status
+git pull
+git status
+git commit -a
+git status
+git push origin main
+git status
+git pull
+pacman -Ss mold
+pacman -Syu
+pacman -Syu
+pacman -Ss pkcs
+pacman -Syu
+pacman -Syu
+fish
+lsusb
+git status
+git pull
+git status
+git pull
+git status
+git commit -a
+git status
+git push origin main
+git status
+git status
+git status
+git rm LocalVimrc_project_sample/Projects\ with\ Localvimrc\ and\ custom\ configuration.html 
+git add LocalVimrc_project_sample/Tulu-C-IDE\ for\ Microcontroller\ Projects.pdf 
+git status
+git add LocalVimrc_project_sample/README.md 
+git status
+git commit -a
+git status
+git push origin main
+git status
+git pull
+exit
+git status
+git status
+git difftool
+git status
+git commit -a
+git status
+git push origin main
+git status
+git pull
+git status
+pacman -Ss arm
+pacman -Ss arm
+cd ~/
+notepad .gitconfig
+notepad .bashrc
+git status
+git difftool
+git commit -a
+git status
+git push origin main
+git status
+git pull
+git status
+git difftool
+git commit -a
+git status
+git push origin main
+git status
+git pull

@@ -1,0 +1,37 @@
+[user]
+	email = myemailaddress@gmail.com
+	name = MyName MySurname
+	signingkey = CJDJDOUADBLRTSMC
+[commit]
+	gpgsign = true
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+[core]
+	editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+[difftool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[difftool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[cola]
+	spellcheck = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

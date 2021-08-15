@@ -1,0 +1,28 @@
+WINDOWS+R -> Type: systempropertiesadvanced
+
+Uninstall (or, delete):
+
+C:\TDM-GCC-64\bin
+C:\Program Files\LLVM\bin
+C:\Program Files (x86)\AStyle\bin
+C:\Program Files\ctags-2020-09-15_23d50b5d-x64
+Git-Scm
+
+Remove from path (don't uninstall):
+
+C:\Program Files\Cppcheck
+C:\Program Files\CMake\bin
+
+Keep untouched:
+C:\Program Files (x86)\GnuPG\bin
+C:\Program Files (x86)\Gpg4win\..\GnuPG\bin
+C:\Program Files (x86)\Vim\vim82
+C:\splint-3.1.2\bin
+
+Add to path:
+C:\msys64\usr\bin
+
+Optionally, add to path:
+C:\msys64\usr\x86_64-pc-msys\bin
+C:\msys64
+C:\msys64\mingw64\bin
