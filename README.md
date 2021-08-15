@@ -167,7 +167,7 @@ pacman -Ss mingw-w64-x86_64-glade (lib)
 pacman -Ss gtkmm (lib)
 ```
 
-Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one.
+Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one:
 
 ```
 # R-Click Context Menues
