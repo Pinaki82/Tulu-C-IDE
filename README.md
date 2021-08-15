@@ -184,6 +184,10 @@ Add some utilities (compilers etc.) to System Path:
 
 Windows Explorer -> R-Click on 'This PC' -> Advanced System Settings (found on the right side) -> Advanced Tab -> Environment Variables
 
+Or,
+
+`WINDOWS+R` -> Type: `systempropertiesadvanced`
+
 **User Variables:**
 
 `LARCH_PATH`
