@@ -78,6 +78,245 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 ##### Recommended Programs:
 
  [Cmake](https://cmake.org/) (MSYS2 package available)
+ 
+#### You might need the following MSYS2 packages. Type the commands below, one by one.
+
+Launch 'MSYS2 MinGW 64-bit' Terminal (mingw64.exe). Install 64-bit packages if you do not need 32-bit versions.
+
+```
+pacman -Syu
+pacman -Su
+pacman -S tar
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+pacman -S mingw-w64-x86_64-cmake
+pacman -S mingw-w64-x86_64-clang
+pacman -S mingw-w64-x86_64-lld
+pacman -S mingw-w64-x86_64-lldb
+pacman -S mingw-w64-x86_64-clang-tools-extra
+pacman -S mingw-w64-x86_64-clang-analyzer
+pacman -S mingw-w64-x86_64-compiler-rt
+pacman -S mingw-w64-x86_64-cppcheck
+pacman -S mingw-w64-x86_64-astyle
+pacman -S ssh-pageant-git
+pacman -S git
+pacman -S git-extras
+pacman -S git-flow
+pacman -S mingw-w64-x86_64-meld3
+pacman -S ctags
+pacman -S markdown
+pacman -S python python-pip
+pacman -S cdecl
+```
+
+If you have missed a package or you need something extra, search for the package name:
+
+```
+pacman -Ss packagename
+```
+
+If a default package is missing for some strange cause:
+
+```
+pacman -S bash
+pacman -S which
+pacman -S filesystem
+acman -Sy pacman pacman-mirrors msys2-runtime
+pacman -S msys2-devel
+pacman -S automake
+pacman -S autoconf
+pacman -S libtool
+pacman -S pkgconf
+pacman -S m4
+pacman -S make
+pacman -S  mingw-w64-x86_64-qt5
+pacman -S mingw-w64-x86_64-make
+pacman -Ss clang
+pacman -Ss lld
+pacman -S gcc-libs
+pacman -S gdb
+pacman -S nano
+pacman -S nano-syntax-highlighting
+pacman -S diffutils
+pacman -S diffstat
+pacman -S grep
+pacman -Ss msys2-launcher
+pacman -S msys/vim
+```
+
+When you need extra packages, those extras are (examples):
+
+```
+# Search for ARM MCU Development Toolchain and Utilities:
+
+pacman -Ss openocd
+pacman -Ss stlink
+pacman -Ss arm
+# Usually, mingw-w64-x86_64-arm-none-eabi-gcc
+
+# RUST Compiler:
+
+pacman -Ss rust
+
+# Fish Shell (interactive shell):
+pacman -S fish
+
+# GTK+ library components:
+pacman -Ss glm (lib)
+pacman -Ss mingw-w64-x86_64-gtk3 (lib)
+pacman -Ss mingw-w64-x86_64-glade (lib)
+pacman -Ss gtkmm (lib)
+```
+
+Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one.
+
+```
+# R-Click Context Menues
+# https://github.com/njzhangyifei/msys2-mingw-shortcut-menus
+cd ~/
+git clone https://github.com/njzhangyifei/msys2-mingw-shortcut-menus
+cd ~/msys2-mingw-shortcut-menus/
+./install
+cd ~/
+rm -rf ~/msys2-mingw-shortcut-menus/
+```
+
+Add some utilities (compilers etc.) to System Path:
+
+Windows Explorer -> R-Click on 'This PC' -> Advanced System Settings (found on the right side) -> Advanced Tab -> Environment Variables
+
+**User Variables:**
+
+`LARCH_PATH`
+
+`C:\splint-3.1.2\lib`
+
+`LCLIMPORTDIR`
+
+`C:\splint-3.1.2\imports`
+
+Path:
+
+`C:\FlintPlusPlus-master\bin\x64`
+
+===============
+
+**System Variables:**
+
+Path:
+
+Essential:
+
+```
+C:\msys64\mingw64\bin
+```
+
+```
+C:\Program Files (x86)\Vim\vim82
+C:\splint-3.1.2\bin
+C:\Program Files (x86)\Gpg4win\..\GnuPG\bin
+```
+
+The whole purpose of MSYS2 is to separate your build environment from the Operating System so that it doesn't mess up with other system settings. We only need paths to the executable files of the compilers that we can add to the System's Search Path. Yet, if you want to get the tase of Linux on a Windows 10 box, you can add some of the additional paths to the system search path. You will get 'ls', 'which', 'whereis', 'touch', 'grep', 'nano', and so many Linux stuff on Windows. Delete those additional paths from the list of the 'Environment Variables' if something goes awry.
+
+```
+C:\msys64\usr\bin
+C:\msys64\usr\x86_64-pc-msys\bin
+C:\msys64
+```
+
+Create a `.gitconfig` in `~/`:
+
+```
+cd ~/
+touch .gitconfig
+notepad .gitconfig
+```
+
+Fill the file with the lines below:
+
+```
+[user]
+	email = youremailaddress@gmail.com
+	name = Your Name
+	signingkey = YOURSIGNINGKEY
+[commit]
+	gpgsign = true
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+[core]
+	editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+[difftool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[difftool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+```
+
+### To find more about Git, SSH, and GPG, please read: [GIT+SSH+GPG-and-Code-Signing.md](https://github.com/Pinaki82/Tulu-C-IDE/blob/f3c83f4af174f41cccd7ebfb421c627d40433553/GIT+SSH+GPG-and-Code-Signing.md).
+
+To avoid typing the passphrase every time you push a commit to a remote repository, you will have to add the following lines to the `.bashrc` file. At the end of the file, drop the lines:
+
+Open `.bashrc`:
+
+```
+notepad .bashrc
+```
+
+Add the following lines:
+
+```
+# ===========================================
+# Custom entries
+# ===========================================
+
+# --------------------- Type SSH Passphrase only once per boot session ---------
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+
+unset env
+
+```
+
+Creating a Basic Alias: https://davidwalsh.name/alias-bash
+
 
 ## Linux:
 
