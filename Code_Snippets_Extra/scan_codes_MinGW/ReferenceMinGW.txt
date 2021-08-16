@@ -1,0 +1,99 @@
+tab 9
+a 97
+b 98
+c 99
+d 100
+e 101
+f 102
+g 103
+h 104
+i 105
+j 106
+k 107
+l 108
+m 109
+n 110
+o 111
+p 112
+q 113
+r 114
+s 115
+t 116
+u 117
+v 118
+w 119
+x 120
+y 121
+z 122
+, 44
+. 46
+/ 47
+; 59
+' 39
+[ 91
+] 93
+spacebar 32
+Enter 13
+-----------------------------------------------------------
+` 96
+1 49
+2 50
+3 51
+4 52
+5 53
+6 54
+7 55
+8 56
+9 57
+0 58
+- 45
+= 61
+\ 92
+backSpace 8
+-----------------------------------------------------------
+esc 27
+F1 59+garbage
+F2 60+garbage
+F3 61+garbage
+F4 62+garbage
+F5 63+garbage
+F6 64+garbage
+F7 65+garbage
+F8 66+garbage
+F9 67+garbage
+F10 68+garbage
+F11 garbage+garbage
+F12 garbage+garbage
+-----------------------------------------------------------
+printsync 
+insert 82+garbage
+del 83+garbage
+scroll_lock 
+home 71+garbage
+end 79+garbage
+pause_brk
+page_up 73+garbage
+page_dn 81+garbage
+-----------------------------------------------------------
+right_arrow 77+garbage
+left_arrow 75+garbage
+up_arrow 72+garbage
+dn_arrow 80+garbage
+-----------------------------------------------------------
+numpad_1 49
+numpad_2 50
+numpad_3 51
+numpad_4 52
+numpad_5 53
+numpad_6 54
+numpad_7 55
+numpad_8 56
+numpad_9 57
+numpad_0 48
+numpad_. 46
+numpad_enter 13
+numpad_+ 43
+numpad_- 45
+numpad_* 42
+numpad_/ 47
+-----------------------------------------------------------

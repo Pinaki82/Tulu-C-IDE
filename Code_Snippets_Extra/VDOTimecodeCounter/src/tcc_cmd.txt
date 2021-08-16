@@ -1,0 +1,2 @@
+tcc -Wwarning -c "D:\Move Me\Extra\codeblocks\VDOTimecodeCounter\src\VDOTimecodeCounter.c" -r -o "D:\Move Me\Extra\codeblocks\VDOTimecodeCounter\src\VDOTimecodeCounter.o"
+tcc -Wwarning -o "D:\Move Me\Extra\codeblocks\VDOTimecodeCounter\src\VDOTimecodeCounter.exe" "D:\Move Me\Extra\codeblocks\VDOTimecodeCounter\src\VDOTimecodeCounter.o"

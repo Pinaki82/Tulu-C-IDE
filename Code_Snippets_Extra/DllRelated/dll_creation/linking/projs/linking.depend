@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1322811958 source:d:\code_blocks\linking\src\dllrunfying.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+

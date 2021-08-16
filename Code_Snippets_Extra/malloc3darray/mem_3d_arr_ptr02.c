@@ -1,0 +1,119 @@
+// Last Change: 2016-01-20  Wednesday: 09:34:49 PM
+/*
+   An example program of dynamic memory allocation for a 3D array solely using
+   pointers to pointers.
+   Method 2: We'll have to simulate the 3D array (of pointers) with another pointer,
+   and this will be a 'pointer to a pointer to a pointer'.
+   The idea is to first create a three dimensional array of pointers (row basis),
+   using a triple pointer and then,
+   for each array entry (each row's base address/pointers),
+   create another two dimensional array of pointers (column basis).
+   Next we need to create another one dimensional array of pointers z-depth basis
+   from each row's each coloumn's base address.
+
+   We can create an array of pointers also dynamically using a triple pointer.
+   Once we have an array pointers allocated dynamically, we can dynamically
+   allocate memory for every row, then every coloumn for each rows, then every z-depth
+   from every row's every coloumn.
+   Note that *(arr+i) is arr[i] here.
+    (*(arr+i)+j) is arr[i][j].
+    (*(*(arr+i)+j)+k) is arr[i][j][k].
+ * * * * * * * * * * * * * * The HEART of this method is: * * * * * * * * * * *
+   that the arr[i][j] is same as     *(*(arr+i)+j) and also,
+   its vice-versa e.g.,              *(*(arr+i)+j) is same as arr[i][j]
+                            ************
+    arr[i][j][k] is same as          *(*(*(arr+i)+j)+k) and also,
+    its vice-versa e.g.,             *(*(*(arr+i)+j)+k)  is same as arr[i][j][k]
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+#include <errno.h> /* required */
+#include <math.h>
+#include <stdio.h> /* required */
+#include <stdlib.h> /* required */
+#include <string.h>
+
+int main(void) {
+  int ***arr; int xlen, ylen, zlen, i=0, j=0, k=0; /*  ***arr is a 3D array, essentially a
+                                    collection of some array (of pointers).*/
+
+  printf("maximum number of rows?\n");
+  scanf("%d", &xlen);
+  printf("maximum number of col?\n");
+  scanf("%d", &ylen);
+  printf("maximum number of z-depth channels?\n");
+  scanf("%d", &zlen);
+
+  arr = (int ** *)malloc((size_t)xlen * sizeof(int **));  /* memory allocation,
+                                                            row basis */
+  if(arr==NULL) {
+    printf("\ndynamic memory allocation failed\n");
+    system("PAUSE");
+    exit(EXIT_FAILURE);
+  }
+
+  for(i=0; i<xlen ; i++) { /* memory allocation column basis */
+    *(arr+i)=(int **)malloc((size_t)ylen * sizeof(int *));
+    if(*(arr+i)==NULL) {
+      printf("\ndynamic memory allocation failed\n");
+      system("PAUSE");
+      exit(EXIT_FAILURE);
+    }
+    for(j=0; j<ylen ; j++) { /* memory allocation z-depth basis */
+      *(*(arr+i)+j)=(int *)malloc((size_t)zlen * sizeof(int));
+      if(*(*(arr+i)+j)==NULL) {
+        printf("\ndynamic memory allocation failed\n");
+        system("PAUSE");
+        exit(EXIT_FAILURE);
+      }
+    }
+  }
+
+  for(i = 0; i<=xlen-1; i++) {
+    for(j = 0; j<=ylen-1; j++) {
+      for(k = 0; k<=zlen-1; k++) {
+        *(*(*(arr+i)+j)+k)='\0';  /* filling the entire array with a NULL */
+      }
+    }
+  }
+
+
+  printf("......input the elements........\n");
+  for(i=0; i<=xlen-1; i++) { /* no problem */
+    for(j=0; j<=ylen-1 ; j++) {
+      for(k=0; k<=zlen-1 ; k++) {
+        scanf("%d", (*(*(arr+i)+j)+k)); /* NOTE: Note that arr[i][j] is same as *(*(arr+i)+j) */
+        /* http://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+            3) Using pointer to a pointer */
+        /* Also, arr[i][j][k] is same as *(*(*(arr+i)+j)+k) */
+      }
+    }
+  }
+
+  printf("\nyour input was:\n");
+  for(i=0; i<=xlen-1 ; i++) {
+    for(j=0; j<=ylen-1 ; j++) {
+      for(k=0; k<=zlen-1 ; k++) {
+        printf("%d.%d.%d. arr=%d\n",i,j,k,*(*(*(arr+i)+j)+k)); /* NOTE: Note that arr[i][j] is same as *(*(arr+i)+j) */
+        /* Also, arr[i][j][k] is same as *(*(*(arr+i)+j)+k) */
+      }
+    }
+  }
+
+  for(i = 0; i<=xlen-1; i++) {
+    for(j = 0; j<=ylen-1; j++) {
+      free(*(*(arr+i)+j)); /* very much essential */
+      *(*(arr+i)+j) = NULL;
+    }
+    free(*(arr+i)); /* very much essential */
+    *(arr+i) = NULL;
+  }
+
+  free(arr); /* very much essential */
+  arr = NULL;
+
+  system("PAUSE");
+  return EXIT_SUCCESS;
+}
+
+

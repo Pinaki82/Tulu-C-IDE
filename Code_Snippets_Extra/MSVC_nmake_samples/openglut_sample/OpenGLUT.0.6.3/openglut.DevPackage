@@ -1,0 +1,17 @@
+[Setup]
+Version=1
+AppName=OpenGLUT
+MenuName=OpenGLUT
+AppVersion=0.6.3
+AppVerName=OpenGLUT 0.6.3 for Dev C++
+Description=X-Consortium licensed alternative to the OpenGL Utility Toolkit (GLUT) library.
+Url=http://www.openglut.org/
+
+[Files]
+include=<app>\include\
+lib=<app>\lib\
+Templates=<app>\Templates\
+
+[Icons]
+OpenGLUT Homepage=http://www.openglut.org/
+API Documentation=http://www.openglut.org/group__api.html

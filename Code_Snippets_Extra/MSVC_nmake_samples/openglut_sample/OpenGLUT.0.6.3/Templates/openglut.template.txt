@@ -1,0 +1,22 @@
+[Template]
+ver=1
+Name=OpenGLUT
+Icon=
+Description=A basic OpenGLUT program
+Catagory=MultiMedia
+
+[Unit0]
+CName=main.c
+CppName=main.cpp
+C=openglut.txt
+Cpp=openglut.txt
+
+[Project]
+UnitCount=1
+Type=0
+Linker=-lopenglut -lglu32 -lopengl32 -lwinmm -lgdi32
+Compiler=-DOPENGLUT_STATIC
+CppCompiler=-DOPENGLUT_STATIC
+
+Name=OpenGLUT Demo
+

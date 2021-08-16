@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<!--
+===========================================
+Plain EXE
+===========================================
+-->
+<makefile>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- HERE OUR PROJECT GOES -->
+<exe id="MyApplication">
+  <app-type> console </app-type>
+  <!-- Compiler Specific -->
+  <cflags>/TC /W4 /Za </cflags> <!-- Compile code as C. /TP , as C++
+  /Tc <source file> means this file is C only, /Tp means this file is C++ only.
+  /O1 minimize space, /O2 maximize speed, /Os favor code space, /Ot favor code speed.
+  /Wall enable all warnings (gives warning on own headers like stdio.h).
+  /Wp64 enable 64 bit porting warnings (will be deprecated in future). 
+  /Za disable extensions, can be used with plain console apps but not with gui apps. -->
+
+    <!-- <define>SOMEMACRO</define> -->
+    <!-- <define>_OPENGLUT_STATIC</define> --> <!-- use underscore '_' before macro -->
+    <!-- <include>../include/foo</include> -->
+    <!-- <include>C:\xtralibs\appu</include> -->
+    <!-- <include>C:\xtralibs\OpenGLUT-0.6.3vc</include> -->
+    <!-- <headers>utils.h additionalheader.h</headers> -->
+
+       <sys-lib> user32.lib kernel32.lib shell32.lib gdi32.lib comctl32.lib ole32.lib
+         winmm </sys-lib> <!-- OpenGLUT_static.lib OpenGLUT.lib glu32.lib opengl32.lib -->
+    <!-- <sys-lib>png</sys-lib> -->
+    <!-- <sys-lib>OpenGLUT</sys-lib> -->
+    <!-- <sys-lib>z</sys-lib> -->
+    <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+    <!-- <lib-path>C:\xtralibs\OpenGLUT-0.6.3vc</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+       idea, it's done here only for the sake of simplicity;
+       in real bakefile, an <option> would be used -->
+       <!--<library>mylib</library> -->
+       <ldflags> /ENTRY:"mainCRTStartup"</ldflags> <!-- required for gui apps only,
+       can be used with console apps also -->
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+
+    <!-- COMMON -->
+    <win32-res> resource.rc </win32-res>
+         <sources> ptr_initialize.c </sources>
+
+</exe>
+<!-- HERE OUR PROJECT ENDS -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</makefile>

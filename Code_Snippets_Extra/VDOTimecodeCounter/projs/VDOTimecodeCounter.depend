@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1331437882 source:e:\codeblocks\vdotimecodecounter\src\vdotimecodecounter.c
+	<stdio.h>
+	<stdlib.h>
+

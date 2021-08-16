@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<!--
+===========================================
+Visual C/C++ Dynamic Lib
+===========================================
+-->
+
+<makefile>
+    <dll id="easy_dll">
+        <so_version>1.0.3</so_version>
+        <!--<include> "C:\dm\include\" </include>-->
+        <!--<include> "C:\dm\stlport\stlport\" </include>-->
+        <define> _WINDLL </define>
+        <cflags> /TC /W4 </cflags> <!-- Compile code as C. /TP , as C++
+  /Tc <source file> means this file is C only, /Tp means this file is C++ only.
+  /O1 minimize space, /O2 maximize speed, /Os favor code space, /Ot favor code speed.
+  /Wall enable all warnings (gives warning on own headers like stdio.h).
+  /Wp64 enable 64 bit porting warnings (will be deprecated in future). 
+  /Za disable extensions, can be used with plain console apps but not with gui apps. -->
+
+        <!-- <define>SOMEMACRO</define> -->
+    <!-- <define>_OPENGLUT_STATIC</define> --> <!-- use underscore '_' before macro -->
+    <!-- <include>../include/foo</include> -->
+    <!-- <include>C:\xtralibs\appu</include> -->
+    <!-- <include>C:\xtralibs\OpenGLUT-0.6.3vc</include> -->
+    <!-- <headers>utils.h additionalheader.h</headers> -->
+
+       <sys-lib> user32.lib kernel32.lib shell32.lib gdi32.lib comctl32.lib ole32.lib
+         winmm </sys-lib> <!-- OpenGLUT_static.lib OpenGLUT.lib glu32.lib opengl32.lib -->
+         <!-- Do not use use LDFLAGS or <ldflags> while creating same makefile for two Targets (dll and exe both),
+              use <sys-lib> (i.e. system default libraries) instead. -->
+
+    <!-- <sys-lib>png</sys-lib> -->
+    <!-- <sys-lib>OpenGLUT</sys-lib> -->
+    <!-- <sys-lib>z</sys-lib> -->
+    <!-- <lib-path>/usr/lib/mysql</lib-path> -->
+    <!-- <lib-path>C:\xtralibs\OpenGLUT-0.6.3vc</lib-path> -->
+                     <!-- note that hardcoding library paths like this is a bad
+       idea, it's done here only for the sake of simplicity;
+       in real bakefile, an <option> would be used -->
+       <!--<library>mylib</library> -->
+       <!--<ldflags> /ENTRY:"mainCRTStartup"</ldflags> --> <!-- required for gui apps only,
+       can be used with console apps also -->
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- COMMON -->
+    <win32-res> ../source/resource.rc </win32-res>
+
+  <!-- HERE OUR PROJECT ENDS -->
+
+        <sources>../source/easy_dll.c</sources>
+        <libname>easy_dll</libname>
+        <dllname>easy_dll</dllname>
+
+        <install-to>$(LIBDIR)</install-to>
+    </dll>
+
+</makefile>

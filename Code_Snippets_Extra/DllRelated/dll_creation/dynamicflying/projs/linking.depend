@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1322854229 source:d:\code_blocks\dynamicflying\src\dllrunfying.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,12 @@
+/*
+Create your Documentation Here.
+You can add pdf ot htmls instead of txts.
+If you edit and use this files, dont forget to surround it with comment /**/,
+and do not incule it in compilation,
+go to project properties, select target, deselect this file.
+*/
+
+/*
+
+*/
+

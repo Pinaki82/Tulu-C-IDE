@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<makefile>
+
+<!-- When the Compiler is MinGw32 -->
+<if cond="FORMAT=='mingw'">
+       <!-- mingw32-gcc or mingw32-g++ -->
+       <include file="presets\minimalist.bkl"/>
+</if>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- HERE OUR PROJECT GOES -->
+<exe id="randxmpl01">
+  <app-type> console </app-type>
+  <!-- Compiler Specific -->
+  <if cond="FORMAT=='mingw'">
+    <cflags>-Wall -Wextra -O -O2</cflags>
+    <!-- <ldflags>-mwindows</ldflags> -->
+    <!-- <sys-lib> user32 -lkernel32 -lshell32 -lgdi32 -lcomctl32 -lole32 </sys-lib> -->
+  </if>
+  <if cond="FORMAT=='dmars'">
+    <cflags> -W- -A -H -s -o -O </cflags>
+    <!-- <ldflags>-L/SUBSYSTEM:WINDOWS</ldflags> -->
+    <!-- <sys-lib> user32.lib kernel32.lib shell32 gdi32.lib comctl32.lib ole32 </sys-lib> -->
+  </if>
+  <!-- ~~~~~~~~ Compiler Specific definition Ends ~~~~~~~~~~ -->
+
+    <!-- COMMON -->
+    <!-- <win32-res> resource.rc </win32-res> -->
+    <sources> randxmpl01.c </sources>
+
+</exe>
+<!-- HERE OUR PROJECT ENDS -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</makefile>
+

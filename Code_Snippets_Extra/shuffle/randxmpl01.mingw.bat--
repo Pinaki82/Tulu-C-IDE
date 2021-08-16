@@ -1,0 +1,6 @@
+@echo on
+cd
+cls
+bakefile -f mingw -o shuffle_test.mingw.mak shuffle_test.bkl
+mingw32-make -f shuffle_test.mingw.mak
+cmd

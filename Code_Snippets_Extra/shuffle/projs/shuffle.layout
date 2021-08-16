@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="..\rand_gen.h" open="1" top="0" tabpos="3">
+		<Cursor position="1815" topLine="43" />
+	</File>
+	<File name="..\shuffle.h" open="1" top="0" tabpos="2">
+		<Cursor position="2627" topLine="82" />
+	</File>
+	<File name="..\shuffle_test.c" open="1" top="1" tabpos="1">
+		<Cursor position="1115" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

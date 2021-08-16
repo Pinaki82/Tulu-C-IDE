@@ -1,0 +1,7 @@
+C Compiler:
+-DBUILDING_DLL=1
+C++ Compiler:
+-DBUILDING_DLL=1
+Linker:
+--no-export-all-symbols
+-Wl,--add-stdcall-alias

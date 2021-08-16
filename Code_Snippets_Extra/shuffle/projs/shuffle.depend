@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1344593614 source:k:\shuffle\shuffle_test.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"shuffle.h"
+
+1344593038 k:\shuffle\shuffle.h
+	<stdio.h>
+	<stdlib.h>
+	"rand_gen.h"
+
+1344593608 k:\shuffle\rand_gen.h
+	<stdio.h>
+	<stdlib.h>
+

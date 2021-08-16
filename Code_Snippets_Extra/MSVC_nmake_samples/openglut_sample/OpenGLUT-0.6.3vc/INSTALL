@@ -1,0 +1,57 @@
+These directions are for installing from the WIN32 archive to a WIN32
+system, such as Microsoft Windows '98.  The included files provide a
+complete (less documentation and source) installation of OpenGLUT in
+precompiled form for WIN32.  The libraries have been compiled with MSVC
+version 6.
+
+It is assumed that you have a C or C++ compiler, an OpenGL implementation,
+and appropriate headers and libraries for building C or C++ OpenGL applications.
+
+A complete installation involves three steps.  The steps are simple, but we
+do not have any install wizard for you at this time.  Sorry.  Not all users
+need perform a complete installation.  You should be able to perform each step
+by dragging icons.
+
+1) Copy the *.h files to the compiler's OpenGL include directory.
+   This may be something like:
+
+     c:\program files\Microsoft Visual Studio\include\GL
+
+   When using OpenGLUT, you should use #include lines of the form:
+
+     #include <GL/openglut.h>
+
+   ...noting that "GL" is capitalized, the slash (/) is a normal
+   slash, and "openglut.h" is all lower case.  Following these
+   conventions will keep your code a little more portable.
+
+2) Copy the *.lib files to the compiler's library directory.  This may be
+   something like:
+
+     c:\program files\Microsoft Visual Studio\lib
+
+   (Note the lack of a "\GL" suffix.)
+
+3) Copy the *.dll file to wherever your system or OpenGL DLL files are.
+   (Opinions seem to differ about the proper place to put these.  Probably
+    any directory under, e.g., c:\windows where you already have one or
+    more working DLL files.)
+
+
+Steps 1 and 2 are most important for software developers.  Developers
+can skip 3 if they will be using static-linked executables.
+
+Step 3 should be the only required step for end-users who need to install
+OpenGLUT in order to use some application.
+
+Programming documentation is not included in this archive.  The OpenGLUT
+releases have generally had tandem openglut-*-doc releases with extensive
+documentation.  You can also find web versions of the documentation on the
+web, along with numerous examples.  For web-based documentation, point
+your browser to:
+
+  http://www.SourceForge.net/projects/openglut
+
+
+Thanks for trying OpenGLUT!
+
