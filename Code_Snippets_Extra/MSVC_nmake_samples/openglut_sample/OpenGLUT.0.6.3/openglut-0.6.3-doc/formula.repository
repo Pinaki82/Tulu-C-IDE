@@ -1,4 +1,0 @@
-\form#0:$r_{i+1} = A r_i + b $
-\form#1:\[ {d \over dt} x = \sigma( y - x ) \]
-\form#2:\[ {d \over dt} y = r x - y + x z \]
-\form#3:\[ {d \over dt} z = x y + b z \]
