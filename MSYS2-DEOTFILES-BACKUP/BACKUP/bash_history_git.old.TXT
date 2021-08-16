@@ -713,3 +713,4 @@ git status
 git push origin main
 git status
 git pull
+git rm -r --cached  Code_Snippets_Extra/MSVC_nmake_samples/openglut_sample/OpenGLUT.0.6.3/openglut-0.6.3-doc/
