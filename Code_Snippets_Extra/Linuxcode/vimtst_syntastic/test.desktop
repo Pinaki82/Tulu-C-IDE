@@ -7,8 +7,8 @@ X-AppInstall-Section=main
 
 Name=hello-x
 Comment=Test X-Window Program
-TryExec='/home/appu/code/tst/hello-x'
-Exec='/home/appu/code/tst/hello-x'
+TryExec='/home/yourusername/code/tst/hello-x'
+Exec='/home/yourusername/code/tst/hello-x'
 Terminal=false
 Type=Application
 Icon=application-default-icon
@@ -17,5 +17,5 @@ StartupNotify=false
 MimeType=;
 
 X-Ubuntu-Gettext-Domain=app-install-data
-Path='/home/appu/code/tst/hello-x/'
+Path='/home/yourusername/code/tst/hello-x/'
 GenericName=Desktop Entry Test
