@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application    
+Exec=/path/to/executable  --options # commands to run
+Icon=/path/to/icon # optional path to the icon
+Terminal=false # set `true' for terminal applications

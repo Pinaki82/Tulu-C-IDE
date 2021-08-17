@@ -1,0 +1,23 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+
+X-AppInstall-Package=xl01
+X-AppInstall-Popcon=
+X-AppInstall-Section=main
+
+Name=xl01
+Comment=Test X-Window Program With Relative Path
+TryExec=/bin/bash -c 'cd "$(dirname "$0")"; ./xl01 -windowed' %k
+Exec=/bin/bash -c 'cd "$(dirname "$0")"; ./xl01 -windowed' %k
+Terminal=false
+Type=Application
+Icon=application-default-icon
+Categories=
+StartupNotify=false
+MimeType=;
+
+X-Ubuntu-Gettext-Domain=app-install-data
+Path=bash -c 'cd $(dirname %0)';
+GenericName=Desktop Entry Test2 Relative Path
+Name[en_IN]=xl01

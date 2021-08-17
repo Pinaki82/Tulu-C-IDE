@@ -1,0 +1,21 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+X-AppInstall-Package=hello1
+X-AppInstall-Popcon=
+X-AppInstall-Section=main
+
+Name=hello1
+Comment=Test X-Window Program
+TryExec='/home/appu/code/tst/hello1'
+Exec='/home/appu/code/tst/hello1'
+Terminal=true
+Type=Application
+Icon=application-default-icon
+Categories=
+StartupNotify=false
+MimeType=;
+
+X-Ubuntu-Gettext-Domain=app-install-data
+Path='/home/appu/code/tst/'
+GenericName=Desktop Entry Terminal Test
