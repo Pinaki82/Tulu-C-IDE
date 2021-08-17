@@ -3,8 +3,8 @@
 
 int main() {
   int *uninitialised_var;
-  std::cin >> *uninitialised_var >> std::endl; /* illegal attemp of storing
-              an inintitialised integer ptr without an address from user input */
+  std::cin >> *uninitialised_var >> std::endl; /* illegal attempt of storing
+              an unintitialised integer ptr without an address from user input */
   fflush(stdin);
   return EXIT_SUCCESS;
 }
