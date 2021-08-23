@@ -500,7 +500,7 @@ After installation, Open GVim and hold `<SHIFT+;>` together.
 
 ![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
 
-In GVim's command area, type `PlugUpgrade`, `PlugInstal` `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-snippets`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
+In GVim's command area, type `PlugUpgrade`, `PlugInstall` `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-snippets`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
 
 ```
 $HOME/.vimdotcommon/.vimrc2.vim
