@@ -1,0 +1,4 @@
+/e/VSARM/sdk/pico/pico-project-generator/pico_project.py --project cmake test2
+cd build/
+cmake -G "MinGW Makefiles" ..
+make -j4

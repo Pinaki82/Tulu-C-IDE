@@ -1419,11 +1419,11 @@ set tags+=./tags;/.
 set path+=./;/
 " ------------------------------- Common Tags-----------
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
-if has("win64") || has("win32") || has("win16") || has("win32unix")
-  source $HOME\/\.vimdotwin\/\.set_tags_n_set_paths.txt
-else
-  source $HOME\/\.vimdotlinux\/\.set_tags_n_set_paths.txt
-endif
+" if has("win64") || has("win32") || has("win16") || has("win32unix")
+"   source $HOME\/\.vimdotwin\/\.set_tags_n_set_paths.txt
+" else
+"   source $HOME\/\.vimdotlinux\/\.set_tags_n_set_paths.txt
+" endif
 
 
 " =======================================================================
@@ -1449,24 +1449,96 @@ endif
 
 Plug 'https://github.com/junegunn/vim-plug.git'
 
+" ******************************************************************************
+" ******************************************************************************
+" ******************************************************************************
+" ******************************************************************************
+" ====== AUTOCOMPLETION+CODE_CHECKING PLUGIN CHOICES ===========================
+" ==============================================================================
+
+" ============== CHOICE ONE ==============================
+" ============== NOTE: Install Node.js first
+" ======================and add Node executable to System Path
+" ============== https://nodejs.org/en/download/
+" ============== UBUNTU ==================
+" # Using Ubuntu
+" sudo apt install clangd
+" sudo apt install curl
+" curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+" sudo apt-get install -y nodejs
+" ============== https://github.com/nodesource/distributions/blob/master/README.md
+" ============== MSYS2:
+" https://github.com/msys2/MINGW-packages/issues/4788
+" ===== Dnld the ZIP. Extract to "C:\msys64\opt\"
+" export PATH=/opt/node-v14.17.5-win-x64/:$PATH >> ~/.bash_profile
+" <WINDOWS+R> ---> systempropertiesadvanced ---> Advanced ---> Environment Variables ---> System Variables ---> Path ---> Edit ---> New ---> Paste the location from the clipboard (C:\msys64\opt\node-v14.17.5-win-x64)
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'kevinoid/vim-jsonc'
+Plug 'https://github.com/dense-analysis/ale.git'
+" ************ AFTER INSTALLATION:
+" :CocInstall coc-json
+" :CocInstall coc-clangd
+" :CocInstall coc-tabnine
+" :CocInstall coc-snippets
+" :CocInstall coc-diagnostic
+" :CocConfig
+"         Then, paste the line below (without comments) in the new file.
+" diagnostic.displayByAle": true
+" ============== (END) CHOICE ONE ========================
+
+" ==================== CHOICE TWO ========================
+" Plug 'https://github.com/justmao945/vim-clang.git'
+
+"                  ------------------------------
+"                  Changing windows from a vim function is not allowed anymore, since Vim 8.2.2426,7.
+"                  https://github.com/justmao945/vim-clang/pull/140
+"                  A fork of vim-clang provided by @mckellygit (https://github.com/mckellygit) can
+"                  be adopted as a temporary fix.
+
+"                  Plug 'https://github.com/mckellygit/vim-clang.git'
+
+"                  The issue (https://github.com/justmao945/vim-clang/issues/142#issue-812186251)
+"                  has been fixed and the patch committed by @mckellygit has been merged with
+"                  the master branch by @justmao945.
+"                  ------------------------------
+
+" Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
+" Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git'
+" Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+" Plug 'https://github.com/Pinaki82/code_complete.git'
+
+"                  ------------------- Tabnine
+"                 if g:osdetected != "Windows"
+"                   " First, open any Linux Terminal in the 'plugged' directory, then
+"                   " Run git clone --depth 1 https://github.com/codota/tabnine-vim in your Terminal Emulator
+"                   " Now, uncomment the line below (delete the " i.e., the 'double quote') and re-launch GVim
+"
+"                   " ---------------------------------------------
+"                   " Plug 'https://github.com/codota/tabnine-vim'
+"                   " ---------------------------------------------
+"
+"                   set rtp+=$HOME\/\.vim\/\plugged\/\tabnine-vim
+"                 endif
+
+" Plug 'https://github.com/vim-syntastic/syntastic.git'
+"""" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
+" ==================== (END) CHOICE TWO ==================
+
+" See the lines after 1660 for coc.nvim and ALE specific settings.
+" Disable if needed.
+
+" ==============================================================================
+" ====== (END) AUTOCOMPLETION+CODE_CHECKING PLUGIN CHOICES =====================
+" ******************************************************************************
+" ******************************************************************************
+" ******************************************************************************
+" ******************************************************************************
+
+" https://vi.stackexchange.com/questions/2094/how-to-make-vimrc-settings-applicable-for-a-directory-tree-only
+Plug 'https://github.com/embear/vim-localvimrc.git'
+
 Plug 'https://github.com/preservim/nerdtree.git'
-
-Plug 'https://github.com/justmao945/vim-clang.git'
-
-" ------------------------------
-" Changing windows from a vim function is not allowed anymore, since Vim 8.2.2426,7.
-" https://github.com/justmao945/vim-clang/pull/140
-" A fork of vim-clang provided by @mckellygit (https://github.com/mckellygit) can
-" be adopted as a temporary fix.
-
-" Plug 'https://github.com/mckellygit/vim-clang.git'
-
-" The issue (https://github.com/justmao945/vim-clang/issues/142#issue-812186251)
-" has been fixed and the patch committed by @mckellygit has been merged with
-" the master branch by @justmao945.
-" ------------------------------
-
-Plug 'https://github.com/vim-syntastic/syntastic.git'
 
 Plug 'https://github.com/vim-scripts/matchparenpp.git'
 
@@ -1476,7 +1548,10 @@ Plug 'https://github.com/matze/vim-move.git'
 
 Plug 'https://github.com/preservim/nerdcommenter.git'
 
-Plug 'https://github.com/suxpert/vimcaps.git'
+" ------------------- vimcaps (Linux-only)
+if g:osdetected != "Windows"
+  Plug 'https://github.com/suxpert/vimcaps.git'
+endif
 
 Plug 'https://github.com/vim-scripts/AutoClose.git'
 
@@ -1492,23 +1567,15 @@ Plug 'https://github.com/xuhdev/SingleCompile.git'
 
 Plug 'https://github.com/artnez/vim-wipeout.git'
 
-Plug 'https://github.com/Pinaki82/code_complete.git'
-
 Plug 'https://github.com/Pinaki82/artistic_styler_console_direct.vim.git'
 
 Plug 'https://github.com/Pinaki82/VimLongLineMarker.git'
 
-Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git'
-
 Plug 'https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git'
-
-Plug 'https://github.com/Pinaki82/Vim-Syntastic-Setup.git'
 
 Plug 'https://github.com/Pinaki82/TimeStamp2.git'
 
 Plug 'https://github.com/Shougo/echodoc.vim.git'
-
-Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
 
 Plug 'https://github.com/vim-scripts/stlrefvim.git'
 
@@ -1526,15 +1593,16 @@ Plug 'https://github.com/Pinaki82/oh-la-la.git'
 
 Plug 'https://github.com/Pinaki82/convert-line-endings.git'
 
-Plug 'https://github.com/vim-scripts/AutoComplPop.git'
-
 Plug 'https://github.com/rhysd/vim-grammarous.git'
 
 Plug 'https://github.com/kenng/vim-bettersearch.git'
 
-Plug 'https://github.com/yegappan/mru.git'
-
-Plug 'https://github.com/Pinaki82/Vim-MRU-Setup.git'
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Load MRU only if the GUI is about to load
+  Plug 'https://github.com/yegappan/mru.git'
+  Plug 'https://github.com/Pinaki82/Vim-MRU-Setup.git'
+endif
 
 Plug 'https://github.com/vim-scripts/TaskList.vim.git'
 
@@ -1550,25 +1618,7 @@ Plug 'https://github.com/Pinaki82/indent-code.git'
 
 Plug 'https://github.com/ciaranm/detectindent.git'
 
-" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'
-
-" https://vi.stackexchange.com/questions/2094/how-to-make-vimrc-settings-applicable-for-a-directory-tree-only
-Plug 'https://github.com/embear/vim-localvimrc.git'
-
 Plug 'https://github.com/drmingdrmer/xptemplate.git'
-
-" ------------------- Tabnine
-if g:osdetected != "Windows"
-  " First, open any Linux Terminal in the 'plugged' directory, then
-  " Run git clone --depth 1 https://github.com/codota/tabnine-vim in your Terminal Emulator
-  " Now, uncomment the line below (delete the " i.e., the 'double quote') and re-launch GVim
-
-  " ---------------------------------------------
-  " Plug 'https://github.com/codota/tabnine-vim'
-  " ---------------------------------------------
-
-  set rtp+=$HOME\/\.vim\/\plugged\/\tabnine-vim
-endif
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -1603,18 +1653,91 @@ endif
 " Initialize plugin system
 call plug#end()
 
-
 " =======================================================================
 " ************************ VIM-PLUG PLUGIN SETUP ENDS *******************
 " =======================================================================
 
-" ------------------- auto_tags_gen plugin settings
-" auto_tags_gen plugin startup with option 1
-let g:startuptrigger = 1
+" =======================================================================
 
 " ------------------- echodoc plugin settings
 " To use echodoc, you must increase 'cmdheight' value.
 " https://github.com/Shougo/echodoc.vim.git
 set cmdheight=2
 let g:echodoc_enable_at_startup = 1
+
+" ========================== coc.nvim Specific Options ==========
+" ==================== UNCOMMENT the entire coc.nvim SETTINGS if
+" ====================== you chose the OPTION TWO for autocompletion and code
+" ====================== checking ===============================
+
+" Install missing coc extensions:
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
+
+" Use CTRL+SPACE for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <C-SPACE>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<C-SPACE>" :
+      \ coc#refresh()
+" ALT+SPACE to roll past the autocompletion list backwards
+inoremap <expr><M-SPACE> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Open coc explorer: <space>e
+:nnoremap <space>e :CocCommand explorer<CR>
+" ========================== (END) coc.nvim Specific Options ==========
+
+" ========================== ALE Linter Settings ==========
+" ==================== UNCOMMENT the entire ALE Linter SETTINGS if
+" ====================== you chose the OPTION TWO for autocompletion and code
+" ====================== checking ===============================
+
+let g:ale_c_cppcheck_options = '--enable=all --enable=style --enable=performance --enable=portability --enable=information --enable=unusedFunction --enable=missingInclude --inconclusive --force --suppress=missingIncludeSystem'
+let g:ale#statusline#Count = 1
+let g:ale#statusline#FirstProblem = 1
+" ========================== (END) ALE Linter Settings ==========
 

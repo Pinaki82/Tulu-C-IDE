@@ -1,0 +1,8 @@
+     // https://stackoverflow.com/questions/45836650/how-do-i-integrate-msys2-shell-into-visual-studio-code-on-window
+     "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
+     "terminal.integrated.env.windows":
+     {
+        "MSYSTEM": "MINGW64",
+        //"MSYS2_PATH_TYPE": "inherit",
+        "MSVSCODE": "1"
+     },

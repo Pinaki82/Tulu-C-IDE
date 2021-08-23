@@ -1,0 +1,11 @@
+https://github.com/MaskRay/ccls/wiki/Project-Setup#ccls-file
+
+File: '.ccls'
+Contents:
+
+clang
+%c -std=c11
+%cpp -std=c++2a
+%h %hpp --include=Global.h
+-Iinc
+-DMACRO

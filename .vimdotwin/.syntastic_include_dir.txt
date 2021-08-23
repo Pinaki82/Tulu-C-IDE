@@ -1,7 +1,0 @@
--IC:\msys64\mingw64\x86_64-w64-mingw32\include
--IC:\msys64\mingw64\include
--IC:\msys64\mingw64\include\c++\10.3.0
--IC:\xtralibs\appu
--IC:\xtralibs\yxml11
--IC:\xtralibs\IUP\include
--IC:\xtralibs\LIBXLS~1.0_X\LIBXLS~1\include\libxls

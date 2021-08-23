@@ -1,0 +1,47 @@
+clang
+%c -std=c11
+%cpp -std=c++17
+%h %hpp --include=Global.h
+-Iinc
+-DMACRO
+
+%c -Wall
+%c -Weffc++
+%c -Wextra
+%c -pedantic
+%c -Wfatal-errors
+%c -Winit-self
+%c -Wnon-virtual-dtor
+%c -Winline
+%c -Wmissing-declarations
+%c -Wmissing-include-dirs
+%c -Wundef
+%c -Wredundant-decls
+%c -Wfloat-equal
+%c -Wmain
+%c -Wunreachable-code
+%c -Wshadow
+%c -Wcast-align
+%c -Wswitch-default
+%c -Wswitch-enum
+%c -Wstrict-prototypes
+%c -Wmissing-prototypes
+%c -Wmissing-declarations
+%c -Wnested-externs
+%c -Wformat=2
+%c -Wformat-security
+%c -Wformat-signedness
+%c -Wformat-y2k
+%c -Wconversion
+%c -Weverything
+%c -ferror-limit=0
+%c -ftemplate-backtrace-limit=0
+%c -target
+%c x86_64-pc-windows-gnu
+
+-isystem C:\msys64\mingw64\x86_64-w64-mingw32\include
+-isystem C:\msys64\mingw64\include
+-isystem C:\msys64\mingw64\include\c++\10.3.0
+
+-IC:\xtralibs
+-IC:\xtralibs\appu

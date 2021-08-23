@@ -53,21 +53,21 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 
 ## Windows:
 
- [TDM-GCC](https://jmeubank.github.io/tdm-gcc/) (or any other MinGW-GCC compiler variant added to your system search path). I recommend **[MSYS2](https://www.msys2.org/)**.
+[GVim](https://www.vim.org/) **64-bit**. ► _Please, use a 64-bit version of GVim._ ► [[Download Link](https://github.com/vim/vim-win32-installer/releases)]
+
+[TDM-GCC](https://jmeubank.github.io/tdm-gcc/) (or any other MinGW-GCC compiler variant added to your system search path). I recommend **[MSYS2](https://www.msys2.org/)**.
 
  [LLVM Clang](https://releases.llvm.org/download.html)
- 
- Install LLVM-Clang from the MSYS2 package manager if you have installed MSYS2.
+
+Install LLVM-Clang from the MSYS2 package manager if you have installed MSYS2.
 
  [git-scm](https://git-scm.com/) (use the MSYS2 package)
 
- [Sourcetree](https://www.sourcetreeapp.com/) or [git-cola](https://github.com/git-cola/git-cola)
+[Cmake](https://cmake.org/) (MSYS2 package available)
 
  [Ctags](https://github.com/universal-ctags/ctags-win32) (Install the MSYS2 package if you are using MSYS2)
 
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code (MSYS2 package available).
-
- [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
 
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter (MSYS2 package available).
 
@@ -77,8 +77,10 @@ GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running o
 
 ##### Recommended Programs:
 
- [Cmake](https://cmake.org/) (MSYS2 package available)
- 
+[Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
+
+[Sourcetree](https://www.sourcetreeapp.com/) or [git-cola](https://github.com/git-cola/git-cola)
+
 #### You might need the following MSYS2 packages. Type the commands below, one by one.
 
 Launch 'MSYS2 MinGW 64-bit' Terminal (mingw64.exe). Install 64-bit packages if you do not need 32-bit versions.
@@ -142,6 +144,10 @@ pacman -S grep
 pacman -Ss msys2-launcher
 pacman -S msys/vim
 ```
+
+**Install Node.js:**
+
+Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up _MSYS2 (x64) Terminal_. Type: `export PATH=/opt/node-v14.17.5-win-x64/:$PATH >> ~/.bash_profile`. Add Node.js to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> _Paste the path from the clipboard_ (`C:\msys64\opt\node-v14.17.5-win-x64`).
 
 When you need extra packages, those extras are (examples):
 
@@ -240,41 +246,40 @@ Fill the file with the lines below:
 
 ```
 [user]
-	email = youremailaddress@gmail.com
-	name = Your Name
-	signingkey = YOURSIGNINGKEY
+    email = youremailaddress@gmail.com
+    name = Your Name
+    signingkey = YOURSIGNINGKEY
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+    program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
 [core]
-	editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
+    editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
 [color]
-	ui = true
-	status = auto
-	branch = auto
+    ui = true
+    status = auto
+    branch = auto
 [merge]
-	tool = meld
+    tool = meld
 [diff]
-	tool = meld
+    tool = meld
 [difftool "meld"]
-	path = C:\\msys64\\mingw64\\bin\\meld
+    path = C:\\msys64\\mingw64\\bin\\meld
 [difftool]
-	prompt = false
-	trustExitCode = true
-	keepBackup = false
+    prompt = false
+    trustExitCode = true
+    keepBackup = false
 [mergetool]
-	prompt = false
-	trustExitCode = true
-	keepBackup = false
+    prompt = false
+    trustExitCode = true
+    keepBackup = false
 [mergetool "meld"]
-	path = C:\\msys64\\mingw64\\bin\\meld
+    path = C:\\msys64\\mingw64\\bin\\meld
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 ```
 
 ### To find more about Git, SSH, and GPG, please read: [GIT+SSH+GPG-and-Code-Signing.md](https://github.com/Pinaki82/Tulu-C-IDE/blob/f3c83f4af174f41cccd7ebfb421c627d40433553/GIT+SSH+GPG-and-Code-Signing.md).
@@ -316,11 +321,9 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
-
 ```
 
-Creating a Basic Alias: https://davidwalsh.name/alias-bash
-
+Creating a Bash Alias: https://davidwalsh.name/alias-bash
 
 ## Linux:
 
@@ -330,27 +333,31 @@ Creating a Basic Alias: https://davidwalsh.name/alias-bash
 
  [Git](https://git-scm.com/download/linux)
 
- [git-cola](https://github.com/git-cola/git-cola)
-
  [Ctags](http://ctags.sourceforge.net/)
 
  [Cppcheck](http://cppcheck.sourceforge.net/): A static analysis tool for C/C++ code.
-
- [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
 
  [Artistic Style](http://astyle.sourceforge.net/): A Free, Fast, and Small Automatic Formatter.
 
 [Meld](https://meldmerge.org/)
 
- Java Runtime Environment.
+ Java Runtime Environment (`default-jre`).
 
- [kitty](https://sw.kovidgoyal.net/kitty/): GPU powered terminal.
+[Curl](https://curl.se/)
 
-##### Recommended Programs:
+[Node.js](https://nodejs.org/en/download/)
 
 [Cmake](https://cmake.org/)
 
+##### Recommended Programs:
+
+[Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
+
+[kitty](https://sw.kovidgoyal.net/kitty/): GPU powered terminal.
+
 [wget](https://www.gnu.org/software/wget/)
+
+[git-cola](https://github.com/git-cola/git-cola)
 
 If you are on an Ubuntu or an Ubuntu derivative Linux system, you can try the following or refer to this repository: [Xubuntu-minimum-shell-config](https://github.com/Pinaki82/Xubuntu-minimum-shell-config.git)
 
@@ -368,11 +375,12 @@ sudo apt install llvm
 sudo apt install clang
 sudo apt install clang-tidy
 sudo apt install clang-tools
+sudo apt install clangd
+sudo apt install curl
 sudo apt install libomp-dev
 sudo apt install cdecl
 sudo apt install cutils
 sudo apt install vim-gtk
-sudo apt install kitty
 sudo apt install cppcheck
 sudo apt install cppcheck-gui
 sudo apt install splint
@@ -397,9 +405,17 @@ sudo apt install automake
 sudo apt install meld
 sudo apt install default-jre
 sudo apt install wmctrl
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
 
 ##### Recommended:
+
+```
+sudo apt install kitty
+```
+
+GitG:
 
 ```
 sudo apt install gitg
@@ -421,13 +437,215 @@ sudo apt install ninja-build
 sudo apt install xclip
 ```
 
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+█ **NOTE:** Press and hold <`SHIFT`+`;`>, type `q!` to exit Vim. `q!` is the only way to exit Vim from a terminal window.
+See it in action:
+
+Step 1:
+
+![Esc](https://user-images.githubusercontent.com/16861933/102935301-e2db3a00-44cb-11eb-9185-840a070c6e33.png)
+
+Step 2:
+
+![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
+
+Step 3:
+
+![q! to exit](https://user-images.githubusercontent.com/16861933/130475734-83a2633d-acf9-4f1e-950e-1bec6a9de9eb.gif)
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
 # Tulu-C-IDE relies on the following plugins:
 
 [vim-plug](https://github.com/junegunn/vim-plug.git): _"A minimalist Vim plugin manager."_
 
-[The NERDTree](https://github.com/preservim/nerdtree.git): _"The NERDTree is a file system explorer for the Vim editor."_ `:h nerdtree`
+**********************************
 
-[vim-clang](https://github.com/justmao945/vim-clang.git): _"Use of clang to parse and complete C/C++ source files."_ `:h clang.txt`
+**AUTOCOMPLETION and LINTING:**
+
+---
+
+Autocompletion and Code Linting are at the heart of any well-regarded text editor. An advanced text editor is somewhat powerless without the ability to accurately autocomplete codes and warn users when it finds any error.
+
+From now on, [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) will come with [coc.nvim](https://github.com/neoclide/coc.nvim.git) for autocompletion and [ALE](https://github.com/dense-analysis/ale.git) for code checking by default. However, the old combination [vim-clang](https://github.com/justmao945/vim-clang.git) and [Syntastic](https://github.com/vim-syntastic/syntastic.git) can also be used by altering a few lines in the file `.vimdotcommon/.vimrc2.vim`.
+
+So we denote the first combination as **CHOICE ONE** and the old combination as **CHOICE TWO**.
+
+**CHOICE ONE**
+
+Here we have [coc.nvim](https://github.com/neoclide/coc.nvim.git) for autocompletion. The dependencies are: 'Node.js' and 'clangd'. [ALE](https://github.com/dense-analysis/ale.git) is our choice for linters' (3 or 4) frontend.
+
+Both [coc.nvim](https://github.com/neoclide/coc.nvim.git) and [ALE](https://github.com/dense-analysis/ale.git) work asynchronously. Asynchronous operations depend on Language Server Protocols (LSP). LSP is an open, JSON-RPC-based protocol used as bridges between code editors or integrated development environments (IDEs) and compilers/interpreters mediating as servers to bring rich features like completion and linting. Compilers/interpreters that are purposefully designed for providing such features are called Language Servers or even abbreviated as LSPs.
+
+**INSTALLATION and USAGE**
+
+Install dependencies first:
+MSYS2 (x64) (MS Windows):
+
+Node.js:
+
+Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up *MSYS2 (x64) Terminal*. Type: `export PATH=/opt/node-v14.17.5-win-x64/:$PATH >> ~/.bash_profile`. Add 'Node.js' to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> *Paste the path from the clipboard* (`C:\msys64\opt\node-v14.17.5-win-x64`).
+
+UBUNTU:
+
+```
+sudo apt install clangd
+sudo apt install curl
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+After installation, Open GVim and hold `<SHIFT+;>` together.
+
+![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
+
+In GVim's command area, type `PlugUpgrade`, `PlugInstal` `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-snippets`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
+
+```
+$HOME/.vimdotcommon/.vimrc2.vim
+```
+
+```
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
+```
+
+```
+:PlugUpgrade
+```
+
+```
+:PlugInstall
+```
+
+```
+:CocUpdate
+```
+
+```
+:PlugUpdate
+```
+
+NOTE: Avoid trying to install the 'coc-extensions' again by typing the following command:
+
+```
+:CocInstall coc-json coc-tsserver coc-clangd coc-tabnine coc-snippets coc-diagnostic coc-explorer coc-cmake coc-markdownlint
+```
+
+Otherwise, your installation might be messed up.
+
+Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
+
+Paste the contents written below.
+
+```
+"diagnostic.displayByAle": true
+
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+      "cache": {
+        "directory": "/tmp/ccls"
+      }
+    }
+  }
+}
+```
+
+Quit Vim (`:q!`) again. Relaunch Vim. In the command mode type `:CocUpdate`. Close Vim again (`:q!`).
+
+Now you are ready to use [coc.nvim](https://github.com/neoclide/coc.nvim.git).
+
+Keyboard Shortcuts:
+
+- `<CTRL+SPACE>` to trigger completion.
+
+- `<ALT+SPACE>` to roll past the autocompletion list backwards.
+
+- Use `K` to show documentation in the preview window.
+
+- Open `coc-explorer`: `<SPACEBAR+e>`.
+
+- Automatic header file inclusion while calling a function.
+
+- Common snippets (do-while, switch-case, include directive guards, header completion, for loop, etc.).
+
+- `<CTRL+N>` and `<CTRL+P>` will also work along with the arrow keys and `<Enter>`.
+
+To use `clangd`'s LSP [coc.nvim](https://github.com/neoclide/coc.nvim.git) needs to pass the compiler flags and include paths to `clangd`. Copy the required files from `LocalVimrc_templates/PLUGIN_CHOICE_ONE`; namely, `compile_flags.txt`, `.lvimrc`, and `.ccls` to your project directory and change the compiler flags and paths in those files.
+
+**NOTE:** <`CTRL`+`x`><`CTRL`+`o`> doesn't work with [coc.nvim](https://github.com/neoclide/coc.nvim.git) since [coc.nvim](https://github.com/neoclide/coc.nvim.git)'s autocompletion is unrelated to Vim's Omni Completion mechanism.
+
+[ALE](https://github.com/dense-analysis/ale.git), the linter's frontend: [ALE](https://github.com/dense-analysis/ale.git) checks for errors asynchronously. It checks the code in the unsaved buffer redirected to a temp file and provides feedback as you type without blocking the workflow. As soon as the feedback from the language server is ready, it reports, whether the file has been written to disc or not.
+
+******
+
+**CHOICE TWO**
+
+**A Short Note on vim-clang and Syntastic:**
+
+[TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) heavily relied on [vim-clang](https://github.com/justmao945/vim-clang.git) and [Syntastic](https://github.com/vim-syntastic/syntastic.git) for many years. Both the plugins have their merits and drawbacks. [Syntastic](https://github.com/vim-syntastic/syntastic.git) still outperforms other linter frontends in some areas. It has support for more linters. Auto checking can be performed while saving the file or on-demand. Different config files for different linters make [Syntastic](https://github.com/vim-syntastic/syntastic.git) hard to manage. Swiftness is lost in setting up the config files.
+
+On the other hand, [vim-clang](https://github.com/justmao945/vim-clang.git) is way better than all other clang-based completion plugins. [vim-clang](https://github.com/justmao945/vim-clang.git) **rocks even today.** Pros: Zero dependencies other than `clang` itself. It works out of the box without the need for external interpreters like Python, Node.js etc. If the project folder contains a `.clang` or a `.clang.ow` file with necessary include paths and compiler flags listed, it works like a charm. Cons: Unlike [coc.nvim](https://github.com/neoclide/coc.nvim.git), it's not a full-fledged ecosystem. You get autocompletion only.
+Nevertheless, a `.clang` template can be reused, and some other plugins can fill the gaps conveniently. [vim-clang](https://github.com/justmao945/vim-clang.git) is less demanding on hardware requirements. It also works asynchronously, which means autocompletion will not block the workflow. Works with `compile_commands.json`, although it didn't work for me when I was testing the plugin's capabilities on a codebase targetting [Raspberry Pi RP2040 ARM-Cortex-M0+ Boards](https://www.raspberrypi.org/documentation/rp2040/getting-started/). Neither [coc.nvim](https://github.com/neoclide/coc.nvim.git) worked. [coc.nvim](https://github.com/neoclide/coc.nvim.git) reported that the language server crashed four times, and the server will not start. I generated the JSON DB with the command
+
+```
+cd build/
+(cd build; cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=YES ..)
+ln -s build/compile_commands.json
+```
+
+in the MSYS2 terminal. I had to delete the JSON file and recreate the file `compile_flags.txt`. So, in conclusion, [vim-clang](https://github.com/justmao945/vim-clang.git) **is still relevant.** The only drawback is that you need to create a `.clang` file for it which will not be used by [Syntastic](https://github.com/vim-syntastic/syntastic.git). However, a `compile_flags.txt` file in the project folder will be sufficient for both [ALE](https://github.com/dense-analysis/ale.git) and [coc.nvim](https://github.com/neoclide/coc.nvim.git). The same is true for [Syntastic](https://github.com/vim-syntastic/syntastic.git). Config files can also be used as templates in [Syntastic](https://github.com/vim-syntastic/syntastic.git). The problem is that you will have to adjust multiple config files each time you create a new project that requires a different configuration. On top of that, [Syntastic](https://github.com/vim-syntastic/syntastic.git) cannot find essential header files for some cross-compilers and SDKs. Things are not much better in the case of [ALE](https://github.com/dense-analysis/ale.git), but [ALE](https://github.com/dense-analysis/ale.git) misses a few. For example, I was working with the [Raspberry Pi Pico SDK](https://github.com/raspberrypi/pico-sdk.git). I included `"pico/stdlib.h"`. [ALE](https://github.com/dense-analysis/ale.git) passed the paths to the server. Then, the server reported: `unknown_typename: In included file: unknown type name 'bool'`. Another instance: I created a project which was based on [ESP8266_RTOS_SDK](https://github.com/espressif/ESP8266_RTOS_SDK.git) for [NodeMCU](https://www.nodemcu.com/index_en.html) boards. That project needed to include `stdio.h` and `"freertos/FreeRTOS.h"`. [ALE](https://github.com/dense-analysis/ale.git) backend server (`clangd`) didn't find `"freertos/FreeRTOS.h"` and the SDK's `stdio.h` called another header `ssp/ssp.h` that was not found. Although, including `stdio.h` went seemingly fine. There are glitches in both the language servers and their frontend editor/IDE plugins, however, most of the time those rare annoyances are not too bothersome. Anyways, completion with [coc.nvim](https://github.com/neoclide/coc.nvim.git) worked fine.
+
+**INSTALLATION and USAGE**
+
+In [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git), `.vimrc` calls another script `$HOME/.vimdotcommon/.vimrc2.vim`.
+
+Find `.vimrc2.vim`. It is in `$HOME/.vimdotcommon/`, i.e., `%userprofile%\.vimdotcommon\.vimrc2.vim` or `~/.vimdotcommon/.vimrc2.vim`. Around line 1452, you will see the options to choose either of the combinations. Look for the settings in detail from the line 1445 to 1550. In between those lines, you will see the options to select any of the combinations, either [coc.nvim](https://github.com/neoclide/coc.nvim.git) + [ALE](https://github.com/dense-analysis/ale.git) or [vim-clang](https://github.com/justmao945/vim-clang.git) + [Syntastic](https://github.com/vim-syntastic/syntastic.git).
+
+Comment out the lines in the first section to opt for CHOICE TWO.
+
+See the lines after 1660 for [coc.nvim](https://github.com/neoclide/coc.nvim.git) and [ALE](https://github.com/dense-analysis/ale.git) specific settings. Disable the settings if needed.
+
+Now, do `:PlugInstall`, which will install the plugins. Both [vim-clang](https://github.com/justmao945/vim-clang.git) and [ALE](https://github.com/dense-analysis/ale.git) have no dependencies, except for the server (clang.exe) and linters (astyle.exe, splint.exe, clang-tidy.exe etc.).
+
+**Some additional plugins may come in handy if you choose the second combination.**
+
+(Base) [vim-clang](https://github.com/justmao945/vim-clang.git): _"Use of clang to parse and complete C/C++ source files."_ `:h clang.txt`
+
+(Base) [Syntastic](https://github.com/vim-syntastic/syntastic.git): _"Syntastic is a syntax checking plugin for [Vim](https://www.vim.org/) created by [Martin Grenfell](https://github.com/scrooloose). It runs files through external syntax checkers and displays any resulting errors to the user."_ `:h syntastic` `:h syntastic-checkers.txt`
+
+[Omni-Completion-at-CTRL-SPACE](https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git): _"Vim/GVim Omni Completion at CTRL+SPACE. Can be customised."_
+
+[code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
+
+[Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
+
+[vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): _"Custom Settings for the vim-clang Vim/GVim plugin."_
+
+[AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): _"With this plugin, your vim comes to automatically opens popup menu for
+completions when you enter characters or move the cursor in Insert mode."_
+
+[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window." (_NOTE:_ Find `.vimrc2.vim`, search for the line containing `" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'`, then uncomment the line to install.)
+
+■ ■ You can even use [vim-clang](https://github.com/justmao945/vim-clang.git) with [ALE](https://github.com/dense-analysis/ale.git). Feel free to use your own configuration. Just keep a backup of your `.vimrc2.vim` before you update [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git).
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+█ ● Even if we will not use the old configuration (i.e., CHOICE TWO), please **read the entire instruction manual** from start to end. Some keyboard shortcuts, Vim usage etc., might make some concepts cleared. ●
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+---
+
+**After the autocompletion and linting section, let's look at other plugins we will be using.**
+
+---
+
+[The NERDTree](https://github.com/preservim/nerdtree.git): _"The NERDTree is a file system explorer for the Vim editor."_ `:h nerdtree`
 
 [echodoc.vim](https://github.com/Shougo/echodoc.vim.git): _"Displays function signatures from completions in the command line."_
 
@@ -436,8 +654,6 @@ sudo apt install xclip
 `echodoc` shows an overview of the last autocompletion (e.g., function parameter completion) in Vim's command area.
 
 ![example](https://cloud.githubusercontent.com/assets/111942/19444981/a076d748-9460-11e6-851c-f249f8110b3b.gif)
-
-[Syntastic](https://github.com/vim-syntastic/syntastic.git): _"Syntastic is a syntax checking plugin for [Vim](https://www.vim.org/) created by [Martin Grenfell](https://github.com/scrooloose). It runs files through external syntax checkers and displays any resulting errors to the user."_ `:h syntastic` `:h syntastic-checkers.txt`
 
 [matchparen++](https://github.com/vim-scripts/matchparenpp.git): Improvement over standard matchparen plugin.
 
@@ -456,7 +672,7 @@ sudo apt install xclip
 
 [NERD Commenter](https://github.com/preservim/nerdcommenter.git): _"Comment functions so powerful—no comment necessary."_ `:h NERD_commenter.txt`
 
-[vimcaps](https://github.com/suxpert/vimcaps.git): _"Never be bothered by caps lock."_
+[vimcaps](https://github.com/suxpert/vimcaps.git): _"Never be bothered by caps lock."_ (Doesn't work with 64-bit Vim on Windows. **LINUX ONLY**)
 
 [AutoClose](https://github.com/vim-scripts/AutoClose.git): Inserts matching bracket, paren, brace or quote.
 
@@ -478,25 +694,17 @@ To configure SSH and Git on your system and create a GPG ID with a backup, follo
 
 [vim-wipeout](https://github.com/artnez/vim-wipeout.git): _"Destroy all buffers that are not open in any tabs or windows."_ `:Wipeout` ** Help file not available.
 
-[code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
-
 [artistic_styler_console_direct.vim](https://github.com/Pinaki82/artistic_styler_console_direct.vim.git): _"Artistic Style code formatter plugin for Vim/GVim."_
 
 [VimLongLineMarker](https://github.com/Pinaki82/VimLongLineMarker.git): _"Long Line Marker for Vim/GVim."_
 
-[Omni-Completion-at-CTRL-SPACE](https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git): _"Vim/GVim Omni Completion at CTRL+SPACE. Can be customised."_
-
 [vim-move-Keyboard-Shortcut](https://github.com/Pinaki82/vim-move-Keyboard-Shortcut.git): _"Custom Keyboard Shortcut for [vim-move](https://github.com/matze/vim-move.git) plugin."_
-
-[Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
 
 [TimeStamp2](https://github.com/Pinaki82/TimeStamp2.git): _"Vim/GVim plugin to add/update the timestamp."_
 
-[vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): _"Custom Settings for the vim-clang Vim/GVim plugin."_
-
 [stlrefvim](https://github.com/vim-scripts/stlrefvim.git): A C++ Standard Template Library reference manual. `:h stlrefvim.txt`
 
-[crefvim2](https://github.com/Pinaki82/crefvim2.git): _"CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann."_ `:h crefvim.txt` `:h crefvimdoc.txt` 
+[crefvim2](https://github.com/Pinaki82/crefvim2.git): _"CRefVim2: a C-reference manual for Vim, originally created by Christian Habermann."_ `:h crefvim.txt` `:h crefvimdoc.txt`
 
 [YankRing.vim](https://github.com/vim-scripts/YankRing.vim.git): Maintains a history of previous yanks, changes and deletes. `:h yankring.txt`
 
@@ -504,16 +712,13 @@ To configure SSH and Git on your system and create a GPG ID with a backup, follo
 
 [convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): "_Convert Line Endings to Unix/Windows"_, `\lnu` and `\lnd`.
 
-[AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): _"With this plugin, your vim comes to automatically opens popup menu for
-completions when you enter characters or move the cursor in Insert mode."_
-
 [vim-grammarous
 ](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads [LanguageTool](https://languagetool.org/download/) on Linux, which requires Java 8+. Install Java Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre`. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc` or `%userprofile%\.vim\misc`) folder.
 
 [vim-bettersearch](https://github.com/kenng/vim-bettersearch.git): Notepad++ like search in Vim. `:BetterSearch<TAB>`.
 
-[MRU](https://github.com/yegappan/mru.git): _"The Most Recently Used (MRU) plugin provides an easy access to a list of 
-recently opened/edited files in Vim. This plugin automatically stores the 
+[MRU](https://github.com/yegappan/mru.git): _"The Most Recently Used (MRU) plugin provides an easy access to a list of
+recently opened/edited files in Vim. This plugin automatically stores the
 file names as you open/edit them in Vim."_
 
 [TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window. Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
@@ -529,8 +734,6 @@ file names as you open/edit them in Vim."_
 [indent-code](https://github.com/Pinaki82/indent-code.git): A Vim plugin to indent code.
 
 [detectIndent](https://github.com/ciaranm/detectindent.git): _"A Vim plugin, for automatically detecting indent settings."_
-
-[syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window."_ (NOTE: Find `.vimrc2.vim`, search for the line containing `" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'`, then uncomment the line to install.)
 
 [XPTemplate](https://github.com/drmingdrmer/xptemplate.git): _"Code snippets engine for Vim, And snippets library. Write codes in a smooth, quick and comfortable way."_
 
@@ -556,7 +759,7 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 
 [oh-la-la](https://github.com/Pinaki82/oh-la-la.git): _"High contrast dark color scheme with black background."_
 
-[Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. May work on Linux. Find the line `" ------------------- Tabnine` in the .vimrc2.vim file and follow the instructions written after that.
+[Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. Use the [coc.nvim](https://github.com/neoclide/coc.nvim.git) [tabnine extension](https://github.com/neoclide/coc-tabnine.git) instead.
 
 ## Change the default GVim theme:
 
@@ -1306,7 +1509,7 @@ See it in action:
 
 #### [AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git) -> Pops up auto-completion menu from set dictionaries and opened buffers.
 
-It can also complete filename with path.
+It can also complete filename with path. [AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git) will not be available when you choose the second combination for completion and code checking. Avoid using it with the first (default) combination.
 
 Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 
@@ -1320,7 +1523,7 @@ Menu -> Plugin -> ACP-auto-popup for turning on/off this feature.
 
 #### Autocompletion with Clang:
 
-[vim-clang](https://github.com/justmao945/vim-clang.git) plugin brings this feature using Clang in the background to parse and complete C/C++ source files. For more information, see `:h clang.txt`.
+[vim-clang](https://github.com/justmao945/vim-clang.git) plugin brings this feature using Clang in the background to parse and complete C/C++ source files. For more information, see `:h clang.txt`. >>_Only available in the second combination of plugins for autocompletion._<<
 
 ![C source](http://justmao945.github.io/static/vim-clang/2014-01-12-async.gif)
 
@@ -1736,7 +1939,6 @@ Cheers and HAPPY VIMMING!
 #### After an hour-long study, REFRESH your mood!
 
 https://youtu.be/Gi7vKjm32V4
-
 
 --------
 

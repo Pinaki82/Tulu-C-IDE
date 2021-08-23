@@ -1,0 +1,2 @@
+$ cpp -v
+will list the include directories of standard headers from the compiler.
