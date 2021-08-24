@@ -39,6 +39,7 @@ pacman -S mingw-w64-x86_64-lldb && \
 pacman -S mingw-w64-x86_64-clang-tools-extra && \
 pacman -S mingw-w64-x86_64-clang-analyzer && \
 pacman -S mingw-w64-x86_64-compiler-rt && \
+pacman -S cgdb && \
 
 # pacman -S gcc-libs && \
 # pacman -S gdb && \
