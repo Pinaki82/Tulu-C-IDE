@@ -99,6 +99,7 @@ pacman -S mingw-w64-x86_64-clang-analyzer
 pacman -S mingw-w64-x86_64-compiler-rt
 pacman -S mingw-w64-x86_64-cppcheck
 pacman -S mingw-w64-x86_64-astyle
+pacman -S cgdb
 pacman -S ssh-pageant-git
 pacman -S git
 pacman -S git-extras
@@ -239,6 +240,7 @@ Create a `.gitconfig` in `~/`:
 ```
 cd ~/
 touch .gitconfig
+git config --global init.defaultBranch main
 notepad .gitconfig
 ```
 
@@ -392,6 +394,7 @@ sudo apt install gitk
 sudo apt install git-gui
 sudo apt install ddd
 sudo apt install valgrind
+sudo apt install cgdb
 sudo apt install astyle
 sudo apt install ctags
 sudo apt install autoconf
@@ -758,6 +761,18 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): _"A dark Vim colour scheme."_
 
 [oh-la-la](https://github.com/Pinaki82/oh-la-la.git): _"High contrast dark color scheme with black background."_
+
+[Molokai Color Scheme for Vim](https://github.com/tomasr/molokai.git): _"Molokai is a Vim port of the monokai theme for TextMate originally created by Wimer Hazenberg. By default, it has a dark gray background based on the version created by Hamish Stuart Macpherson for the E editor."_
+
+[vim-atom-dark](https://github.com/gosukiwi/vim-atom-dark.git): _"A vim theme inspired by Atom's default dark theme."_
+
+[Base16 Vim](https://github.com/chriskempson/base16-vim.git): _"Base16 for Vim."_ (Uncomment to install. (It's around the line 1627-1629.))
+
+[tender](https://github.com/jacoborus/tender.vim.git): _"A 24bit colorscheme for Vim."_
+
+[Nord Vim](https://github.com/arcticicestudio/nord-vim.git): _"An arctic, north-bluish clean and elegant Vim color theme."_
+
+[palenight.vim](https://github.com/drewtempelmeyer/palenight.vim.git): _"A dark color scheme for Vim/Neovim based off the Material Pale Night color scheme. Much of the work is based on the lovely onedark.vim color scheme."_
 
 [Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. Use the [coc.nvim](https://github.com/neoclide/coc.nvim.git) [tabnine extension](https://github.com/neoclide/coc-tabnine.git) instead.
 

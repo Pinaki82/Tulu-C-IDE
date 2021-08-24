@@ -1585,12 +1585,6 @@ Plug 'https://github.com/vim-scripts/YankRing.vim.git'
 
 Plug 'https://github.com/Pinaki82/Reload-Button.git'
 
-Plug 'https://github.com/croaker/mustang-vim.git'
-
-Plug 'https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git'
-
-Plug 'https://github.com/Pinaki82/oh-la-la.git'
-
 Plug 'https://github.com/Pinaki82/convert-line-endings.git'
 
 Plug 'https://github.com/rhysd/vim-grammarous.git'
@@ -1619,6 +1613,26 @@ Plug 'https://github.com/Pinaki82/indent-code.git'
 Plug 'https://github.com/ciaranm/detectindent.git'
 
 Plug 'https://github.com/drmingdrmer/xptemplate.git'
+
+"                            === Eye candy third-party Vim colour schemes
+Plug 'https://github.com/croaker/mustang-vim.git'
+
+Plug 'https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git'
+
+Plug 'https://github.com/Pinaki82/oh-la-la.git'
+
+Plug 'https://github.com/tomasr/molokai.git'
+
+Plug 'https://github.com/gosukiwi/vim-atom-dark.git'
+
+" Plug 'chriskempson/base16-vim'
+
+Plug 'jacoborus/tender.vim'
+
+Plug 'arcticicestudio/nord-vim'
+
+Plug 'drewtempelmeyer/palenight.vim'
+"                            === (END) Eye candy third-party Vim colour schemes
 
 " ==================================================
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -1740,4 +1754,7 @@ let g:ale_c_cppcheck_options = '--enable=all --enable=style --enable=performance
 let g:ale#statusline#Count = 1
 let g:ale#statusline#FirstProblem = 1
 " ========================== (END) ALE Linter Settings ==========
+
+" 'molokai_original' colour scheme settings
+let g:molokai_original = 1
 

@@ -1,3 +1,4 @@
+git config --global init.defaultBranch main
 git status
 git clone git@github.com:Pinaki82/Xubuntu-minimum-shell-config.git
 cd Xubuntu-minimum-shell-config/

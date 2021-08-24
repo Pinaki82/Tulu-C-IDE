@@ -349,6 +349,12 @@ Change the global editor (example).
 git config --global core.editor "'C:\Program Files\Notepad2\Notepad2.exe'"
 ```
 
+Set `git init` default branch name:
+
+```
+git config --global init.defaultBranch main
+```
+
 Reference: https://stackoverflow.com/questions/10564/how-can-i-set-up-an-editor-to-work-with-git-on-windows
 
 Add a few ornaments to Git configuration such as how Git should display colours in its terminal, your preferred Diff/Merge Tool etc.:
