@@ -756,6 +756,16 @@ Press `<tab>`,`<tab>`.. to navigate through "i", "0", "len" and finally stop at 
 
 You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (termed as 'local' directory). For example, if you need to open a C file from D:\mycodes\tstprj\esp8266 and if you keep a .lvimrc at the root of your project folder i.e. 'mycodes', the Localvimrc plugin will load your custom Vim configuration from there.
 
+##### Markdown Support
+
+[goyo.vim](https://github.com/junegunn/goyo.vim.git): _"Distraction-free writing in Vim."_
+
+[markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim.git): _"Markdown Preview for (Neo)vim."_
+
+[Vim Markdown](https://github.com/plasticboy/vim-markdown.git): _"Syntax highlighting, matching rules and mappings for the original Markdown and extensions."_
+
+##### Colour Schemes
+
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): _"This is a modified version of the awesome mustang colorscheme by hcalves, published on [deviantART](http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484)."_
 
 [mustang_green-Vim-Colourscheme](https://github.com/Pinaki82/mustang_green-Vim-Colourscheme.git): _"A dark Vim colour scheme."_

@@ -10,4 +10,6 @@ endif
 ""     setting up a dark colorscheme at startup (GUI. GVim)
 " if has("gui_running")
 "     colo mustang_green
+"     :call ColStline()
 " endif
+

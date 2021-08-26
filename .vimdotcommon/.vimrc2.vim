@@ -570,7 +570,10 @@ if has("gui_running")
   "                       Setting for Coloured Statusline and the line-col highlight feature
 
   :amenu Settings.-Sep0-  :
-  :amenu Settings.Restore\ Coloured\ Status\ Line :call ColStline() <CR>
+  :nmenu Settings.Restore\ Coloured\ Status\ Line\ \ \ \ \ \ \:\call\ ColStline(\)\ \ \ or\ \ \ \ \ \ \\cst :call ColStline() <ESC>
+  nnoremap <Leader>cst :call ColStline()<cr>
+  vnoremap <Leader>cst :call ColStline()<cr>
+  inoremap <Leader>cst <Esc><Esc>:call ColStline()<cr>
 
 
   :amenu Settings.Highlight\ Line\ and\ column\ ON-OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\hl   :call ToggleHighlightLineColumn()<cr>
@@ -1061,6 +1064,12 @@ if has("gui_running")
   " Put NERDTreeToggle
   :amenu Utilities.NERDTreeToggle :NERDTreeToggle<CR>
 
+  " Opens Directory via CocExplorer Plugin
+  :amenu Utilities.Open\ Directory\ via\ CocExplorer\ Plugin\ \(<space>e\ or,\ \:\CocCommand\ explorer\) :CocCommand explorer<CR><Esc><CR>
+
+  " Goyo - Distraction-free mode
+  :amenu Utilities.Goyo\ \(\:\Goyo\)\ \(\to\ exit,\ \:\Goyo!\) :Goyo<CR><Esc><CR>
+
   " Opens Useful Apps and Programs
   if g:osdetected == "Windows"
     :amenu Utilities.notepad :silent!!start "notepad.exe" <CR><Esc><CR>
@@ -1262,6 +1271,9 @@ endif
 " ====================================
 :amenu Insert.Insert\ Filename\ <\S\-F3\> :put =expand('%:t')<Esc>
 :amenu Insert.Insert\ Filename\ with\ Full\ Path :put =expand('%:p')<Esc>
+" "            https://vi.stackexchange.com/questions/23348/how-to-save-file-with-todays-date
+" "            https://vi.stackexchange.com/questions/12221/automatically-insert-timestamp-when-opening-certain-file
+:amenu Insert.Insert\ Date :put =strftime('%F')<Esc>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 nmap <S-F3> a<C-R>= expand('%:t')<Esc>
@@ -1614,6 +1626,16 @@ Plug 'https://github.com/ciaranm/detectindent.git'
 
 Plug 'https://github.com/drmingdrmer/xptemplate.git'
 
+" ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+Plug 'plasticboy/vim-markdown'
+
+Plug 'junegunn/goyo.vim'
+
+" ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
+
 "                            === Eye candy third-party Vim colour schemes
 Plug 'https://github.com/croaker/mustang-vim.git'
 
@@ -1755,6 +1777,30 @@ let g:ale#statusline#Count = 1
 let g:ale#statusline#FirstProblem = 1
 " ========================== (END) ALE Linter Settings ==========
 
-" 'molokai_original' colour scheme settings
+" -----------------------------------------
+" 'molokai_original' colour scheme settings (required)
 let g:molokai_original = 1
+" -----------------------------------------
+
+" -----------------------------------------
+" 'plasticboy/vim-markdown' disable code-folding (required)
+let g:vim_markdown_folding_disabled = 1
+"                        enable LaTeX math
+let g:vim_markdown_math = 1
+" -----------------------------------------
+
+" -----------------------------------------
+" 'plasticboy/vim-markdown' disable code-folding (required)
+let g:vim_markdown_folding_disabled = 1
+"                        enable LaTeX math
+let g:vim_markdown_math = 1
+" -----------------------------------------
+
+" -----------------------------------------
+" Markdown Preview Plugin Settings
+:amenu Markdown.Start\ the\ Preview\ \ \ \ \ \ \:\MarkdownPreview <ESC>:MarkdownPreview <CR>
+"                                         Corresponding Position in the Browser
+:amenu Markdown.Toggle\ the\ Preview\ \(\Corresponding\ Position\ in\ the\ Browser\)\ \:\MarkdownPreviewToggle <ESC>:MarkdownPreviewToggle <CR>
+:amenu Markdown.Stop\ the\ Preview\ \ \ \ \ \ \:\MarkdownPreviewStop <ESC>:MarkdownPreviewStop <CR>
+" -----------------------------------------
 
