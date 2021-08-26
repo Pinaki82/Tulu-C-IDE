@@ -24,8 +24,8 @@ set path+=./;/
 
 " ------------------- auto_tags_gen plugin settings
 " 'auto_tags_gen plugin' startup with option 1
-" To disable, change the value to 0
-let g:startuptrigger = 1
+" To disable, put a comment in the first column of the line below.
+"                                                       " is a comment in 'vim'.
 :call ATGOption1()
 
 " ========================== ALE Linter Settings for .lvimrc ==========
