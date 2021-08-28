@@ -1761,6 +1761,8 @@ https://www.geeksforgeeks.org/ A Computer Science portal for enthusiasts.
 
 https://www.learncpp.com/ C/C++ tutorials.
 
+[CMake by Example](https://mirkokiefer.com/cmake-by-example-f95eb47d45b1) - CMake tutorials.
+
 https://www.parashift.com/c++-faq-lite/ C/C++ tutorials.
 
 https://programmers.stackexchange.com/ C/C++ tutorials.
@@ -1804,6 +1806,8 @@ Hacking Vim, by "Kim Schulz"
 vi-vim-cheat-sheet-and-tutorial.pdf, from www.viemu.com
 
 OReilly->Learning the vi and Vim Editors, by "Arnold Robbins, Elbert Hannah, and Linda Lamb"
+
+[Vim Cheat Sheet](https://vim.rtorr.com/)
 
 ----------------------------------------------------------------
 
