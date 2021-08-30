@@ -1654,6 +1654,10 @@ Plug 'jacoborus/tender.vim'
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'drewtempelmeyer/palenight.vim'
+
+Plug 'https://github.com/ghifarit53/tokyonight-vim.git'
+
+Plug 'https://github.com/mgutz/vim-colors.git'
 "                            === (END) Eye candy third-party Vim colour schemes
 
 " ==================================================
