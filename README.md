@@ -756,6 +756,8 @@ Press `<tab>`,`<tab>`.. to navigate through "i", "0", "len" and finally stop at 
 
 You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (termed as 'local' directory). For example, if you need to open a C file from D:\mycodes\tstprj\esp8266 and if you keep a .lvimrc at the root of your project folder i.e. 'mycodes', the Localvimrc plugin will load your custom Vim configuration from there.
 
+[Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. Use the [coc.nvim](https://github.com/neoclide/coc.nvim.git) [tabnine extension](https://github.com/neoclide/coc-tabnine.git) instead.
+
 ##### Markdown Support
 
 [goyo.vim](https://github.com/junegunn/goyo.vim.git): _"Distraction-free writing in Vim."_
@@ -784,7 +786,9 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 
 [palenight.vim](https://github.com/drewtempelmeyer/palenight.vim.git): _"A dark color scheme for Vim/Neovim based off the Material Pale Night color scheme. Much of the work is based on the lovely onedark.vim color scheme."_
 
-[Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. Use the [coc.nvim](https://github.com/neoclide/coc.nvim.git) [tabnine extension](https://github.com/neoclide/coc-tabnine.git) instead.
+[tokyonight-vim](https://github.com/ghifarit53/tokyonight-vim.git): _"A clean, dark vim colorscheme that celebrates the lights of downtown Tokyo at night, based on a VSCode theme by @enkia with the same name."_
+
+[vim-colors - Vim/gVim Colorschemes](https://github.com/mgutz/vim-colors.git)
 
 ## Change the default GVim theme:
 
