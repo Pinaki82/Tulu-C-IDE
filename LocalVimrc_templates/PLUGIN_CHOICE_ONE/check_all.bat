@@ -12,5 +12,7 @@ g++ 2>g++_fsyntax-only.output.txt -fsyntax-only -Wall -Wextra *.cpp
 
 gcc 2>gcc_fsyntax-only.output.txt -fsyntax-only -Wall -Wextra *.c
 
+flint++ 1>flint_out.txt -l3 -v -r
+
 pause
 exit
