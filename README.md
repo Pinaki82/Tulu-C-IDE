@@ -148,7 +148,14 @@ pacman -S msys/vim
 
 **Install Node.js:**
 
-Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up _MSYS2 (x64) Terminal_. Type: `export PATH=/opt/node-v14.17.5-win-x64/:$PATH >> ~/.bash_profile`. Add Node.js to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> _Paste the path from the clipboard_ (`C:\msys64\opt\node-v14.17.5-win-x64`).
+Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up _MSYS2 (x64) Terminal_. Type: `export PATH=/opt/node-v14.17.6-win-x64/:$PATH >> ~/.bash_profile`. Add Node.js to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> _Paste the path from the clipboard_ (`C:\msys64\opt\node-v14.17.6-win-x64`).
+
+> If needed, enter the MSYS2 installation directory (C:\msys64), enter 'home\yourusername', open the files, `.bashrc`, `.bash_profile`, and `.profile` with any text editor, then at the last lines, add the following entry:
+
+> > ```
+> > # Custom Entry:
+> > export PATH=/opt/node-v14.17.6-win-x64/:$PATH
+> > ```
 
 When you need extra packages, those extras are (examples):
 
@@ -635,6 +642,36 @@ completions when you enter characters or move the cursor in Insert mode."_
 [syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window." (_NOTE:_ Find `.vimrc2.vim`, search for the line containing `" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'`, then uncomment the line to install.)
 
 ■ ■ You can even use [vim-clang](https://github.com/justmao945/vim-clang.git) with [ALE](https://github.com/dense-analysis/ale.git). Feel free to use your own configuration. Just keep a backup of your `.vimrc2.vim` before you update [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git).
+
+> **FIX** [coc.nvim](https://github.com/neoclide/coc.nvim.git)**:** If you ever encounter issues with [coc.nvim](https://github.com/neoclide/coc.nvim.git) after installation, either due to your fault or other reasons, hopefully, there is a way to reset the plugin without affecting your customisation. Delete the following folders:
+
+> > ###### For portable GVim on MS Windows:
+
+> > > `\PortableApps\gVimPortable\Data\settings\coc`
+
+> > > `\PortableApps\gVimPortable\Data\settings\.vim\plugged\coc.nvim`
+
+> > ###### For regular GVim on MS Windows:
+
+> > > `%LOCALAPPDATA%\coc`
+
+> > > `%USERPROFILE%\.vim\plugged\coc.nvim`
+
+> > ###### For regular GVim on *-Ubuntu Linux:
+
+> > > `~/.config/coc/`
+
+> > > `~/.vim/plugged/coc.nvim`
+
+> Then in GVim's command mode, run:
+
+> > `:PlugInstall`
+
+> > `:PlugUpdate`
+
+> > `:CocUpdate` sequentially.
+
+> Around 170MB of data download cost is associated, though.
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
