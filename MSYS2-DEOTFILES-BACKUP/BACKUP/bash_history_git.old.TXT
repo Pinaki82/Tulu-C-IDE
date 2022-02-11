@@ -715,3 +715,21 @@ git push origin main
 git status
 git pull
 git rm -r --cached  Code_Snippets_Extra/MSVC_nmake_samples/openglut_sample/OpenGLUT.0.6.3/openglut-0.6.3-doc/
+
+Flatten GIT History: ===
+https://stevepapa.com/flattening-a-git-repository-to-remove-all-previous-commits-and-branches/
+
+Linux: rm -rf .git
+Windows: rd /s /q .git
+
+git init
+git add .
+git status
+git commit -m 'Flattened history.'
+git remote add origin git@githubbbb.com:Pinakiii82/adb-shell-android-bloatware-removal.git
+git push --force --set-upstream origin main
+git status
+git checkout
+git pull
+exit
+=== Flatten GIT History.
