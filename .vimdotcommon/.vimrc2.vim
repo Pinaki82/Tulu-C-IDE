@@ -1488,12 +1488,17 @@ Plug 'https://github.com/junegunn/vim-plug.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kevinoid/vim-jsonc'
 Plug 'https://github.com/dense-analysis/ale.git'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+let g:asyncrun_open = 6 " asyncrun settings
 " ************ AFTER INSTALLATION:
 " :CocInstall coc-json
 " :CocInstall coc-clangd
 " :CocInstall coc-tabnine
 " :CocInstall coc-snippets
 " :CocInstall coc-diagnostic
+" :CocInstall coc-lightbulb
+" :CocInstall coc-tasks
 " :CocConfig
 "         Then, paste the line below (without comments) in the new file.
 " diagnostic.displayByAle": true
@@ -1711,7 +1716,7 @@ let g:echodoc_enable_at_startup = 1
 " ====================== checking ===============================
 
 " Install missing coc extensions:
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks']
 
 " Use CTRL+SPACE for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
