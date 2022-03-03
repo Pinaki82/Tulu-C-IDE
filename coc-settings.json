@@ -1,16 +1,29 @@
-"__comment1__": "$HOME/.vim or $HOME/vimefiles",
-
-"diagnostic.displayByAle": true,
-
-"languageserver": {
-  "ccls": {
-    "command": "ccls",
-    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-    "initializationOptions": {
-      "cache": {
-        "directory": "/tmp/ccls"
-      }
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "diagnostic.displayByAle": true,
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "client": {
+                     "snippetSupport": true
+                 }
+            }
+        }
     }
-  }
 }

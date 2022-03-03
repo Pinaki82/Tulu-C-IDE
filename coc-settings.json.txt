@@ -1,0 +1,6 @@
+"__comment1__": "$HOME/.vim or $HOME/vimefiles",
+
+https://ianding.io/2019/07/29/configure-coc-nvim-for-c-c++-development/
+https://chmanie.com/post/2020/07/17/modern-c-development-in-neovim/
+https://github.com/dense-analysis/ale
+https://github.com/dense-analysis/ale#faq-coc-nvim
