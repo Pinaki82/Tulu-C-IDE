@@ -1501,7 +1501,7 @@ let g:asyncrun_open = 6 " asyncrun settings
 " :CocInstall coc-tasks
 " :CocConfig
 "         Then, paste the line below (without comments) in the new file.
-" diagnostic.displayByAle": true
+"                                 "diagnostic.displayByAle": true
 " ============== (END) CHOICE ONE ========================
 
 " ==================== CHOICE TWO ========================
