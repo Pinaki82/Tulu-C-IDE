@@ -1,0 +1,3 @@
+Include path:
+clang -v -fsyntax-only -x c++ /dev/null
+g++ -v -fsyntax-only -x c++ /dev/null
