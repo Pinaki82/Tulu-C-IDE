@@ -1,9 +1,12 @@
 clang
 %c -std=c11
 %cpp -std=c++17
+%cpp -stdlib=libc++
+%cpp -stdlib=libstdc++
 %h %hpp --include=Global.h
 -Iinc
 -DMACRO
+
 
 %c -Wall
 %c -Weffc++
@@ -39,7 +42,10 @@ clang
 %c -target
 %c x86_64-pc-linux-gnu
 
--isystem /usr/include/
--isystem /usr/local/include/
--isystem /usr/include/c++/9/
--isystem /usr/lib/gcc/x86_64-linux-gnu/9/include/
+-isystem /usr/include/c++/9
+-isystem /usr/include/x86_64-linux-gnu/c++/9
+-isystem /usr/include/c++/9/backward
+-isystem /usr/lib/gcc/x86_64-linux-gnu/9/include
+-isystem /usr/local/include
+-isystem /usr/include/x86_64-linux-gnu
+-isystem /usr/include

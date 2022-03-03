@@ -1,9 +1,12 @@
 clang
 %c -std=c11
 %cpp -std=c++17
+%cpp -stdlib=libc++
+%cpp -stdlib=libstdc++
 %h %hpp --include=Global.h
 -Iinc
 -DMACRO
+
 
 %c -Wall
 %c -Weffc++
@@ -39,9 +42,9 @@ clang
 %c -target
 %c x86_64-pc-windows-gnu
 
--isystem C:\msys64\mingw64\x86_64-w64-mingw32\include
--isystem C:\msys64\mingw64\include
--isystem C:\msys64\mingw64\include\c++\10.3.0
+-IC:\msys64\mingw64\x86_64-w64-mingw32\include
+-IC:\msys64\mingw64\include
+-IC:\msys64\mingw64\include\c++\11.2.0
 
 -IC:\xtralibs
 -IC:\xtralibs\appu
