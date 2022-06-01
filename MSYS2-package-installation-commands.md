@@ -107,5 +107,3 @@ paccache -rk 1
 ```
 paccache -ruk0
 ```
-
-
