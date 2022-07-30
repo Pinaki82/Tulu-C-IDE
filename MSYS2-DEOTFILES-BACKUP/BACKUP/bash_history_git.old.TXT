@@ -716,6 +716,49 @@ git status
 git pull
 git rm -r --cached  Code_Snippets_Extra/MSVC_nmake_samples/openglut_sample/OpenGLUT.0.6.3/openglut-0.6.3-doc/
 
+git switch experimental 
+
+git push -u origin master
+
+git checkout -b main
+git pull master
+
+git branch --list
+
+git branch -D master
+git push -u
+git push -d master
+git push origin --delete master
+
+git add .
+
+git tag 2022.07.25-09.27p
+git push origin --tags 2022.07.25-09.27p 
+
+git diff > rofi-xfce4-terminal-shutdown.patch
+git status
+git status
+git add rofi-xfce4-terminal-shutdown.patch 
+
+git push -u origin main 
+
+git tag patch-applied-2022.07.25-09.42p
+git push origin --tags patch-applied-2022.07.25-09.42p 
+
+git checkout experimental 
+git checkout master
+git merge experimental 
+git status
+git push -u origin master
+git branch --list
+git switch experimental 
+git pull
+git switch master
+git pull
+git switch experimental 
+git pull
+
+
 Flatten GIT History: ===
 https://stevepapa.com/flattening-a-git-repository-to-remove-all-previous-commits-and-branches/
 
