@@ -107,3 +107,37 @@ paccache -rk 1
 ```
 paccache -ruk0
 ```
+
+## A crude assessment of the programs installed by the user.
+
+To obtain a crude assessment of the programs installed by the user (not dependencies of other packages installed by MSYS2), try the following commands:
+
+```
+comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq)
+```
+
+Or
+
+```
+comm -23 <(pacman -Qqett | sort | uniq) <(pacman -Qqg base -g base-devel | sort | uniq)
+```
+
+Ref: https://unix.stackexchange.com/questions/409895/pacman-get-list-of-packages-installed-by-user
+
+Or
+
+```
+pacman --query --explicit
+```
+
+Ref: https://linuxcommandlibrary.com/man/pacman
+
+Also, you can redirect the output to a text file, for example:
+
+```
+cd c:
+cd Users/YOUR_USERNAME/Documents/
+pacman --query --explicit > progs_installed_by_me.txt
+```
+
+Nevertheless, you won't get an accurate program installation history from the package manager. It's always better to maintain a record of the utilities you need and the programs you usually install after re-installing MSYS2.
