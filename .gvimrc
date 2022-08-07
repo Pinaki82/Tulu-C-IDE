@@ -8,8 +8,16 @@ if has("gui_running")
 endif
 
 ""     setting up a dark colorscheme at startup (GUI. GVim)
-" if has("gui_running")
-"     colo mustang_green
-"     :call ColStline()
-" endif
+if has("gui_running")
+    colo nord
+    :call ColStline()
+endif
 
+let g:ascii = [
+      \ '        __',
+      \ '.--.--.|__|.--------.',
+      \ '|  |  ||  ||        |',
+      \ ' \___/ |__||__|__|__|',
+      \ ''
+      \]
+let g:startify_custom_header = g:ascii + startify#fortune#boxed()

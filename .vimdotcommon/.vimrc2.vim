@@ -1639,6 +1639,8 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'junegunn/goyo.vim'
 
+Plug 'mhinz/vim-startify' " -- Fancy start screen
+
 " ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
 
 "                            === Eye candy third-party Vim colour schemes
@@ -1716,7 +1718,7 @@ let g:echodoc_enable_at_startup = 1
 " ====================== checking ===============================
 
 " Install missing coc extensions:
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks']
 
 " Use CTRL+SPACE for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
