@@ -1030,6 +1030,16 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 
 [vim-colors - Vim/gVim Colorschemes](https://github.com/mgutz/vim-colors.git)
 
+##### One More LSP Plugin-group ( from https://github.com/prabirshrestha ):
+
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)
+
+[vim-lsp-settings](https://github.com/mattn/vim-lsp-settings.git) [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)]
+
+[asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim.git) [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
+
+[LSP source for asyncomplete.vim vim-lsp](https://github.com/prabirshrestha/asyncomplete-lsp.vim.git)  [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
+
 ## Change the default GVim theme:
 
 In your HOME directory, there is a file `.givmrc`. Open it and uncomment some lines if you want a dark theme. Instructions provided. In Vim, `"` is used at the beginning of a line to comment it.
