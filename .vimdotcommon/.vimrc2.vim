@@ -1491,6 +1491,12 @@ Plug 'https://github.com/dense-analysis/ale.git'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 let g:asyncrun_open = 6 " asyncrun settings
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'normen/vim-pio'    -- PlatformIO MCU Development - will be tested later.
+" Plug 'stevearc/vim-arduino' -- Arduino MCU Development - will be tested later.
 " ************ AFTER INSTALLATION:
 " :CocInstall coc-json
 " :CocInstall coc-clangd
