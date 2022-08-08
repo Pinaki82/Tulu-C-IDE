@@ -415,8 +415,8 @@ sudo apt install automake
 sudo apt install meld
 sudo apt install default-jre
 sudo apt install wmctrl
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
+sudo apt install -y npm
 ```
 
 ##### Recommended:
@@ -510,14 +510,14 @@ After installation, Open GVim and hold `<SHIFT+;>` together.
 
 ![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
 
-In GVim's command area, type `PlugUpgrade`, `PlugInstall`, `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-snippets`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
+In GVim's command area, type `PlugUpgrade`, `PlugInstall`, `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
 
 ```
 $HOME/.vimdotcommon/.vimrc2.vim
 ```
 
 ```
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-snippets', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
 ```
 
 ```
@@ -539,10 +539,12 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-ta
 NOTE: Avoid trying to install the 'coc-extensions' again by typing the following command:
 
 ```
-:CocInstall coc-json coc-tsserver coc-clangd coc-tabnine coc-snippets coc-diagnostic coc-explorer coc-cmake coc-markdownlint coc-lightbulb coc-tasks
+:CocInstall coc-json coc-tsserver coc-clangd coc-tabnine coc-diagnostic coc-explorer coc-cmake coc-markdownlint coc-lightbulb coc-tasks
 ```
 
 Otherwise, your installation might be messed up.
+
+**NOTE:** I do not recommend you to install CCLS on Windows. CCLS doesn't work properly on Windows, although it can be installed using the [Chocolatey Package Manager](https://chocolatey.org/) with the command `choco install -y ccls`. More about Chocolatey later. It is an excellent package manager for Microsoft Windows which can be compared to the central repository concept in Linux distributions.
 
 Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
 
@@ -583,13 +585,210 @@ Keyboard Shortcuts:
 
 - Common snippets (do-while, switch-case, include directive guards, header completion, for loop, etc.).
 
-- `<CTRL+N>` and `<CTRL+P>` will also work along with the arrow keys and `<Enter>`.
+- `<CTRL+N>` and `<CTRL+P>` will also work along with the arrow keys and `<Enter>`. _NOTE:_ In GVim 9, arrow keys cannot be accessed while selecting from the autocompletion list. I tried it on my Windows 10 (x64) 20H2 Desktop PC with Portable GVim (x64) 9.0.32. Stick to more traditional `<CTRL+N>` and `<CTRL+P>` navigation approach.
 
 To use `clangd`'s LSP [coc.nvim](https://github.com/neoclide/coc.nvim.git) needs to pass the compiler flags and include paths to `clangd`. Copy the required files from `LocalVimrc_templates/PLUGIN_CHOICE_ONE`; namely, `compile_flags.txt`, `.lvimrc`, and `.ccls` to your project directory and change the compiler flags and paths in those files.
 
-**NOTE:** <`CTRL`+`x`><`CTRL`+`o`> doesn't work with [coc.nvim](https://github.com/neoclide/coc.nvim.git) since [coc.nvim](https://github.com/neoclide/coc.nvim.git)'s autocompletion is unrelated to Vim's Omni Completion mechanism.
+**NOTE:** <`CTRL`+`x`><`CTRL`+`o`> doesn't work in [coc.nvim](https://github.com/neoclide/coc.nvim.git) since [coc.nvim](https://github.com/neoclide/coc.nvim.git)'s autocompletion is unrelated to Vim's Omni Completion mechanism.
 
 [ALE](https://github.com/dense-analysis/ale.git), the linter's frontend: [ALE](https://github.com/dense-analysis/ale.git) checks for errors asynchronously. It checks the code in the unsaved buffer redirected to a temp file and provides feedback as you type without blocking the workflow. As soon as the feedback from the language server is ready, it reports, whether the file has been written to disc or not.
+
+### [Chocolatey](https://chocolatey.org/)
+
+Download PowerShell-7.2.5-win-x64 or above. The [download link](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#installing-the-msi-package) can be found in [this](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2) document published by Microsoft.
+
+Open Start Menu. Search by typing PowerShell 7 (x64). Right-click on PowerShell 7 (x64) and choose 'Run as administrator'.
+
+Type out (or paste by r-clicking on the PS Terminal) the following command:
+
+```
+Set-ExecutionPolicy Unrestricted -Force -Scope Process
+```
+
+Install Chocolatey:
+
+https://docs.chocolatey.org/en-us/choco/setup
+
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+```
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+                                                                                                                        Try the new cross-platform PowerShell https://aka.ms/pscore6                                                                                                                                                                                    PS C:\Windows\system32> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))                                                                     Forcing web requests to allow TLS v1.2 (Required for requests to Chocolatey.org)
+Getting latest version of the Chocolatey package for download.
+Not using proxy.
+Getting Chocolatey from https://community.chocolatey.org/api/v2/package/chocolatey/0.12.1.
+Downloading https://community.chocolatey.org/api/v2/package/chocolatey/0.12.1 to C:\Users\XyyyWkkk\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip
+Not using proxy.
+Extracting C:\Users\XyyyWkkk\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip to C:\Users\XyyyWkkk\AppData\Local\Temp\chocolatey\chocoInstall
+Installing Chocolatey on the local machine
+Creating ChocolateyInstall as an environment variable (targeting 'Machine')
+  Setting ChocolateyInstall to 'C:\ProgramData\chocolatey'
+WARNING: It's very likely you will need to close and reopen your shell
+  before you can use choco.
+Restricting write permissions to Administrators
+We are setting up the Chocolatey package repository.
+The packages themselves go to 'C:\ProgramData\chocolatey\lib'
+  (i.e. C:\ProgramData\chocolatey\lib\yourPackageName).
+A shim file for the command line goes to 'C:\ProgramData\chocolatey\bin'
+  and points to an executable in 'C:\ProgramData\chocolatey\lib\yourPackageName'.
+
+Creating Chocolatey folders if they do not already exist.
+
+WARNING: You can safely ignore errors related to missing log files when
+  upgrading from a version of Chocolatey less than 0.9.9.
+  'Batch file could not be found' is also safe to ignore.
+  'The system cannot find the file specified' - also safe.
+chocolatey.nupkg file not installed in lib.
+ Attempting to locate it from bootstrapper.
+PATH environment variable does not have C:\ProgramData\chocolatey\bin in it. Adding...
+WARNING: Not setting tab completion: Profile file does not exist at
+'C:\Users\XyyyWkkk\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'.
+Chocolatey (choco.exe) is now ready.
+You can call choco from anywhere, command line or powershell by typing choco.
+Run choco /? for a list of functions.
+You may need to shut down and restart powershell and/or consoles
+ first prior to using choco.
+Ensuring Chocolatey commands are on the path
+Ensuring chocolatey.nupkg is in the lib folder
+PS C:\Windows\system32>
+```
+
+Package Update:
+
+```
+choco upgrade -y chocolatey
+```
+
+Search Packages:
+
+https://jcutrer.com/windows/install-chocolatey-choco-windows10
+
+```
+choco search package_name
+```
+
+```
+choco search ccls
+```
+
+```
+PS C:\Windows\system32> choco search ccls
+Chocolatey v0.12.1
+ccls 0.20210330 [Approved] Downloads cached for licensed users
+1 packages found.
+PS C:\Windows\system32>
+```
+
+More Package Info:
+
+Add the `-v` flag at the end.
+
+```
+choco search package_name -v
+```
+
+```
+choco search ccls -v
+```
+
+```
+choco info package_name
+```
+
+Install Packages:
+
+```
+choco install -y package_name
+```
+
+```
+choco install -y package_name
+```
+
+```
+choco install -y ccls
+```
+
+Install apps for 'All Users':
+
+```
+choco install -y package_name --ia=ALLUSERS=1
+```
+
+Upgrade (update) packages:
+
+```
+choco upgrade -y ccls
+```
+
+Upgrade (update) all installed packages:
+
+```
+choco upgrade -y all
+```
+
+https://www.liquidweb.com/kb/how-to-install-chocolatey-on-windows/
+
+List Installed Packages:
+
+```
+choco list --local-only
+```
+
+Install a package list backup utility and package re-installer:
+
+```
+choco install choco-package-list-backup
+```
+
+```
+choco install InstChoco
+```
+
+Take a snapshot of your Chocolatey packages so that you can install the same applications later from that snapshot.
+
+```
+choco-package-list-backup
+```
+
+Uninstall Chocolatey Packages:
+
+https://docs.chocolatey.org/en-us/choco/commands/uninstall
+
+```
+choco uninstall package_name
+```
+
+Remove dependencies also:
+
+```
+choco uninstall package_name -x
+```
+
+https://stackoverflow.com/questions/39628638/how-do-i-uninstall-a-chocolatey-package-and-all-its-dependencies
+
+Install a Graphical Package Search Utility:
+
+https://nerdymishka.com/articles/chocolatey-a-beginners-guide-to-windows-package-management/
+
+```
+choco install -y ChocolateyGUI
+```
+
+Run ChocolateyGUI:
+
+```
+ChocolateyGUI
+```
+
+Find packages from the GUI, then install the package you need from the PowerShell terminal.
+
+First, uninstall the program from the Control Panel -> Add/Remove Programs if you've followed the regular installation method (through MSI and EXE installers). BleachBit/CCleaner can be of a bit of help. Control Panel is another place to uninstall programs. Now you're ready to install the same program from Chocolatey's repository. Otherwise, two installations of the same program may conflict.
+
+_Did you know MSYS2 can be found in Chocolatey's repository?_ (^__^)
 
 ******
 
