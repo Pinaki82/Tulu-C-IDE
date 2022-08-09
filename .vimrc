@@ -52,7 +52,19 @@ endif
 " ============================================
 ""     setting up a dark colorscheme at startup (Terminal)
 " if !has("gui_running")
-"     colo mustang_green
-"     :call ColStline()
+"    colo mustang_green
+"    " :call ColStline()
 " endif
 " ============================================
+
+" ============================================
+let g:ascii = [
+    \ '    ______      __            ______     ________  ______',
+    \ '   /_  __/_  __/ /_  __      / ____/    /  _/ __ \/ ____/',
+    \ '    / / / / / / / / / /_____/ /  ______ / // / / / __/   ',
+    \ '   / / / /_/ / / /_/ /_____/ /__/_____// // /_/ / /___   ',
+    \ '  /_/  \__,_/_/\__,_/      \____/    /___/_____/_____/   ',
+    \ ''
+    \]
+let g:startify_custom_header =
+          \ startify#pad(g:ascii + startify#fortune#boxed())
