@@ -1095,6 +1095,8 @@ if has("gui_running")
     :amenu Utilities.Explore\ Current\ File's\ Directory\ (\LINUX\ only\) :call Explore_file_PWD() <CR><Esc><CR>
     :amenu Utilities.kitty\ Terminal\ Emulator :call Kitty_Terminal_Emulator() <CR><Esc><CR>
     :amenu Utilities.Open\ Current\ File's\ Directory\ via\ kitty-terminal :call Kitty_Terminal_current_file_s_dir() <CR><Esc><CR>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ GITK\ GIT\ Client :call GITK() <CR><Esc><CR>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Giggle\ GIT\ Client :call Giggle() <CR><Esc><CR>
     :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
     :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
     :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
@@ -1135,6 +1137,26 @@ if has("gui_running")
       :!kitty -d "$PWD" &
       " Failed to launch child: /home With error: Permission denied Press Enter to exit. Kitty Terminal
       " https://github.com/kovidgoyal/kitty/issues/1930
+      execute 'lcd -'
+      " :copen
+    endfunction
+    function! GITK()
+      let curr_dir = expand('%:h')
+      if curr_dir == ''
+        let curr_dir = '.'
+      endif
+      :cd %:h
+      :!gitk -d "$PWD" &
+      execute 'lcd -'
+      " :copen
+    endfunction
+    function! Giggle()
+      let curr_dir = expand('%:h')
+      if curr_dir == ''
+        let curr_dir = '.'
+      endif
+      :cd %:h
+      :!giggle -d "$PWD" &
       execute 'lcd -'
       " :copen
     endfunction
