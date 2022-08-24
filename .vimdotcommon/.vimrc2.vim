@@ -1097,8 +1097,11 @@ if has("gui_running")
     :amenu Utilities.Open\ Current\ File's\ Directory\ via\ kitty-terminal :call Kitty_Terminal_current_file_s_dir() <CR><Esc><CR>
     :amenu Utilities.Open\ Current\ File's\ Directory\ via\ GITK\ GIT\ Client :call GITK() <CR><Esc><CR>
     :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Giggle\ GIT\ Client :call Giggle() <CR><Esc><CR>
+    :amenu Utilities.Open\ dir\ tree\ with\ Data\ Display\ Debugger\ (\DDD\) :call Data_Display_Debugger_in_th_current_file_s_dir() <CR><Esc><CR>
     :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
     :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
+    :amenu Utilities.Geany :call Geany_open() <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ Geany :call Open_w_Geany() <CR><Esc><CR>
     :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
     :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <CR><Esc><CR>
 
@@ -1116,6 +1119,12 @@ if has("gui_running")
     fun! Open_w_Xedit()
       :!xedit % &
     endfun
+    fun! Geany_open()
+      :silent!!geany &
+    endfun
+    fun! Open_w_Geany()
+      :!geany % &
+    endfun
     fun! Meld_diff_viewer()
       :silent!!meld &
     endfun
@@ -1125,6 +1134,16 @@ if has("gui_running")
     fun! Kitty_Terminal_Emulator()
       :silent!!kitty &
     endfun
+    function! Data_Display_Debugger_in_th_current_file_s_dir()
+      let curr_dir = expand('%:h')
+      if curr_dir == ''
+        let curr_dir = '.'
+      endif
+      :cd %:h
+      :!ddd -d "$PWD" &
+      execute 'lcd -'
+      " :copen
+    endfunction
     fun! Open_File_with_Default_Application()
       :!xdg-open "%:p" &
     endfun
