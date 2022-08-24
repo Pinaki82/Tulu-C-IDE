@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-astyle --recursive --style=java --indent=spaces=2 --attach-namespaces \
+astyle --style=java --indent=spaces=2 --attach-namespaces \
        --attach-classes --attach-inlines --attach-extern-c \
        --attach-closing-while --indent-classes --indent-switches \
        --indent-cases --indent-namespaces --indent-continuation=4 \
