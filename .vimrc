@@ -41,10 +41,10 @@ source $HOME\/\.vimdotcommon\/\.vimrc2.vim
 if !has("gui_running")
   " When the GUI is not running and Vim is started from the terminal.
   if exists("+lines")
-    set lines=34
+    set lines=43
   endif
   if exists("+columns")
-    set columns=115
+    set columns=151
   endif
 endif
 " ============================================

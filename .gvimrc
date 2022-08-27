@@ -4,7 +4,7 @@
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window.
-  set lines=34 columns=115
+  set lines=52 columns=151
 endif
 
 ""     setting up a dark colorscheme at startup (GUI. GVim)
