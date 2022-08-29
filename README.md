@@ -390,6 +390,7 @@ sudo apt install libomp-dev
 sudo apt install cdecl
 sudo apt install cutils
 sudo apt install vim-gtk
+sudo apt install geany
 sudo apt install cppcheck
 sudo apt install cppcheck-gui
 sudo apt install splint
@@ -423,7 +424,16 @@ sudo apt install -y npm
 
 ```
 sudo apt install kitty
+sudo apt install sakura
 ```
+
+Giggle:
+
+```
+sudo apt install giggle
+```
+
+Or,
 
 GitG:
 
@@ -497,13 +507,21 @@ Node.js:
 
 Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up *MSYS2 (x64) Terminal*. Type: `export PATH=/opt/node-v14.17.5-win-x64/:$PATH >> ~/.bash_profile`. Add 'Node.js' to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> *Paste the path from the clipboard* (`C:\msys64\opt\node-v14.17.5-win-x64`).
 
-UBUNTU:
+UBUNTU 20.04:
 
 ```
 sudo apt install clangd
 sudo apt install curl
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install -y nodejs
+```
+
+UBUNTU 22.04:
+
+```
+sudo apt install clangd
+sudo apt install curl
+sudo apt install -y nodejs
 ```
 
 After installation, Open GVim and hold `<SHIFT+;>` together.
@@ -545,6 +563,8 @@ NOTE: Avoid trying to install the 'coc-extensions' again by typing the following
 Otherwise, your installation might be messed up.
 
 **NOTE:** I do not recommend you to install CCLS on Windows. CCLS doesn't work properly on Windows, although it can be installed using the [Chocolatey Package Manager](https://chocolatey.org/) with the command `choco install -y ccls`. More about Chocolatey later. It is an excellent package manager for Microsoft Windows which can be compared to the central repository concept in Linux distributions.
+
+However, CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been planned.
 
 Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
 
@@ -831,12 +851,114 @@ Now, do `:PlugInstall`, which will install the plugins. Both [vim-clang](https:/
 
 [code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
 
+_NOTE:_ You need ctags to use this plugin. Also, you'll have to generate tags in the include directories of the system. On Linux systems, drop the lines to `$HOME/.vimdotlinux/tagspath.txt` shown below:
+
+```
+set tags+=/usr/include/c++/11/tags;/
+set tags+=/usr/include/x86_64-linux-gnu/c++/11/tags;/
+set tags+=/usr/include/c++/11/backward/tags;/
+set tags+=/usr/lib/gcc/x86_64-linux-gnu/11/include/tags;/
+set tags+=/usr/local/include/tags;/
+set tags+=/usr/include/x86_64-linux-gnu/tags;/
+set tags+=/usr/include/tags;/
+set tags+=./tags;/
+
+set path+=/usr/include/c++/11/;/
+set path+=/usr/include/x86_64-linux-gnu/c++/11/;/
+set path+=/usr/include/c++/11/backward/;/
+set path+=/usr/lib/gcc/x86_64-linux-gnu/11/include/;/
+set path+=/usr/local/include/;/
+set path+=/usr/include/x86_64-linux-gnu/;/
+set path+=/usr/include/;/
+set path+=./;/
+```
+
+Depending on the version of [The GNU Compiler Collection](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) installed, you may have to change the paths in the file. To generate `tags`, run the following command:
+
+```
+sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * 
+```
+
+In non-system directories, run ctags without the admin privilege (don't use sudo).
+
+```
+ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * 
+```
+
+You can also look [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN) for an automated solution.
+
+The default Templates (Keyboard shortcuts for automatically inserting common syntax-style snippets) are:
+
+```
+" C templates
+cc --> /*  */
+cd --> /**<  */
+in -->
+is
+ff
+for
+main
+switch
+if
+while
+ife
+" Additional C templates
+case
+printf
+scanf
+do
+elf
+else
+fin
+system
+TODO
+FIXME
+NOTE
+XXX
+enum
+struct
+union
+calloc
+malloc
+free
+realloc
+sizeof
+assert
+filein
+fileout
+fprintf
+fscanf
+in1
+ffc
+def
+und
+ifm
+er
+ifd
+ifn
+elm
+eli
+en
+lin
+pra
+" C++ templates
+usi
+in2
+cout
+cin1
+cin2
+" common templates
+xt
+```
+
 [Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
 
 [vim-clang-Settings](https://github.com/Pinaki82/vim-clang-Settings.git): _"Custom Settings for the vim-clang Vim/GVim plugin."_
 
 [AutoComplPop](https://github.com/vim-scripts/AutoComplPop.git): _"With this plugin, your vim comes to automatically opens popup menu for
 completions when you enter characters or move the cursor in Insert mode."_
+
+AutoComplPop has been disabled in the default settings (commented out in .vimrc2.vim). You can re-enable it by uncommenting the respective line in the file .vimrc2.vim.
 
 [syntastic-warning-window-line-wrap](https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git): _"A Vim plugin to wrap lines in [Syntastic](https://github.com/vim-syntastic/syntastic.git) location list (Warning) window." (_NOTE:_ Find `.vimrc2.vim`, search for the line containing `" Plug 'https://github.com/Pinaki82/syntastic-warning-window-line-wrap.git'`, then uncomment the line to install.)
 
@@ -1039,6 +1161,8 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 [asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim.git) [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
 
 [LSP source for asyncomplete.vim vim-lsp](https://github.com/prabirshrestha/asyncomplete-lsp.vim.git)  [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
+
+_NOTE:_ You'll need two LSP config files to work with the [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) plugin: .ccls and compile_flags.txt alongside code files. Find the required files [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN).
 
 ## Change the default GVim theme:
 
