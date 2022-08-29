@@ -891,64 +891,483 @@ The default Templates (Keyboard shortcuts for automatically inserting common syn
 
 ```
 " C templates
+"" ---------------------------------------------------------------------
+"" ---------------------------------------------------------------------
+
 cc --> /*  */
+That means, type cc, then Hit CTRL+Enter simultaneously.
+"" ---------------------------------------------------------------------
+
 cd --> /**<  */
-in -->
-is
-ff
-for
-main
-switch
-if
-while
-ife
-" Additional C templates
-case
-printf
-scanf
-do
-elf
+
+"" ---------------------------------------------------------------------
+
+in --> #include    ""
+
+"" ---------------------------------------------------------------------
+
+is --> #include  <>
+
+"" ---------------------------------------------------------------------
+
+ff -->
+
+#ifndef  __TEST_C__
+#define  __TEST_C__
+
+
+
+
+#endif  /* __THE_FILE_BEING_EDITED_C__ */
+
+for -->
+
+for( `<...>`; `<...>` ; `<...>` )
+{
+  `<...>`
+}
+
+Hit CTRL+Enter to select the next symbolic marker, `<...>`.
+Then, type the code.
+
+"" ---------------------------------------------------------------------
+
+main -->
+
+int main(int argc, char *argv[])
+{
+  `<...>`
+}
+
+switch -->
+
+switch ( `<...>` )
+{
+  case `<...>` :
+    break;
+  case `<...>` :
+    break;
+  default :
+    break;
+}
+
+
+"" ---------------------------------------------------------------------
+
+if -->
+
+if( `<...>` )
+{
+  `<...>`
+}
+
+"" ---------------------------------------------------------------------
+
+while -->
+
+while( `<...>` )
+{
+  `<...>`
+}
+
+"" ---------------------------------------------------------------------
+
+ife -->
+
+if( `<...>` )
+{
+  `<...>`
+}
 else
-fin
-system
-TODO
-FIXME
-NOTE
-XXX
-enum
-struct
-union
-calloc
-malloc
-free
-realloc
-sizeof
-assert
-filein
-fileout
-fprintf
-fscanf
-in1
-ffc
-def
-und
-ifm
-er
-ifd
-ifn
-elm
-eli
-en
-lin
-pra
+{
+  `<...>`
+}
+
+"" ---------------------------------------------------------------------
+
+" Additional C templates
+"" ---------------------------------------------------------------------
+"" ---------------------------------------------------------------------
+
+case -->
+
+case `<...>`:
+break;
+
+"" ---------------------------------------------------------------------
+
+printf --> printf( "`<...>`\n" );
+
+"" ---------------------------------------------------------------------
+
+scanf --> scanf( "%`<...>`  %`<...>`", `<&>``<...>`, `<&>``<...>` );
+
+"" ---------------------------------------------------------------------
+
+do --> 
+
+do {
+   `<...>`
+} while ( `<...>` );
+
+"" ---------------------------------------------------------------------
+
+elf -->
+
+else if ( `<...>` )
+{
+  `<...>`
+}
+
+"" ---------------------------------------------------------------------
+
+else -->
+
+else
+{
+  `<...>`
+}
+
+"" ---------------------------------------------------------------------
+
+fin --> fflush(stdin);
+
+"" ---------------------------------------------------------------------
+
+system --> system("`<...>`");
+
+"" ---------------------------------------------------------------------
+
+TODO --> /* TODO: `<...>` */
+
+"" ---------------------------------------------------------------------
+
+FIXME --> /* FIXME: `<...>` *
+
+"" ---------------------------------------------------------------------
+
+NOTE --> /* NOTE: `<...>` */
+
+"" ---------------------------------------------------------------------
+
+XXX --> /* XXX: `<...>` */
+
+"" ---------------------------------------------------------------------
+
+enum -->
+
+enum `<function_name>` {
+  `<...>`
+}; /* --- end of enum `<function_name>` --- */
+
+typedef enum `<function_name>` `<Function_name>`;
+
+"" ---------------------------------------------------------------------
+
+struct -->
+
+struct `<srtucture_name>` {
+  `<...>`
+}; /* --- end of struct `<srtucture_name>` --- */
+
+typedef struct `<srtucture_name>` `<Srtucture_name>`;
+
+"" ---------------------------------------------------------------------
+
+union -->
+
+union `<union_name>` {
+  `<...>`
+}; /* --- end of union `<union_name>` --- */
+
+typedef union `<union_name>` `<Union_name>`;
+
+"" ---------------------------------------------------------------------
+
+calloc -->
+
+`<int/char/float/TYPE *pointer;>`
+
+`<pointer>` = (`<int/char/float/TYPE>`  *)calloc ( (size_t)(`<COUNT>`), sizeof(`<TYPE>`) );
+if ( `<pointer>`==NULL ) {
+  fprintf ( stderr, "\ndynamic memory allocation failed\n");
+  exit (EXIT_FAILURE);
+}
+free (`<pointer>`);
+`<pointer>` = NULL;
+
+"" ---------------------------------------------------------------------
+
+malloc -->
+
+`<int/char/float/TYPE *pointer;>`
+
+`<pointer>` = (`<int/char/float/TYPE>`  *)malloc (`< (size_t)COUNT_if_needed  *  >` sizeof (`<TYPE>`) );
+if ( `<pointer>`==NULL ) {
+  fprintf ( stderr, "\ndynamic memory allocation failed\n");
+  exit (EXIT_FAILURE);
+}
+free (`<pointer>`);
+`<pointer>` = NULL;
+
+"" ---------------------------------------------------------------------
+
+free -->
+
+free (`<pointer>`);
+`<pointer>` = NULL;
+
+realloc -->
+
+`<pointer>`= realloc (  `<pointer>`, sizeof (`<TYPE>`) );
+if ( `<pointer>`==NULL ) {
+  fprintf ( stderr, "\ndynamic memory allocation failed\n");
+  exit (EXIT_FAILURE);
+}
+
+"" ---------------------------------------------------------------------
+
+sizeof --> sizeof (`<TYPE>`)
+
+"" ---------------------------------------------------------------------
+
+assert --> assert (`<...>`);
+
+"" ---------------------------------------------------------------------
+
+filein -->
+
+FILE  *`<input-file>`;      /* input-file pointer */
+
+char  *`<input-file>`_file_name = "`<...>`";      /* input-file name */ /* use extension within double quotes */
+
+
+`<input-file>`  = fopen( `<input-file>`_file_name, "r" );
+if ( `<input-file>`==NULL ) {
+  fprintf ( stderr, "\ncouldn't open file '%s'; %s\n", `<input-file>`_file_name,  strerror(errno) );
+  exit (EXIT_FAILURE);
+}
+
+else if ( `<input-file>`!=NULL ) {
+  fprintf ( stderr, "\nopened file '%s'; %s\n", `<input-file>`_file_name,  strerror(errno) );
+
+  `<-continue_here->`
+
+    if ( fclose (`<input-file>`)==EOF )  {  /* close input file */
+      fprintf ( stderr, "\ncouldn't close file '%s'; %s\n", `<input-file>`_file_name,  strerror(errno) );
+      exit (EXIT_FAILURE);
+    }
+}
+
+"" ---------------------------------------------------------------------
+
+fileout -->
+
+FILE  *`<output-file>`;      /* output-file pointer */
+
+char  *`<output-file>`_file_name = "`<...>`";      /* output-file name */ /* use extension within double quotes */
+
+
+`<output-file>` = fopen( `<output-file>`_file_name, "w" );
+if ( `<output-file>`==NULL ) {
+  fprintf ( stderr, "\ncouldn't open file '%s'; %s\n", `<output-file>`_file_name,  strerror(errno) );
+  exit (EXIT_FAILURE);
+}
+
+else if ( `<output-file>`!=NULL ) {
+  fprintf ( stderr, "\nopened file '%s'; %s\n", `<output-file>`_file_name,  strerror(errno) );
+
+  `<-continue_here->`
+
+    if ( fclose (`<output-file>`)==EOF )  {  /* close output file */
+      fprintf ( stderr, "\ncouldn't close file '%s'; %s\n", `<output-file>`_file_name,  strerror(errno) );
+      exit (EXIT_FAILURE);
+    }
+}
+
+"" ---------------------------------------------------------------------
+
+fprintf --> fprintf ( `<file-pointer>`,  "\n",  `<...>`  );
+
+"" ---------------------------------------------------------------------
+
+fscanf --> fscanf ( `<file-pointer>`,  "`<...>`",  &`<...>`  );
+
+"" ---------------------------------------------------------------------
+
+in1 -->
+
+#include <errno.h>
+#include <stdint.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <`<...>`>
+#include <`<...>`>
+#include "`<...>`"
+#include "`<...>`"
+
+
+"" ---------------------------------------------------------------------
+
+ffc -->
+
+#ifndef  __THE_FILE_BEING_EDITED_C__
+#define  __THE_FILE_BEING_EDITED_C__
+
+
+`<MACRO, global variables, etc..>`
+
+
+#include <errno.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <`<...>`>
+#include <`<...>`>
+#include "`<...>`"
+#include "`<...>`"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+  `<function prototype>`
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  /* __THE_FILE_BEING_EDITED_C__ */
+
+
+"" ---------------------------------------------------------------------
+
+def --> defined( `<...>` )
+
+"" ---------------------------------------------------------------------
+
+und --> #undef `<...>`
+
+"" ---------------------------------------------------------------------
+
+ifm -->
+
+#if  `<conditions like ||, &&, !, !=, <, >, <=, >= etc. can be used only with #if and #elif macro>`
+       `<...>`
+#endif
+
+"" ---------------------------------------------------------------------
+
+er --> #error  "`<write everything within double_quotes>`"
+
+"" ---------------------------------------------------------------------
+
+ifd -->
+
+#ifdef  `<...>`
+       `<...>`
+#endif
+
+"" ---------------------------------------------------------------------
+
+ifn -->
+
+#ifndef  `<...>`
+       `<...>`
+#endif
+
+"" ---------------------------------------------------------------------
+
+elm -->
+
+#else
+       `<Take_the_Steps_after_#else..>`
+
+"" ---------------------------------------------------------------------
+
+eli -->
+
+#elif `<conditions like ||, &&, !, !=, <, >, <=, >= etc. can be used with this macro, since #if is associated>`
+
+"" ---------------------------------------------------------------------
+
+en --> #endif
+
+"" ---------------------------------------------------------------------
+
+lin --> #line `<...>`
+
+"" ---------------------------------------------------------------------
+
+pra --> #pragma  `<...>`
+
+"" ---------------------------------------------------------------------
+
+"" ---------------------------------------------------------------------
 " C++ templates
-usi
-in2
-cout
-cin1
-cin2
+""
+"" ---------------------------------------------------------------------
+"" ---------------------------------------------------------------------
+
+usi --> using namespace `<std>`;
+
+"" ---------------------------------------------------------------------
+
+in2 -->
+
+#include <cerrno>
+#include <iostream>
+#include <vector>
+#include <ios>
+#include <ostream>
+#include <string>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <`<...>`>
+#include <`<...>`>
+#include "`<...>`"
+#include "`<...>`"
+
+"" ---------------------------------------------------------------------
+
+cout --> std::cout << `<...>` << std::endl;
+
+"" ---------------------------------------------------------------------
+
+cin1 --> std::cin >> `<...>`;
+
+"" ---------------------------------------------------------------------
+
+cin2 --> std::cin.`<...>`;
+
+"" ---------------------------------------------------------------------
+
 " common templates
-xt
+xt --> 2022-08-29 18:31:41
+
+"" ---------------------------------------------------------------------
+
+If you've generated tags in directories containing system header files,
+the Code_complete plugin will also complete
+function arguments from the tags files.
+
+Example:
+
+#include <bsd/string.h>
+
+strlcpy(
+
+CTRL+Enter
+
+strlcpy(`<char * dst>`,`<const char * src>`,`<size_t siz>`)
+
 ```
 
 [Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
