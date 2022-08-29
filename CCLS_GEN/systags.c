@@ -27,6 +27,7 @@
   Run: source $HOME/.config/fish/config.fish to reload the configuration.
   Now, compile this program and run the command given below.
   install -m 755 systags $HOME/.local/bin
+  Use: Enter a directory, then run 'systags' without quotes.
 */
 
 // Restrict to UNIX-like systems only
