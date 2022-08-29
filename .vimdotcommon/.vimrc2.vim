@@ -278,13 +278,11 @@ filetype plugin on " enable plugins
 "   put to command :set omnifunc? and see what type of completion is in current use
 
 
-
-
-
 " -----------------------------------------------------------------------------------
 set tags+=./tags;/
 set path+=./;/
 " -----------------------------------------------------------------------------------
+
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set guioptions+=b "Bottom Scrollbar always turned on
@@ -1483,11 +1481,11 @@ set tags+=./tags;/.
 set path+=./;/
 " ------------------------------- Common Tags-----------
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
-" if has("win64") || has("win32") || has("win16") || has("win32unix")
-"   source $HOME\/\.vimdotwin\/\.set_tags_n_set_paths.txt
-" else
-"   source $HOME\/\.vimdotlinux\/\.set_tags_n_set_paths.txt
-" endif
+if has("win64") || has("win32") || has("win16") || has("win32unix")
+  source $HOME\/\.vimdotwin\/\tagspath.txt
+else
+  source $HOME\/\.vimdotlinux\/\tagspath.txt
+endif
 
 
 " =======================================================================
@@ -1547,8 +1545,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'normen/vim-pio'    -- PlatformIO MCU Development - will be tested later.
-" Plug 'stevearc/vim-arduino' -- Arduino MCU Development - will be tested later.
+" Plug 'normen/vim-pio'    " -- PlatformIO MCU Development - will be tested later.
+" Plug 'stevearc/vim-arduino' " -- Arduino MCU Development - will be tested later.
 " ************ AFTER INSTALLATION:
 " :CocInstall coc-json
 " :CocInstall coc-clangd
@@ -1581,7 +1579,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
 " Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git'
 " Plug 'https://github.com/vim-scripts/AutoComplPop.git'
-" Plug 'https://github.com/Pinaki82/code_complete.git'
+Plug 'https://github.com/Pinaki82/code_complete.git'
 
 "                  ------------------- Tabnine
 "                 if g:osdetected != "Windows"
