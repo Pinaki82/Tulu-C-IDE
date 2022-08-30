@@ -1,4 +1,4 @@
-// Last Change: 2022-08-29  Monday: 02:16:34 AM
+// Last Change: 2022-08-30  Tuesday: 07:18:28 PM
 
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all systags.c -o systags
@@ -8,6 +8,7 @@
   Then rename the generated files:
   .ccls
   compile_flags.txt
+  tagspath.txt
 */
 
 /*
@@ -176,10 +177,22 @@ void ccls(int *consent) {
     system("rm linuxsys.ccls.txt");
   }
 
+  if((fp4 = fopen("linux.tagspath.txt", "r")) != NULL) { // file exists
+    system("rm linux.tagspath.txt");
+  }
+
   static const char filename01[] = "linuxsys.ccls.txt";
   FILE *file01 = fopen(filename01, "w");
 
   if(file01 == NULL) {  // checking for errors
+    printf("couldn't open the \n");
+    exit(EXIT_FAILURE);
+  }
+
+  static const char filename02[] = "linux.tagspath.txt";
+  FILE *file02 = fopen(filename02, "w");
+
+  if(file02 == NULL) {  // checking for errors
     printf("couldn't open the \n");
     exit(EXIT_FAILURE);
   }
@@ -249,6 +262,27 @@ void ccls(int *consent) {
     "cd /usr/include/x86_64-linux-gnu && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
     "cd /usr/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
   };
+  char vim_tags[9][100] = {
+    "set tags+=/usr/include/c++/XXXX/tags;/",
+    "set tags+=/usr/include/x86_64-linux-gnu/c++/XXXX/tags;/",
+    "set tags+=/usr/include/c++/XXXX/backward/tags;/",
+    "set tags+=/usr/lib/gcc/x86_64-linux-gnu/XXXX/include/tags;/",
+    "set tags+=/usr/local/include/tags;/",
+    "set tags+=/usr/include/x86_64-linux-gnu/tags;/",
+    "set tags+=/usr/include/tags;/",
+    "set tags+=./tags;/",
+    "",
+  };
+  char vim_tags_searchpath[8][100] = {
+    "set path+=/usr/include/c++/XXXX/;/",
+    "set path+=/usr/include/x86_64-linux-gnu/c++/XXXX/;/",
+    "set path+=/usr/include/c++/XXXX/backward/;/",
+    "set path+=/usr/lib/gcc/x86_64-linux-gnu/XXXX/include/;/",
+    "set path+=/usr/local/include/;/",
+    "set path+=/usr/include/x86_64-linux-gnu/;/",
+    "set path+=/usr/include/;/",
+    "set path+=./;/",
+  };
 
   for(int i = 0; i < 45 ; i += 1) {
     fprintf(file01, "%s\n", *(prepend_2_final + i));
@@ -281,7 +315,18 @@ void ccls(int *consent) {
     }
   }
 
+  for(int i = 0; i < 9 ; i += 1) {
+    result = replaceWord((*(vim_tags + i) + 0), xxxx, num_str);
+    fprintf(file02, "%s\n", result);
+  }
+
+  for(int i = 0; i < 8 ; i += 1) {
+    result = replaceWord((*(vim_tags_searchpath + i) + 0), xxxx, num_str);
+    fprintf(file02, "%s\n", result);
+  }
+
   fclose(file01);
+  fclose(file02);
 }
 
 char *replaceWord(const char *s, const char *oldW, const char *newW) {
