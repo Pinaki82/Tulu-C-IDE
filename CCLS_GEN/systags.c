@@ -1,4 +1,4 @@
-// Last Change: 2022-08-30  Tuesday: 07:18:28 PM
+// Last Change: 2022-08-30  Tuesday: 09:04:57 PM
 
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all systags.c -o systags
@@ -254,13 +254,13 @@ void ccls(int *consent) {
     "-isystem /usr/include",
   };
   char dir_2_entr[7][400] = {
-    "cd /usr/include/c++/XXXX && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/include/x86_64-linux-gnu/c++/XXXX && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/include/c++/XXXX/backward && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/lib/gcc/x86_64-linux-gnu/XXXX/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/local/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/include/x86_64-linux-gnu && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
-    "cd /usr/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtdeglmsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -I \"_GLIBCXX_BEGIN_NAMESPACE_VERSION _GLIBCXX_END_NAMESPACE_VERSION _GLIBCXX_VISIBILITY+\" -f tags * ",
+    "cd /usr/include/c++/XXXX && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/include/x86_64-linux-gnu/c++/XXXX && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/include/c++/XXXX/backward && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/lib/gcc/x86_64-linux-gnu/XXXX/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/local/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/include/x86_64-linux-gnu && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
+    "cd /usr/include && sudo ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ",
   };
   char vim_tags[9][100] = {
     "set tags+=/usr/include/c++/XXXX/tags;/",
