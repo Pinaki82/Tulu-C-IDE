@@ -6,6 +6,6 @@
 - compile_flags.txt
 - tagspath.txt
 
-The program can also generate tags in the 'include' directories of the SDKs mentioned.
+The program can also generate 'tags' (ctags is a dependency) in the 'include' directories of the SDKs mentioned.
 
 Read the source for more info.
