@@ -1,4 +1,4 @@
-// Last Change: 2022-09-01  Thursday: 03:48:16 PM
+// Last Change: 2022-09-01  Thursday: 08:38:35 PM
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all arduheaders.c -o arduheaders
   Use (GDB):  gdb --args arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a n
@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
   printf("3. full path = $HOME/.arduino15/ (could be .arduino16 in the future)\n");
   printf("4. a) t -- > Generate tags b) any other char -- > do not generate tags\n");
   printf("For more information, consult the documentation or read the source file.\n");
-  printf("no. of argc %d. no. of user supplied argc %d.\n", argc, (argc -1));
+  printf("no. of argc %d. no. of user supplied argc %d.\n", argc, (argc - 1));
 
   if(argc == 6) { // the last argument is a null char generated from the user input. the first one is the prog. name
     printf("The arguments supplied are:\n1. %s\n2. %s\n3. %s\n4. %s\n5. %s\n", *(argv + 1), *(argv + 2), *(argv + 3), *(argv + 4), *(argv + 5));
@@ -581,7 +581,14 @@ void gen_tags(void) {
   char _cd[] = "cd ";
   char newline[] = "\n";
   char for_chngng_dir[11000];
-  char ctagscmd[400] = "ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ";
+  //char ctagscmd[400] = "ctags -R --sort=yes --c-kinds=+pxfvtdeglmsu --c++-kinds=+pxfvtcdeglmnsu --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+iaSmz --extras=+qf -f tags * ";
+  /*
+    https://www.tutorialspoint.com/unix_commands/ctags.htm
+    ctags --list-kinds
+    ctags --list-fields
+    ctags --list-extras
+  */
+  char ctagscmd[400] = "ctags -R --sort=yes --c-kinds=+pfhd --c++-kinds=+pfhd --languages=C,C++ --langmap=C:.c.h.ino.pde --langmap=C++:+.tcc..C.h.c.cpp.hpp.c++.cc.cp.cxx.h++.hh.hp.hxx.ino.pde --fields=+lSmz --extras=+f -f tags * ";
   //char cwd[5000]; // https://stackoverflow.com/questions/16285623/how-to-get-the-path-to-the-current-file-pwd-in-linux-from-c
   //char cwd_hold[5000]; // https://stackoverflow.com/questions/16285623/how-to-get-the-path-to-the-current-file-pwd-in-linux-from-c
   char ctags_total[15000];
