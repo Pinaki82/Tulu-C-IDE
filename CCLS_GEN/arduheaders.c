@@ -1,4 +1,4 @@
-// Last Change: 2022-08-31  Wednesday: 11:35:52 PM
+// Last Change: 2022-09-01  Thursday: 03:48:16 PM
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all arduheaders.c -o arduheaders
   Use (GDB):  gdb --args arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a n
@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
   char yesno;
   printf("Prog. name: %s\n", *argv);
   printf("Usage: ./arduheaders target mcu Path_to_th_platform a t\n");
-  printf("Supply as arguments 1. the target 2. the exact mcu 3. the full path to\n   .arduinoXX or .platformio\n  found in your $HOME folder\n  4. a (Arduino) or p (PlatformIO)  and 5. t (for generating tags)\n  before running this program.\n");
+  printf("Supply as arguments\n1. the target\n2. the exact mcu\n3. the full path to\n   .arduinoXX or .platformio\nfound in your $HOME folder\n4. a (Arduino) or p (PlatformIO)\nand\n5. t (for generating tags)\nbefore running this program.\n");
   printf("Example 1: ./arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a t\n");
   printf("Or\n");
   printf("Example 2: ./arduheaders avr -mcpu=atmega328p $HOME/.platformio/ a t\n");
@@ -118,10 +118,10 @@ int main(int argc, char **argv) {
   printf("3. full path = $HOME/.arduino15/ (could be .arduino16 in the future)\n");
   printf("4. a) t -- > Generate tags b) any other char -- > do not generate tags\n");
   printf("For more information, consult the documentation or read the source file.\n");
-  printf("no. of argc %d\n", argc);
+  printf("no. of argc %d. no. of user supplied argc %d.\n", argc, (argc -1));
 
   if(argc == 6) { // the last argument is a null char generated from the user input. the first one is the prog. name
-    printf("The arguments supplied are:\n%s\n%s\n%s\n%s\n%s\n", *(argv + 1), *(argv + 2), *(argv + 3), *(argv + 4), *(argv + 5));
+    printf("The arguments supplied are:\n1. %s\n2. %s\n3. %s\n4. %s\n5. %s\n", *(argv + 1), *(argv + 2), *(argv + 3), *(argv + 4), *(argv + 5));
     path_2_ardu_or_pio = *(argv + 3);
     printf("SDK folder: %s\n", path_2_ardu_or_pio);
   }
@@ -132,11 +132,35 @@ int main(int argc, char **argv) {
   }
 
   else {
-    printf("Expected arguments were 4 (four).\n");
+    printf("Expected arguments were 5 (five).\n");
     exit(EXIT_FAILURE);
   }
 
-  printf("Are you sure that all your inputs are 1. in proper order and 2. accurate? (y/n)\n");
+  char *a_or_p = *(argv + 4);
+
+  if((*a_or_p == 'a') && (strstr(*(argv + 3), "arduino") == NULL)) {
+    printf("The directory you typed does not appear to be an Arduino SDK directory\n");
+    printf("Do you still want to proceed? ... (y/n)\n");
+    scanf("%c", &yesno);
+
+    if(!((yesno == 'y') || (yesno == 'Y'))) {
+      printf("Please start over\n");
+      exit(EXIT_FAILURE);
+    }
+  }
+
+  else if((*a_or_p == 'p') && (strstr(*(argv + 3), "platformio") == NULL)) {
+    printf("The directory you typed does not appear to be a PlatformIO SDK directory\n");
+    printf("Do you still want to proceed? ... (y/n)\n");
+    scanf("%c", &yesno);
+
+    if(!((yesno == 'y') || (yesno == 'Y'))) {
+      printf("Please start over\n");
+      exit(EXIT_FAILURE);
+    }
+  }
+
+  printf("Are you sure that all your inputs are\n1. in proper order\nand\n2. accurate? (y/n)\n");
   scanf("%c", &yesno);
 
   if(!((yesno == 'y') || (yesno == 'Y'))) {
