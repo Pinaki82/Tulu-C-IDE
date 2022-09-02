@@ -1,4 +1,4 @@
-// Last Change: 2022-09-01  Thursday: 08:38:35 PM
+// Last Change: 2022-09-02  Friday: 10:00:44 PM
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all arduheaders.c -o arduheaders
   Use (GDB):  gdb --args arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a n
@@ -15,6 +15,17 @@
    1) .ccls
    2) compile_flags.txt
    3) tagspath.txt
+
+   NOTE: 'tagspath.txt' for PlatformIO SDK won't be generated.
+   You can always run something like
+   pio project init --ide vim --board uno --board nodemcuv2 --board teensy31
+   which will generate a compile_flags.txt containing the 'include'
+   directories of the PlatformIO SDK. Although you'll need a separate
+   compile_flags.txt and a .ccls in your 'src' directory,
+   the auto-generated compile_flags.txt will provide you with the
+   directory list you need for accessing 'tags' database files.
+   Plus, 'ctags' DB files can always be generated regardless of the
+   SDK to aid the Vim plugin code_complete.vim.
 */
 
 /*
@@ -61,7 +72,7 @@
   # --------------
   Run: source $HOME/.config/fish/config.fish to reload the configuration.
   Now, compile this program and run the command given below.
-  install -m 755 arduheaders $HOME/.local/bin
+  install -m +x arduheaders $HOME/.local/bin
   Use: Enter a directory, then type 'arduheaders' (without quotes),
   e.g., arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a t
   then run the prog.
@@ -270,7 +281,12 @@ int main(int argc, char **argv) {
     printf("Complete.\n");
   }
 
-  vim_tagspath();
+  if(*argv[4] != 'p') {
+    printf("Generating tags db...\n");
+    vim_tagspath();
+    printf("Complete.\n");
+  }
+
   tmp_file_cleanup();
   return 0;
 }
@@ -676,8 +692,8 @@ void vim_tagspath(void) {
 
     char *intrchng = line;
     intrchng[strlen(intrchng) - 1] = 0; // https://stackoverflow.com/questions/9628637/how-can-i-get-rid-of-n-from-string-in-c // foo[strlen(foo) - 1] = 0;
-    fprintf(file02, "\n%s%s%s", "set tags+=\"", intrchng, "/tags\";/");
-    fprintf(file02, "\n%s%s%s", "set path+=\"", intrchng, "/\";/");
+    fprintf(file02, "\n%s%s%s", "set tags+=", intrchng, "/tags;/");
+    fprintf(file02, "\n%s%s%s", "set path+=", intrchng, "/;/");
     i++;
     j = 0;
 
