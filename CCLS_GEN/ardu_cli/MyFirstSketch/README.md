@@ -42,7 +42,9 @@ Verify that it has been installed properly.
 arduino-cli
 ```
 
-Arduino will place a folder `bin` in your `$HOME` directory. Enter `~/bin`
+Arduino will place a folder `bin` into your `$HOME` directory. Enter `~/bin`
+
+However, Arduino-CLI-SDK will be installed in `$HOME/.arduino15/`. The folder `$HOME/bin` will contain only the program `arduino-cli`. All other files will be placed into `$HOME/.arduino15/`.
 
 ```
 cd ~/bin
@@ -90,7 +92,7 @@ exit
 
 How will Arduino know that you've installed it?
 
-Drop the following lines to your .bash_aliases or .bashrc.
+Drop the following lines to your `.bash_aliases` or `.bashrc`.
 
 ```
 any_gui_text_editor_geany_mousepad_gedit_kate ~/.bash_aliases
@@ -131,11 +133,11 @@ export PATH="$HOME/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin
 export PATH
 ```
 
-You'll need Avrdude to upload compiled codes to microcontroller boards.
+You'll need 'Avrdude' to upload compiled codes to microcontroller boards. 
 
-The shells mentioned still don't have a clue of the location of that 'avrdude' program.
+The shells mentioned still don't have a clue of the location of that 'avrdude' program. The shells don't know where they should look for `avr-gcc` and `avr-g++` yet.
 
-To make it (avrdude) available to the shells you'll have to create symbolic links (commonly referred to as symlinks). Add the path to the avr-gcc toolchain (two folders, avr-gcc and avr-g++) to `/usr/bin`.
+To make those three programs (`avrdude`, `avr-gcc` and `avr-g++`) available to the shells, you'll have to create symbolic links (commonly referred to as symlinks). Add the links to the programs `avr-gcc` , `avr-g++`, and `avrdude` from the 'avr-gcc toolchain' to `/usr/bin`. The link to `avrdude` should go to `$HOME./local/bin`.
 
 ```
 sudo ln -s ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc /usr/bin/avr-gcc
@@ -144,6 +146,12 @@ sudo ln -s ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7
 ```
 sudo ln -s ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++ /usr/bin/avr-g++
 ```
+
+```
+ln -s ~/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude ~/.local/bin/avrdude
+```
+
+Now, Bash and Fish can find those programs.
 
 Update the core toolchains and libraries of the SDK.
 
@@ -164,6 +172,8 @@ For example, if we want to find the board Arduino Uno R3,
 ```
 arduino-cli core search uno
 ```
+
+`uno` is the board identifier. Visit Arduino's official site to get more information about other supported boards.
 
 The output should look somewhat similar to this:
 
@@ -206,7 +216,7 @@ Port       Protocol Type        Board Name FQBN Core
 
 Time to create an Arduino sketch.
 
-Go to any preferred location in your hard drive. R-click inside a directory and choose to open a terminal in that location. For example, the name you want to have for your first Arduino sketch is MyFirstSketch, you'll have to type MyFirstSketch after `arduino-cli sketch new`.
+Go to any preferred location in your hard drive. R-click inside a directory and choose to open a terminal in that location. For example, if the name you want to have for your first Arduino sketch is MyFirstSketch, you'll have to type MyFirstSketch after `arduino-cli sketch new`.
 
 ```
 arduino-cli sketch new MyFirstSketch
@@ -254,7 +264,7 @@ https://arduino.github.io/arduino-cli/0.26/getting-started/
 
 ## Autocompletion
 
-GVim's autocompletion will be provided by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It utilises LLVM Clang's backend LSP (Language Server Protocol) to provide completion on the fly as you type. [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) needs Clang in the background, so Clang must be found on the system. [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) requires some basic information to show the search queries. This information must be loaded from two configuration files, namely, `.ccls` and `compile_flags.txt`.
+GVim's autocompletion will be provided by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It utilises [LLVM](https://llvm.org/) [Clang](https://clang.llvm.org/)'s backend LSP ([Language Server Protocol](https://en.wikipedia.org/wiki/Language_Server_Protocol)) to provide completion on the fly as you type. [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) needs Clang in the background, so Clang must be found on the system. [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) requires some basic information to show the search queries. This information must be loaded from two configuration files, namely, `.ccls` and `compile_flags.txt`.
 A basic `.ccls` file for Arduino-CLI should look like this:
 
 ```
@@ -403,9 +413,9 @@ clang
 -I/home/YOUR_USERNAME/.arduino15/packages/arduino/hardware/avr/1.8.5/firmwares/wifishield/wifi_dnld/src/CONFIG
 ```
 
-This file contains some compilation flags required by 'clangd', Clang's Language Server backend, also the directories containing Arduino and AVR-GCC's header files.
+This file contains some compilation flags required by '[clangd](https://clangd.llvm.org/)', Clang's Language Server backend, also the list of directories containing Arduino and [AVR-GCC](https://gcc.gnu.org/wiki/avr-gcc)'s header files.
 
-And the same goes for `compile_flags.txt`. Here you'll have one instance of it.
+And the same goes for `compile_flags.txt`. Here you have one instance of it.
 
 ```
 -Wall
@@ -543,13 +553,9 @@ avr
 -I/home/YOUR_USERNAME/.arduino15/packages/arduino/hardware/avr/1.8.5/firmwares/wifishield/wifi_dnld/src/CONFIG
 ```
 
-```
-arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a t
-```
-
 Notice that the lines `%c --sysroot=$HOME/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/` and `--sysroot=$HOME/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/` are optional.
 
-Next, have a look at the following lines in `.ccls` and `compile_flags.txt` (essentially the same, without the `%c` flag):
+Next, have a look at the following lines in `.ccls` and `compile_flags.txt` (the latter being essentially the same, without the `%c` flag):
 
 ```
 %c -target
@@ -565,7 +571,7 @@ avr
 
 It may vary.
 
-In the case of PlatforIO SDK, the lines will look like this,
+In the case of PlatformIO SDK, the lines will look like this,
 
 ```
 %c --target=avr
@@ -579,7 +585,7 @@ In the case of PlatforIO SDK, the lines will look like this,
 
 respectively.
 
-To get an idea about the supported microcontroller architecture and specific MCU (microcontroller unit), type these commands given below in a terminal emulator. In this case, the `target` is the `avr` controllers. `-mcpu=atmega328p` specifies the precise MCU.
+To get an idea about the supported microcontroller architecture and specific MCU (microcontroller unit), type these commands given below in a terminal emulator. In this case, the `target` is the `avr` controllers. `-mcpu=atmega328p` specifies the precise MCU. The LSP functionality is provided by 'clang', so we must ensure the compiler for a controller is supported by 'clang'.
 
 ```
 llvm-config --host-target
@@ -609,7 +615,11 @@ For example, llc -mcpu=mycpu -mattr=+feature1,-feature2
 
 Here's the million-dollar question. Will I have to manually find all the directories containing AVR-GCC's header files and keep track of them in a note every time I update/remove a particular board?
 
-I encountered the same situation and asked myself the same question. The answer is simple. Run the program 'arduheaders' inside the directory containing the sketch file (*.ino) with appropriate options. R-click inside a directory and open a terminal there. In our case, the board is Arduino Uno R3 which essentially contains an AVR MCU, and the specific MCU model is ATMEGA328P. Arduino-CLI is typically installed in the $HOME folder. The folder of the SDK is `.arduino15` as of today. By now, we know all the information we need to generate a `.ccls` and a `compile_flags.txt`.
+I encountered the same situation and asked myself the same question. The answer is simple. 
+
+> NOTE: Find a program 'arduheaders'. It's already been furnished. Find it in the 'CCLS_GEN' folder. Read the instructions written under comments, compile the code and install the program.
+
+Run the program 'arduheaders' inside the directory containing the sketch file (*.ino) with appropriate options. R-click inside a directory and open a terminal there. In our case, the board is Arduino Uno R3 which essentially contains an AVR MCU, and the specific MCU model is ATMEGA328P. Arduino-CLI is typically installed in the $HOME folder. The folder of the SDK is `.arduino15` as of today. By now, we know all the information we need to generate a `.ccls` and a `compile_flags.txt`.
 
 So, in the terminal, type:
 
@@ -621,7 +631,7 @@ The arguments 'arduheaders' takes:
 
 0) The name of the prog. itself (automatic. you won't be able to provide this argument)
 
-1) `avr`: The name of the MCU architecture
+1) `avr`/`arm`: The name of the MCU architecture
 
 2) `-mcpu=atmega328p`: The flag that tells the LSP to provide completion for a specific MCU model. Here, it is ATMEGA328p
 
@@ -631,11 +641,11 @@ The arguments 'arduheaders' takes:
 
 4) `a` or `p`: `a` means Arduino-CLI SDK. `p` means PlatformIO-Core-CLI SDK
 
-5) `t`: The flag t will generate 'tags' with ctags in the SDK's 'include' directories
+5) `t`: The flag `t` will generate 'tags' with `ctags` in the SDK's 'include' directories
 
 The last argument is a newline char reciprocated as a NULL terminator.
 
-If you're running Arduino-CLI for the first time and didn't create 'tags' files in the SDK's 'include' directories, use the `t` option. After updating/removing board support, run 'arduheaders' with the `t` option. Otherwise, you won't need to generate 'tags' file in the system directories (treat the SDK's directories as if they were your system's directories). In that case, when you don't want to generate 'tags', type 'n' or any other character, just not 't'.
+If you're running Arduino-CLI for the first time and didn't create 'tags' files in the SDK's 'include' directories, use the `t` option. After updating/removing board support, run 'arduheaders' with the `t` option. Otherwise, you won't need to generate 'tags' file in the system directories (treat the SDK's directories as if they were your system's directories). In that case, when you don't want to generate 'tags', type `n` or any other character, just not 't'.
 
 'arduheaders' will put three files in your sketch folder.
 
@@ -650,31 +660,31 @@ Rename those files to
 
 Then, copy all the contents of the files 'arduvim-tagspath.txt' to the file `.lvimrc`.
 
-You may ask me, what is the purpose of generating 'tags' files nowadays when we are getting the completion hint from the LSP? Well, you can use those ctags database files with code_complete.vim plugin. Do not generate 'tags' if you don't need anything related to old-school 'ctags'. It's optional.
+You may ask me, what is the purpose of generating 'tags' files nowadays when we are getting the completion hint from the LSP? Well, you can use those ctags database files with 'code_complete.vim' plugin. Do not generate 'tags' if you don't need anything related to old-school 'ctags'. It's optional.
 
 ## Edit your sketches with GVim:
 
 GVim can recognise `*.ino` files as C++ files. The problem is however, that it is hard to tell the LSP plugins to recognise the `*.ino` files as C++ files. Solution? Rename the file, then edit. Before compiling the code, rename the sketch again. INO --> CPP, then, CPP --> INO. Sorry! It's something not in our control at the moment.
 
-Before compilation (while you plan to edit) -> rename
-
-```
-mv MyFirstSketch/MyFirstSketch.cpp MyFirstSketch/MyFirstSketch.ino
-```
-
-After compilation (you'll be able to edit again) -> rename
+For editing -> rename
 
 ```
 mv MyFirstSketch/MyFirstSketch.ino MyFirstSketch/MyFirstSketch.cpp
 ```
 
+Before compilation -> rename
+
+```
+mv MyFirstSketch/MyFirstSketch.cpp MyFirstSketch/MyFirstSketch.ino
+```
+
 Now, try to edit your sketch. Type something and see if the LSP plugin gives you any completion hints.
 
-![Screenshot at 18-06-56](https://user-images.githubusercontent.com/16861933/188205843-3f6328d5-8ea4-4b30-bca4-dfdae5be3f4e.jpg)
+![Screenshot at 18-06-56](images/Screenshot at 18-06-56.jpg)
 
 Here, if you roll your mouse pointer over the include section, you'll notice that it says 'Arduino.h' is not found. It's not vim-lsp's fault. I commented out the line `Plug 'https://github.com/dense-analysis/ale.git'` in my Vim config file `.vimrc2.vim` to prevent it from being loaded at startup. The notification disappeared.
 
-![Screenshot at 18-24-04](https://user-images.githubusercontent.com/16861933/188205949-4878660a-6aa4-46c2-aeb1-02a1670fc652.jpg)
+![Screenshot at 18-24-04](images/Screenshot at 18-24-04.jpg)
 
 'Arduino.h' includes 'HardwareSerial.h' so the hint for the functions in 'HardwareSerial.h'  is shown by the LSP. The two angled brackets `>>` you see tell us that the completion hint is available for the typed string and the line is being edited.
 
