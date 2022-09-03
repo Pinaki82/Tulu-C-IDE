@@ -680,11 +680,11 @@ mv MyFirstSketch/MyFirstSketch.cpp MyFirstSketch/MyFirstSketch.ino
 
 Now, try to edit your sketch. Type something and see if the LSP plugin gives you any completion hints.
 
-![Screenshot at 18-06-56](images/Screenshot at 18-06-56.jpg)
+![Screenshot at 18-06-56](https://user-images.githubusercontent.com/16861933/188205843-3f6328d5-8ea4-4b30-bca4-dfdae5be3f4e.jpg)
 
 Here, if you roll your mouse pointer over the include section, you'll notice that it says 'Arduino.h' is not found. It's not vim-lsp's fault. I commented out the line `Plug 'https://github.com/dense-analysis/ale.git'` in my Vim config file `.vimrc2.vim` to prevent it from being loaded at startup. The notification disappeared.
 
-![Screenshot at 18-24-04](images/Screenshot at 18-24-04.jpg)
+![Screenshot at 18-24-04](https://user-images.githubusercontent.com/16861933/188205843-3f6328d5-8ea4-4b30-bca4-dfdae5be3f4e.jpg)
 
 'Arduino.h' includes 'HardwareSerial.h' so the hint for the functions in 'HardwareSerial.h'  is shown by the LSP. The two angled brackets `>>` you see tell us that the completion hint is available for the typed string and the line is being edited.
 
