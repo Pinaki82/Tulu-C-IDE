@@ -1,0 +1,148 @@
+Linux:
+
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+
+
+
+.bash_aliases
+
+# Arduino-CLI
+export PATH="$HOME/bin/:$PATH"
+# arduino-cli completion bash > arduino-cli.sh
+source ~/bin/arduino-cli.sh
+# avrdude (for uploading HEX files to boards)
+# ln -s ~/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude ~/.local/bin/avrdude
+export PATH="$HOME/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/:$PATH"
+
+
+config.fish
+
+# avrdude (for uploading HEX files to boards)
+# ln -s ~/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude ~/.local/bin/avrdude
+export PATH="$HOME/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/:$PATH"
+export PATH
+
+# PlatformIO Core CLI
+export PATH="$HOME/.platformio/penv/bin/:$PATH"
+export PATH
+
+# $HOME/.local/bin
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH
+
+
+
+# PlatformIO Core CLI
+# ln -s ~/.platformio/penv/bin/platformio ~/.local/bin/platformio
+# ln -s ~/.platformio/penv/bin/pio ~/.local/bin/pio
+# ln -s ~/.platformio/penv/bin/piodebuggdb ~/.local/bin/piodebuggdb
+export PATH="$HOME/.platformio/penv/bin/:$PATH"
+
+
+
+platformio 
+ln -s ~/.platformio/penv/bin/platformio ~/.local/bin/platformio
+ln -s ~/.platformio/penv/bin/pio ~/.local/bin/pio
+ln -s ~/.platformio/penv/bin/piodebuggdb ~/.local/bin/piodebuggdb
+
+# Recommended
+curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
+
+sudo service udev restart
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+sudo usermod -a -G dialout $USER
+sudo usermod -a -G plugdev $USER
+
+https://docs.platformio.org/en/latest/core/quickstart.html
+
+pio boards uno
+https://docs.platformio.org/en/latest/boards/atmelavr/uno.html#board-atmelavr-uno
+pio boards teensy
+https://docs.platformio.org/en/latest/boards/teensy/teensy31.html#board-teensy-teensy31
+https://docs.platformio.org/en/latest/integration/ide/vim.html
+
+pio project init --board uno --board nodemcuv2 --board teensy31
+
+pio project init --ide vim --board uno --board nodemcuv2 --board teensy31
+
+add main.cpp
+
+/**
+ * Blink
+ *
+ * Turns on an LED on for one second,
+ * then off for one second, repeatedly.
+ */
+#include "Arduino.h"
+
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 13
+#endif
+
+void setup()
+{
+  // initialize LED digital pin as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{
+  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(LED_BUILTIN, HIGH);
+
+  // wait for a second
+  delay(1000);
+
+  // turn the LED off by making the voltage LOW
+  digitalWrite(LED_BUILTIN, LOW);
+
+   // wait for a second
+  delay(1000);
+}
+
+
+
+
+pio run
+
+.pio/build/
+
+
+
+
+pio run. Process (build) all environments specified in “platformio.ini” (Project Configuration File)
+
+pio run --target upload. Build project and upload firmware to the all devices specified in “platformio.ini” (Project Configuration File)
+
+pio run --target clean. Clean project (delete compiled objects)
+
+pio run -e uno. Process only uno environment
+
+pio run -e uno -t upload. Build project only for uno and upload firmware.
+
+pio run --list-targets
+
+
+https://docs.platformio.org/en/latest/core/userguide/index.html
+
+https://github.com/platformio/platformio-examples/tree/develop
+
+https://docs.platformio.org/en/latest/platforms/atmelavr.html
+
+
+build-cheat-sheet:
+
+all: pio -f -c vim run
+
+upload: pio -f -c vim run --target upload
+
+clean: pio -f -c vim run --target clean
+
+program: pio -f -c vim run --target program
+
+uploadfs: pio -f -c vim run --target uploadfs
+
+update: pio -f -c vim update
+
+Windows:
