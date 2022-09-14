@@ -1,4 +1,4 @@
-// Last Change: 2022-09-14  Wednesday: 12:44:14 PM
+// Last Change: 2022-09-14  Wednesday: 10:21:56 PM
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all arduheaderswin.c -o arduheaders
   Use (GDB):  gdb --args arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a n
@@ -160,8 +160,8 @@ int main(int argc, char **argv) {
   printf("Supply as arguments\n1. the target\n2. the exact mcu\n3. the full path to\n   ArduinoXX or .platformio\nfound in your %%LOCALAPPDATA%% or %%USERPROFILE%% folder\n4. a (Arduino) or p (PlatformIO)\nand\n5. t (for generating tags)\nbefore running this program.\n");
   printf("Example 1: arduheaderswin.exe avr -mcpu=atmega328p %%LOCALAPPDATA%%\\Arduino15 a t\n");
   printf("Or\n");
-  printf("Example 2: arduheaderswin.exe avr -mcpu=atmega328p %%USERPROFILE%%\\.platformio a t\n");
-  printf("Example 3 (to not generate tags): arduheaderswin.exe avr -mcpu=atmega328p %%USERPROFILE%%\\.platformio a n\n");
+  printf("Example 2: arduheaderswin.exe avr -mcpu=atmega328p %%USERPROFILE%%\\.platformio p t\n");
+  printf("Example 3 (to not generate tags): arduheaderswin.exe avr -mcpu=atmega328p %%USERPROFILE%%\\.platformio p n\n");
   printf("Here:\n");
   printf("1. target architecture = avr \n");
   printf("2. mcu = -mcpu=atmega328p (write the accurate info)\n");
