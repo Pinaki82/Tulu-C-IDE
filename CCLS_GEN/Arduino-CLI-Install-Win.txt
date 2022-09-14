@@ -1,0 +1,78 @@
+pacman -S curl
+pacman -S ripgrep
+pacman -S mingw-w64-x86_64-python-pynvim
+pacman -S zip
+
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh | uninstall
+arduino-cli
+cd bin
+arduino-cli completion bash > arduino-cli.sh
+ls
+fish
+arduino-cli completion fish > arduino-cli.fish
+exit
+mkdir -p ~/.config/fish/completions/
+cp ~/bin/arduino-cli.fish ~/.config/fish/completions/
+
+https://www.maketecheasier.com/create-symbolic-links-windows10/
+mklink "E:\PathSymlink_File.txt" "F:\Real_File.txt"
+
+mklink "C:\msys64\mingw64\bin\avr-gcc.exe" "C:\Users\AppuRaja\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\bin\avr-gcc.exe"
+mklink "C:\msys64\mingw64\bin\avr-g++.exe" "C:\Users\AppuRaja\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\bin\avr-g++.exe"
+mklink "C:\msys64\mingw64\bin\avrdude.exe" "C:\Users\AppuRaja\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\bin\avrdude.exe"
+
+
+Windows+R
+systempropertiesadvanced
+Environment Variables -> System Variables -> Path -> Edit -> New
+
+Add to PATH
+C:\Users\AppuRaja\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\bin
+
+bash
+history > dumphist.txt
+fish
+history > fishhist.txt
+exit
+
+https://arduino.github.io/arduino-cli/0.26/installation/
+https://arduino.github.io/arduino-cli/0.26/command-line-completion/
+https://arduino.github.io/arduino-cli/0.26/getting-started/
+
+arduino-cli core update-index
+arduino-cli config init
+arduino-cli sketch new MyFirstSketch
+arduino-cli core update-index
+arduino-cli core search uno
+arduino-cli core install arduino:avr
+arduino-cli core list
+arduino-cli board list
+
+Before compilation - rename
+rename  MyFirstSketch.cpp MyFirstSketch.ino
+
+arduino-cli compile --fqbn arduino:avr:uno MyFirstSketchWin
+arduino-cli compile --fqbn arduino:avr:diecimila:cpu=atmega328 MyFirstSketchWin
+arduino-cli compile --fqbn arduino:avr:uno MyFirstSketchWin --output-dir /SomeDir/compilerout
+
+
+After compilation - rename again
+rename  MyFirstSketch.ino MyFirstSketch.cpp
+
+https://stackoverflow.com/questions/57429802/is-there-a-way-to-use-arduino-cli-to-compile-sketch-ino-to-a-bin-file
+
+avrdude
+avrdude-doc
+dfu-programmer
+
+
+
+%LOCALAPPDATA%\Arduino15
+
+https://stackoverflow.com/questions/2951063/how-do-i-recursively-list-all-files-of-type-mp3-in-a-windows-bat-file
+dir /s/b %LOCALAPPDATA%\Arduino15\*.h
+
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a n
+Or
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a t
