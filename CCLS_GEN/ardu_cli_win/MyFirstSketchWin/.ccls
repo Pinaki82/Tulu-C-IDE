@@ -1,0 +1,137 @@
+clang
+%c -std=c11
+%cpp -std=c++17
+%cpp -stdlib=libc++
+%cpp -stdlib=libstdc++
+%h %hpp --include=Global.h
+-Iinc
+-DMACRO
+
+
+%c -Wall
+%c -Weffc++
+%c -Wextra
+%c -pedantic
+%c -Wfatal-errors
+%c -Winit-self
+%c -Wnon-virtual-dtor
+%c -Winline
+%c -Wmissing-declarations
+%c -Wmissing-include-dirs
+%c -Wundef
+%c -Wredundant-decls
+%c -Wfloat-equal
+%c -Wmain
+%c -Wunreachable-code
+%c -Wshadow
+%c -Wcast-align
+%c -Wswitch-default
+%c -Wswitch-enum
+%c -Wstrict-prototypes
+%c -Wmissing-prototypes
+%c -Wmissing-declarations
+%c -Wnested-externs
+%c -Wformat=2
+%c -Wformat-security
+%c -Wformat-signedness
+%c -Wformat-y2k
+%c -Wconversion
+%c -Weverything
+%c -ferror-limit=0
+%c -ftemplate-backtrace-limit=0
+
+
+%c -target
+%c avr
+%c -mcpu=atmega328p
+
+
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\caterina
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\caterina-Arduino_Robot
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\caterina-LilyPadUSB
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\gemma
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\optiboot
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\bootloaders\stk500v2
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\cores\arduino
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\drivers\FTDI USB Drivers
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\atmegaxxu2\arduino-usbdfu
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\atmegaxxu2\arduino-usbdfu\Board
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\atmegaxxu2\arduino-usbserial
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\atmegaxxu2\arduino-usbserial\Board
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\atmegaxxu2\arduino-usbserial\Lib
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\CONFIG
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\BOARDS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\BOARDS\ARDUINO
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\BOARDS\EVK1105
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\COMPONENTS\MEMORY\DATA_FLASH\AT45DBX
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\COMPONENTS\WIFI\HD
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\CPU\CYCLE_COUNTER
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\EBI\SMC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\EIC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\FLASHC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\GPIO
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\INTC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\PDCA
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\PM
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\RTC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\SPI
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\TC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\DRIVERS\USART
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\DELAY
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-1.3.2\src\include\ipv4\lwip
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-1.3.2\src\include\lwip
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-1.3.2\src\include\netif
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-port-1.3.2\HD\if\include
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-port-1.3.2\HD\if\include\arch
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\LWIP\lwip-port-1.3.2\HD\if\include\netif
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\SERVICES\MEMORY\CTRL_ACCESS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\UTILS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\UTILS\DEBUG
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\UTILS\LIBS\NEWLIB_ADDONS\INCLUDE
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifiHD\src\SOFTWARE_FRAMEWORK\UTILS\PREPROCESSOR
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\CONFIG
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\BOARDS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\BOARDS\ARDUINO
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\BOARDS\EVK1105
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\COMPONENTS\MEMORY\DATA_FLASH\AT45DBX
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\FLASHC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\GPIO
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\INTC
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\PM
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\SPI
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\DRIVERS\USART
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\SERVICES\MEMORY\CTRL_ACCESS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\UTILS
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\UTILS\DEBUG
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\UTILS\LIBS\NEWLIB_ADDONS\INCLUDE
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\firmwares\wifishield\wifi_dnld\src\SOFTWARE_FRAMEWORK\UTILS\PREPROCESSOR
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\EEPROM\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\HID\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\SoftwareSerial\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\SPI\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\Wire\src
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\libraries\Wire\src\utility
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\circuitplay32u4
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\eightanaloginputs
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\ethernet
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\gemma
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\leonardo
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\mega
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\micro
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\robot_control
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\robot_motor
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\standard
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.5\variants\yun
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include\avr
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include\compat
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include\sys
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include\util
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\i686-w64-mingw32\avr\include
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\include\libiberty
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include-fixed
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\install-tools
+-IC:\Users\YOUR_USERNAME\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\install-tools\include

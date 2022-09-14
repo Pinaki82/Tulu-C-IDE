@@ -1,0 +1,10 @@
+tags
+ccls.txt
+0compile_flags.txt
+arduvim-tagspath.txt
+.ccls-cache/.
+compilerout/.
+ccls.txt
+arduvim-tagspath.txt
+*.orig
+*.exe

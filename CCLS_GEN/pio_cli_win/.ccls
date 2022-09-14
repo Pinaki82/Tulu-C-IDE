@@ -1,0 +1,24 @@
+clang
+
+%c -std=gnu11 -fno-fat-lto-objects -Os -Wall -ffunction-sections -fdata-sections -flto -mmcu=atmega328p
+%cpp -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -Wall -ffunction-sections -fdata-sections -flto -mmcu=atmega328p
+
+-ID:/Arduino-CLI-PiO-CLI-WIN/piotestwin/include
+-ID:/Arduino-CLI-PiO-CLI-WIN/piotestwin/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/cores/arduino
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/variants/standard
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/libraries/HID/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/libraries/SPI/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/framework-arduino-avr/libraries/Wire/src
+-IC:/Users/YOUR_USERNAME/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include
+-IC:/Users/YOUR_USERNAME/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed
+-IC:/Users/YOUR_USERNAME/.platformio/packages/toolchain-atmelavr/avr/include
+
+-DPLATFORMIO=60104
+-DARDUINO_AVR_UNO
+-DF_CPU=16000000L
+-DARDUINO_ARCH_AVR
+-DARDUINO=10808
+-D__AVR_ATmega328P__

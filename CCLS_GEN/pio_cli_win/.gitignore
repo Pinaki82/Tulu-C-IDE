@@ -1,0 +1,12 @@
+.pio
+.clang_complete
+.gcc-flags.json
+tags
+ccls.txt
+0compile_flags.txt
+arduvim-tagspath.txt
+.ccls-cache/.
+ccls.txt
+arduvim-tagspath.txt
+*.orig
+*.exe
