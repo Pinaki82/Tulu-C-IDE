@@ -1,4 +1,4 @@
-// Last Change: 2022-09-02  Friday: 10:00:44 PM
+// Last Change: 2022-09-15  Thursday: 09:48:21 AM
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all arduheaders.c -o arduheaders
   Use (GDB):  gdb --args arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a n
@@ -121,8 +121,8 @@ int main(int argc, char **argv) {
   printf("Supply as arguments\n1. the target\n2. the exact mcu\n3. the full path to\n   .arduinoXX or .platformio\nfound in your $HOME folder\n4. a (Arduino) or p (PlatformIO)\nand\n5. t (for generating tags)\nbefore running this program.\n");
   printf("Example 1: ./arduheaders avr -mcpu=atmega328p $HOME/.arduino15/ a t\n");
   printf("Or\n");
-  printf("Example 2: ./arduheaders avr -mcpu=atmega328p $HOME/.platformio/ a t\n");
-  printf("Example 3 (to not generate tags): ./arduheaders avr -mcpu=atmega328p $HOME/.platformio/ a n\n");
+  printf("Example 2: ./arduheaders avr -mcpu=atmega328p $HOME/.platformio/ p t\n");
+  printf("Example 3 (to not generate tags): ./arduheaders avr -mcpu=atmega328p $HOME/.platformio/ p n\n");
   printf("Here:\n");
   printf("1. target architecture = avr \n");
   printf("2. mcu = -mcpu=atmega328p (write the accurate info)\n");
