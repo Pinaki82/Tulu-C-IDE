@@ -1072,6 +1072,10 @@ if has("gui_running")
   if g:osdetected == "Windows"
     :amenu Utilities.notepad :silent!!start "notepad.exe" <CR><Esc><CR>
     :amenu Utilities.Open\ with\ notepad :silent !start "notepad.exe" "%:p" <CR><Esc><CR>
+    :amenu Utilities.Notepad++ :silent!!start /min cmd /c "C:\Program Files\Notepad++\notepad++.exe" <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ Notepad++ :silent !start "C:\Program Files\Notepad++\notepad++.exe" "%:p" <CR><Esc><CR>
+    :amenu Utilities.Notepad2-mod :silent!!start /min cmd /c "C:\Program Files\Notepad2\Notepad2.exe" <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ Notepad2-mod :silent !start "C:\Program Files\Notepad2\Notepad2.exe" "%:p" <CR><Esc><CR>
     fun Win_calculator()
       :silent!!start "calc" <Esc>
     endfun
