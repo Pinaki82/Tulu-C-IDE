@@ -1,4 +1,4 @@
-// Last Change: 2022-09-24  Saturday: 11:32:45 PM
+// Last Change: 2022-09-24  Saturday: 11:51:34 PM
 
 /*
   Compilation (Debug): gcc -g -Wall -Wextra -pedantic -fstack-protector-all systagswin.c -o systagswin
@@ -507,7 +507,7 @@ void gen_tags(char *msys2path) {
     strcat(totalcommand, _dkey);
     strcat(totalcommand, _dblamp);
     strcat(totalcommand, _cd);
-    strncpy(line, result3, strlen(result3) - 1);
+    strncpy(line, result3, strlen(result3));
     strcat(totalcommand, _quote);
     strcat(totalcommand, line);
     strcat(totalcommand, _quote);
