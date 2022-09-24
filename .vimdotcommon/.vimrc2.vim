@@ -264,6 +264,14 @@ map <C-D> <Esc>:confirm bd <CR><Esc>
 " nmap <F11> :TagbarToggle<CR>
 " map <S-F11> :Tlist <Enter>
 
+" ----- Press 'jk' to '<ESC>' ----------- "
+" ----- While in the Insert Mode, press 'jk' instead of '<ESC>' to go back to the Normal Mode ----------- "
+" ----------------------------- " https://stackoverflow.com/questions/23946748/vim-imap-jk-esc-not-working-even-with-escape-character
+" ----------------------------- " https://medium.com/diegodev/vim-tip-remapping-jj-to-escape-8efc4ad8a6bf
+inoremap <special> jk <ESC>
+imap jk <Esc>
+" ------------------------------------------------------------------
+
 set wrap!   " Disables Word Wrap on start
 :autocmd GUIEnter * winpos 0 0 " Starts window position to 0,0 coordinate
 " :set lines=1152 columns=864 "   ~~~~~~~~~~~CUSTOMIZE this to match your Desktop Resolution
