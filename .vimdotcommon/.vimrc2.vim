@@ -39,7 +39,24 @@ filetype indent on            " Enable filetype-specific indenting
 filetype plugin indent on   " Automatically detect file types.
 syntax enable
 set grepprg=grep\ -nH\ $*
-set number        " always show line numbers
+
+" -------------------- Relative & Hybrid Line No. -----------------------
+" https://jeffkreeftmeijer.com/vim-number/
+" Shows Absolute Line Numbers in the Insert Mode and
+" Relative Line Numbers in the Normal Mode.
+set ruler
+set number        " always shows line numbers
+set nu
+set relativenumber
+set rnu
+set number relativenumber        " turn hybrid line numbers on
+set nu rnu
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
+" -----------------------------------------------------------------------
 set laststatus=2
 :set timeout timeoutlen=4500 "   ttimeoutlen=100 "  default settings -1 not harmed under comment
 set history=1000                " Store a ton of history (default is 20)
