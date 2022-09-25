@@ -12,12 +12,12 @@ cd  %USERPROFILE%
 python get-platformio.py
 
 ----->
-PlatformIO Core has been successfully installed into an isolated environment `C:\Users\AppuRaja\.platformio\penv`!
+PlatformIO Core has been successfully installed into an isolated environment `C:\Users\YOUR_USERNAME\.platformio\penv`!
 
-The full path to `platformio.exe` is `C:\Users\AppuRaja\.platformio\penv\Scripts\platformio.exe`
+The full path to `platformio.exe` is `C:\Users\YOUR_USERNAME\.platformio\penv\Scripts\platformio.exe`
 
 If you need an access to `platformio.exe` from other applications, please install Shell Commands
-(add PlatformIO Core binary directory `C:\Users\AppuRaja\.platformio\penv\Scripts` to the system environment PATH variable):
+(add PlatformIO Core binary directory `C:\Users\YOUR_USERNAME\.platformio\penv\Scripts` to the system environment PATH variable):
 
 See https://docs.platformio.org/page/installation.html#install-shell-commands
 <-----
@@ -44,8 +44,19 @@ Any preferred dir:
 
 pio project init --ide vim --board uno --board nodemcuv2 --board teensy31
 
+platformio boards > boards.txt
+
+arduheaderswin:
+
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a t
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a n
+arduheaderswin.exe avr -mcpu=atmega328p %USERPROFILE%\.platformio p t
+arduheaderswin.exe arm -mcpu=cortex-m0 %USERPROFILE%\.platformio p t
+
 Installation cache cleanup:
 pio system prune
+
+Test code (AVR-ATMEGA328).
 
 notepad main.cpp
 --------------------------
@@ -89,6 +100,1066 @@ pio run
 
 .pio/build/
 
+---------------------------
+RP2040 (Raspberry Pi Pico):
+___________________________
+
+https://docs.platformio.org/en/stable/boards/raspberrypi/pico.html
+
+pio project init --ide vim --board pico
+
+arduheaderswin.exe arm -mcpu=cortex-m0 %USERPROFILE%\.platformio p t
+
+platformio adafruit tinyusb
+https://registry.platformio.org/libraries/adafruit/Adafruit%20TinyUSB%20Library
+pio pkg install --library "adafruit/Adafruit TinyUSB Library@^1.14.3"
+platformio Adafruit NeoPixel
+https://registry.platformio.org/libraries/adafruit/Adafruit%20NeoPixel/installation
+pio pkg install --library "adafruit/Adafruit NeoPixel@^1.10.6"
+
+platformio.ini
+
+[env:pico]
+platform = raspberrypi
+board = pico
+board_build.mcu = rp2040
+upload_protocol = picotool
+framework = arduino
+lib_deps = 
+	adafruit/Adafruit TinyUSB Library@^1.14.3
+	adafruit/Adafruit NeoPixel@^1.10.6
+
+
+
+RP2040 w/ TinyUSB Stack
+
+Test code.
+
+main.cpp
+
+/* -------------------------------------------------------------------------- */
+
+/*********************************************************************
+ MIT license
+*********************************************************************/
+
+#include "Adafruit_TinyUSB.h"
+#include <Adafruit_NeoPixel.h>
+
+/* This sketch demonstrates USB HID keyboard.
+ * - PIN A0-A5 is used to send digit '0' to '5' respectively
+ *   (On the RP2040, pins D0-D5 used)
+ * - LED and/or Neopixels will be used as Capslock indicator
+ */
+
+// HID report descriptor using TinyUSB's template
+// Single Report (no ID) descriptor
+uint8_t const desc_hid_report[] =
+{
+  TUD_HID_REPORT_DESC_KEYBOARD()
+};
+
+// USB HID object. For ESP32 these values cannot be changed after this declaration
+// desc report, desc len, protocol, interval, use out endpoint
+Adafruit_USBD_HID usb_hid(desc_hid_report, sizeof(desc_hid_report), HID_ITF_PROTOCOL_KEYBOARD, 2, false);
+
+//------------- Input Pins -------------//
+// Array of pins and its keycode.
+// Notes: these pins can be replaced by PIN_BUTTONn if defined in setup()
+#ifdef ARDUINO_ARCH_RP2040
+  uint8_t pins[] = { 0, 1, 2, 3 }; // https://forum.arduino.cc/t/d0-was-not-declared-in-this-scope/700060
+#else
+  uint8_t pins[] = { A0, A1, A2, A3 };
+#endif
+
+// number of pins
+uint8_t pincount = sizeof(pins)/sizeof(pins[0]);
+
+// For keycode definition check out https://github.com/hathach/tinyusb/blob/master/src/class/hid/hid.h
+uint8_t hidcode[] = { HID_KEY_ARROW_RIGHT, HID_KEY_ARROW_LEFT, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_UP };
+
+#if defined(ARDUINO_SAMD_CIRCUITPLAYGROUND_EXPRESS) || defined(ARDUINO_NRF52840_CIRCUITPLAY) || defined(ARDUINO_FUNHOUSE_ESP32S2)
+  bool activeState = true;
+#else
+  bool activeState = false;
+#endif
+
+//------------- Neopixel -------------//
+// #define PIN_NEOPIXEL  8
+#ifdef PIN_NEOPIXEL
+
+// How many NeoPixels are attached to the Arduino?
+// use on-board defined NEOPIXEL_NUM if existed
+#ifndef NEOPIXEL_NUM
+  #define NEOPIXEL_NUM  10
+#endif
+
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NEOPIXEL_NUM, PIN_NEOPIXEL, NEO_GRB + NEO_KHZ800);
+
+#endif
+
+
+// the setup function runs once when you press reset or power the board
+void setup()
+{
+#if defined(ARDUINO_ARCH_MBED) && defined(ARDUINO_ARCH_RP2040)
+  // Manual begin() is required on core without built-in support for TinyUSB such as mbed rp2040
+  TinyUSB_Device_Init(0);
+#endif
+
+  // Notes: following commented-out functions has no affect on ESP32
+  // usb_hid.setBootProtocol(HID_ITF_PROTOCOL_KEYBOARD);
+  // usb_hid.setPollInterval(2);
+  // usb_hid.setReportDescriptor(desc_hid_report, sizeof(desc_hid_report));
+  // usb_hid.setStringDescriptor("TinyUSB Keyboard");
+
+  // Set up output report (on control endpoint) for Capslock indicator
+  //usb_hid.setReportCallback(NULL, hid_report_callback);  // ERROR: Undeclared.
+
+  usb_hid.begin();
+
+  // led pin
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+
+  // neopixel if existed
+#ifdef PIN_NEOPIXEL
+  pixels.begin();
+  pixels.setBrightness(50);
+
+  #ifdef NEOPIXEL_POWER
+  pinMode(NEOPIXEL_POWER, OUTPUT);
+  digitalWrite(NEOPIXEL_POWER, NEOPIXEL_POWER_ON);
+  #endif
+#endif
+
+  // overwrite input pin with PIN_BUTTONx
+#ifdef PIN_BUTTON1
+  pins[0] = PIN_BUTTON1;
+#endif
+
+#ifdef PIN_BUTTON2
+  pins[1] = PIN_BUTTON2;
+#endif
+
+#ifdef PIN_BUTTON3
+  pins[2] = PIN_BUTTON3;
+#endif
+
+#ifdef PIN_BUTTON4
+  pins[3] = PIN_BUTTON4;
+#endif
+
+  // Set up pin as input
+  for (uint8_t i=0; i<pincount; i++)
+  {
+    pinMode(pins[i], activeState ? INPUT_PULLDOWN : INPUT_PULLUP);
+  }
+
+  // wait until device mounted
+  while( !TinyUSBDevice.mounted() ) delay(1);
+}
+
+
+void loop()
+{
+  // poll gpio once each 2 ms
+  delay(2);
+
+  // used to avoid send multiple consecutive zero report for keyboard
+  static bool keyPressedPreviously = false;
+
+  uint8_t count=0;
+  uint8_t keycode[6] = { 0 };
+
+  // scan normal key and send report
+  for(uint8_t i=0; i < pincount; i++)
+  {
+    if ( activeState == digitalRead(pins[i]) )
+    {
+      // if pin is active (low), add its hid code to key report
+      keycode[count++] = hidcode[i];
+
+      // 6 is max keycode per report
+      if (count == 6) break;
+    }
+  }
+
+  if ( TinyUSBDevice.suspended() && count )
+  {
+    // Wake up host if we are in suspend mode
+    // and REMOTE_WAKEUP feature is enabled by host
+    TinyUSBDevice.remoteWakeup();
+  }
+
+  // skip if hid is not ready e.g still transferring previous report
+  if ( !usb_hid.ready() ) return;
+
+  if ( count )
+  {
+    // Send report if there is key pressed
+    uint8_t const report_id = 0;
+    uint8_t const modifier = 0;
+
+    keyPressedPreviously = true;
+    usb_hid.keyboardReport(report_id, modifier, keycode);
+  }else
+  {
+    // Send All-zero report to indicate there is no keys pressed
+    // Most of the time, it is, though we don't need to send zero report
+    // every loop(), only a key is pressed in previous loop()
+    if ( keyPressedPreviously )
+    {
+      keyPressedPreviously = false;
+      usb_hid.keyboardRelease(0);
+    }
+  }
+}
+
+// Output report callback for LED indicator such as Caplocks
+void hid_report_callback(uint8_t report_id, hid_report_type_t report_type, uint8_t const* buffer, uint16_t bufsize)
+{
+  (void) report_id;
+  (void) bufsize;
+
+  // LED indicator is output report with only 1 byte length
+  if ( report_type != HID_REPORT_TYPE_OUTPUT ) return;
+
+  // The LED bit map is as follows: (also defined by KEYBOARD_LED_* )
+  // Kana (4) | Compose (3) | ScrollLock (2) | CapsLock (1) | Numlock (0)
+  uint8_t ledIndicator = buffer[0];
+
+  // turn on LED if capslock is set
+  digitalWrite(LED_BUILTIN, ledIndicator & KEYBOARD_LED_CAPSLOCK);
+
+#ifdef PIN_NEOPIXEL
+  pixels.fill(ledIndicator & KEYBOARD_LED_CAPSLOCK ? 0xff0000 : 0x000000);
+  pixels.show();
+#endif
+}
+
+/* -------------------------------------------------------------------------- */
+
+pio run
+
+
+Output:
+--------------------------------------------------------------------------------
+D:\pio_cli_win>pio run
+Processing pico (platform: raspberrypi; board: pico; framework: arduino)
+------------------------------------------------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/raspberrypi/pico.html
+PLATFORM: Raspberry Pi RP2040 (1.7.0) > Raspberry Pi Pico
+HARDWARE: RP2040 133MHz, 264KB RAM, 2MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, jlink, raspberrypi-swd)
+PACKAGES:
+ - framework-arduino-mbed @ 3.1.1
+ - tool-rp2040tools @ 1.0.2
+ - toolchain-gccarmnoneeabi @ 1.90201.191206 (9.2.1)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit TinyUSB Library @ 1.14.3
+|-- Adafruit NeoPixel @ 1.10.6
+|   |-- Adafruit TinyUSB Library @ 1.14.3
+Building in release mode
+Compiling .pio\build\pico\src\main.cpp.o
+Generating LD script .pio\build\pico\cpp.linker_script.ld
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\Adafruit_TinyUSB_API.cpp.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\Adafruit_USBD_CDC.cpp.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\Adafruit_USBD_Device.cpp.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/Adafruit_TinyUSB.h:39,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\Adafruit_TinyUSB_API.cpp:30:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\Adafruit_USBH_Host.cpp.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\hid\Adafruit_USBD_HID.cpp.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\hid\Adafruit_USBD_HID.h:28,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\hid\Adafruit_USBD_HID.cpp:29:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\midi\Adafruit_USBD_MIDI.cpp.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/Adafruit_TinyUSB.h:39,
+                 from src\main.cpp:12:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\midi\Adafruit_USBD_MIDI.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\midi\Adafruit_USBD_MIDI.cpp:29:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\msc\Adafruit_USBD_MSC.cpp.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\Adafruit_USBD_Device.cpp:32:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/mbed_assert.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/Callback.h:24,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:23,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel/Adafruit_NeoPixel.h:41,
+                 from src\main.cpp:13:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'uint pio_get_index(PIO)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:388:19: note: in expansion of macro 'pio0'
+  388 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:388:34: note: in expansion of macro 'pio1'
+  388 |     assert(pio == pio0 || pio == pio1);
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/Adafruit_TinyUSB.h:39,
+                 from src\main.cpp:12:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:389:19: note: in expansion of macro 'pio1'
+  389 |     return pio == pio1 ? 1 : 0;
+      |                   ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/mbed_assert.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/Callback.h:24,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:23,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel/Adafruit_NeoPixel.h:41,
+                 from src\main.cpp:13:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'void pio_gpio_init(PIO, uint)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:399:19: note: in expansion of macro 'pio0'
+  399 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:399:34: note: in expansion of macro 'pio1'
+  399 |     assert(pio == pio0 || pio == pio1);
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/Adafruit_TinyUSB.h:39,
+                 from src\main.cpp:12:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:400:35: note: in expansion of macro 'pio0'
+  400 |     gpio_set_function(pin, pio == pio0 ? GPIO_FUNC_PIO0 : GPIO_FUNC_PIO1);
+      |                                   ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/mbed_assert.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/Callback.h:24,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:23,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel/Adafruit_NeoPixel.h:41,
+                 from src\main.cpp:13:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'uint pio_get_dreq(PIO, uint, bool)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:411:19: note: in expansion of macro 'pio0'
+  411 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\ports\esp32\Adafruit_TinyUSB_esp32.cpp.o
+~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:411:34: note: in expansion of macro 'pio1'
+  411 |     assert(pio == pio0 || pio == pio1);
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\ports\nrf\Adafruit_TinyUSB_nrf.cpp.o
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/Adafruit_TinyUSB.h:39,
+                 from src\main.cpp:12:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\ports\rp2040\Adafruit_TinyUSB_rp2040.cpp.o
+~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:413:64: note: in expansion of macro 'pio0'
+  413 |     return sm + (is_tx ? 0 : NUM_PIO_STATE_MACHINES) + (pio == pio0 ? DREQ_PIO0_TX0 : DREQ_PIO1_TX0);
+      |                                                                ^~~~
+.pio\libdeps\pico\Adafruit NeoPixel/Adafruit_NeoPixel.h: At global scope:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\ports\samd\Adafruit_TinyUSB_samd.cpp.o
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\arduino\webusb\Adafruit_USBD_WebUSB.cpp.o
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+.pio\libdeps\pico\Adafruit NeoPixel/Adafruit_NeoPixel.h:404:13: note: in expansion of macro 'pio0'
+  404 |   PIO pio = pio0;
+      |             ^~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\audio\audio_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\bth\bth_device.c.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\msc\Adafruit_USBD_MSC.h:28,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\msc\Adafruit_USBD_MSC.cpp:29:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\cdc\cdc_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\dfu\dfu_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\dfu\dfu_rt_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\hid\hid_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\hid\hid_host.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\midi\midi_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\msc\msc_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\net\ecm_rndis_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\net\ncm_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\usbtmc\usbtmc_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\class\vendor\vendor_device.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\common\tusb_fifo.c.o
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_time/include/pico/time.h:10,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal_pico.h:30,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/osal/osal.h:54,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/tusb.h:38,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src/arduino/Adafruit_USBD_Device.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\webusb\Adafruit_USBD_WebUSB.h:29,
+                 from .pio\libdeps\pico\Adafruit TinyUSB Library\src\arduino\webusb\Adafruit_USBD_WebUSB.cpp:29:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\device\usbd.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\device\usbd_control.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\host\hub.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\host\usbh.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\chipidea\ci_hs\dcd_ci_hs.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\chipidea\ci_hs\hcd_ci_hs.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\espressif\esp32sx\dcd_esp32sx.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\microchip\samd\dcd_samd.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\nordic\nrf5x\dcd_nrf5x.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\raspberrypi\pio_usb\dcd_pio_usb.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\raspberrypi\pio_usb\hcd_pio_usb.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\raspberrypi\rp2040\dcd_rp2040.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\raspberrypi\rp2040\hcd_rp2040.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\portable\raspberrypi\rp2040\rp2040_usb.c.o
+Compiling .pio\build\pico\lib48e\Adafruit TinyUSB Library\tusb.c.o
+Compiling .pio\build\pico\libe96\Adafruit NeoPixel\Adafruit_NeoPixel.cpp.o
+Compiling .pio\build\pico\libe96\Adafruit NeoPixel\esp.c.o
+Compiling .pio\build\pico\libe96\Adafruit NeoPixel\esp8266.c.o
+Archiving .pio\build\pico\lib48e\libAdafruit TinyUSB Library.a
+Compiling .pio\build\pico\libe96\Adafruit NeoPixel\kendyte_k210.c.o
+Compiling .pio\build\pico\FrameworkArduinoVariant\double_tap_usb_boot.cpp.o
+Indexing .pio\build\pico\lib48e\libAdafruit TinyUSB Library.a
+Compiling .pio\build\pico\FrameworkArduinoVariant\variant.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\Interrupts.cpp.o
+In file included from c:\users\appuraja\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include\c++\9.2.1\cassert:44,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico/assert.h:14,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'uint pio_get_index(PIO)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:388:19: note: in expansion of macro 'pio0'
+  388 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:388:34: note: in expansion of macro 'pio1'
+  388 |     assert(pio == pio0 || pio == pio1);
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:389:19: note: in expansion of macro 'pio1'
+  389 |     return pio == pio1 ? 1 : 0;
+      |                   ^~~~
+In file included from c:\users\appuraja\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include\c++\9.2.1\cassert:44,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico/assert.h:14,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'void pio_gpio_init(PIO, uint)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:399:19: note: in expansion of macro 'pio0'
+  399 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:399:34: note: in expansion of macro 'pio1'
+  399 |     assert(pio == pio0 || pio == pio1);
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:400:35: note: in expansion of macro 'pio0'
+  400 |     gpio_set_function(pin, pio == pio0 ? GPIO_FUNC_PIO0 : GPIO_FUNC_PIO1);
+      |                                   ^~~~
+In file included from c:\users\appuraja\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include\c++\9.2.1\cassert:44,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico/assert.h:14,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:20,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h: In function 'uint pio_get_dreq(PIO, uint, bool)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:411:19: note: in expansion of macro 'pio0'
+  411 |     assert(pio == pio0 || pio == pio1);
+      |                   ^~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:411:34: note: in expansion of macro 'pio1'
+  411 |     assert(pio == pio0 || pio == pio1);
+      |                                  ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+Archiving .pio\build\pico\libe96\libAdafruit NeoPixel.a
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/objects.h:30,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/device.h:35,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/platform.h:28,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/platform/include/platform/FileHandle.h:25,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/macros.h:41,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO/pins_arduino.h:2,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/Arduino.h:76,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:41,
+                 from .pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:46:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+Indexing .pio\build\pico\libe96\libAdafruit NeoPixel.a
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:413:64: note: in expansion of macro 'pio0'
+  413 |     return sm + (is_tx ? 0 : NUM_PIO_STATE_MACHINES) + (pio == pio0 ? DREQ_PIO0_TX0 : DREQ_PIO1_TX0);
+      |                                                                ^~~~
+.pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h: At global scope:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:66:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   66 | #define PIO0_BASE 0x50200000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:45:35: note: in expansion of macro 'PIO0_BASE'
+   45 | #define pio0_hw ((pio_hw_t *const)PIO0_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:75:14: note: in expansion of macro 'pio0_hw'
+   75 | #define pio0 pio0_hw
+      |              ^~~~~~~
+.pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.h:404:13: note: in expansion of macro 'pio0'
+  404 |   PIO pio = pio0;
+      |             ^~~~
+Compiling .pio\build\pico\FrameworkArduino\Serial.cpp.o
+.pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp: In constructor 'Adafruit_NeoPixel::Adafruit_NeoPixel(uint16_t, int16_t, neoPixelType)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:67:19: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   67 | #define PIO1_BASE 0x50300000
+      |                   ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/pio.h:46:35: note: in expansion of macro 'PIO1_BASE'
+   46 | #define pio1_hw ((pio_hw_t *const)PIO1_BASE)
+      |                                   ^~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_pio/include/hardware/pio.h:85:14: note: in expansion of macro 'pio1_hw'
+   85 | #define pio1 pio1_hw
+      |              ^~~~~~~
+.pio\libdeps\pico\Adafruit NeoPixel\Adafruit_NeoPixel.cpp:90:11: note: in expansion of macro 'pio1'
+   90 |     pio = pio1;
+      |           ^~~~
+In file included from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/platform_defs.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/pico_platform/include/pico/platform.h:12,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/common/pico_base/include/pico.h:19,
+                 from C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\variants\RASPBERRY_PI_PICO\double_tap_usb_boot.cpp:2:
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'uint32_t time_us_32()':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:66:12: note: in expansion of macro 'timer_hw'
+   66 |     return timer_hw->timerawl;
+      |            ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h: In function 'bool time_reached(absolute_time_t)':
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:110:19: note: in expansion of macro 'timer_hw'
+  110 |     uint32_t hi = timer_hw->timerawh;
+      |                   ^~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_regs/include/hardware/regs/addressmap.h:56:20: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   56 | #define TIMER_BASE 0x40054000
+      |                    ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2040/hardware_structs/include/hardware/structs/timer.h:33:38: note: in expansion of macro 'TIMER_BASE'
+   33 | #define timer_hw ((timer_hw_t *const)TIMER_BASE)
+      |                                      ^~~~~~~~~~
+C:\Users\YOUR_USERNAME\.platformio\packages\framework-arduino-mbed\cores\arduino/mbed/targets/TARGET_RASPBERRYPI/TARGET_RP2040/pico-sdk/rp2_common/hardware_timer/include/hardware/timer.h:111:33: note: in expansion of macro 'timer_hw'
+  111 |     return (hi >= hi_target && (timer_hw->timerawl >= (uint32_t) target || hi != hi_target));
+      |                                 ^~~~~~~~
+Compiling .pio\build\pico\FrameworkArduino\Tone.cpp.o
+Archiving .pio\build\pico\libFrameworkArduinoVariant.a
+Compiling .pio\build\pico\FrameworkArduino\USB\PluggableUSBDevice.cpp.o
+Indexing .pio\build\pico\libFrameworkArduinoVariant.a
+Compiling .pio\build\pico\FrameworkArduino\USB\USBCDC.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\USB\USBSerial.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\WMath.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\abi.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\Common.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\IPAddress.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\PluggableUSB.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\Print.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\Stream.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\api\String.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\arm_hal_random.c.o
+Compiling .pio\build\pico\FrameworkArduino\as_mbed_library\variant.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\itoa.c.o
+Compiling .pio\build\pico\FrameworkArduino\main.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\mbed\platform\cxxsupport\mstd_mutex.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\pinToIndex.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\random_seed.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\timer.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\wiring.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\wiring_analog.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\wiring_digital.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\wiring_pulse.cpp.o
+Compiling .pio\build\pico\FrameworkArduino\wiring_shift.cpp.o
+Archiving .pio\build\pico\libFrameworkArduino.a
+Indexing .pio\build\pico\libFrameworkArduino.a
+Linking .pio\build\pico\firmware.elf
+Generating UF2 image
+elf2uf2 ".pio\build\pico\firmware.elf" ".pio\build\pico\firmware.uf2"
+Checking size .pio\build\pico\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  17.3% (used 46896 bytes from 270336 bytes)
+Flash: [          ]   0.3% (used 6074 bytes from 2097152 bytes)
+Building .pio\build\pico\firmware.bin
+============================================= [SUCCESS] Took 74.87 seconds =============================================
+
+D:\pio_cli_win>
+
+--------------------------------------------------------------------------------
+
+
+
+.pio\build\pico\firmware.uf2
+
 
 
 
@@ -130,3 +1201,12 @@ update: pio -f -c vim update
 arduheaderswin.exe avr -mcpu=atmega328p %USERPROFILE%\.platformio p n
 Or
 arduheaderswin.exe avr -mcpu=atmega328p %USERPROFILE%\.platformio p t
+Or
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a t
+Or
+arduheaderswin.exe avr -mcpu=atmega328p %LOCALAPPDATA%\Arduino15 a n
+Or
+arduheaderswin.exe avr -mcpu=atmega328p %USERPROFILE%\.platformio p t
+Or
+arduheaderswin.exe arm -mcpu=cortex-m0 %USERPROFILE%\.platformio p t
+
