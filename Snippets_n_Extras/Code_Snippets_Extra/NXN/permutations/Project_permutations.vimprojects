@@ -1,0 +1,5 @@
+
+permutations=D:\Code_Blocks\permutations\src CD=. filter="*.c *.h" {
+ permutations01.c
+ perm_ptr2.h
+}

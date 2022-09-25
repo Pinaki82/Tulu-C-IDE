@@ -1,0 +1,4 @@
+MSYS2-x64
+Bakefile: 0.2 Version (Legacy): https://bakefile.org/
+MinGW 64 Bash Here
+mingw32-make 2>buildlog.txt -f Makefile.mak

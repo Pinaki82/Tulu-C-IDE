@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1370891975 source:d:\code_blocks\permut_explained\src\perm_explnd.c
+	<stdio.h>
+	<stdlib.h>
+

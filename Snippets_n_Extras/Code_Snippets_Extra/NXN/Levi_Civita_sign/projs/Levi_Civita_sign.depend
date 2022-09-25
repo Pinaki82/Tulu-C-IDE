@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1319819632 source:d:\code_blocks\levi_civita_sign\src\levi_civita.c
+	<stdio.h>
+	<stdlib.h>
+	"levi_civita.h"
+
+1319819618 d:\code_blocks\levi_civita_sign\src\levi_civita.h
+	<stdio.h>
+	<stdlib.h>
+	"fact.h"
+
+1319701803 d:\code_blocks\levi_civita_sign\src\fact.h
+	<stdio.h>
+	<stdlib.h>
+

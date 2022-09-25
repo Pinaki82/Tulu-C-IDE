@@ -1,0 +1,63 @@
+===============================
+Arranging the next permutation:
+===============================
+
+Permutation is an ordered set of arrangement of different things.
+Briefly, if there are five objects, then how many ways we can arrange them
+in a proper order?
+-----------------
+
+1) First check the last two numbers,
+  if they are in an increasing order e.g., 2 3, 3 5 etc., then swap it and
+  stop the process.
+
+  Otherwise,
+  if they are in a decreasing order e.g., 5 2, 3 2 etc., then (2)
+
+2)[a] Check the previous number but try to keep previous number's previous number
+      fixed. Try to increase this 3rd number using the right side's numbers e.g.,
+      1 4 3 5 2
+      will not be 1 4 4 5 2
+      but
+      1 4 5 2 3.
+
+3) Now, rearrange the lastly played numbers.
+
+2)[b] If anytime it becomes difficult to increase the third number, shift the
+      process to left and increment this 4th number and rearrange the Right Side's
+      remaining numbers.
+
+      This shifting to the left process will continue until we find the last
+      played numbers are used and arranged in decreasing order completely.
+      ==========================================================================
+      Note: Increasing a number can be done by swapping. This is what the function
+      next() is doing. Looking at the flowchart will easily clarify this process
+      of swapping and shifting.
+
+      In the last for loop a TRAP CONDITION j < (n+i)/2+1 is created in such a
+      way so that whenever the sequence meets the increasing order R->L and
+      swapping becomes unnecessary, the number will be swapped between itself to
+      avoid repetition. n, i, k, j are trap numbers.
+      This is the trick.
+
+Here are some examples of next permutation:
+a) 1 4 3 5 2
+   1 4 5 3 2
+
+b) 5 4 1 3 2
+   5 4 2 1 3
+
+c) 4 3 2 5 1
+   4 3 5 1 2
+
+d) 1 4 5 3 2
+   1 5 2 3 4
+
+e) 1 5 4 3 2
+   2 1 3 4 5
+
+f) 4 3 5 2 1
+   4 5 1 2 3
+
+   2013-06-28 Fri 09:33 PM
+

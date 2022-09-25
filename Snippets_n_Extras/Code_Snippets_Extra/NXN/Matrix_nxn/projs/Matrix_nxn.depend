@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1372838299 source:d:\code_blocks\matrix_nxn\src\matrix_nxn.c
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	"matrix_nxn.h"
+
+1372838312 d:\code_blocks\matrix_nxn\src\matrix_nxn.h
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+
+1372749137 d:\code_blocks\matrix_nxn\src\matrix_6x6.h
+	<stdio.h>
+	<stdlib.h>
+
+1372838101 source:d:\code_blocks\matrix_nxn\src\matrix_6x6.c
+	<stdio.h>
+	<stdlib.h>
+	"matrix_nxn.h"
+

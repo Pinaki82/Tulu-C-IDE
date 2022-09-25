@@ -1,0 +1,5 @@
+
+nxn_matrix=D:\Code_Blocks\Matrix_nxn\src CD=. filter="*.c *.h" {
+ matrix_nxn.c
+ matrix_nxn.h
+}

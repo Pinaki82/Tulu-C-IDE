@@ -1,0 +1,8 @@
+
+know_perm_proj=D:\codes\perm_total_step_by_step\know_perm CD=. filter="*.c" {
+ know_perm.c
+ nextperm.c
+}
+prm_xplnd=D:\codes\perm_total_step_by_step\permut_explained\src CD=. filter="*.c" {
+ perm_better_explnd.c
+}

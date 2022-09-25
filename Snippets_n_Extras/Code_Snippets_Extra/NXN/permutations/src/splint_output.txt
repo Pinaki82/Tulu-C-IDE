@@ -1,0 +1,13 @@
+perm_ptr2.h(33,6): Function permut defined more than once
+  A function or variable is redefined. One of the declarations should use
+  extern. (Use -redef to inhibit warning)
+   perm_ptr2.h(53,1): Previous definition of permut
+perm_ptr2.h(66,6): Function swap defined more than once
+   perm_ptr2.h(71,1): Previous definition of swap
+perm_ptr2.h(81,5): Function next defined more than once
+   perm_ptr2.h(108,1): Previous definition of next
+perm_ptr2.h(112,5): Function fact defined more than once
+   perm_ptr2.h(129,1): Previous definition of fact
+perm_ptr2.h(135,6): Function arranged defined more than once
+   perm_ptr2.h(142,1): Previous definition of arranged
+

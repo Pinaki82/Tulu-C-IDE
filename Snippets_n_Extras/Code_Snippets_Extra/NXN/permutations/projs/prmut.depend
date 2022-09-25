@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1318411543 source:d:\permutations\src\permutations01.c
+	<stdio.h>
+	<stdlib.h>
+	"../src/permuthead.h"
+
+1318414790 d:\permutations\src\permuthead.h
+	<stdio.h>
+	<stdlib.h>
+
+1372577425 source:d:\code_blocks\permutations\src\permutations01.c
+	<stdio.h>
+	<stdlib.h>
+	"perm_ptr2.h"
+
+1319571558 d:\code_blocks\permutations\src\permuthead.h
+	<stdio.h>
+	<stdlib.h>
+
+1372577619 d:\code_blocks\permutations\src\perm_ptr2.h
+	<stdio.h>
+	<stdlib.h>
+

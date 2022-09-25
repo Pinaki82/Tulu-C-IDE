@@ -1,0 +1,33 @@
+matrix_nxn.h(34,5): Function matrix defined more than once
+  A function or variable is redefined. One of the declarations should use
+  extern. (Use -redef to inhibit warning)
+   matrix_nxn.h(104,1): Previous definition of matrix
+matrix_nxn.h(106,6): Function permut defined more than once
+   matrix_nxn.h(136,1): Previous definition of permut
+matrix_nxn.h(149,6): Function swap defined more than once
+   matrix_nxn.h(154,1): Previous definition of swap
+matrix_nxn.h(164,5): Function next defined more than once
+   matrix_nxn.h(191,1): Previous definition of next
+matrix_nxn.h(196,6): Function arranged defined more than once
+   matrix_nxn.h(203,1): Previous definition of arranged
+matrix_nxn.h(209,5): Function levi_civita defined more than once
+   matrix_nxn.h(221,1): Previous definition of levi_civita
+matrix_nxn.h(223,5): Function factorial defined more than once
+   matrix_nxn.h(240,1): Previous definition of factorial
+matrix_nxn.c(7,5): Function main defined more than once
+   matrix_6x6.c(44,1): Previous definition of main
+matrix_nxn.h(34,5): Function matrix defined more than once
+   matrix_nxn.h(104,1): Previous definition of matrix
+matrix_nxn.h(106,6): Function permut defined more than once
+   matrix_nxn.h(136,1): Previous definition of permut
+matrix_nxn.h(149,6): Function swap defined more than once
+   matrix_nxn.h(154,1): Previous definition of swap
+matrix_nxn.h(164,5): Function next defined more than once
+   matrix_nxn.h(191,1): Previous definition of next
+matrix_nxn.h(196,6): Function arranged defined more than once
+   matrix_nxn.h(203,1): Previous definition of arranged
+matrix_nxn.h(209,5): Function levi_civita defined more than once
+   matrix_nxn.h(221,1): Previous definition of levi_civita
+matrix_nxn.h(223,5): Function factorial defined more than once
+   matrix_nxn.h(240,1): Previous definition of factorial
+

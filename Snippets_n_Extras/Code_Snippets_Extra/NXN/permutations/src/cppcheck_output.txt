@@ -1,0 +1,1 @@
+[permutations01.c:8]: (style) Variable 'final_arngd' is not assigned a value
