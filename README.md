@@ -36,7 +36,7 @@ cd ~/Tulu-C-IDE && find ./ -maxdepth 1 -mindepth 1 -exec mv -f -t ~/ {} +  && \
 rm -rf ~/Tulu-C-IDE \
 ```
 
-![TULU_C_IDE](https://user-images.githubusercontent.com/16861933/99191990-4b7d1b80-2796-11eb-8ede-a4d9b181a950.jpg)
+![DSC_0017-WEB](https://user-images.githubusercontent.com/16861933/192581926-3230091d-b440-4893-b9df-d8efc4d91c64.JPG)
 
 # Screenshots:
 
@@ -1367,7 +1367,6 @@ strlcpy(
 CTRL+Enter
 
 strlcpy(`<char * dst>`,`<const char * src>`,`<size_t siz>`)
-
 ```
 
 [Vim-Syntastic-Setup](https://github.com/Pinaki82/Vim-Syntastic-Setup.git): _"Custom Settings for [Syntastic](https://github.com/vim-syntastic/syntastic.git) Vim plugin."_
