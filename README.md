@@ -181,7 +181,7 @@ pacman -Ss mingw-w64-x86_64-glade (lib)
 pacman -Ss gtkmm (lib)
 ```
 
-Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one:
+**Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one:**
 
 ```
 # R-Click Context Menues
@@ -193,6 +193,26 @@ cd ~/msys2-mingw-shortcut-menus/
 cd ~/
 rm -rf ~/msys2-mingw-shortcut-menus/
 ```
+
+**Add CMD.EXE to Windows Explorer R-Click Context Menu:**
+
+Create a Windows Registry file 'openCMDhere.reg' with the following contents:
+
+```
+Windows Registry Editor Version 5.00
+
+; Open CMD Here
+; 'Open Terminal Here' MS equivalent
+
+; https://github.com/microsoft/terminal/issues/1060
+; https://stackoverflow.com/questions/27632612/comment-in-reg-file
+; https://docs.microsoft.com/en-us/previous-versions/windows/embedded/gg469889(v=winembedded.80)?redirectedfrom=MSDN
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here\command]
+@="C:\\Windows\\system32\\cmd.exe"
+```
+
+Double-click on the Registry File. CMD.EXE will appear at the R-Click Context Menu (Open CMD Here).
 
 Add some utilities (compilers etc.) to System Path:
 
