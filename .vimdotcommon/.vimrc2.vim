@@ -1612,8 +1612,12 @@ Plug 'stevearc/vim-arduino' " -- Arduino MCU Development - will be tested later.
 " ====== RUSTC/Cargo Support
 Plug 'rust-lang/rust.vim'
 " https://blog.logrocket.com/configuring-vim-rust-development/#rust-analyzer
+" MS Windows 10 x64
 " pacman -S mingw-w64-x86_64-rust
 " pacman -S mingw-w64-x86_64-cargo-c
+" Or
+" https://forge.rust-lang.org/infra/other-installation-methods.html
+" x86_64-pc-windows-gnu
 " ************ AFTER INSTALLATION:
 " :CocInstall coc-json
 " :CocInstall coc-clangd
