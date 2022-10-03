@@ -216,7 +216,7 @@ Now type:
 
 `LspInstallServer`
 
-![LspInstallServer](https://user-images.githubusercontent.com/16861933/193658697-af3b859a-b186-49e8-b700-98e028655af1.gif)
+![LspInstallServerRust](https://user-images.githubusercontent.com/16861933/193664089-40a8f2a2-1f15-4524-9c7e-c758e8a4365d.gif)
 
 The LSP will be installed. Do not expect autocompletion for Rust source files from [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) at the moment. Autocompletion for Rust source files will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). Nevertheless, for C/C++, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) exceeds all expectations.
 
