@@ -214,7 +214,7 @@ Autocompletion will be provided by [coc.nvim](https://github.com/neoclide/coc.nv
 
 Now type:
 
-`LspUninstallServer`
+`LspInstallServer`
 
 The LSP will be installed. Do not expect autocompletion for Rust source files from [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) at the moment. Autocompletion for Rust source files will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). Nevertheless, for C/C++, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) exceeds all expectations.
 
