@@ -75,6 +75,12 @@ Install LLVM-Clang from the MSYS2 package manager if you have installed MSYS2.
 
  [WinMerge](https://winmerge.org/?lang=en) or, [Meld](https://meldmerge.org/) (MSYS2 package available: `mingw-w64-x86_64-meld3`)
 
+ [Rust](https://www.rust-lang.org/) Rust Compiler
+
+ [Cargo](https://doc.rust-lang.org/cargo/index.html) Rust package manager
+
+ More on RUSTC and CARGO later.
+
 ##### Recommended Programs:
 
 [Splint](https://splint.org/): Annotation-Assisted Lightweight Static Checking.
@@ -171,6 +177,9 @@ pacman -Ss arm
 
 pacman -Ss rust
 
+See below for a detailed description
+of the RUST compiler installation.
+
 # Fish Shell (interactive shell):
 pacman -S fish
 
@@ -180,6 +189,66 @@ pacman -Ss mingw-w64-x86_64-gtk3 (lib)
 pacman -Ss mingw-w64-x86_64-glade (lib)
 pacman -Ss gtkmm (lib)
 ```
+
+Install RUSTC and CARGO on Windows 10+ (x64) (the easy way):
+
+Open the MSYS2 shell.
+
+```
+pacman -S mingw-w64-x86_64-rust
+```
+
+```
+pacman -S mingw-w64-x86_64-cargo-c
+```
+
+If you already have added MSYS2 bin folders to the system's search path, you can test your Rust compiler setup from any terminal. Launch CMD and type `rustc` and see the output. Do the same for checking Cargo, `cargo`. If not, we will come to it.
+
+Alternatively, you can also download the compiler from https://forge.rust-lang.org/infra/other-installation-methods.html and choose `x86_64-pc-windows-gnu`. Since we are using the GNU-toolchain, we need the GNU variant of the compiler, not the version that was built for MSVC. The Rust compiler and cargo-c together will occupy around 500 MB drive space.
+
+RUST: What is supported and what is not:
+
+Autocompletion will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). You'll need to install the LSP for Rust, which is, '[rust-analyzer](https://blog.logrocket.com/intro-to-rust-analyzer/)' in this case. [coc.nvim](https://github.com/neoclide/coc.nvim.git) will install the LSP.
+
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) expects [RLS](https://github.com/rust-lang/rls) for autocompletion and '[rust-analyzer](https://rust-analyzer.github.io/)' for static syntax checking. However, RLS has been deprecated and replaced by '[rust-analyzer](https://rust-analyzer.github.io/)'. See here https://github.com/rust-lang/rls. Unless [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) receives a patch, we won't get any autocompletion hint from this plugin but it requires the '[rust-analyzer](https://rust-analyzer.github.io/)'. To install the LSP in [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git), open a rust source file (`*.rs`) with GVim and put the editor in Command Mode `<SHIFT>` + `;` that is, `:`
+
+Now type:
+
+`LspUninstallServer`
+
+The LSP will be installed. Do not expect autocompletion for Rust source files from [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) at the moment. Autocompletion for Rust source files will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). Nevertheless, for C/C++, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) exceeds all expectations.
+
+Test your setup before throwing in some fancy code.
+
+Create a simple Rust source file `hello.rs`:
+
+```
+// This is a comment, and is ignored by the compiler
+
+// This is the main function
+fn main() {
+    // Statements here are executed when the compiled binary is called
+
+    // Print text to the console
+    println!("Witness the RUSTification for a revolution!\nWelcome to the world of RUST!\n");
+}
+```
+
+Compile the code:
+
+```
+rustc hello.rs
+```
+
+Run the compiled executable:
+
+```
+hello.exe
+```
+
+Look [here](https://blog.logrocket.com/configuring-vim-rust-development/) for more information.
+
+By no means I'm a Rust programmer. I could only give Rust a try for 3 to 4 minutes for integrating the compiler with [**Tulu-C-IDE**](https://github.com/Pinaki82/Tulu-C-IDE.git).
 
 **Add MSYS2 to Windows Explorer R-Click Context Menu: Type the following commands one by one:**
 
@@ -548,14 +617,14 @@ After installation, Open GVim and hold `<SHIFT+;>` together.
 
 ![Shift+colon_ani](https://user-images.githubusercontent.com/16861933/102935218-baebd680-44cb-11eb-996c-f92435a903c1.gif)
 
-In GVim's command area, type `PlugUpgrade`, `PlugInstall`, `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`.
+In GVim's command area, type `PlugUpgrade`, `PlugInstall`, `CocUpdate` one at a time. The global vimscript variable written in the config file (`.vimrc2.vim`) will try to install the required 'coc-extensions': `coc-json`, `coc-tsserver`, `coc-clangd`, `coc-tabnine`, `coc-diagnostic`, `coc-explorer`, `coc-cmake`, `coc-markdownlint`, `coc-lightbulb`, `coc-tasks`, `coc-rust-analyzer`.
 
 ```
 $HOME/.vimdotcommon/.vimrc2.vim
 ```
 
 ```
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks', 'coc-rust-analyzer']
 ```
 
 ```
@@ -577,7 +646,7 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-ta
 NOTE: Avoid trying to install the 'coc-extensions' again by typing the following command:
 
 ```
-:CocInstall coc-json coc-tsserver coc-clangd coc-tabnine coc-diagnostic coc-explorer coc-cmake coc-markdownlint coc-lightbulb coc-tasks
+:CocInstall coc-json coc-tsserver coc-clangd coc-tabnine coc-diagnostic coc-explorer coc-cmake coc-markdownlint coc-lightbulb coc-tasks coc-rust-analyzer
 ```
 
 Otherwise, your installation might be messed up.
@@ -1601,6 +1670,28 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 [LSP source for asyncomplete.vim vim-lsp](https://github.com/prabirshrestha/asyncomplete-lsp.vim.git)  [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
 
 _NOTE:_ You'll need two LSP config files to work with the [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) plugin: .ccls and compile_flags.txt alongside code files. Find the required files [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN).
+
+[ddc.vim](https://github.com/Shougo/ddc.vim.git) Dark deno-powered completion framework for neovim/Vim8. [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
+[ddc-vim-lsp](https://github.com/shun/ddc-vim-lsp.git) vim-lsp for [ddc.vim](https://github.com/Shougo/ddc.vim.git). [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
+[vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git) VSCode(LSP)'s snippet feature in vim. [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
+[vim-vsnip-integ]() Plugins integration with [vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git). [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
+
+- Snippet completion
+- Snippet expansion
+
+**Using [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git):**
+
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) supports most common programming languages. The complete list of supported languages can be found here: https://github.com/mattn/vim-lsp-settings
+
+To use the plugin, open a source file with GVim and in the Command Mode type:
+
+```
+LspInstallServer
+```
+
+The plugin will download the LSP, e.g., 'clangd' in case of C/C++ files and place the LSP into `%LOCALAPPDATA%\vim-lsp-settings\servers` (MS Windows) or `$HOME/.local/share/vim-lsp-settings/servers` (macOS/Linux). Re-launch GVim. You'll get autocompletion hints and syntax checking output.
+
+![LspInstallServer](https://user-images.githubusercontent.com/16861933/193658697-af3b859a-b186-49e8-b700-98e028655af1.gif)
 
 ## Change the default GVim theme:
 
