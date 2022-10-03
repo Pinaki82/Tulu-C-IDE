@@ -1574,8 +1574,46 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'Shougo/ddc.vim'
+Plug 'shun/ddc-vim-lsp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+" ================================== For 'hrsh7th/vim-vsnip'
+" NOTE: You can use other key to expand snippet.
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+
+" If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
+" ================================== For 'hrsh7th/vim-vsnip' ===================
 Plug 'normen/vim-pio'    " -- PlatformIO MCU Development - will be tested later.
 Plug 'stevearc/vim-arduino' " -- Arduino MCU Development - will be tested later.
+" ====== RUSTC/Cargo Support
+Plug 'rust-lang/rust.vim'
+" https://blog.logrocket.com/configuring-vim-rust-development/#rust-analyzer
+" pacman -S mingw-w64-x86_64-rust
+" pacman -S mingw-w64-x86_64-cargo-c
 " ************ AFTER INSTALLATION:
 " :CocInstall coc-json
 " :CocInstall coc-clangd
@@ -1584,6 +1622,7 @@ Plug 'stevearc/vim-arduino' " -- Arduino MCU Development - will be tested later.
 " :CocInstall coc-diagnostic
 " :CocInstall coc-lightbulb
 " :CocInstall coc-tasks
+" :CocInstall coc-rust-analyzer
 " :CocConfig
 "         Then, paste the line below (without comments) in the new file.
 "                                 "diagnostic.displayByAle": true
@@ -1803,7 +1842,7 @@ let g:echodoc_enable_at_startup = 1
 " ====================== checking ===============================
 
 " Install missing coc extensions:
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-clangd', 'coc-tabnine', 'coc-diagnostic', 'coc-explorer', 'coc-cmake', 'coc-markdownlint', 'coc-lightbulb', 'coc-tasks', 'coc-rust-analyzer']
 
 " Use CTRL+SPACE for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
