@@ -316,7 +316,7 @@ Add `C:\Users\YOUR_USERNAME\.cargo\bin` to the System's Search Path.
 
 Edit your MSYS2's `.bashrc` and `config.fish`.
 
-Add the folder `C:\Users\YOUR_USERNAME.cargo\bin`  `C:\msys64\home\YOUR_USERNAME\.bashrc` to MSYS2's `.bashrc` and `config.fish`.
+Add the folder `C:\Users\YOUR_USERNAME.cargo\bin` to MSYS2's `.bashrc` and `config.fish`.
 
 Otherwise, the MSYS2 x64 Shell won't find the Rustlings binary.
 Drop the following line to `C:\msys64\home\YOUR_USERNAME.bashrc`
@@ -325,7 +325,7 @@ Drop the following line to `C:\msys64\home\YOUR_USERNAME.bashrc`
 export PATH=/c/Users/YOUR_USERNAME/.cargo/bin/:$PATH
 ```
 
-Open `C:\msys64\home\YOUR_USERNAME\.config\fish\config.fish` with a text editor as you did before and drop lines line written below.
+Open `C:\msys64\home\YOUR_USERNAME\.config\fish\config.fish` with a text editor as you did before and drop the lines written below.
 
 ```
 export PATH="/c/Users/YOUR_USERNAME/.cargo/bin/:$PATH"
