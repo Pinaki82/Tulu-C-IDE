@@ -224,7 +224,7 @@ Test your setup before throwing in some fancy code.
 
 Create a simple Rust source file `hello.rs`:
 
-```
+```rust
 // This is a comment, and is ignored by the compiler
 
 // This is the main function
@@ -249,6 +249,124 @@ hello.exe
 ```
 
 Look [here](https://blog.logrocket.com/configuring-vim-rust-development/) for more information.
+
+**Learning The Rust Programming Language:**
+
+Rust has excellent resources for learning about its ecosystem.
+
+https://www.rust-lang.org/learn
+
+One of them is the [RUSTLINGS Course](https://github.com/rust-lang/rustlings/).
+
+Duckling (singular). Ducklings (plural). Rustlings -> ?? rustlings.exe ?? Let's treat 'Rustlings' as singular for some ease and convenience.
+
+Rustlings is an interactive training framework. You'll have to finish each task to level up.  Quite similar to a command-line game. After completing the course, you'll be familiar with the Rust programming language.
+
+Here's how you can get Rustlings on your MS Windows machine.
+
+Open the Command Prompt (CMD.EXE).
+
+`WINDOWS` + `r` -> `cmd`
+
+Type
+
+```
+cd %USERPROFILE%
+```
+
+Then hit Enter.
+
+Clone the Rustlings [GIT repository](https://github.com/rust-lang/rustlings.git) from the GIT hosting server (here GitHub).
+
+```
+git clone -b 5.2.1 --depth 1 https://github.com/rust-lang/rustlings
+```
+
+`--depth 1` limits the commit history to the last commit in the Main GIT Branch to save some drive space.
+
+```
+cd %USERPROFILE%/rustlings
+```
+
+```
+cargo install --force --path .
+```
+
+```
+exit
+```
+
+Rustlings will be downloaded into `%USERPROFILE%\rustlings` i.e., 
+
+`C:\Users\YOUR_USERNAME\rustlings`
+
+The cargo build for the Rustlings course will be installed in `%USERPROFILE%\.cargo`
+
+`C:\Users\YOUR_USERNAME\.cargo`
+
+The Rustlings binary executable 'rustlings.exe' will be placed in
+
+`%USERPROFILE%\.cargo\bin`
+
+`C:\Users\YOUR_USERNAME\.cargo\bin`
+
+Add `C:\Users\YOUR_USERNAME\.cargo\bin` to the System's Search Path.
+
+`WINDOWS` + `r` -> `systempropertiesadvanced` -> Advanced tab -> Environment Variables -> System Variables section -> Path -> Edit -> New
+
+Edit your MSYS2's `.bashrc` and `config.fish`.
+
+Add the folder `C:\Users\YOUR_USERNAME.cargo\bin`  `C:\msys64\home\YOUR_USERNAME\.bashrc` to MSYS2's `.bashrc` and `config.fish`.
+
+Otherwise, the MSYS2 x64 Shell won't find the Rustlings binary.
+Drop the following line to `C:\msys64\home\YOUR_USERNAME.bashrc`
+
+```
+export PATH=/c/Users/YOUR_USERNAME/.cargo/bin/:$PATH
+```
+
+Open `C:\msys64\home\YOUR_USERNAME\.config\fish\config.fish` with a text editor as you did before and drop lines line written below.
+
+```
+export PATH="/c/Users/YOUR_USERNAME/.cargo/bin/:$PATH"
+export PATH
+```
+
+From now on, you can either use the "**MSYS2 MinGW 64-bit**" shell or the MS Windows Command Prompt. Or maybe, Alacritty and WezTerm also.
+
+**Time to run the Rustlings interactive course.**
+
+Open the Command Prompt again. `WINDOWS` + `r` -> `cmd`
+
+```
+cd %USERPROFILE%/rustlings
+```
+
+Or,
+
+```
+cd %USERPROFILE%
+```
+
+```
+cd rustlings
+```
+
+Run it:
+
+```
+rustlings watch
+```
+
+One Important Note: You'll have to run 'rustlings.exe' from the `%USERPROFILE%/rustlings` directory. If you try to run the course from elsewhere, you'll get a warning:
+
+```
+C:\Users\YOUR_USERNAME\.cargo\bin\rustlings.exe must be run from the rustlings directory
+
+Try `cd rustlings/`!
+```
+
+Cargo is not only a package manager for Rust. It is also a build environment compositor. Think of it as a CMake Makefile project handler. Look at the [Hello, Cargo!](https://doc.rust-lang.org/book/ch01-03-hello-cargo.html#hello-cargo) section.
 
 By no means I'm a Rust programmer. I could only give Rust a try for 3 to 4 minutes for integrating the compiler with [**Tulu-C-IDE**](https://github.com/Pinaki82/Tulu-C-IDE.git).
 
@@ -1609,7 +1727,7 @@ file names as you open/edit them in Vim."_
 
 Type `for<CTRL+\>`, the snippet will be expanded to
 
-```
+```c
 for (i = 0; i < len; ++i){
     /* cursor */
 }
