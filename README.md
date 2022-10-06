@@ -38,6 +38,20 @@ rm -rf ~/Tulu-C-IDE \
 
 ![DSC_0017-WEB](https://user-images.githubusercontent.com/16861933/192581926-3230091d-b440-4893-b9df-d8efc4d91c64.JPG)
 
+# License:
+
+> TULU-C-IDE is distributed under BSL {The [Boost Software License](https://www.boost.org/LICENSE_1_0.txt)}(https://www.boost.org/users/license.html).
+> 
+> Everything else (snippets, templates etc.) other than the vim scripts are distributed under the terms of The "MIT No Attribution" (or "MIT-0") Licence.
+> 
+> https://spdx.org/licenses/MIT-0.html
+> 
+> https://opensource.org/licenses/MIT-0
+> 
+> https://github.com/aws/mit-0
+> 
+> Parts of the project have been re-licenced to MIT-0 from [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/).
+
 # Screenshots:
 
 GVim-v8.2.1145.glibc2.15-x86_64.AppImage with this configuration running on Xubuntu 20.04.1 LTS Focal Fossa.

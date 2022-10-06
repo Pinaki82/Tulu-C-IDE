@@ -1,8 +1,0 @@
-LICENCE: The codes in the directory 'Utilities' have
-been distributed under the licence terms of
-TULU-C-IDE (https://github.com/Pinaki82/Tulu-C-IDE.git), which
-is BSL (Boost Software License) unless
-or otherwise stated.
-
-A copy of BSL can
-be found at: https://www.boost.org/users/license.html.

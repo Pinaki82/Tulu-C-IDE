@@ -1,14 +1,10 @@
-'systags' generates a .ccls file and a compile_flags.txt in the current working directory (CWD/PWD). (More on this later).
+LICENCE: The code files in the directory 'Utilities' have been re-licenced under the licence terms of MIT-0 License.
 
-'arduheaders' can generate the following three files for Arduino-CLI SDK and PlatformIO-Core-CLI SDK:
+A copy of the MIT-0 License can be found at:
 
-- .ccls
-- compile_flags.txt
-- tagspath.txt
-
-The program can also generate 'tags' (ctags is a dependency) in the 'include' directories of the SDKs mentioned.
-
-Read the source for more info.
+> https://spdx.org/licenses/MIT-0.html
+> or, https://opensource.org/licenses/MIT-0.
+> or, https://github.com/aws/mit-0
 
 ## COPYRIGHT NOTICE:
 
@@ -16,18 +12,18 @@ Read the source for more info.
 > 
 > Code files and all other files
 > 
-> in the directory 'CCLS_GEN' are distributed under
+> in the directory 'Utilities' are distributed under
 > the terms of the MIT-0 License (MIT No Attribution license),
 > unless or otherwise stated. A copy of the MIT-0 License can
 > be found at https://spdx.org/licenses/MIT-0.html
 > or, https://opensource.org/licenses/MIT-0.
 > or, https://github.com/aws/mit-0
-> All codes in this directory 'CCLS_GEN'
+> All codes in this directory 'Utilities'
 > without any copyright notice inside (under comment blocks)
 > should be treated as MIT-0 licenced,
 > although TULU-C-IDE is distributed under the BSL (https://www.boost.org/users/license.html).
 > 
-> The directory 'CCLS_GEN' might contain cached copies
+> The directory 'Utilities' might contain cached copies
 > of webpages and PDF files collected from various sources that are
 > protected by International Copyright Laws.
 > The link to the documents can be found either in the files (PDF),
