@@ -38,7 +38,7 @@ rm -rf ~/Tulu-C-IDE \
 
 ![DSC_0017-WEB](https://user-images.githubusercontent.com/16861933/192581926-3230091d-b440-4893-b9df-d8efc4d91c64.JPG)
 
-# License:
+# Licence:
 
 > TULU-C-IDE is distributed under BSL {The [Boost Software License](https://www.boost.org/LICENSE_1_0.txt)}(https://www.boost.org/users/license.html).
 > 
