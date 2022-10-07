@@ -242,7 +242,7 @@ The LSP will be installed. Do not expect autocompletion for Rust source files fr
 
 2) Using a CARGO project:
 
-[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) works fine if it finds that the code is managed by the native build environment CARGO. In fact, CARGO managed code files when loaded into GVim will be dealt with [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) works fine if it finds that the code is managed by the native build environment CARGO. In fact, CARGO managed code files when loaded into GVim will be dealt with [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).  Again, for RUST, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) will exceed your expectations.
 
 We will see how we can create a CARGO project later. CARGO will be used as a build tool and package manger here, with essentially the same code. It's an extra advantage.
 
