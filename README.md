@@ -204,7 +204,7 @@ pacman -Ss mingw-w64-x86_64-glade (lib)
 pacman -Ss gtkmm (lib)
 ```
 
-Install RUSTC and CARGO on Windows 10+ (x64) (the easy way):
+##### Install RUSTC and CARGO on Windows 10+ (x64) (the easy way):
 
 Open the MSYS2 shell.
 
@@ -220,7 +220,13 @@ If you already have added MSYS2 bin folders to the system's search path, you can
 
 Alternatively, you can also download the compiler from https://forge.rust-lang.org/infra/other-installation-methods.html and choose `x86_64-pc-windows-gnu`. Since we are using the GNU-toolchain, we need the GNU variant of the compiler, not the version that was built for MSVC. The Rust compiler and cargo-c together will occupy around 500 MB drive space.
 
-RUST: What is supported and what is not:
+We won't be using RUSTUP ([rustup-init.exe](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe)) since it may try to download Microsoft Visual Studio Build Tools and you'll have to find workarounds. Nothing's wrong with Visual Studio Build Tools. We will avoid using it for consistency with our existing setup. [Here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE)'s what we did (essentially the same) for setting up the Raspberry Pi Pico SDK. We had to figure out how to stick with our MSYS2 environment (MinGW GCC toolchain) without installing another compiler, aka Microsoft Visual Studio Build Tools.
+
+MSYS2 will provide that consistency.
+
+RUST: What is **supported and** what is **not**:
+
+1) Without using a CARGO project:
 
 Autocompletion will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). You'll need to install the LSP for Rust, which is, '[rust-analyzer](https://blog.logrocket.com/intro-to-rust-analyzer/)' in this case. [coc.nvim](https://github.com/neoclide/coc.nvim.git) will install the LSP.
 
@@ -233,6 +239,12 @@ Now type:
 ![LspInstallServerRust](https://user-images.githubusercontent.com/16861933/193664089-40a8f2a2-1f15-4524-9c7e-c758e8a4365d.gif)
 
 The LSP will be installed. Do not expect autocompletion for Rust source files from [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) at the moment. Autocompletion for Rust source files will be provided by [coc.nvim](https://github.com/neoclide/coc.nvim.git). Nevertheless, for C/C++, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) exceeds all expectations.
+
+2) Using a CARGO project:
+
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) works fine if it finds that the code is managed by the native build environment CARGO. In fact, CARGO managed code files when loaded into GVim will be dealt with [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).
+
+We will see how we can create a CARGO project later. CARGO will be used as a build tool and package manger here, with essentially the same code. It's an extra advantage.
 
 Test your setup before throwing in some fancy code.
 
@@ -263,6 +275,79 @@ hello.exe
 ```
 
 Look [here](https://blog.logrocket.com/configuring-vim-rust-development/) for more information.
+
+**Create a rudimentary CARGO project:**
+
+Open CMD.EXE and enter a directory of your choice.
+
+Type:
+
+```console
+cargo new hello_cargo
+```
+
+CARGO  will generate two folders (src, target) and three files (.gitignore, Cargo.lock, Cargo.toml). Of them, 'Cargo.toml' is what we need to build and manage the project. We can edit this file to add dependencies and change other settings. CARGO  will also auto-generate a perfectly working placeholder RUST file 'main.rs' inside the 'src' directory that prints the traditional  "Hello, world!". It's for us to modify. The compiled executable (debug version) 'hello_cargo.exe' will be generated inside 'hello_cargo\target\debug'. An overview of a basic 'Cargo.toml' is given below.
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+```
+
+[TOML](https://toml.io/): Tom’s Obvious, Minimal Language.
+
+Let's **build** and **run** our first CARGO project.
+
+Safety First!! (^__^) Check:
+
+```
+cargo check
+```
+
+Build (debug version):
+
+```
+cargo build
+```
+
+Run:
+
+```
+cargo run
+```
+
+Build (release version):
+
+```
+cargo build --release
+```
+
+The debug version and the release version of the compiled outputs were about 1.69 MB (1,778,400 bytes) and 1.67 MB (1,759,156 bytes) respectively on my machine.
+
+Remember that the command 'cargo run' will first compile the project before running the executable. If you modify the file, 'run' will build the project. If everything is unchanged, the 'run' command will execute the compiled code without re-building anything.
+
+Version Checking of the RUSTC compiler:
+
+```
+rustc --version
+```
+
+```
+rustc 1.64.0 (Rev1, Built by MSYS2 project)
+```
+
+```
+cargo --version
+```
+
+```
+cargo 1.64.0
+```
 
 **Learning The Rust Programming Language:**
 
