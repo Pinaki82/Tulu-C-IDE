@@ -1,0 +1,78 @@
+# MIT-0 (The MIT No Attribution license):
+# https://spdx.org/licenses/MIT-0.html
+# https://opensource.org/licenses/MIT-0.
+# https://github.com/aws/mit-0
+#
+#   ______      __            ______     ________  ______
+#  /_  __/_  __/ /_  __      / ____/    /  _/ __ \/ ____/
+#   / / / / / / / / / /_____/ /  ______ / // / / / __/
+#  / / / /_/ / / /_/ /_____/ /__/_____// // /_/ / /___
+# /_/  \__,_/_/\__,_/      \____/    /___/_____/_____/
+
+#     __  __     ___         ______    ___ __  _
+#    / / / /__  / (_)  __   / ____/___/ (_) /_(_)___  ____
+#   / /_/ / _ \/ / / |/_/  / __/ / __  / / __/ / __ \/ __ \
+#  / __  /  __/ / />  <   / /___/ /_/ / / /_/ / /_/ / / / /
+# /_/ /_/\___/_/_/_/|_|  /_____/\__,_/_/\__/_/\____/_/ /_/
+
+# figlet -f Slant Tulu-C-IDE
+# figlet -f Slant Helix Edition
+
+# Ref: https://docs.helix-editor.com/configuration.html
+# The char # marks a line as a comment.
+# ------------------------------------------------------------------------------
+#
+theme = "default" # I loved the 'default' toy theme, so I'll leave it as it was.
+# theme = "ayu_mirage" # Another eye-candy theme.
+
+[editor]
+line-number = "relative"
+    # Shows relative (hybrid) line numbers like: 3 2 1 "4" 1 2 3 4 5
+mouse = true
+    # Mouse actions can be performed.
+rulers = [80]
+    # Sets a margin at the 80th column
+color-modes = true
+    # Not sure...
+auto-pairs = true # defaults to `true`
+    # Highlights matching brackets
+
+[editor.indent-guides]
+render = true
+    # Displays indent guide (faded vertical lines following brackets and blocks)
+character = "|"
+    # Indentation is expressed by a faded | character
+
+[editor.cursor-shape]
+insert = "bar"
+    # The cursor will look 'somewhat' like a "|" in the Insert Mode
+normal = "block"
+    #                                      "█" in the Normal Mode
+select = "underline"
+    #                                      "_" in the Select Mode
+
+[editor.file-picker]
+hidden = false
+    # Hidden files will be shown by the built-in file picker.
+
+[keys.normal]
+                # Some Key-Mappings in the Normal Mode.
+                # Change what you don't like.
+C-s = ":w" # Maps the Control-s to the typable command :w which is an alias for :write (save file)
+    # CTRL+s to save
+";" = "command_mode"
+    # ; instead of SHIFT+; (i.e., :) to go to Command Mode
+[keys.insert]
+                #      Key-Mappings in the Normal Mode.
+"A-x" = "normal_mode" # Maps Alt-X to enter normal mode
+    # Press ALT+x to go to Normal Mode.
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+    # Type 'jk' to leave the Insert Mode and go to the Normal Mode.
+
+[editor.statusline]
+                # Status-Line configuration
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "|"
+

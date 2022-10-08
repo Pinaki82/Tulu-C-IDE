@@ -1,0 +1,35 @@
+Tulu-C-IDE Helix Edition:
+
+  ______      __            ______     ________  ______
+ /_  __/_  __/ /_  __      / ____/    /  _/ __ \/ ____/
+  / / / / / / / / / /_____/ /  ______ / // / / / __/
+ / / / /_/ / / /_/ /_____/ /__/_____// // /_/ / /___
+/_/  \__,_/_/\__,_/      \____/    /___/_____/_____/
+
+    __  __     ___         ______    ___ __  _
+   / / / /__  / (_)  __   / ____/___/ (_) /_(_)___  ____
+  / /_/ / _ \/ / / |/_/  / __/ / __  / / __/ / __ \/ __ \
+ / __  /  __/ / />  <   / /___/ /_/ / / /_/ / /_/ / / / /
+/_/ /_/\___/_/_/_/|_|  /_____/\__,_/_/\__/_/\____/_/ /_/
+
+
+MS Windows:
+
+https://helix-editor.com/
+
+git clone https://github.com/helix-editor/helix
+
+cd helix
+
+cargo install --path helix-term
+
+xcopy /e /i runtime %AppData%\helix\runtime
+
+xcopy /e /i %AppData%\helix\runtime\themes %AppData%\helix\themes
+
+copy config.toml %AppData%\helix
+
+where hx
+
+C:\Users\YOUR_USERNAME\.cargo\bin\hx.exe
+
