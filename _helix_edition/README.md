@@ -131,7 +131,9 @@ This Markdown file, `config.toml`, and the note files are published under The MI
 A copy of the MIT-0 License can be found at
 
 > https://spdx.org/licenses/MIT-0.html
+>
 > or, https://opensource.org/licenses/MIT-0.
+>
 > or, https://github.com/aws/mit-0
 
 #### MIT-0 (The MIT No Attribution license):
