@@ -106,7 +106,15 @@ Means,
 
 ## How will you use Helix:
 
-1) **RUST**: You need a **Cargo-generated project folder** to work with RUST source files. `rustc` and `cargo` must be found on the System Search PATH.
+1) **RUST**: You need a **Cargo-generated project folder** to work with RUST source files. `rustc`, `cargo`, and `rust-analyzer` must be found on the System Search PATH. MSYS2 usually installs the complete RUST toolchain including the `rust-analyzer`.
+
+```
+rust-analyzer --version
+```
+
+`rust-analyzer 1.64.0 (8517eff67 2022-09-23)`.
+
+If you don't see it on the system, find the file `rust-analyzer-build-instructions.txt` and follow the instructions.
 
 2) **C/C++**: You need a `compile_commands.json` or a `compile_flags.txt` file alongside the code being edited. `clangd` along with the entire LLVM Clang toolchain must be found on the System Search PATH.
 
@@ -131,9 +139,9 @@ This Markdown file, `config.toml`, and the note files are published under The MI
 A copy of the MIT-0 License can be found at
 
 > https://spdx.org/licenses/MIT-0.html
->
+> 
 > or, https://opensource.org/licenses/MIT-0.
->
+> 
 > or, https://github.com/aws/mit-0
 
 #### MIT-0 (The MIT No Attribution license):

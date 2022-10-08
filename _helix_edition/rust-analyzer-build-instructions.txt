@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------
+Homepage: https://rust-analyzer.github.io/
+Git Repository: https://github.com/rust-lang/rust-analyzer.git
+-------------------------------------------------------------------------
+
+git clone --depth 1 https://github.com/rust-lang/rust-analyzer.git
+cd rust-analyzer\
+cargo build --release
+
+-------------------------------------------------------------------------
+Wait for the build process to complete (25 min. appx. on
+a Desktop Core i5 with 16 GB DDR3 Memory).
+-------------------------------------------------------------------------
+
+cd target\
+cd release\
+copy rust-analyzer.exe %USERPROFILE%\.cargo\bin\
+copy rust-analyzer-proc-macro-srv.exe %USERPROFILE%\.cargo\bin\
+copy xtask.exe.exe %USERPROFILE%\.cargo\bin\
+
