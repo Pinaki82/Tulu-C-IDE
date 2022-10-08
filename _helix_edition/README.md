@@ -72,7 +72,7 @@ In the Command Prompt, type:
 xcopy /e /i runtime %AppData%\helix\runtime
 ```
 
-Helix will look for 'theme' files in `%AppData%\helix\themes`. The cloned repository comes with a plethora of themes. The folder `runtime` contains all the themes that were also copied along with the `runtime` files. We will have to copy the `themes` folder to `%AppData%\helix\themes` from `%AppData%\helix\runtime\themes`.
+Helix will look for 'theme' files in `%AppData%\helix\themes`. The cloned repository comes with a plethora of themes. The folder `runtime` contains all the themes that were also copied along with the `runtime` files. We will have to copy the `themes` folder to `%AppData%\helix` from `%AppData%\helix\runtime`.
 
 ```
 xcopy /e /i %AppData%\helix\runtime\themes %AppData%\helix\themes
