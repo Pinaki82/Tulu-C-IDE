@@ -112,7 +112,7 @@ Means,
 
 3) Other Languages: **I'm not sure.** Have a look at the supported LSPs here: [Language Support](https://docs.helix-editor.com/lang-support.html)
 
-Open CMD.EXE and navigate to an appropriate directory containing source codes, and type `hx` <space> `filename_with_extension`. For example:
+Open CMD.EXE and navigate to an appropriate directory containing source codes, and type `hx` `<space>` `filename_with_extension`. For example:
 
 ```
 hx main.rs
