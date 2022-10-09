@@ -88,6 +88,18 @@ Now, copy this `config.toml` file to `%AppData%\helix` folder. You can drop this
 copy config.toml %AppData%\helix
 ```
 
+**NOTE**: The folder `grammars` that contains _Tree-sitter parsers_ (syntax highlighting etc.) is around 770 MB, and this directory contains several Dynamic Link Library (Windows shared library) files along with their sources. If you find that the Windows file copier failed to copy this directory properly at the first attempt, you'll have to take one extra step.
+
+```
+cd runtime\
+```
+
+```
+xcopy /e /i grammars %AppData%\helix\runtime\grammars
+```
+
+Finally, visit the directory `%AppData%\helix\runtime` and check whether everything is okay. Without the Tree-sitter parser files, you'll miss syntax highlighting and many features of Helix.
+
 Find the location where the Helix executable is installed. The `where` command will tell you the location.
 
 ```
