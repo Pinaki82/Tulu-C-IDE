@@ -20,7 +20,7 @@ Is there a downside? Yes and No. If you expect Helix to be a text editor with a 
 
 Batteries Included: Helix comes with built-in LSP (Language Server Protocols) support for autocompletion and syntax checking without any external plugin or extra configuration. Most common needs are served out of the box. It is pretty much an Install-n-Go text editor.
 
-## Installation on Microsoft Windows 10 (x64):
+## Installation on Microsoft Windows 10 (x64) and Ubuntu/Ubuntu Derivative Linux:
 
 Their official website is: https://helix-editor.com/
 
@@ -33,6 +33,10 @@ The Helix installation part:
 Open the Microsoft Windows Command Prompt.
 
 `WINDOWS`+`r` -> `cmd`
+
+###### Ubuntu:
+
+Open any terminal emulator you prefer. `CTRL`+`ALT`+`T` (Ubuntu XFCE or Ubuntu GNOME).
 
 Navigate to a directory where you have at least 4 GB of drive space left.
 
@@ -56,15 +60,15 @@ cargo install --path helix-term
 
 Wait a couple of minutes till the build process is complete. Don't close the Command Prompt. Keep it open.
 
-Helix will be installed into `%USERPROFILE%\.cargo\bin`. The name of the Helix executable is `hx.exe`.
+Helix will be installed into `%USERPROFILE%\.cargo\bin` (Linux: `~/.cargo/bin`). The name of the Helix executable is `hx.exe`. On Linux: `~/.cargo/bin/hx`.
 
 `C:\Users\YOUR_USERNAME\.cargo\bin\hx.exe`.
 
 Add `%USERPROFILE%\.cargo\bin` to System PATH (Environment Variables).
 
-Helix will look for its configuration file `config.toml` (.vimrc/init.lua equivalent) and LSP query files in `%AppData%\helix`. The folder `%AppData%\helix` is empty as of now. We will have to provide Helix with the files it requires.
+Helix will look for its configuration file `config.toml` (.vimrc/init.lua equivalent) and LSP query files in `%AppData%\helix` (Linux: `~/.config/helix/`). The folder `%AppData%\helix` (Linux: `~/.config/helix/`) is empty as of now. We will have to provide Helix with the files it requires.
 
-The cloned repository contains a folder `runtime`. We will have to copy this folder to `%AppData%\helix`.
+The cloned repository contains a folder `runtime`. We will have to copy this folder to `%AppData%\helix` (Linux: `~/.config/helix/`).
 
 In the Command Prompt, type:
 
@@ -72,23 +76,43 @@ In the Command Prompt, type:
 xcopy /e /i runtime %AppData%\helix\runtime
 ```
 
-Helix will look for 'theme' files in `%AppData%\helix\themes`. The cloned repository comes with a plethora of themes. The folder `runtime` contains all the themes that were also copied along with the `runtime` files. We will have to copy the `themes` folder to `%AppData%\helix` from `%AppData%\helix\runtime`.
+Helix will look for 'theme' files in `%AppData%\helix\themes` (Linux: `~/.config/helix/themes`). The cloned repository comes with a plethora of themes. The folder `runtime` contains all the themes that were also copied along with the `runtime` files. We will have to copy the `themes` folder to `%AppData%\helix` from `%AppData%\helix\runtime` (Linux: from `~/.config/helix/runtime` to `~/.config/helix`).
 
 ```
 xcopy /e /i %AppData%\helix\runtime\themes %AppData%\helix\themes
+```
+
+###### Ubuntu:
+
+```
+mkdir ~/.config/helix/runtime
+```
+
+```
+cp -r $PWD/runtime/ ~/.config/helix/
+```
+
+```
+cp -r ~/.config/helix/runtime/themes ~/.config/helix/themes
 ```
 
 ## Helix configuration file
 
 Open the supplied **Helix configuration file** `config.toml` (inside `_helix_edition`) with a GUI text editor like Notepad2-mod. **Read it line by line**. Everything is pretty self-explanatory. Change settings as you wish.
 
-Now, copy this `config.toml` file to `%AppData%\helix` folder. You can drop this file into the cloned repository first and then use the Windows terminal to copy the file as well.
+Now, copy this `config.toml` file to `%AppData%\helix` (Linux: `~/.config/helix/`) folder. You can drop this file into the cloned repository first and then use the Windows terminal/(Any Linux terminal emulator) to copy the file as well.
 
 ```
 copy config.toml %AppData%\helix
 ```
 
-**NOTE**: The folder `grammars` that contains _Tree-sitter parsers_ (syntax highlighting etc.) is around 770 MB, and this directory contains several Dynamic Link Library (Windows shared library) files along with their sources. If you find that the Windows file copier failed to copy this directory properly at the first attempt, you'll have to take one extra step.
+###### Ubuntu:
+
+```
+cp $PWD/config.toml ~/.config/helix/
+```
+
+**NOTE for Windows Users**: The folder `grammars` that contains _Tree-sitter parsers_ (syntax highlighting etc.) is around 770 MB, and this directory contains several Dynamic Link Library (Windows shared library) files along with their sources. If you find that the Windows file copier failed to copy this directory properly at the first attempt, you'll have to take one extra step.
 
 ```
 cd runtime\
@@ -114,6 +138,12 @@ Means,
 
 ```
 %USERPROFILE%\.cargo\bin\hx.exe
+```
+
+###### Ubuntu:
+
+```
+whereis hx
 ```
 
 ## How will you use Helix:
