@@ -37,3 +37,14 @@ where hx
 
 C:\Users\YOUR_USERNAME\.cargo\bin\hx.exe
 
+Linux XYZUbuntu:
+
+git clone https://github.com/helix-editor/helix
+cd helix
+cargo install --path helix-term
+mkdir ~/.config/helix/runtime
+cp -r $PWD/runtime/ ~/.config/helix/
+cp -r ~/.config/helix/runtime/themes ~/.config/helix/themes
+cp $PWD/config.toml ~/.config/helix/
+
+whereis hx
