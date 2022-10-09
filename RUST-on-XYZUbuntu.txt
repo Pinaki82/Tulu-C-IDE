@@ -1,0 +1,24 @@
+sudo apt install curl
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+rustup update
+
+https://github.com/rust-lang/rust-analyzer/releases
+https://rust-analyzer.github.io/manual.html#installation
+
+mkdir -p ~/.local/bin
+curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+
+.bashrc/.bash_aliases:
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+config.fish:
+
+# $HOME/.cargo/bin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH
+
+source .bash_aliases
+source .bashrc

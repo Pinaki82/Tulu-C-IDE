@@ -224,6 +224,112 @@ We won't be using RUSTUP ([rustup-init.exe](https://static.rust-lang.org/rustup/
 
 MSYS2 will provide that consistency.
 
+##### Rust on Linux +-Ubuntu (OFFICIAL Method)
+
+Install 'curl'. Rust's official installer uses a shell script that installs the toolchain. The script needs Curl to download the necessary files.
+
+```
+sudo apt install curl
+```
+
+Before installing the RUST compiler toolchain, visit
+
+https://www.rust-lang.org/learn/get-started
+
+Copy the command that they provide. It should look similar to what is given below. They might update the command in the future, so it will be better to follow their recommendation.
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Add `$HOME/.cargo/env` to your current console session.
+
+```
+source "$HOME/.cargo/env"
+```
+
+Rust can be updated by issuing the following command.
+
+```
+rustup update
+```
+
+###### Install [Rust-Analyzer](https://github.com/rust-lang/rust-analyzer/releases):
+
+https://rust-analyzer.github.io/manual.html#installation
+
+Open any terminal emulator of your choice and type `bash`. Stick only to the Bash Shell for now.
+
+Go to the `$HOME` directory.
+
+```
+cd ~/
+```
+
+Create a directory `bin` in `~/.local`
+
+```
+mkdir -p ~/.local/bin
+```
+
+Issue the command written below. It can be found here: https://rust-analyzer.github.io/manual.html#installation
+
+```
+curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+```
+
+Give the LSP of Rust, aka `rust-analyzer`, permission to run on your machine.
+
+```
+chmod +x ~/.local/bin/rust-analyzer
+```
+
+Add `~/.cargo/bin` (the directory where CARGO installs packages) to `.bashrc` or `.bash_aliases` and `config.fish`.
+
+```
+mousepad/geany/gedit/any_other_GUI_text_editor ~/.bash_aliases
+```
+
+Or,
+
+```
+mousepad/geany/gedit/any_other_GUI_text_editor ~/.bashrc
+```
+
+Write (copy/paste) the following line somewhere in the file.
+
+```
+export PATH="$HOME/.cargo/bin:$PATH"
+```
+
+Edit your Fish Shell config.
+
+```
+mousepad/geany/gedit/any_other_GUI_text_editor ~/.config/fish/config.fish
+```
+
+Drop the following line.
+
+```
+# $HOME/.cargo/bin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH
+```
+
+Either restart the terminal emulator or `source` the files `.bash_aliases` and `.bashrc`
+
+```
+cd ~/
+source .bash_aliases
+source .bashrc
+```
+
+Fish Shell:
+
+```
+source ~/.config/fish/config.fish
+```
+
 RUST: What is **supported and** what is **not**:
 
 1) Without using a CARGO project:
