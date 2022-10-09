@@ -256,7 +256,7 @@ rustup update
 
 ###### Install [Rust-Analyzer](https://github.com/rust-lang/rust-analyzer/releases):
 
-https://rust-analyzer.github.io/manual.html#installation
+https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
 
 Open any terminal emulator of your choice and type `bash`. Stick only to the Bash Shell for now.
 
@@ -272,7 +272,7 @@ Create a directory `bin` in `~/.local`
 mkdir -p ~/.local/bin
 ```
 
-Issue the command written below. It can be found here: https://rust-analyzer.github.io/manual.html#installation
+Issue the command written below. It can be found here: https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
 
 ```
 curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
@@ -308,7 +308,7 @@ Edit your Fish Shell config.
 mousepad/geany/gedit/any_other_GUI_text_editor ~/.config/fish/config.fish
 ```
 
-Drop the following line.
+Drop the following lines.
 
 ```
 # $HOME/.cargo/bin
