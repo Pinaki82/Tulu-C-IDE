@@ -29,6 +29,10 @@ xcopy /e /i %AppData%\helix\runtime\themes %AppData%\helix\themes
 
 copy config.toml %AppData%\helix
 
+cd runtime\
+
+xcopy /e /i grammars %AppData%\helix\runtime\grammars
+
 where hx
 
 C:\Users\YOUR_USERNAME\.cargo\bin\hx.exe
