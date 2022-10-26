@@ -604,6 +604,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here\command]
 @="C:\\Windows\\system32\\cmd.exe"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here]
+@="Open CMD Here"
+"Icon"="%WINDIR%\\system32\\cmd.exe"
 ```
 
 Double-click on the Registry File. CMD.EXE will appear at the R-Click Context Menu (Open CMD Here).

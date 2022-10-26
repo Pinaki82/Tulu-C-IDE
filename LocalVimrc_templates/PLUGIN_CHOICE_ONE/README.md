@@ -86,6 +86,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here\command]
 @="C:\\Windows\\system32\\cmd.exe"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\Open CMD Here]
+@="Open CMD Here"
+"Icon"="%WINDIR%\\system32\\cmd.exe"
 ```
 
 ** Remember that sometimes Windows Explorer can be your best friend.
