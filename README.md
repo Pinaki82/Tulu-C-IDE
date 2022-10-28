@@ -1964,6 +1964,26 @@ You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (terme
 
 [Vim Markdown](https://github.com/plasticboy/vim-markdown.git): _"Syntax highlighting, matching rules and mappings for the original Markdown and extensions."_
 
+##### Fancy Start Screen
+
+[vim-startify](https://github.com/mhinz/vim-startify): _The fancy start screen for Vim._
+
+By default, GVim ([Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE)) will start with a welcome screen. [vim-startify](https://github.com/mhinz/vim-startify) will provide a list of recently opened files and an ASCII art for [Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE). Beneath the ASCII art, [vim-startify](https://github.com/mhinz/vim-startify) will greet you with random quotes on programming. It is turned on by default. If, for some reason, you do not want to see the quotes, open the files `.gvimrc` and `.vimrc`, then find the following section around the end of these two files `.gvimrc` and `.vimrc`:
+
+```vim
+let g:startify_custom_header =
+          \ startify#pad(g:ascii + startify#fortune#boxed())
+```
+
+Then, clear this `+ startify#fortune#boxed()` part, so the section looks somewhat as shown below:
+
+```vim
+let g:startify_custom_header =
+          \ startify#pad(g:ascii)
+```
+
+The quotes won't be shown again.
+
 ##### Colour Schemes
 
 [Mustang Vim Colorscheme](https://github.com/croaker/mustang-vim.git): _"This is a modified version of the awesome mustang colorscheme by hcalves, published on [deviantART](http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484)."_
