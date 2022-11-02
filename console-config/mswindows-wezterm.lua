@@ -1,6 +1,12 @@
 -- Licence: MIT-0 (https://github.com/aws/mit-0)
 
+-- WezTerm Terminal Emulator config file.
+
 -- NOTE: Microsoft Windows only
+
+-- Required utility: Required utility: Clink (Powerful Bash-style
+--                                            command line editing for cmd.exe)
+-- https://mridgers.github.io/clink/
 
 -- Before using, rename this file to "wezterm.lua".
 -- This file should be placed in the directory %PROGRAMFILES%\WezTerm
