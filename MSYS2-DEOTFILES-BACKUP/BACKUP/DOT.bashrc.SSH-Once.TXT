@@ -1,3 +1,55 @@
+
+# WARNING: 'oh-my-bash' will overwrite your existing .bashrc file.
+#          Follow the steps demonstrated here.
+
+# YOUR_USERNAME
+# The command:
+# echo $(whoami)
+
+# Step 1:
+# ===========================================
+# MSYS2 supplied .bashrc contents.
+# ===========================================
+
+# Install 'curl'.
+#
+# pacman -S curl
+#
+# Make a backup of the .bashrc file immediately after installing MSYS2.
+# Copy everything from the default .bashrc file and paste the same
+# straight here.
+
+
+# Step 2:
+# Install 'oh-my-bash' and 'Nightfly'
+# https://linuxhint.com/bash-and-vim-nightfly/
+# The command:
+# bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+# You may like 'Oh-My-Fish' as well.
+# The command:
+# curl -L https://get.oh-my.fish | fish
+# Also install AutoJump.
+# https://www.tecmint.com/autojump-a-quickest-way-to-navigate-linux-filesystem/
+# git clone https://github.com/wting/autojump.git
+# cd autojump
+# ./install.py
+# AutoJump will tell you to manually add the following line to .bashrc. 
+# [[ -s /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh ]] && source /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh
+
+
+
+
+
+# Step 3:
+# Copy the whole content of this file
+# to the newly created .bashrc file (by 'oh-my-bash'),
+# including the lines below.
+
+# ===========================================
+# Custom entries
+# ===========================================
+
+# --------------------- Type SSH Passphrase only once per boot session ---------
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -19,3 +71,21 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+# ------------------------------------------------------------------------------
+
+alias make=mingw32-make.exe
+
+export PICO_SDK_PATH="/e/VSARM/sdk/pico/pico-sdk"
+
+export PATH=/opt/node-v16.16.0-win-x64/:$PATH
+
+export PATH=/home/YOUR_USERNAME/bin/:$PATH
+
+export PATH=/c/Users/YOUR_USERNAME/.cargo/bin/:$PATH
+
+[[ -s /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh ]] && source /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh
+
+# Step 3:
+# Reload .bashrc. The command is given below.
+# source .bashrc
+
