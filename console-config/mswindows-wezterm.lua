@@ -4,8 +4,8 @@
 
 -- NOTE: Microsoft Windows only
 
--- Required utility: Required utility: Clink (Powerful Bash-style
---                                            command line editing for cmd.exe)
+-- Required utility: Clink (Powerful Bash-style
+--                           command line editing for cmd.exe)
 -- https://mridgers.github.io/clink/
 
 -- Before using, rename this file to "wezterm.lua".
