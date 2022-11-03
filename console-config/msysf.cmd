@@ -1,7 +1,9 @@
 @echo off
 setlocal
 
-c:/msys64/usr/bin/fish.exe --login -i
+c:/msys64/msys2_shell.cmd -mingw64 -no-start -defterm -here -l -c fish
+
+REM c:/msys64/usr/bin/fish.exe --login -i
 
 REM Access MSYS2 from terminal emulators
 REM other than the default Mintty, e.g.,
@@ -13,7 +15,10 @@ REM C:\msys64
 REM alongside
 REM msys2.exe.
 
-REM https://github.com/microsoft/terminal/issues/1669
+
+REM https://debuganswer.com/tutorials/using-msys2-mingw-64-bit-terminal-on-vscode
+REM https://stackoverflow.com/questions/26809898/invoke-msys2-shell-from-command-prompt-or-powershell
+
 
 REM WINDOWS+r -> systempropertiesadvanced ->
 REM -> Environment Variables ->
