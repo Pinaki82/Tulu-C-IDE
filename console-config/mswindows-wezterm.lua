@@ -184,7 +184,11 @@ return {
 
     enable_tab_bar = true,
     use_fancy_tab_bar = true,
-    term = "wezterm",
+    -- If you want to access the shells Fish, Bash and PS
+    -- from WezTerm, do not set WezTerm as the default terminal.
+
+    -- term = "wezterm",
+
     default_cursor_style = "BlinkingBar",
     -- default_cursor_style = "SteadyBar",
 
