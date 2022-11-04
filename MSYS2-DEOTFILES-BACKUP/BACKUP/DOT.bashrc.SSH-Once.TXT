@@ -11,9 +11,9 @@
 # MSYS2 supplied .bashrc contents.
 # ===========================================
 
-# Install 'curl'.
+# Install 'curl', 'git', 'fish', 'bash-completion'.
 #
-# pacman -S curl
+# pacman -S curl git fish bash-completion
 #
 # Make a backup of the .bashrc file immediately after installing MSYS2.
 # Copy everything from the default .bashrc file and paste the same
@@ -25,9 +25,31 @@
 # https://linuxhint.com/bash-and-vim-nightfly/
 # The command:
 # bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+# Change the theme: .bashrc -> Uncomment:
+
+# OSH_THEME="powerline-plain"
+# OSH_THEME="powerline"
+## OSH_THEME="brunton"
+## OSH_THEME="kitsune"
+# OSH_THEME="mairan"
+# OSH_THEME="rr"
+
+# source ~/.bashrc
+
+
 # You may like 'Oh-My-Fish' as well.
+# https://github.com/oh-my-fish/oh-my-fish
 # The command:
 # curl -L https://get.oh-my.fish | fish
+# fish
+# Theming:
+# omf list
+# omf theme
+# omf install bobthefish
+# omf install agnoster
+# omf theme bobthefish
+# omf reload
+
 # Also install AutoJump.
 # https://www.tecmint.com/autojump-a-quickest-way-to-navigate-linux-filesystem/
 # git clone https://github.com/wting/autojump.git
@@ -35,9 +57,10 @@
 # ./install.py
 # AutoJump will tell you to manually add the following line to .bashrc. 
 # [[ -s /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh ]] && source /home/YOUR_USERNAME/.autojump/etc/profile.d/autojump.sh
-
-
-
+# Or,
+# echo "[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh" >> ~/.bashrc
+# cd ~/
+# echo "source /etc/profile.d/bash_completion.sh" >> ~/.bashrc
 
 
 # Step 3:
