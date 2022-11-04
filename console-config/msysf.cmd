@@ -25,6 +25,7 @@ REM -> Environment Variables ->
 REM -> System Variables -> Path -> Edit -> New
 
 REM Or, (shortcut): WINDOWS+r -> rundll32.exe sysdm.cpl,EditEnvironmentVariables
+REM CTRL+SHIFT+ENTER
 
 REM Add to PATH:
 
