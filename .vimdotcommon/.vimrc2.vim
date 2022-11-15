@@ -285,8 +285,11 @@ map <C-D> <Esc>:confirm bd <CR><Esc>
 " ----- While in the Insert Mode, press 'jk' instead of '<ESC>' to go back to the Normal Mode ----------- "
 " ----------------------------- " https://stackoverflow.com/questions/23946748/vim-imap-jk-esc-not-working-even-with-escape-character
 " ----------------------------- " https://medium.com/diegodev/vim-tip-remapping-jj-to-escape-8efc4ad8a6bf
+" ----------------------------- " https://allsyed.com/posts/7-most-useful-vim-mappings/
 inoremap <special> jk <ESC>
 imap jk <Esc>
+inoremap <special> kj <ESC>
+imap kj <Esc>
 " ------------------------------------------------------------------
 
 set wrap!   " Disables Word Wrap on start

@@ -68,6 +68,8 @@ C-s = ":w" # Maps the Control-s to the typable command :w which is an alias for 
     # Press ALT+x to go to Normal Mode.
 j = { k = "normal_mode" } # Maps `jk` to exit insert mode
     # Type 'jk' to leave the Insert Mode and go to the Normal Mode.
+k = { j = "normal_mode" } # Maps `kj` to exit insert mode
+    # Type 'kj' to leave the Insert Mode and go to the Normal Mode.
 
 [editor.statusline]
                 # Status-Line configuration
