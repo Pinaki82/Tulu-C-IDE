@@ -1226,6 +1226,15 @@ Find packages from the GUI, then install the package you need from the PowerShel
 
 First, uninstall the program from the Control Panel -> Add/Remove Programs if you've followed the regular installation method (through MSI and EXE installers). BleachBit/CCleaner can be of a bit of help. Control Panel is another place to uninstall programs. Now you're ready to install the same program from Chocolatey's repository. Otherwise, two installations of the same program may conflict.
 
+**Troubleshooting Chocolatey:** If Chocolatey gets stuck while upgrading certain apps, you may try the following:
+Disable the Antivirus program and run the command given below, although disabling AV programs is never recommended. Unblock `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe` from your AV and firewall app. Try to run the command first; in case, running the command alone does not solve the issue, you may have to disable your AV for 10 to 15 minutes. Do not forget to unblock necessary executable files found in `C:\ProgramData\chocolatey` (`C:\ProgramData\chocolatey\choco.exe`, `C:\ProgramData\chocolatey\bin\choco.exe`, `C:\ProgramData\chocolatey\lib\InstChoco\tools\InstChoco.exe`) from your firewall app.  Last but not least, never run anything from the Power Shell if you do not understand what you are doing.
+
+```
+choco upgrade all -y --verbose --use-system-powershell --limit-output
+```
+
+Run `choco --help` for details.
+
 _Did you know MSYS2 can be found in Chocolatey's repository?_ (^__^)
 
 ******
