@@ -99,3 +99,12 @@ https://randomnerdtutorials.com/projects-esp8266/
 https://lastminuteengineers.com/creating-esp8266-web-server-arduino-ide/
 https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
 https://www.losant.com/blog/getting-started-with-platformio-esp8266-nodemcu
+
+-------------------------------------------------------------------
+
+I used CoolTerm (https://freeware.the-meiers.org/)
+on my MS Windows computer to monitor the output
+from the COM (Serial) port.
+Set the baud rate properly. Otherwise, you'll see
+a ton of intangible glyphs
+instead of any meaningful message.
