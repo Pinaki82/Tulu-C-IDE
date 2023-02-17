@@ -180,6 +180,8 @@ cd pico-sdk
 git submodule update --init 
 cd .. 
 git clone -b master https://github.com/raspberrypi/pico-examples.git
+cd ..
+git clone -b master https://github.com/raspberrypi/pico-project-generator.git
 ```
 
 Add `pico-sdk` to the system path.
@@ -453,6 +455,15 @@ make -j4
 
 ```
 /e/VSARM/sdk/pico/pico-project-generator/pico_project.py --feature spi --feature i2c --project cmake test
+cd build/
+cmake -G "MinGW Makefiles" ..
+make -j4
+```
+
+Pico-Project-Generator GUI: Use the flag `--gui`.
+
+```
+/e/VSARM/sdk/pico/pico-project-generator/pico_project.py --gui --feature spi --feature i2c --project cmake testproj
 cd build/
 cmake -G "MinGW Makefiles" ..
 make -j4
