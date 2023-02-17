@@ -1,0 +1,101 @@
+ESP8266 Node-MCU v2
+-------------------------------------------------------------------
+
+Generate a PlatformIO project with a .ccls file to be used with GVim.
+
+pio project init --ide vim --board nodemcuv2
+
+Console log:
+
+-------------------------------------------------------------------
+
+D:\pio-node82>pio project init --ide vim --board nodemcuv2
+
+The current working directory D:\pio-node82 will be used for the project.
+
+The next files/directories have been created in D:\pio-node82
+include - Put project header files here
+lib - Put here project specific (private) libraries
+src - Put project source files here
+platformio.ini - Project Configuration File
+Resolving nodemcuv2 dependencies...
+Already up-to-date.
+
+Project has been successfully initialized! Useful commands:
+`pio run` - process/build project from the current directory
+`pio run --target upload` or `pio run -t upload` - upload firmware to a target
+`pio run --target clean` - clean project (remove compiled files)
+`pio run --help` - additional information
+
+D:\pio-node82>
+
+-------------------------------------------------------------------
+
+Copy the file .ccls and rename the copied file to compile_flags.txt.
+Copy .ccls & compile_flags.txt to the src/ & include/ directories.
+
+The good thing about PlatfomIO is that you are free to use PlatformIO with
+a Text Editor/IDE of your choice. GVim autocompletion plugins, Helix, Kate,
+Neovim, and Kakoune all those editors
+require a .ccls and/or a compile_flags.txt or a compileCommands.json file for
+code completion. When you initiate a PlatformIO project using
+the command `pio project init --ide vim .........`, PlatformIO creates
+all those necessary files depending on the IDE specified
+along with its own `platformio.ini` (for compilation/upload/debug etc.).
+So, unlike Arduino-CLI, you don't have to rely on
+the .ccls & compile_flags.txt generator program `arduheaderswin` supplied
+with Tulu-C-IDE.
+
+For some reason, you might want to generate the .ccls and the compile_flags.txt
+files through `arduheaderswin`. See below to follow that route.
+ 
+-------------------------------------------------------------------
+
+
+Run arduheaderswin.exe
+
+arduheaderswin.exe avr -mcpu=ESP8266 %USERPROFILE%\.platformio p t (for generating tags)
+arduheaderswin.exe avr -mcpu=ESP8266 %USERPROFILE%\.platformio p n (create ccls.txt & 0compile_flags.txt without generating tags)
+-------------------------------------------------------------------
+
+After generating the files .ccls and the compile_flags.txt,
+drop the following lines to those generated files at the top.
+
+-------------------------------------------------------------------
+
+clang
+
+%c -std=gnu17 -Wpointer-arith -Wno-implicit-function-declaration -Wl,-EL -fno-inline-functions -nostdlib -Os -mlongcalls -mtext-section-literals -falign-functions=4 -U__STRICT_ANSI__ -D_GNU_SOURCE -ffunction-sections -fdata-sections -Wall -Werror=return-type -free -fipa-pta
+%cpp -fno-rtti -std=gnu++17 -fno-exceptions -Os -mlongcalls -mtext-section-literals -falign-functions=4 -U__STRICT_ANSI__ -D_GNU_SOURCE -ffunction-sections -fdata-sections -Wall -Werror=return-type -free -fipa-pta
+
+
+-DPLATFORMIO=60106
+-DESP8266
+-DARDUINO_ARCH_ESP8266
+-DARDUINO_ESP8266_NODEMCU_ESP12E
+-DF_CPU=80000000L
+-D__ets__
+-DICACHE_FLASH
+-DARDUINO=10805
+-DARDUINO_BOARD="PLATFORMIO_NODEMCUV2"
+-DFLASHMODE_DIO
+-DLWIP_OPEN_SRC
+-DNONOSDK22x_190703=1
+-DTCP_MSS=536
+-DLWIP_FEATURES=1
+-DLWIP_IPV6=0
+-DVTABLES_IN_FLASH
+-DMMU_IRAM_SIZE=0x8000
+-DMMU_ICACHE_SIZE=0x8000
+
+Rename the files ccls.txt & 0compile_flags.txt
+to .ccls & compile_flags.txt before using.
+
+-------------------------------------------------------------------
+
+ESP8266 learning resources:
+
+https://randomnerdtutorials.com/projects-esp8266/
+https://lastminuteengineers.com/creating-esp8266-web-server-arduino-ide/
+https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
+https://www.losant.com/blog/getting-started-with-platformio-esp8266-nodemcu

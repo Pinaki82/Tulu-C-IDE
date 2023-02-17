@@ -1,0 +1,45 @@
+" ~~~~~~~~ To set a 'colourscheme' (theme), please uncomment one of the lines
+" ~~~~~~~~~~~ that starts with the command 'colo' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~ (Delete the double quotation mark) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" colo mustang_green
+" colo oh-la-la
+" colo slate
+colo palenight
+:call ColStline()
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" add current directory's generated tags file to available tags
+set tags+=./tags
+set tags+=./tags;/
+set tags+=./tags;/.
+set path+=./;/
+" ------------------------------- Common Tags-----------
+" https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
+" source '.set_tags_n_set_paths.txt'
+
+" ========================== List all sub-directories in a folder and produce an output to a text file:
+" https://stackoverflow.com/questions/35560540/batch-file-to-list-directories-recursively-in-windows-as-in-linux
+" dir /a:d /s /b /o:n > list.txt
+
+" ------------------- auto_tags_gen plugin settings
+" 'auto_tags_gen plugin' startup with option 1
+" To disable, put a comment in the first column of the line below.
+"                                                       " is a comment in Vim.
+:call ATGOption1()
+
+" ========================== ALE Linter Settings for .lvimrc ==========
+" ==================== UNCOMMENT the entire ALE Linter SETTINGS if
+" ====================== you chose the OPTION TWO for autocompletion and code
+" ====================== checking ===============================
+
+let g:ale_lint_on_text_changed = 0 " Change to ZERO from ONE on Laptops to save battery power
+" Set this in your vimrc file to disabling highlighting
+" let g:ale_set_highlights = 0
+let g:ale_cpp_cppcheck_options = '--enable-all'
+" ========================== (END) ALE Linter Settings for .lvimrc ==========
+
+" ========================== Ctags DB (tags) path ==========================
+
+set tags+=./tags;/
+set path+=./;/
