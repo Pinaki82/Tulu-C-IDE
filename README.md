@@ -1918,8 +1918,9 @@ To configure SSH and Git on your system and create a GPG ID with a backup, follo
 
 [convert-line-endings](https://github.com/Pinaki82/convert-line-endings.git): "_Convert Line Endings to Unix/Windows"_, `\lnu` and `\lnd`.
 
-[vim-grammarous
-](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads [LanguageTool](https://languagetool.org/download/) on Linux, which requires Java 8+. Install Java Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre`. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc` or `%userprofile%\.vim\misc`) folder.
+[vim-grammarous](https://github.com/rhysd/vim-grammarous.git): A frontend grammar checker for Vim that uses [LanguageTool](https://languagetool.org/download/) in the backend. Simply do `:GrammarousCheck`. This plugin automatically downloads [LanguageTool](https://languagetool.org/download/) on Linux, which requires Java 8+. Install Java Runtime Environment on Ubuntu derivatives: `sudo apt install default-jre`. On Windows OS, extract "languagetool-*.zip" in the 'misc' (`%userprofile%\.vim\plugged\vim-grammarous\misc` or `%userprofile%\.vim\misc`) folder.
+
+**NOTE:** [vim-grammarous](https://github.com/rhysd/vim-grammarous.git) has not been updated for some time. Whereas, [LanguageTool](https://languagetool.org/download/) releases updates frequently. The last time I checked it on my MS Windows machine, the latest version of [LanguageTool](https://languagetool.org/download/) didn't work with [vim-grammarous](https://github.com/rhysd/vim-grammarous.git). The last supported [LanguageTool](https://languagetool.org/download/) version is [5.9](https://languagetool.org/download/LanguageTool-5.9.zip).
 
 [vim-bettersearch](https://github.com/kenng/vim-bettersearch.git): Notepad++ like search in Vim. `:BetterSearch<TAB>`.
 
