@@ -63,6 +63,14 @@ GVim Version 8.1.2269 (from Ubuntu repository) with this configuration running o
 GVim Version 8.2.12 from [PortableApps.com](https://portableapps.com/) running on Windows 10 (x64) Pro 20H2 with this configuration. Yes, this configuration runs even on portable versions of GVim!
 ![2020-12-25 20_01_31- No Name  - GVIM](https://user-images.githubusercontent.com/16861933/103137187-ba7e5600-46ec-11eb-8ebc-77b5e9dfcf2d.png)
 
+## [Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) for Microcontrollers
+
+For Microcontroller projects based on [PlatformIO-CLI](https://platformio.org/install/cli), [Arduino-CLI](https://arduino.github.io/arduino-cli/), and [Raspberry Pi Pico RP2040](https://www.raspberrypi.com/products/raspberry-pi-pico/) [SDK](https://github.com/raspberrypi/pico-sdk), have a look at the following directories:
+
+1. [CCLS_GEN](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN)
+
+2. [LocalVimrc_templates](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates)
+
 # Dependencies:
 
 ## Windows:
@@ -982,7 +990,7 @@ Otherwise, your installation might be messed up.
 
 **NOTE:** I do not recommend you to install CCLS on Windows. CCLS doesn't work properly on Windows, although it can be installed using the [Chocolatey Package Manager](https://chocolatey.org/) with the command `choco install -y ccls`. More about Chocolatey later. It is an excellent package manager for Microsoft Windows which can be compared to the central repository concept in Linux distributions.
 
-However, CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been planned.
+However, CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been incorporated.
 
 Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
 
