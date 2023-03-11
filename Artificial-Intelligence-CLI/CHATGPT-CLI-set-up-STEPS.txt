@@ -1,0 +1,88 @@
+OpenAI:
+
+OpenAI-Codex-API-Key.txt
+
+python3.exe -m pip install --upgrade pip
+
+https://stackoverflow.com/questions/57062031/python-m-pip-install-upgrade-pip-does-not-work
+
+https://pypi.org/project/pip/#files
+
+python3.exe -m pip install --force-reinstall pip-23.0.1-py3-none-any.whl
+
+python3.exe -m pip install openai
+
+python3.exe -m pip install openai-cli
+
+https://stackoverflow.com/questions/39832219/pip-not-working-in-python-installation-in-windows-10
+
+py -m pip install openai
+
+python3.exe -m pip install --upgrade openai
+
+py -m pip install --upgrade openai
+
+
+%USERPROFILE%\.config\openai.token
+%USERPROFILE%\.config\openaiapirc
+
+C:\msys64\usr\bin>python openai repl --token YOUR-OENAPI-TOKEN
+OR
+ https://medium.com/codingthesmartway-com-blog/unleash-the-power-of-openais-chatgpt-api-command-line-conversations-made-easy-with-python-3442e25899fd
+
+python script
+
+
+
+
+
+
+
+
+
+
+
+ChatGPT:
+
+https://github.com/mmabrouk/chatgpt-wrapper
+
+https://stackoverflow.com/questions/68333213/display-a-warning-when-trying-to-install-python-packages
+
+(CMD in Admin mode)
+
+py -m pip install pip-run
+
+py -m pip install git+https://github.com/mmabrouk/chatgpt-wrapper
+
+py -m pip install setuptools
+
+https://learn.microsoft.com/en-us/microsoft-edge/playwright/
+
+npm install npx playwright install firefox
+
+npx playwright install
+
+npm install npx playwright install
+
+npm install npx playwright install firefox
+
+Avast's List of Exception: %LOCALAPPDATA%\ms-playwright\*
+
+chatgpt install
+
+log-in
+
+1> /exit
+
+(Admin)
+
+
+(Exit Admin Mode)
+(re-launch CMD)
+
+chatgpt
+
+Ask ChatGPT a question
+
+1> /exit
+
