@@ -565,6 +565,8 @@ The  plugin comes with some quirks, so a few weird steps are involved. The Admin
 6. Extract the file `language_server_windows_x64.exe.gz` found in `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium\bin\c783d097d5521079d55284594e15f8f8fc38adbb`. Now the folder should contain `language_server_windows_x64.exe`. Change the permission parameters of that executable file.
    
    ![](attachments/2023-03-12-01-58-29-image.png)
+   
+   Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
 
 7. You're ready to go with AI. Type a function, variable etc. in the Insert Mode (hit `i`) and press `M+]` (that is, `LEFT_ALT + ]`), and you'll see how it performs.
    
