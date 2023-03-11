@@ -1,12 +1,23 @@
 # Power up your Terminal with AI
 
+- [OpenAI](#openai)
+  - [Python, pip, and OpenAI Credentials](#python-pip-and-openai-credentials)
+  - [Install OpenAI](#install-openai)
+  - [The Python Script](#the-python-script)
+    - [How will you run this script?](#how-will-you-run-this-script)
+- [ChatGPT](#chatgpt)
+  - [ChatGPT Wrapper](#chatgpt-wrapper)
+    - [Install ChatGPT Wrapper](#install-chatgpt-wrapper)
+- [Supercharge your coding experience with AI](#supercharge-your-coding-experience-with-ai)
+  - [Codeium Vim Plugin](#codeium-vim-plugin)
+
 There are a lot of (at least two) [OpenAI](https://openai.com/) [ChatGPT](https://chat.openai.com/chat) plugins available for Vim.  Unfortunately, none of them worked as expected on my Microsoft Windows 10 box. That doesn't mean you cannot power your terminal with OpenAI's console applications for finding the right directions with an AI search query. When you code, you spend most of your time on the console. Firing up a Terminal Emulator takes less time and computing resources than opening a browser. Being able to access ChatGPT from the console will save you time, as a plus. Opening a browser, logging into the ChatGPT portal, and creating a new chat thread all of which take time. The command line makes it a breeze in no time.
 
 We will see how to get AI support right into your Terminal Emulator.
 
 ## [OpenAI](https://openai.com/)
 
-### Python - pip - OpenAI Credentials
+### Python, pip, and OpenAI Credentials
 
 Create an [OpenAI](https://openai.com/) account (**pro-tip**: register with Google, don't use username/password). Similarly, create a [ChatGPT](https://chat.openai.com/chat) account. Log in to ChatGPT and OpenAI with your Google account. Get your API key from [OpenAI API](https://platform.openai.com/account/api-keys).
 
@@ -80,6 +91,8 @@ C:\msys64\usr\bin\openai
 OpenAI has already been installed on your system. You can use it directly by typing `C:\msys64\usr\bin>python openai repl --token YOUR-OENAPI-TOKEN` in your MS Windows Terminal. Ask anything, such as requesting OpenAI to write a piece of code. However, this is inconvenient for many reasons (that I don't want to discuss here).
 
 Have a look at https://medium.com/codingthesmartway-com-blog/unleash-the-power-of-openais-chatgpt-api-command-line-conversations-made-easy-with-python-3442e25899fd. The article described a very straightforward way of accessing OpenAI-CLI using a Python script. Here's the python code (An honest disclaimer: I don't understand Python):
+
+### The Python Script
 
 File name:
 
@@ -462,3 +475,105 @@ Now, ChatGPT and OpenAI are there right in your Terminal Emulator. It's up to yo
 > -- Author unknown
 
 ![](attachments/2023-03-11-20-11-54-image.png)
+
+# Supercharge your coding experience with AI
+
+## [Codeium](https://codeium.com/) Vim Plugin
+
+According to some people, for a truly uncompromised AI-powered autocompletion there's no true alternative to GitHub's Copilot. I didn't have the luck to try Copilot, but Copilot has made its place. Those who didn't want a solution locked behind a paywall started to find an alternative ever since the inception of GitHub Copilot. Luckily we have no reason to lose hope. A similar, very close to Copilot alternative is out there.
+
+Codeium.
+
+Codeium works with all major text editors and IDEs. Vim is one of the supported platforms. It is free forever (as promised), at least for early birds.
+
+Here's how to set it up on your MS Windows machine. I'll not leave the plugin settings turned off since I haven't tested it on Linux yet. Also, some people may prefer other alternatives. Codeium may charge users in the future. Speculations are galore! However, if you want to try Codeium on your machine with Vim today, please read on.
+
+Uncomment the following lines from your `.vimrc2.vim`. Use your editor's search and replace feature for that.
+
+```
+"     set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
+```
+
+```
+"Plug 'Exafunction/codeium.vim'
+"            C              " Close to GitHub Copilot
+"            o            AI Supercharged autocompetion
+"            d            Infuse AI into your codeing
+"            ium          https://codeium.com/vim_tutorial
+```
+
+```
+" -----------------------------------------
+" Codeium Plugin Settings
+"let g:codeium_filetypes = {
+"    \ "c": v:false,
+"    \ "typescript": v:true,
+"    \ "python": v:true,
+"    \ "cpp": v:true,
+"    \ "rust": v:true,
+"    \ }
+" -----------------------------------------
+```
+
+So that the lines become:
+
+```
+set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
+```
+
+```
+Plug 'Exafunction/codeium.vim'
+"            C              " Close to GitHub Copilot
+"            o            AI Supercharged autocompetion
+"            d            Infuse AI into your codeing
+"            ium          https://codeium.com/vim_tutorial
+```
+
+```
+" -----------------------------------------
+" Codeium Plugin Settings
+let g:codeium_filetypes = {
+    \ "c": v:false,
+    \ "typescript": v:true,
+    \ "python": v:true,
+    \ "cpp": v:true,
+    \ "rust": v:true,
+    \ }
+" -----------------------------------------
+```
+
+Fire up gVim/Vim in Admin Mode (R-Click and choose to Run as Administrator). In the Command Mode (hit `Esc`), type:
+
+```
+PlugInstall
+```
+
+To install the plugin.
+
+The  plugin comes with some quirks, so a few weird steps are involved. The Admin mode was the first of them. I use a portable Vim installation. Update portable gVim (or the regular one) to the latest version. Get it from [here](https://github.com/vim/vim-win32-installer).
+
+1. Delete the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium` and the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.vim\plugged\codeium.vim` folder if those folders already exist.
+
+2. Run `:PluInstall` and then `:PlugUpdate`.
+
+3. Add `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\` to Avast's (or any other antivirus program's) list of exceptions.
+
+4. Exit Vim.
+
+5. If you do not follow the steps I'll mention, you'll get authentication errors because the plugin will say that it cannot access a temp file located in `%USERPROFILE%\PortableApps\gVimPortable\Data\Temp\`.
+
+6. Extract the file `language_server_windows_x64.exe.gz` found in `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium\bin\c783d097d5521079d55284594e15f8f8fc38adbb`. Now the folder should contain `language_server_windows_x64.exe`. Change the permission parameters of that executable file.
+   
+   ![](attachments/2023-03-12-01-58-29-image.png)
+
+7. You're ready to go with AI. Type a function, variable etc. in the Insert Mode (hit `i`) and press `M+]` (that is, `LEFT_ALT + ]`), and you'll see how it performs.
+   
+   ![](attachments/2023-03-12-01-39-46-image.png)
+   
+   For more information, look at
+   
+   [Vim / Neovim Tutorial | Codeium](https://codeium.com/vim_tutorial)
+   
+   And
+   
+   https://github.com/Exafunction/codeium.vim.

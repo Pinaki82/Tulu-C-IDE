@@ -553,9 +553,11 @@ set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
+"     set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+
 function! HighlightSearch()
   if &hls
     return 'H'
@@ -1760,6 +1762,8 @@ Plug 'https://github.com/Pinaki82/indent-code.git'
 
 Plug 'https://github.com/ciaranm/detectindent.git'
 
+Plug 'https://github.com/Pinaki82/vim-jsnippets.git'
+
 Plug 'https://github.com/drmingdrmer/xptemplate.git'
 
 " ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
@@ -1768,11 +1772,17 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'plasticboy/vim-markdown'
 
+" ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
+
 Plug 'junegunn/goyo.vim'
 
 Plug 'mhinz/vim-startify' " -- Fancy start screen
 
-" ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
+"Plug 'Exafunction/codeium.vim'
+"            C              " Close to GitHub Copilot
+"            o            AI Supercharged autocompetion
+"            d            Infuse AI into your codeing
+"            ium          https://codeium.com/vim_tutorial
 
 "                            === Eye candy third-party Vim colour schemes
 Plug 'https://github.com/croaker/mustang-vim.git'
@@ -1944,5 +1954,16 @@ let g:vim_markdown_math = 1
 "                                         Corresponding Position in the Browser
 :amenu Markdown.Toggle\ the\ Preview\ \(\Corresponding\ Position\ in\ the\ Browser\)\ \:\MarkdownPreviewToggle <ESC>:MarkdownPreviewToggle <CR>
 :amenu Markdown.Stop\ the\ Preview\ \ \ \ \ \ \:\MarkdownPreviewStop <ESC>:MarkdownPreviewStop <CR>
+" -----------------------------------------
+
+" -----------------------------------------
+" Codeium Plugin Settings
+"let g:codeium_filetypes = {
+"    \ "c": v:false,
+"    \ "typescript": v:true,
+"    \ "python": v:true,
+"    \ "cpp": v:true,
+"    \ "rust": v:true,
+"    \ }
 " -----------------------------------------
 

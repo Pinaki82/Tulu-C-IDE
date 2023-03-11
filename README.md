@@ -1968,6 +1968,8 @@ Press `<tab>`,`<tab>`.. to navigate through "i", "0", "len" and finally stop at 
 
 You can load a custom '.lvimrc' from a non-standard (not $HOME) directory (termed as 'local' directory). For example, if you need to open a C file from D:\mycodes\tstprj\esp8266 and if you keep a .lvimrc at the root of your project folder i.e. 'mycodes', the Localvimrc plugin will load your custom Vim configuration from there.
 
+[vim-jsnippets](https://github.com/Pinaki82/vim-jsnippets.git) Yet another snippet plugin.
+
 [Tabnine](https://github.com/codota/tabnine-vim): Experimental. Didn't work on my Windows machine. Use the [coc.nvim](https://github.com/neoclide/coc.nvim.git) [tabnine extension](https://github.com/neoclide/coc-tabnine.git) instead.
 
 [skywind3000/asynctasks.vim: Modern Task System for Project Building, Testing and Deploying !!](https://github.com/skywind3000/asynctasks.vim) (Required by [coc-tasks](https://github.com/voldikss/coc-tasks))
