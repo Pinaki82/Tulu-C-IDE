@@ -486,7 +486,7 @@ Codeium.
 
 Codeium works with all major text editors and IDEs. Vim is one of the supported platforms. It is free forever (as promised), at least for early birds.
 
-Here's how to set it up on your MS Windows machine. I'll not leave the plugin settings turned off since I haven't tested it on Linux yet. Also, some people may prefer other alternatives. Codeium may charge users in the future. Speculations are galore! However, if you want to try Codeium on your machine with Vim today, please read on.
+Here's how to set it up on your MS Windows machine. I'll not leave the plugin settings turned on since I haven't tested it on Linux yet. Also, some people may prefer other alternatives. Codeium may charge users in the future. Speculations are galore! However, if you want to try Codeium with Vim on your machine right now, please keep reading.
 
 Uncomment the following lines from your `.vimrc2.vim`. Use your editor's search and replace feature for that.
 
