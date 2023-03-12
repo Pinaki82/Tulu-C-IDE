@@ -517,7 +517,7 @@ Uncomment the following lines from your `.vimrc2.vim`. Use your editor's search 
 " -----------------------------------------
 " Codeium Plugin Settings
 "let g:codeium_filetypes = {
-"    \ "c": v:false,
+"    \ "c": v:true,
 "    \ "typescript": v:true,
 "    \ "python": v:true,
 "    \ "cpp": v:true,
@@ -576,7 +576,7 @@ Plug 'Exafunction/codeium.vim'
 " -----------------------------------------
 " Codeium Plugin Settings
 let g:codeium_filetypes = {
-    \ "c": v:false,
+    \ "c": v:true,
     \ "typescript": v:true,
     \ "python": v:true,
     \ "cpp": v:true,

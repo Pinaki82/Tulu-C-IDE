@@ -1959,7 +1959,7 @@ let g:vim_markdown_math = 1
 " -----------------------------------------
 " Codeium Plugin Settings
 "let g:codeium_filetypes = {
-"    \ "c": v:false,
+"    \ "c": v:true,
 "    \ "typescript": v:true,
 "    \ "python": v:true,
 "    \ "cpp": v:true,
