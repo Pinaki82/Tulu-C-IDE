@@ -8,6 +8,7 @@
 - [ChatGPT](#chatgpt)
   - [ChatGPT Wrapper](#chatgpt-wrapper)
     - [Install ChatGPT Wrapper](#install-chatgpt-wrapper)
+  - [ChatGPT can be accessed from Vim's GUI](#chatgpt-vim-gui)
 - [Supercharge your coding experience with AI](#supercharge-your-coding-experience-with-ai)
   - [Codeium Vim Plugin](#codeium-vim-plugin)
 
@@ -117,27 +118,27 @@ import openai
 # Ecosia: using openai codex from command-line
 # Based on:
 # https://medium.com/codingthesmartway-com-blog/unleash-the-power-of-openais-chatgpt-api-command-line-conversations-made-easy-with-python-3442e25899fd
-# 
-# 
+#
+#
 # Add this script to your Environment Variable:
-# 
+#
 # Create a folder
 # in your %USERPROFILE% directory and add that folder
 # to the System Path.
 # E.g., %USERPROFILE%\py-chatgpt
-# 
+#
 # mkdir %USERPROFILE%\py-chatgpt
 # copy "py-chatgpt.py" "%USERPROFILE%\py-chatgpt"
-# 
+#
 # WINDOWS + r -> systempropertiesadvanced ->
 # -> Environment Variables ->
 # -> System Variables -> Path -> Edit -> New
 # Add
 # %USERPROFILE%\py-chatgpt, i.e.,
 # C:\Users\YOURUSERNAME\py-chatgpt
-# 
+#
 # Alternative Method:
-# 
+#
 # Open CMD in Admin mode:
 # 1. Windows Key + r (Run Prompt)
 # 2. Type cmd
@@ -145,19 +146,19 @@ import openai
 # rundll32.exe sysdm.cpl,EditEnvironmentVariables
 # Or,
 # rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
-# 
+#
 # https://appuals.com/how-to-edit-environment-variables-in-windows-10/
 # https://www.autohotkey.com/board/topic/68086-open-the-environment-variable-editing-window/
-# 
+#
 # Environment Variables ->
 # -> System Variables -> Path -> Edit -> New
 # Add
 # %USERPROFILE%\py-chatgpt, i.e.,
 # C:\Users\YOURUSERNAME\py-chatgpt
-# 
+#
 # Run,
 # py-chatgpt
-# 
+#
 # """
 
 """
@@ -468,6 +469,12 @@ Would you like to continue the conversation? (Y/N) n
 C:\Users\XXXXXXXX>
 ```
 
+## ChatGPT can be accessed from Vim's GUI <a name="chatgpt-vim-gui"></a>
+
+![](attachments/2023-03-12-21-25-28-image.png)
+
+![](attachments/2023-03-12-21-28-05-image.png)
+
 Now, ChatGPT and OpenAI are there right in your Terminal Emulator. It's up to you to make the output usable to the maximum extent possible. Since,
 
 > Plagiarism plagues when one entirely parrots a book, whereas conducting research involves selecting essential information from multiple sources.
@@ -485,6 +492,10 @@ According to some people, for a truly uncompromised AI-powered autocompletion th
 Codeium.
 
 Codeium works with all major text editors and IDEs. Vim is one of the supported platforms. It is free forever (as promised), at least for early birds.
+
+##### Codeium is not ChatGPT
+
+> Codeium is not dependent on ChatGPT or OpenAI; it doesn't take anything from GitHub Copilot either, although it has comparable capabilities. Codeium relies on its own backend, which is available at a premium. If you have access to a powerful computer or you've paid to a cloud hosting service provider that offers enough processing power, you can self-host Codeium. You might have to sign a whole bunch of agreements for that since the database and the AI model might come under the ambit of law due to copyright and ethical issues. If you're willing to cough up a few bucks, you can self-host Codeium. Accessing the Codeium server is however free as of now.
 
 Here's how to set it up on your MS Windows machine. I'll not leave the plugin settings turned on since I haven't tested it on Linux yet. Also, some people may prefer other alternatives. Codeium may charge users in the future. Speculations are galore! However, if you want to try Codeium with Vim on your machine right now, please keep reading.
 
@@ -512,6 +523,38 @@ Uncomment the following lines from your `.vimrc2.vim`. Use your editor's search 
 "    \ "cpp": v:true,
 "    \ "rust": v:true,
 "    \ }
+
+"let g:codeium_disable_bindings = 0 " Keep the default keybindings
+"let g:codeium_enabled = v:true     " Always enable Codeium at startup
+"let g:codeium_manual = v:false     " Always automatically trigger completions
+"
+"  function! CodeiumEnable()  " Enable Codeium if it is disabled
+"    let g:codeium_enabled = v:true
+"  endfun
+"
+"  function! CodeiumDisable() " Disable Codeium altogether
+"    let g:codeium_enabled = v:false
+"  endfun
+"
+"  function! CodeiumManual() " Disable the automatic triggering of completions
+"    let g:codeium_manual = v:true
+"  endfun
+"
+"  function! CodeiumAuto()  " Enable the automatic triggering of completions
+"    let g:codeium_manual = v:false
+"  endfun
+"
+"  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
+"  command! CodeiumEnable :silent! call CodeiumEnable()
+"
+"  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
+"  command! CodeiumDisable :silent! call CodeiumDisable()
+"
+"  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
+"  command! CodeiumManual :silent! call CodeiumManual()
+"
+"  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
+"  command! CodeiumAuto :silent! call CodeiumAuto()
 " -----------------------------------------
 ```
 
@@ -539,6 +582,38 @@ let g:codeium_filetypes = {
     \ "cpp": v:true,
     \ "rust": v:true,
     \ }
+
+let g:codeium_disable_bindings = 0 " Keep the default keybindings
+let g:codeium_enabled = v:true     " Always enable Codeium at startup
+let g:codeium_manual = v:false     " Always automatically trigger completions
+
+  function! CodeiumEnable()  " Enable Codeium if it is disabled
+    let g:codeium_enabled = v:true
+  endfun
+
+  function! CodeiumDisable() " Disable Codeium altogether
+    let g:codeium_enabled = v:false
+  endfun
+
+  function! CodeiumManual() " Disable the automatic triggering of completions
+    let g:codeium_manual = v:true
+  endfun
+
+  function! CodeiumAuto()  " Enable the automatic triggering of completions
+    let g:codeium_manual = v:false
+  endfun
+
+  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
+  command! CodeiumEnable :silent! call CodeiumEnable()
+
+  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
+  command! CodeiumDisable :silent! call CodeiumDisable()
+
+  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
+  command! CodeiumManual :silent! call CodeiumManual()
+
+  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
+  command! CodeiumAuto :silent! call CodeiumAuto()
 " -----------------------------------------
 ```
 
@@ -571,6 +646,10 @@ The  plugin comes with some quirks, so a few weird steps are involved. The Admin
 7. You're ready to go with AI. Type a function, variable etc. in the Insert Mode (hit `i`) and press `M+]` (that is, `LEFT_ALT + ]`), and you'll see how it performs.
    
    ![](attachments/2023-03-12-01-39-46-image.png)
+   
+   Codeium understands your comments. The AI engine of Codeium can write code by getting hints from the comments merely by reading them. See below. I didn't finish writing the comment, //temperatur... Codeium had a suggestion ready.
+   
+   ![](attachments/2023-03-12-21-30-05-image.png)
    
    For more information, look at
    
