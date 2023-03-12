@@ -1965,5 +1965,63 @@ let g:vim_markdown_math = 1
 "    \ "cpp": v:true,
 "    \ "rust": v:true,
 "    \ }
+
+"let g:codeium_disable_bindings = 0 " Keep the default keybindings
+"let g:codeium_enabled = v:true     " Always enable Codeium at startup
+"let g:codeium_manual = v:false     " Always automatically trigger completions
+"
+"  function! CodeiumEnable()  " Enable Codeium if it is disabled
+"    let g:codeium_enabled = v:true
+"  endfun
+"
+"  function! CodeiumDisable() " Disable Codeium altogether
+"    let g:codeium_enabled = v:false
+"  endfun
+"
+"  function! CodeiumManual() " Disable the automatic triggering of completions
+"    let g:codeium_manual = v:true
+"  endfun
+"
+"  function! CodeiumAuto()  " Enable the automatic triggering of completions
+"    let g:codeium_manual = v:false
+"  endfun
+"
+"  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
+"  command! CodeiumEnable :silent! call CodeiumEnable()
+"
+"  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
+"  command! CodeiumDisable :silent! call CodeiumDisable()
+"
+"  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
+"  command! CodeiumManual :silent! call CodeiumManual()
+"
+"  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
+"  command! CodeiumAuto :silent! call CodeiumAuto()
+" -----------------------------------------
+
+" -----------------------------------------
+" ChatGPT Console
+if has("gui_running")
+  " Opens ChatGPT via console
+  if g:osdetected == "Windows"
+    :amenu AI.Open\ ChatGPT\ Console :silent !start cmd /k chatgpt <CR><Esc><CR>
+
+  elseif g:osdetected == "Linux"
+  " ******************************************
+  " NOTICE: The Linux ChatGPT part is untested
+  " ******************************************
+        "  function! ChatGPT()
+        "    let curr_dir = expand('%:h')
+        "    if curr_dir == ''
+        "      let curr_dir = '.'
+        "    endif
+        "    :cd %:h
+        "    :!sakura -d "chatgpt" &
+        "    execute 'lcd -'
+        "    " :copen
+        "  endfunction
+        "  :amenu AI.Open\ ChatGPT\ Console :call ChatGPT() <CR><Esc><CR>
+  endif
+endif
 " -----------------------------------------
 
