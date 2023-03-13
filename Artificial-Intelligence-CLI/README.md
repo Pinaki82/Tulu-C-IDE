@@ -11,6 +11,7 @@
   - [ChatGPT can be accessed from Vim's GUI](#chatgpt-vim-gui)
 - [Supercharge your coding experience with AI](#supercharge-your-coding-experience-with-ai)
   - [Codeium Vim Plugin](#codeium-vim-plugin)
+  - [Codeium Keybindings](#codeium-keybindings)
 
 There are a lot of (at least two) [OpenAI](https://openai.com/) [ChatGPT](https://chat.openai.com/chat) plugins available for Vim.  Unfortunately, none of them worked as expected on my Microsoft Windows 10 box. That doesn't mean you cannot power your terminal with OpenAI's console applications for finding the right directions with an AI search query. When you code, you spend most of your time on the console. Firing up a Terminal Emulator takes less time and computing resources than opening a browser. Being able to access ChatGPT from the console will save you time, as a plus. Opening a browser, logging into the ChatGPT portal, and creating a new chat thread all of which take time. The command line makes it a breeze in no time.
 
@@ -643,18 +644,30 @@ The  plugin comes with some quirks, so a few weird steps are involved. The Admin
    
    Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
 
-7. You're ready to go with AI. Type a function, variable etc. in the Insert Mode (hit `i`) and press `M+]` (that is, `LEFT_ALT + ]`), and you'll see how it performs.
+7. You're ready to go with AI. Type a function, variable, comment etc., in the Insert Mode (hit `i`) and press `M + Backslash` (that is, `LEFT_ALT + Backslash`), and you'll see how it performs.
    
    ![](attachments/2023-03-12-01-39-46-image.png)
    
    Codeium understands your comments. The AI engine of Codeium can write code by getting hints from the comments merely by reading them. See below. I didn't finish writing the comment, //temperatur... Codeium had a suggestion ready.
    
    ![](attachments/2023-03-12-21-30-05-image.png)
-   
+
+#### Codeium Keybindings
+
+`META` (`M`) = `LEFT ALT` {Generally!}
+
+|     | Default Keybindings    | Result                      |
+| --- | ---------------------- | --------------------------- |
+| 1   | `LEFT ALT + Backslash` | Manually trigger suggestion |
+| 2   | `LEFT ALT + ]`         | Next suggestion             |
+| 3   | `LEFT ALT + [`         | Previous suggestion         |
+| 4   | `TAB`                  | Accept suggestion           |
+| 5   | `LEFT CTRL + ]`        | Clear current suggestion    |
+
    For more information, look at
-   
+
    [Vim / Neovim Tutorial | Codeium](https://codeium.com/vim_tutorial)
-   
+
    And
-   
+
    https://github.com/Exafunction/codeium.vim.
