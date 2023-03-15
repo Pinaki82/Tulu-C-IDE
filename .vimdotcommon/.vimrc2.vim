@@ -2025,3 +2025,29 @@ if has("gui_running")
 endif
 " -----------------------------------------
 
+" -----------------------------------------
+" OpenAI Console
+if has("gui_running")
+  " Opens OpenAI via console
+  if g:osdetected == "Windows"
+    :amenu AI.Launch\ OpenAI\ Console :silent !start cmd /k py-chatgpt <CR><Esc><CR>
+
+  elseif g:osdetected == "Linux"
+  " ******************************************
+  " NOTICE: The Linux OpenAI part is untested
+  " ******************************************
+        "  function! OpenAI()
+        "    let curr_dir = expand('%:h')
+        "    if curr_dir == ''
+        "      let curr_dir = '.'
+        "    endif
+        "    :cd %:h
+        "    :!sakura -d "py-chatgpt" &
+        "    execute 'lcd -'
+        "    " :copen
+        "  endfunction
+        "  :amenu AI.Launch\ OpenAI\ Console :call OpenAI() <CR><Esc><CR>
+  endif
+endif
+" -----------------------------------------
+
