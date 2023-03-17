@@ -553,7 +553,7 @@ set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
-"     set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
+set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
@@ -1778,7 +1778,7 @@ Plug 'junegunn/goyo.vim'
 
 Plug 'mhinz/vim-startify' " -- Fancy start screen
 
-"Plug 'Exafunction/codeium.vim'
+Plug 'Exafunction/codeium.vim'
 "            C              " Close to GitHub Copilot
 "            o            AI Supercharged autocompetion
 "            d            Infuse AI into your codeing
@@ -1958,45 +1958,29 @@ let g:vim_markdown_math = 1
 
 " -----------------------------------------
 " Codeium Plugin Settings
-"let g:codeium_filetypes = {
-"    \ "c": v:true,
-"    \ "typescript": v:true,
-"    \ "python": v:true,
-"    \ "cpp": v:true,
-"    \ "rust": v:true,
-"    \ }
+let g:codeium_filetypes = {
+    \ "c": v:true,
+    \ "typescript": v:true,
+    \ "python": v:true,
+    \ "cpp": v:true,
+    \ "rust": v:true,
+    \ }
 
-"let g:codeium_disable_bindings = 0 " Keep the default keybindings
-"let g:codeium_enabled = v:true     " Always enable Codeium at startup
-"let g:codeium_manual = v:false     " Always automatically trigger completions
-"
-"  function! CodeiumEnable()  " Enable Codeium if it is disabled
-"    let g:codeium_enabled = v:true
-"  endfun
-"
-"  function! CodeiumDisable() " Disable Codeium altogether
-"    let g:codeium_enabled = v:false
-"  endfun
-"
-"  function! CodeiumManual() " Disable the automatic triggering of completions
-"    let g:codeium_manual = v:true
-"  endfun
-"
-"  function! CodeiumAuto()  " Enable the automatic triggering of completions
-"    let g:codeium_manual = v:false
-"  endfun
-"
-"  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
-"  command! CodeiumEnable :silent! call CodeiumEnable()
-"
-"  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
-"  command! CodeiumDisable :silent! call CodeiumDisable()
-"
-"  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
-"  command! CodeiumManual :silent! call CodeiumManual()
-"
-"  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
-"  command! CodeiumAuto :silent! call CodeiumAuto()
+let g:codeium_disable_bindings = 0 " Keep the default keybindings
+let g:codeium_enabled = v:true     " Always enable Codeium at startup
+let g:codeium_manual = v:false     " Always automatically trigger completions
+
+function! OpenCodeiumLSDirectory()
+  if has("win64") || has("win32") || has("win16") || has("win32unix")
+    :execute "silent !start \"" . substitute($HOME . "/.codeium/bin/", "\"", "\\\"", "g") . "\""
+  else
+    command! CodeiumLangServerBinDir :silent !xdg-open ~/.codeium/bin
+  endif
+endfunction
+
+command! CodeiumLangServerBinDir :silent! call OpenCodeiumLSDirectory()
+:amenu AI.Codeium.Explore\ \Codeium\ \Language\ \Server\ \bin\ \Directory\ \(\:CodeiumLangServerBinDir\) :call OpenCodeiumLSDirectory() <Esc>
+
 " -----------------------------------------
 
 " -----------------------------------------
