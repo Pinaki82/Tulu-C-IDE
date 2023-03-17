@@ -498,125 +498,7 @@ Codeium works with all major text editors and IDEs. Vim is one of the supported 
 
 > Codeium is not dependent on ChatGPT or OpenAI; it doesn't take anything from GitHub Copilot either, although it has comparable capabilities. Codeium relies on its own backend, which is available at a premium. If you have access to a powerful computer or you've paid to a cloud hosting service provider that offers enough processing power, you can self-host Codeium. You might have to sign a whole bunch of agreements for that since the database and the AI model might come under the ambit of law due to copyright and ethical issues. If you're willing to cough up a few bucks, you can self-host Codeium. Accessing the Codeium server is however free as of now.
 
-Here's how to set it up on your MS Windows machine. I'll not leave the plugin settings turned on since I haven't tested it on Linux yet. Also, some people may prefer other alternatives. Codeium may charge users in the future. Speculations are galore! However, if you want to try Codeium with Vim on your machine right now, please keep reading.
-
-Uncomment the following lines from your `.vimrc2.vim`. Use your editor's search and replace feature for that.
-
-```
-"     set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
-```
-
-```
-"Plug 'Exafunction/codeium.vim'
-"            C              " Close to GitHub Copilot
-"            o            AI Supercharged autocompetion
-"            d            Infuse AI into your codeing
-"            ium          https://codeium.com/vim_tutorial
-```
-
-```
-" -----------------------------------------
-" Codeium Plugin Settings
-"let g:codeium_filetypes = {
-"    \ "c": v:true,
-"    \ "typescript": v:true,
-"    \ "python": v:true,
-"    \ "cpp": v:true,
-"    \ "rust": v:true,
-"    \ }
-
-"let g:codeium_disable_bindings = 0 " Keep the default keybindings
-"let g:codeium_enabled = v:true     " Always enable Codeium at startup
-"let g:codeium_manual = v:false     " Always automatically trigger completions
-"
-"  function! CodeiumEnable()  " Enable Codeium if it is disabled
-"    let g:codeium_enabled = v:true
-"  endfun
-"
-"  function! CodeiumDisable() " Disable Codeium altogether
-"    let g:codeium_enabled = v:false
-"  endfun
-"
-"  function! CodeiumManual() " Disable the automatic triggering of completions
-"    let g:codeium_manual = v:true
-"  endfun
-"
-"  function! CodeiumAuto()  " Enable the automatic triggering of completions
-"    let g:codeium_manual = v:false
-"  endfun
-"
-"  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
-"  command! CodeiumEnable :silent! call CodeiumEnable()
-"
-"  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
-"  command! CodeiumDisable :silent! call CodeiumDisable()
-"
-"  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
-"  command! CodeiumManual :silent! call CodeiumManual()
-"
-"  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
-"  command! CodeiumAuto :silent! call CodeiumAuto()
-" -----------------------------------------
-```
-
-So that the lines become:
-
-```
-set statusline+=%3{codeium#GetStatusString()}             "Codeium: https://codeium.com/
-```
-
-```
-Plug 'Exafunction/codeium.vim'
-"            C              " Close to GitHub Copilot
-"            o            AI Supercharged autocompetion
-"            d            Infuse AI into your codeing
-"            ium          https://codeium.com/vim_tutorial
-```
-
-```
-" -----------------------------------------
-" Codeium Plugin Settings
-let g:codeium_filetypes = {
-    \ "c": v:true,
-    \ "typescript": v:true,
-    \ "python": v:true,
-    \ "cpp": v:true,
-    \ "rust": v:true,
-    \ }
-
-let g:codeium_disable_bindings = 0 " Keep the default keybindings
-let g:codeium_enabled = v:true     " Always enable Codeium at startup
-let g:codeium_manual = v:false     " Always automatically trigger completions
-
-  function! CodeiumEnable()  " Enable Codeium if it is disabled
-    let g:codeium_enabled = v:true
-  endfun
-
-  function! CodeiumDisable() " Disable Codeium altogether
-    let g:codeium_enabled = v:false
-  endfun
-
-  function! CodeiumManual() " Disable the automatic triggering of completions
-    let g:codeium_manual = v:true
-  endfun
-
-  function! CodeiumAuto()  " Enable the automatic triggering of completions
-    let g:codeium_manual = v:false
-  endfun
-
-  :amenu AI.Codeium.Enable\ \Codeium\ \(\:CodeiumEnable\) :call CodeiumEnable() <Esc>
-  command! CodeiumEnable :silent! call CodeiumEnable()
-
-  :amenu AI.Codeium.Disable\ \Codeium\ \(\:CodeiumDisable\) :call CodeiumDisable() <Esc>
-  command! CodeiumDisable :silent! call CodeiumDisable()
-
-  :amenu AI.Codeium.Manual\ \Codeium\ \AI\ \Autocompletion\ \(\:CodeiumManual\) :call CodeiumManual() <Esc>
-  command! CodeiumManual :silent! call CodeiumManual()
-
-  :amenu AI.Codeium.Automatic\ \Codeium\ \AI\ \Completion\ \(\:CodeiumAuto\) :call CodeiumAuto() <Esc>
-  command! CodeiumAuto :silent! call CodeiumAuto()
-" -----------------------------------------
-```
+Here's how to set it up on your MS Windows machine.
 
 Fire up gVim/Vim in Admin Mode (R-Click and choose to Run as Administrator). In the Command Mode (hit `Esc`), type:
 
@@ -628,21 +510,25 @@ To install the plugin.
 
 The  plugin comes with some quirks, so a few weird steps are involved. The Admin mode was the first of them. I use a portable Vim installation. Update portable gVim (or the regular one) to the latest version. Get it from [here](https://github.com/vim/vim-win32-installer).
 
-1. Delete the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium` and the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.vim\plugged\codeium.vim` folder if those folders already exist.
+1. Delete the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium` (`$HOME/.codeium`) and the `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.vim\plugged\codeium.vim` (`$HOME/.vim/plugged/codeium.vim`) folder if those folders already exist.
 
 2. Run `:PluInstall` and then `:PlugUpdate`.
 
-3. Add `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\` to Avast's (or any other antivirus program's) list of exceptions.
+3. Add `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\` (specifically, `$HOME/.codeium` and `$HOME/.vim/plugged`) to Avast's (or any other antivirus program's) list of exceptions.
 
 4. Exit Vim.
 
 5. If you do not follow the steps I'll mention, you'll get authentication errors because the plugin will say that it cannot access a temp file located in `%USERPROFILE%\PortableApps\gVimPortable\Data\Temp\`.
 
-6. Extract the file `language_server_windows_x64.exe.gz` found in `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium\bin\c783d097d5521079d55284594e15f8f8fc38adbb`. Now the folder should contain `language_server_windows_x64.exe`. Change the permission parameters of that executable file.
+6. Extract the file `language_server_windows_x64.exe.gz` found in `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium\bin\c783d097d5521079d55284594e15f8f8fc38adbb`. Now the folder should contain `language_server_windows_x64.exe`. Change the permission parameters of that executable file. Alternatively, you can type `:CodeiumLangServerBinDir` in the Command Mode, which will open Codeium's Language-Server executable directory with your File Manager; In this case, Windows Explorer (`explorer.exe`). Type `Codei`, then press the `TAB` and `Arrow Keys` to autofill the whole word (the command `:CodeiumLangServerBinDir`). After opening the folder with your File Manager, extract the GZIP file `language_server_windows_x64.exe.gz` so the folder containing the Language-Server archive comprises both the files `language_server_windows_x64.exe` and `language_server_windows_x64.exe.gz`. On MS Windows, use [7-Zip](https://www.7-zip.org/). [Chocolatey](https://chocolatey.org/) can be used for installing [7-Zip](https://www.7-zip.org/).
+   
+   ```
+   choco install -y 7zip
+   ```
    
    ![](attachments/2023-03-12-01-58-29-image.png)
    
-   Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
+   **Authenticate your Vim Instance** (`:Codeium Auth`) -> Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
 
 7. You're ready to go with AI. Type a function, variable, comment etc., in the Insert Mode (hit `i`) and press `M + Backslash` (that is, `LEFT_ALT + Backslash`), and you'll see how it performs.
    
