@@ -29,6 +29,16 @@ Create a file `OpenAI-Codex-API-Key.txt` in your `%USERPROFILE%\Documents` folde
 python3.exe -m pip install --upgrade pip
 ```
 
+Ubuntu:
+
+```
+cd ~/
+```
+
+```
+python3 -m pip install --upgrade pip
+```
+
 Ref: https://stackoverflow.com/questions/57062031/python-m-pip-install-upgrade-pip-does-not-work
 
 If that doesn't work for some reason, download the latest version of `pip` somewhere on the machine and install `pip` from that location. The download link: [pip · PyPI](https://pypi.org/project/pip/#files)
@@ -49,6 +59,12 @@ Or,
 
 ```
 python3.exe -m pip install openai-cli
+```
+
+Ubuntu:
+
+```
+python3 -m pip install openai
 ```
 
 Ref: https://stackoverflow.com/questions/39832219/pip-not-working-in-python-installation-in-windows-10
@@ -74,11 +90,33 @@ py -m pip install --upgrade openai
 Create your OpenAI authentication files.
 
 ```
-mkdir %USERPROFILE%\.config\openai.token
+mkdir %USERPROFILE%\.config
 ```
 
 ```
-mkdir %USERPROFILE%\.config\openaiapirc
+notepad %USERPROFILE%\.config\openai.token
+```
+
+```
+notepad %USERPROFILE%\.config\openaiapirc
+```
+
+Ubuntu:
+
+```
+touch ~/.config/openai.token
+```
+
+```
+touch ~/.config/openaiapirc
+```
+
+```
+mousepad ~/.config/openai.token
+```
+
+```
+mousepad ~/.config/openaiapirc
 ```
 
 Fill those files with the API key (token) you received from OpenAI. The key is a long string of texts which looks like `sk-uRUvWX8lwuto5WDLp72QHd8UywehGO9l5RDkLalhYjCDtbWS`.
@@ -263,6 +301,50 @@ Then, add
 
 `%USERPROFILE%\py-chatgpt`, i.e., `C:\Users\YOURUSERNAME\py-chatgpt` to the field.
 
+Ubuntu:
+
+```
+mkdir ~/.local/bin
+```
+
+```
+cp py-chatgpt.py ~/.local/bin/
+```
+
+```
+chmod +x $HOME/.local/bin/py-chatgpt.py
+```
+
+Or,
+
+```
+chmod +x ~/.local/bin/py-chatgpt.py
+```
+
+```
+mousepad ~/.bash_aliases
+```
+
+Or,
+
+```
+mousepad ~/.bashrc
+```
+
+Bash alias:
+
+```
+alias py-chatgpt='python3 $HOME/.local/bin/py-chatgpt.py'
+```
+
+```
+source ~/.bashrc
+```
+
+```
+source ~/.bash_aliases
+```
+
 #### How will you run this script?
 
 ```
@@ -273,6 +355,30 @@ Or,
 
 ```
 py-chatgpt.py
+```
+
+Ubuntu:
+
+```
+python3 ~/.local/bin/py-chatgpt.py
+```
+
+Or,
+
+```
+python3 py-chatgpt.py
+```
+
+Or,
+
+```
+py-chatgpt.py
+```
+
+Or,
+
+```
+py-chatgpt
 ```
 
 ---
@@ -295,6 +401,12 @@ Leave it open in the background even when you don't need it.
 py -m pip install pip-run
 ```
 
+Ubuntu:
+
+```
+python3 -m pip install pip-run
+```
+
 The above command is useful when the `pip` Python package manager cannot write files to the drive. Run it, since it doesn't hurt.
 
 ### Install [ChatGPT Wrapper](https://github.com/mmabrouk/chatgpt-wrapper.git)
@@ -303,10 +415,22 @@ The above command is useful when the `pip` Python package manager cannot write f
 py -m pip install git+https://github.com/mmabrouk/chatgpt-wrapper
 ```
 
+Ubuntu:
+
+```
+python3 -m pip install git+https://github.com/mmabrouk/chatgpt-wrapper
+```
+
 Install some dependencies:
 
 ```
 py -m pip install setuptools
+```
+
+Ubuntu:
+
+```
+python3 -m pip install setuptools
 ```
 
 Install Playwright. https://learn.microsoft.com/en-us/microsoft-edge/playwright/
@@ -341,9 +465,23 @@ Then,
 npm install npx playwright install firefox
 ```
 
+Ubuntu:
+
+```
+npx playwright install
+```
+
+```
+npm install npx playwright install
+```
+
+```
+npm install npx playwright install firefox
+```
+
 You'll need Playwright in the background to send and receive data to and fro from the Terminal Emulator to the Playwright (here, a version of Firefox) Browser.
 
-Add Playwright's install directory to your antivirus program's exception list.
+Add Playwright's install directory to your antivirus program's exception list (on MS Windows).
 
 Avast's List of Exceptions/Exclusion: `%LOCALAPPDATA%\ms-playwright\*`
 
@@ -366,6 +504,10 @@ Keep the browser open in the background.
 In your terminal, type:
 
 ![](attachments/2023-03-11-18-48-25-image.png)
+
+Xubuntu Linux:
+
+![](attachments/2023-03-18-16-12-08-image.png)
 
 ```
 /exit
@@ -521,21 +663,54 @@ The  plugin comes with some quirks, so a few weird steps are involved. The Admin
 5. If you do not follow the steps I'll mention, you'll get authentication errors because the plugin will say that it cannot access a temp file located in `%USERPROFILE%\PortableApps\gVimPortable\Data\Temp\`.
 
 6. Extract the file `language_server_windows_x64.exe.gz` found in `%USERPROFILE%\PortableApps\gVimPortable\Data\settings\.codeium\bin\c783d097d5521079d55284594e15f8f8fc38adbb`. Now the folder should contain `language_server_windows_x64.exe`. Change the permission parameters of that executable file. Alternatively, you can type `:CodeiumLangServerBinDir` in the Command Mode, which will open Codeium's Language-Server executable directory with your File Manager; In this case, Windows Explorer (`explorer.exe`). Type `Codei`, then press the `TAB` and `Arrow Keys` to autofill the whole word (the command `:CodeiumLangServerBinDir`). After opening the folder with your File Manager, extract the GZIP file `language_server_windows_x64.exe.gz` so the folder containing the Language-Server archive comprises both the files `language_server_windows_x64.exe` and `language_server_windows_x64.exe.gz`. On MS Windows, use [7-Zip](https://www.7-zip.org/). [Chocolatey](https://chocolatey.org/) can be used for installing [7-Zip](https://www.7-zip.org/).
-   
-   ```
-   choco install -y 7zip
-   ```
-   
-   ![](attachments/2023-03-12-01-58-29-image.png)
-   
-   **Authenticate your Vim Instance** (`:Codeium Auth`) -> Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
+
+```
+choco install -y 7zip
+```
+
+![](attachments/2023-03-12-01-58-29-image.png)
+
+Ubuntu:
+
+```
+vim --version
+```
+
+If the version of Vim installed is not 9.0.749 or above, add a PPA repository which contains the latest version of Vim.
+
+```
+VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 10 2022 08:40:37)
+Included patches: 1-749
+```
+
+If not,
+
+```
+sudo add-apt-repository ppa:jonathonf/vim
+```
+
+On my Xubuntu 22.04.2 LTS (`lsb_release -a`), I had to add this PPA.
+
+```
+sudo apt update
+```
+
+In Vim's Command Mode, type:
+
+```
+:CodeiumLangServerBinDir
+```
+
+Find and extract the appropriate GZIP file found in a subdirectory if required.
+
+**Authenticate your Vim Instance** (`:Codeium Auth`) -> Register a new Codeium account if you don't have one. Use Google. Do not choose the username/password method. Log in to Codeium. Fire up Vim again with Admin privilege (R-Click -> Run as Administrator). In the Command Mode (hit `Esc`), type `:Codeium Auth`. Log in to Codeium Website. Get your API key from the opened page. You'll find a copy button there. Paste the key (`CTRL+v`) into Vim's Command area and hit `Enter`. Re-launch Vim normally.
 
 7. You're ready to go with AI. Type a function, variable, comment etc., in the Insert Mode (hit `i`) and press `M + Backslash` (that is, `LEFT_ALT + Backslash`), and you'll see how it performs.
    
    ![](attachments/2023-03-12-01-39-46-image.png)
-   
-   Codeium understands your comments. The AI engine of Codeium can write code by getting hints from the comments merely by reading them. See below. I didn't finish writing the comment, //temperatur... Codeium had a suggestion ready.
-   
+
+Codeium understands your comments. The AI engine of Codeium can write code by getting hints from the comments merely by reading them. See below. I didn't finish writing the comment, //temperatur... Codeium had a suggestion ready.
+
    ![](attachments/2023-03-12-21-30-05-image.png)
 
 #### Codeium Keybindings
