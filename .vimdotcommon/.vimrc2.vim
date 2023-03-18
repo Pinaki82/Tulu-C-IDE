@@ -1974,7 +1974,7 @@ function! OpenCodeiumLSDirectory()
   if has("win64") || has("win32") || has("win16") || has("win32unix")
     :execute "silent !start \"" . substitute($HOME . "/.codeium/bin/", "\"", "\\\"", "g") . "\""
   else
-    command! CodeiumLangServerBinDir :silent !xdg-open ~/.codeium/bin
+    :silent!!xdg-open "$HOME/.codeium/bin" &
   endif
 endfunction
 
@@ -1988,23 +1988,21 @@ command! CodeiumLangServerBinDir :silent! call OpenCodeiumLSDirectory()
 if has("gui_running")
   " Opens ChatGPT via console
   if g:osdetected == "Windows"
-    :amenu AI.Open\ ChatGPT\ Console :silent !start cmd /k chatgpt <CR><Esc><CR>
+    :amenu AI.Open\ ChatGPT\ Console :silent !start cmd /k chatgpt <Esc>
 
   elseif g:osdetected == "Linux"
-  " ******************************************
-  " NOTICE: The Linux ChatGPT part is untested
-  " ******************************************
-        "  function! ChatGPT()
-        "    let curr_dir = expand('%:h')
-        "    if curr_dir == ''
-        "      let curr_dir = '.'
-        "    endif
-        "    :cd %:h
-        "    :!sakura -d "chatgpt" &
-        "    execute 'lcd -'
-        "    " :copen
-        "  endfunction
-        "  :amenu AI.Open\ ChatGPT\ Console :call ChatGPT() <CR><Esc><CR>
+        function! ChatGPTLinux()
+        	" Bash shell: which chatgpt
+        	" copy the path
+        	" command! ChatGPT :silent!!sakura --execute ~/.platformio/penv/bin/chatgpt & " Not required
+        	"
+        	set shell=bash\ -i
+        	"command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
+        	:silent! :!/usr/bin/sakura --execute chatgpt &
+	    endfunction
+	set shell=bash\ -i
+	command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
+	:amenu AI.Open\ ChatGPT\ Console\ \(\:\ChatGPT\) :silent! :call ChatGPTLinux() <Esc>
   endif
 endif
 " -----------------------------------------
@@ -2014,23 +2012,19 @@ endif
 if has("gui_running")
   " Opens OpenAI via console
   if g:osdetected == "Windows"
-    :amenu AI.Launch\ OpenAI\ Console :silent !start cmd /k py-chatgpt <CR><Esc><CR>
+    :amenu AI.Launch\ OpenAI\ Console :silent !start cmd /k py-chatgpt <Esc>
 
   elseif g:osdetected == "Linux"
-  " ******************************************
-  " NOTICE: The Linux OpenAI part is untested
-  " ******************************************
-        "  function! OpenAI()
-        "    let curr_dir = expand('%:h')
-        "    if curr_dir == ''
-        "      let curr_dir = '.'
-        "    endif
-        "    :cd %:h
-        "    :!sakura -d "py-chatgpt" &
-        "    execute 'lcd -'
-        "    " :copen
-        "  endfunction
-        "  :amenu AI.Launch\ OpenAI\ Console :call OpenAI() <CR><Esc><CR>
+        function! OpenAILinux()
+	           set shell=bash\ -i
+	           ":!py-chatgpt &
+	           :silent! :!/usr/bin/sakura -e bash -ic "py-chatgpt" &
+	    endfunction
+        set shell=bash\ -i
+        
+        :amenu AI.Launch\ OpenAI\ Console\ \(\:\OpenAI\) :silent! :call OpenAILinux() <Esc>
+        command! OpenAI :silent! :!/usr/bin/sakura -e bash -ic "py-chatgpt" &
+
   endif
 endif
 " -----------------------------------------
