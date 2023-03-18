@@ -2001,6 +2001,20 @@ if has("gui_running")
         	:silent! :!/usr/bin/sakura --execute chatgpt &
 	    endfunction
 	set shell=bash\ -i
+	"
+	" ChatGPT:
+	"   `set shell=bash\ -i` sets the Vim shell to execute commands
+	"   using bash externally in interactive mode. The -i option
+	"   makes Bash start in interactive mode. This is useful
+	"   when running commands that require user input or produce
+	"   output to an external terminal.
+    "   By default, Vim uses /bin/sh as the shell, which is
+    "   often a symlink to another shell like Bash or Dash.
+    "   However, some advanced shell features or aliases
+    "   may not be available in /bin/sh, so setting the shell
+    "   to a specific shell like Bash ensures that Vim can
+    "   execute all commands correctly.
+    "
 	command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
 	:amenu AI.Open\ ChatGPT\ Console\ \(\:\ChatGPT\) :silent! :call ChatGPTLinux() <Esc>
   endif
@@ -2019,6 +2033,20 @@ if has("gui_running")
 	           set shell=bash\ -i
 	           ":!py-chatgpt &
 	           :silent! :!/usr/bin/sakura -e bash -ic "py-chatgpt" &
+	        "
+	        " ChatGPT:
+	       	"   The -e flag tells Sakura to stay open after the command has been
+	        "   completed. `sakura -e` tells Sakura to run a specified command
+	        "   without closing the terminal emulator automatically.
+	        "   You need to manually close the terminal emulator by typing
+	        "   exit or pressing Ctrl-D in the terminal emulator window.
+	        "   The -ic option tells bash to treat itself as if it was
+	        "   a login shell, execute a specific command, and then exit.
+	        "   In this case, the specific command is py-chatgpt, which
+	        "   will be executed by Python.
+	        "   The & at the end of the line runs the command in
+	        "   the background.
+	        "
 	    endfunction
         set shell=bash\ -i
         
