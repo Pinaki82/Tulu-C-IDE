@@ -2015,6 +2015,9 @@ if has("gui_running")
     "   to a specific shell like Bash ensures that Vim can
     "   execute all commands correctly.
     "
+    " `--execute` is a 'Sakura Terminal'-related option which means 'Execute command'.
+    " `sakura --help` will show you `-x, --execute               Execute command`.
+    "
 	command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
 	:amenu AI.Open\ ChatGPT\ Console\ \(\:\ChatGPT\) :silent! :call ChatGPTLinux() <Esc>
   endif
