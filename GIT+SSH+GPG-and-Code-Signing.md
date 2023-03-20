@@ -349,6 +349,10 @@ Change the global editor (example).
 git config --global core.editor "'C:\Program Files\Notepad2\Notepad2.exe'"
 ```
 
+```
+git config --global core.editor nano/hx/vim/mousepad/geany/gedit/kate
+```
+
 Set `git init` default branch name:
 
 ```

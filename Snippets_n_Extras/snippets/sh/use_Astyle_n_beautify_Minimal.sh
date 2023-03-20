@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-astyle --style=java --indent=spaces=2 --attach-namespaces \
+astyle --recursive --suffix=none --style=java --indent=spaces=2 --attach-namespaces \
        --attach-classes --attach-inlines --attach-extern-c \
        --attach-closing-while --indent-classes --indent-switches \
        --indent-cases --indent-namespaces --indent-continuation=4 \
@@ -14,4 +14,4 @@ astyle --style=java --indent=spaces=2 --attach-namespaces \
        --attach-return-type-decl --keep-one-line-statements --convert-tabs \
        --remove-comment-prefix --break-after-logical \
        --mode=c --verbose \
-       *.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.ino *.pde \
+       *.cpp *.h *.c *.hpp *.cxx *.hxx *.cc *.hh *.ino *.pde \
