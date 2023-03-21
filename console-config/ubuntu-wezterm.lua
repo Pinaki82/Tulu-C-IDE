@@ -2,6 +2,9 @@
 
 -- WezTerm Terminal Emulator config file.
 
+--- Updated config for wezterm 20230320-124340-559cb7b0
+--- https://wezfurlong.org/wezterm/changelog.html#20220319-142410-0fcdea07
+
 -- NOTE: *-Ubuntu Linux only.
 
 -- Before using, rename this file to "wezterm.lua".
@@ -64,12 +67,17 @@ local tab_max_width = 50
 local tab_max_chars = 30
 
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover)
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     local tab_is_toolbox = (tab.active_pane.user_vars.in_toolbox or "false") == "true";
     local tab_is_hover = hover;
     local tab_is_active = tab.is_active;
-
-    if tab_is_active then
+    --- https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
+    if tab.is_active then
+        return {
+          { Background = { Color = 'darkgreen' } },
+          { Text = ' ' .. tab.active_pane.title .. ' ' },
+        }
+    elseif tab_is_active then
         c = color_tab_active;
     elseif tab_is_hover then
         c=color_tab_hoover;
@@ -115,6 +123,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover)
         {Background={Color=color_tabbar_background}},
         {Foreground={Color=bg}},
         {Text=SOLID_RIGHT_ARROW},
+        {tab.active_pane.title}, --- https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
 
     }
 
@@ -166,7 +175,10 @@ return {
 
     font = wezterm.font("DejaVu Sans Mono"),
     font_size = 10.0,
-    font_antialias = 'Subpixel',
+    -- font_antialias = 'Subpixel',
+    --- https://wezfurlong.org/wezterm/changelog.html#20210314-114017-04b7cedd
+    freetype_load_target = "Light",
+    freetype_load_flags = "NO_HINTING",
     harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
     -- font_rules = {
     --  {
@@ -195,19 +207,15 @@ return {
 
     -- term = "wezterm",
 
+    --- https://wezfurlong.org/wezterm/config/lua/config/default_cursor_style.html
+    --- Acceptable values are SteadyBlock, BlinkingBlock, SteadyUnderline, BlinkingUnderline, SteadyBar, and BlinkingBar.
     default_cursor_style = "BlinkingBar",
     -- default_cursor_style = "SteadyBar",
 
     tab_max_width = tab_max_width,
     -- both are intentionally left empty as we use the title bar function
-    tab_bar_style = {
-        active_tab_left = empty,
-        active_tab_right = empty,
-        inactive_tab_left = empty,
-        inactive_tab_right = empty,
-        inactive_tab_hover_left = empty,
-        inactive_tab_hover_right = empty,
-    },
+    
+
     colors = {
         tab_bar = {},
     },
