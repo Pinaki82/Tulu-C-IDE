@@ -306,7 +306,6 @@ clang
 %c -Wformat-signedness
 %c -Wformat-y2k
 %c -Wconversion
-%c -Weverything
 %c -ferror-limit=0
 %c -ftemplate-backtrace-limit=0
 
@@ -446,7 +445,6 @@ And the same goes for `compile_flags.txt`. Here you have one instance of it.
 -Wformat-signedness
 -Wformat-y2k
 -Wconversion
--Weverything
 -ferror-limit=0
 -ftemplate-backtrace-limit=0
 

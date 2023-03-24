@@ -411,7 +411,7 @@ void ccls(char *target, char *mcu, char *ardu_or_pio) {
     "%c -Wformat-signedness",
     "%c -Wformat-y2k",
     "%c -Wconversion",
-    "%c -Weverything",
+    //"%c -Weverything",
     "%c -ferror-limit=0",
     "%c -ftemplate-backtrace-limit=0",
     /*"%c -target",*/
@@ -522,7 +522,7 @@ void compile_flags_DOT_txt(char *target, char *mcu, char *ardu_or_pio) {
     "-Wformat-signedness",
     "-Wformat-y2k",
     "-Wconversion",
-    "-Weverything",
+    //"-Weverything",
     "-ferror-limit=0",
     "-ftemplate-backtrace-limit=0",
     /*"-target",*/

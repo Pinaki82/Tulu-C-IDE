@@ -36,7 +36,6 @@ clang
 %c -Wformat-signedness
 %c -Wformat-y2k
 %c -Wconversion
-%c -Weverything
 %c -ferror-limit=0
 %c -ftemplate-backtrace-limit=0
 %c -target

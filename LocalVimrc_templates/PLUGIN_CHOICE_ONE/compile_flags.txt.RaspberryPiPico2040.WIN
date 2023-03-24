@@ -26,7 +26,6 @@
 -Wformat-signedness
 -Wformat-y2k
 -Wconversion
--Weverything
 -ferror-limit=0
 -ftemplate-backtrace-limit=0
 --sysroot=C:/msys64/mingw64/bin
