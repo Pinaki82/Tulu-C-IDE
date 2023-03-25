@@ -1,4 +1,34 @@
-colo mustang_green
+" ~~~~~~~~
+" Localvimrc Settings: https://github.com/embear/vim-localvimrc.git
+" Add to your .vimrc
+"
+" let g:localvimrc_sandbox=0
+" let g:localvimrc_ask=0
+" let g:localvimrc_persistent=2
+" ~~~~~~~~
+" colorscheme anycolour
+" or (the short-form),
+" colo anyothercolour
+"
+" colorscheme nord
+" colorscheme palenight
+" colorscheme tokyonight
+" colorscheme atom-dark
+" colorscheme tender
+" colorscheme molokai
+" colorscheme habamax
+" colorscheme mustang_green
+" colorscheme desert
+" colorscheme lunaperche
+" colorscheme slate
+" colorscheme murphy
+" colorscheme underwater-mod
+" colorscheme evening
+" colorscheme elflord
+" colorscheme oh-la-la
+"
+" colorscheme
+:call ColStline()
 
 " ============================================ Syntastic ==================
     let g:syntastic_cpp_config_file = 'LocalVimConfig/.syntastic_cpp_config'

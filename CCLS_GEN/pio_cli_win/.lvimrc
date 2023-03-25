@@ -1,10 +1,36 @@
+" ~~~~~~~~
+" Localvimrc Settings: https://github.com/embear/vim-localvimrc.git
+" Add to your .vimrc
+"
+" let g:localvimrc_sandbox=0
+" let g:localvimrc_ask=0
+" let g:localvimrc_persistent=2
+" ~~~~~~~~
 " ~~~~~~~~ To set a 'colourscheme' (theme), please uncomment one of the lines
 " ~~~~~~~~~~~ that starts with the command 'colo' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ~~~~~~~~~~~ (Delete the double quotation mark) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" colo mustang_green
-" colo oh-la-la
-" colo slate
-" colo palenight
+" colorscheme anycolour
+" or (the short-form),
+" colo anyothercolour
+"
+" colorscheme nord
+" colorscheme palenight
+" colorscheme tokyonight
+" colorscheme atom-dark
+" colorscheme tender
+" colorscheme molokai
+" colorscheme habamax
+" colorscheme mustang_green
+" colorscheme desert
+" colorscheme lunaperche
+" colorscheme slate
+" colorscheme murphy
+" colorscheme underwater-mod
+" colorscheme evening
+" colorscheme elflord
+" colorscheme oh-la-la
+"
+" colorscheme
 :call ColStline()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
