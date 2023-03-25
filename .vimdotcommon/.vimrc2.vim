@@ -1984,6 +1984,36 @@ command! CodeiumLangServerBinDir :silent! call OpenCodeiumLSDirectory()
 " -----------------------------------------
 
 " -----------------------------------------
+" Localvimrc Plugin Settings
+" https://github.com/embear/vim-localvimrc.git
+
+let g:localvimrc_sandbox=0 " Disable loading local vimrc files in a sandbox; Forget security reasons
+                           " Essential for running make (and a few other commands) using Localvimrc.
+                           " Default: 1
+let g:localvimrc_ask=0 " Ask before sourcing any local vimrc file.
+                       " In a vim session the question is only
+                       " asked once as long as the local vimrc file
+                       " has not been changed.
+
+                       " Value 0: Don't ask before loading a vimrc file.
+                       " Value 1: Ask before loading a vimrc file.
+                       " Default: 1
+
+let g:localvimrc_persistent=2 " Make the decisions given when asked before
+                              " sourcing local vimrc files persistent over
+                              " multiple vim runs and instances.
+                              " https://github.com/embear/vim-localvimrc#the-glocalvimrc_persistent-setting
+
+                              " Value 0: Don't store and restore any decisions.
+                              " Value 1: Store and restore decisions only
+                              "           if the answer was given
+                              "           in upper case (Y/N/A).
+                              " Value 2: Store and restore all decisions.
+                              " Default: 0
+
+" -----------------------------------------
+
+" -----------------------------------------
 " ChatGPT Console
 if has("gui_running")
   " Opens ChatGPT via console
