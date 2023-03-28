@@ -12,6 +12,7 @@
 - [Supercharge your coding experience with AI](#supercharge-your-coding-experience-with-ai)
   - [Codeium Vim Plugin](#codeium-vim-plugin)
   - [Codeium Keybindings](#codeium-keybindings)
+- [Cursor AI Editor](#cursor-ai-editor)
 
 There are a lot of (at least two) [OpenAI](https://openai.com/) [ChatGPT](https://chat.openai.com/chat) plugins available for Vim.  Unfortunately, none of them worked as expected on my Microsoft Windows 10 box. That doesn't mean you cannot power your terminal with OpenAI's console applications for finding the right directions with an AI search query. When you code, you spend most of your time on the console. Firing up a Terminal Emulator takes less time and computing resources than opening a browser. Being able to access ChatGPT from the console will save you time, as a plus. Opening a browser, logging into the ChatGPT portal, and creating a new chat thread all of which take time. The command line makes it a breeze in no time.
 
@@ -732,3 +733,72 @@ Codeium understands your comments. The AI engine of Codeium can write code by ge
    And
 
    https://github.com/Exafunction/codeium.vim.
+
+# [Cursor](https://www.cursor.so/) AI Editor
+
+Cursor is another AI gentleman in the block.
+
+From [GitHub - getcursor/cursor: An editor made for programming with AI 🤖](https://github.com/getcursor/cursor#cursor):
+
+> Cursor:
+
+> **[Cursor](https://cursor.so) is an editor made for programming with AI.** It's early days, but right now Cursor can help you with a few things...
+
+> - **Write**: Generate 10-100 lines of code with an AI that's smarter than Copilot
+> - **Diff**: Ask the AI to edit a block of code, see only proposed changes
+> - **Chat**: ChatGPT-style interface that understands your current file
+> - **And more**: ask to fix lint errors, generate tests/comments on hover, etc.
+
+Download Cursor from https://www.cursor.so/.
+
+After installing Cursor, add the Cursor's program files to the Environment Variable (System Path).
+
+MS Windows:
+
+Press `WINDOWS` + `r`,
+
+![](attachments/2023-03-29-02-28-07-image.png)
+
+type `systempropertiesadvanced`, and press 'OK'.
+
+![](attachments/2023-03-29-02-28-41-image.png)
+
+Go to the Advanced tab -> Environment Variables...
+
+![](attachments/2023-03-29-02-29-41-image.png)
+
+System variables -> Path -> Edit...
+
+![](attachments/2023-03-29-02-31-15-image.png)
+
+Click the New button.
+
+![](attachments/2023-03-29-02-32-33-image.png)
+
+Fill the field with the path containing `Cursor.exe`; typically, `C:\Users\YOUR_USERNAME\AppData\Local\Programs\Cursor\` (i.e., `%LOCALAPPDATA%\Programs\Cursor\`). It is usually the default installation folder where Cursor installs its program and data files.
+
+Ubuntu Linux:
+
+The syntax to create symbolic links in Linux is `ln -s target_file link_name`.
+
+That means, you'll have to type `sudo ln -s /path/to/your/appimage/folder/Cursor-0.m.n.AppImage /usr/local/bin/cursor` in a terminal emulator.
+
+Example:
+
+```
+sudo ln -s ~/PortablePrograms/Cursor-0.1.9.AppImage /usr/local/bin/cursor
+```
+
+Delete the existing link when Cursor updates itself to a newer version, then repeat the same steps.
+
+```
+sudo rm /usr/local/bin/cursor
+```
+
+Cursor can now be launched from the GUI or with a command, `:CursorAIEditor`.
+
+![](attachments/2023-03-29-02-45-33-image.png)
+
+![](attachments/2023-03-29-02-46-19-image.png)
+
+Cursor is supported by OpenAI. It is specifically designed to be a code editing assistant using OpenAI's abilities to generate code. Think of it as the shorter version of ChatGPT, designed exclusively for code. You can even ask questions to the editor in a chat box. Questions unrelated to programming are rejected.
