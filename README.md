@@ -1744,6 +1744,63 @@ pra --> #pragma  `<...>`
 
 "" ---------------------------------------------------------------------
 
+"
+" Code Snippets - C
+"
+"" ---------------------------------------------------------------------
+opt -->
+  int `<option>`; /* Options */
+  printf("Please choose an option:\n");
+  printf("1. Option One\n");
+  printf("2. Option Two\n");
+  scanf("%d", &`<option>`);
+
+  if (`<option>` == 1) {
+    // Code to execute if Option One was chosen
+    printf("You chose Option One.\n");
+  } else if (`<option>` == 2) {
+    // Code to execute if Option Two was chosen
+    printf("You chose Option Two.\n");
+  } else {
+    // Code to execute if an invalid option was chosen
+    printf("Invalid option chosen.\n");
+  }
+"" ---------------------------------------------------------------------
+
+"" ---------------------------------------------------------------------
+menu -->
+  int `<option>`; /* Options */
+  printf("Please choose an option:\n");
+  printf("1. Option One\n");
+  printf("2. Option Two\n");
+  printf("\nUp to...\n");
+  printf("\n10. Option Ten\n");
+  scanf("%d", &`<option>`);
+
+  switch (`<option>`) {
+    case 1:
+       // Code to execute if Option One was chosen
+      printf("You chose Option One.\n");
+      break;
+    case 2:
+       // Code to execute if Option Two was chosen
+      printf("You chose Option Two.\n");
+      break;
+
+         // ...
+
+
+    case 10:
+       // Code to execute if Option Ten was chosen
+      printf("You chose Option Ten.\n");
+      break;
+    default:
+       // Code to execute if an invalid option was chosen
+      printf("Invalid option chosen.\n");
+      break;
+  }
+"" ---------------------------------------------------------------------
+
 "" ---------------------------------------------------------------------
 " C++ templates
 ""
@@ -1939,6 +1996,8 @@ file names as you open/edit them in Vim."_
 [TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window. Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
 
 [Tagbar](https://github.com/preservim/tagbar.git): A class outline viewer for Vim. See Functions, prototypes, Classes, Macros, Structures etc. in a separate vertical window and click on an item to find them in the actual file. **Usage:** `:TagbarToggle`.
+
+[Vista.vim](https://github.com/liuchengxu/vista.vim.git): _"View and search LSP symbols, tags in Vim/NeoVim."_ From: https://liuchengxu.github.io/posts/vista.vim/, _"Vista.vim is my attempt to replacing tagbar, ..."_. **Usage:** `:Vista!!`.
 
 [repeaterchar.vim](https://github.com/Pinaki82/repeaterchar.vim.git): _"Define a character and repeat it n-times."_ How would you write ~~~~~~~ 100-times? **Usage:** `<C-u>` then fill out the options.
 
