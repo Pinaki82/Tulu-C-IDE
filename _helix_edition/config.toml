@@ -32,10 +32,16 @@ mouse = true
     # Mouse actions can be performed.
 rulers = [80]
     # Sets a margin at the 80th column
+cursorline = true
+    # Highlight all lines with a cursor
+cursorcolumn = true
+    # Highlight all columns with a cursor
 color-modes = true
     # Not sure...
 auto-pairs = true # defaults to `true`
     # Highlights matching brackets
+bufferline = "multiple"
+    # Renders a line at the top of the editor displaying open buffers.
 
 [editor.indent-guides]
 render = true
@@ -72,9 +78,18 @@ k = { j = "normal_mode" } # Maps `kj` to exit insert mode
     # Type 'kj' to leave the Insert Mode and go to the Normal Mode.
 
 [editor.statusline]
-                # Status-Line configuration
 left = ["mode", "spinner"]
 center = ["file-name"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-separator = "|"
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+    # Display LSP progress messages below statusline
+display-inlay-hints = true
+    # Display inlay hints
+#
 
