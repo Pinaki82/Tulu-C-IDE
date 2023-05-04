@@ -211,6 +211,15 @@ return {
     --- Acceptable values are SteadyBlock, BlinkingBlock, SteadyUnderline, BlinkingUnderline, SteadyBar, and BlinkingBar.
     default_cursor_style = "BlinkingBar",
     -- default_cursor_style = "SteadyBar",
+    -- https://wezfurlong.org/wezterm/config/lua/config/default_cursor_style.html
+
+    -- Helix Editor fix: Cursor not changing in Helix under WezTerm.
+    cursor_thickness = "0.1cell",
+    -- https://wezfurlong.org/wezterm/config/lua/config/cursor_thickness.html
+
+    -- Helix Editor fix: Cursor not changing in Helix under WezTerm.
+    -- allow_win32_input_mode = true,
+    -- https://wezfurlong.org/wezterm/config/lua/config/allow_win32_input_mode.html
 
     tab_max_width = tab_max_width,
     -- both are intentionally left empty as we use the title bar function
