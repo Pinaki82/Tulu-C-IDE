@@ -1584,6 +1584,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'https://github.com/rhysd/vim-lsp-ale.git'
 Plug 'Shougo/ddc.vim'
 Plug 'shun/ddc-vim-lsp'
 Plug 'hrsh7th/vim-vsnip'
@@ -1936,6 +1937,22 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:ale_c_cppcheck_options = '--enable=all --enable=style --enable=performance --enable=portability --enable=information --enable=unusedFunction --enable=missingInclude --inconclusive --force --suppress=missingIncludeSystem'
 let g:ale#statusline#Count = 1
 let g:ale#statusline#FirstProblem = 1
+" let g:ale_cpp_gcc_header_extensions = ['h']
+let g:ale_fixers = {'c-header': ['astyle']}
+let g:ale_fixers = {'c': ['astyle']}
+let g:ale_fixers = {'cpp': ['astyle']}
+"
+" ~~~~~ Add the following lines to your `.lvimrc` file (uncommented)
+" ~~~~~   for editing C header files with the `.h` extension.
+" ~~~~~ Some GCC/Clang versions along with certain versions of certain plugins might cause troubles with C header files [E.g., clang version 16.0.2 (MSYS2), gcc version 13.1.0 (MSYS2)].
+" ~~~~~ Setting the file type as C will temporarily solve the problem.
+" ~~~~~ :set filetype=c
+" ~~~~~ However, this is not ideal since reloading the file will bring back the same issues.
+" ~~~~~ So, you may like to add the following lines to your LocalVimrc config `.lvimrc` file.
+"
+"             let g:ale_cpp_gcc_header_extensions = ['h'] " Bing Chat gave me the solution
+"             autocmd BufNewFile,BufRead *.h set filetype=c
+"
 " ========================== (END) ALE Linter Settings ==========
 
 " -----------------------------------------

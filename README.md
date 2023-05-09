@@ -2107,6 +2107,8 @@ _NOTE:_ You'll need two LSP config files to work with the [vim-lsp](https://gith
 - Snippet completion
 - Snippet expansion
 
+[vim-lsp-ale](https://github.com/rhysd/vim-lsp-ale.git): _Bridge between vim-lsp and ALE.'vim-lsp-ale' is a Vim plugin for bridge between 'vim-lsp' and 'ALE'. Diagnostics results received by 'vim-lsp' are shown in ALE's interface._ 
+
 **Using [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git):**
 
 [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) supports most common programming languages. The complete list of supported languages can be found here: https://github.com/mattn/vim-lsp-settings
@@ -2120,6 +2122,19 @@ LspInstallServer
 The plugin will download the LSP, e.g., 'clangd' in case of C/C++ files and place the LSP into `%LOCALAPPDATA%\vim-lsp-settings\servers` (MS Windows) or `$HOME/.local/share/vim-lsp-settings/servers` (macOS/Linux). Re-launch GVim. You'll get autocompletion hints and syntax checking output.
 
 ![LspInstallServer](https://user-images.githubusercontent.com/16861933/193658697-af3b859a-b186-49e8-b700-98e028655af1.gif)
+
+**NOTE:** **If Vim detects C header files as C++ files:** Add the following lines to your `.lvimrc` file (uncommented) for editing C header files with the `.h` extension. Some GCC/Clang versions along with certain versions of certain plugins might cause troubles with C header files [E.g., Clang version 16.0.2 (MSYS2), GCC version 13.1.0 (MSYS2)]. [`clang -v`, `gcc -v`]. Setting the file type as C will temporarily solve the problem.
+
+```
+:set filetype=c
+```
+
+However, this is not ideal since reloading the file will bring back the same issues. So, you may like to add the following lines to your LocalVimrc config `.lvimrc` file.
+
+```
+let g:ale_cpp_gcc_header_extensions = ['h'] "Bing Chat gave me the solution
+autocmd BufNewFile,BufRead *.h set filetype=c
+```
 
 ## Change the default GVim theme:
 

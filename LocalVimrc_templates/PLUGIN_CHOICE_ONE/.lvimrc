@@ -63,4 +63,28 @@ let g:ale_lint_on_text_changed = 1 " Change to ZERO from ONE on Laptops to save 
 " Set this in your vimrc file to disabling highlighting
 " let g:ale_set_highlights = 0
 let g:ale_cpp_cppcheck_options = '--enable-all'
+"
+" ~~~~~ Add the following lines to your `.lvimrc` file (uncommented)
+" ~~~~~   for editing C header files with the `.h` extension.
+" ~~~~~ Some GCC/Clang versions along with certain versions of certain plugins might cause troubles with C header files [E.g., clang version 16.0.2 (MSYS2), gcc version 13.1.0 (MSYS2)].
+" ~~~~~ Setting the file type as C will temporarily solve the problem.
+" ~~~~~ :set filetype=c
+" ~~~~~ However, this is not ideal since reloading the file will bring back the same issues.
+" ~~~~~ So, you may like to add the following lines to your LocalVimrc config `.lvimrc` file.
+"
+"let g:ale_cpp_gcc_header_extensions = ['h'] " Bing Chat gave me the solution
+"autocmd BufNewFile,BufRead *.h set filetype=c
+"
+"
+" ~~~~~ Add the following lines to your `.lvimrc` file (uncommented)
+" ~~~~~   for editing C header files with the `.h` extension.
+" ~~~~~ Some GCC/Clang versions along with certain versions of certain plugins might cause troubles with C header files [E.g., clang version 16.0.2 (MSYS2), gcc version 13.1.0 (MSYS2)].
+" ~~~~~ Setting the file type as C will temporarily solve the problem.
+" ~~~~~ :set filetype=c
+" ~~~~~ However, this is not ideal since reloading the file will bring back the same issues.
+" ~~~~~ So, you may like to add the following lines to your LocalVimrc config `.lvimrc` file.
+"
+"let g:ale_cpp_gcc_header_extensions = ['h'] " Bing Chat gave me the solution
+"autocmd BufNewFile,BufRead *.h set filetype=c
+"
 " ========================== (END) ALE Linter Settings for .lvimrc ==========
