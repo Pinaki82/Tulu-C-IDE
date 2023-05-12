@@ -1937,10 +1937,30 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:ale_c_cppcheck_options = '--enable=all --enable=style --enable=performance --enable=portability --enable=information --enable=unusedFunction --enable=missingInclude --inconclusive --force --suppress=missingIncludeSystem'
 let g:ale#statusline#Count = 1
 let g:ale#statusline#FirstProblem = 1
+
+let g:ale_set_quickfix = 1
+
+" Map movement through errors without wrapping.
+nmap <silent> <C-k> <Plug>(ale_previous)
+nmap <silent> <C-j> <Plug>(ale_next)
+" OR map keys to use wrapping.
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " let g:ale_cpp_gcc_header_extensions = ['h']
-let g:ale_fixers = {'c-header': ['astyle']}
-let g:ale_fixers = {'c': ['astyle']}
-let g:ale_fixers = {'cpp': ['astyle']}
+
+" In ~/.vim/vimrc, or somewhere similar.
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'c': ['clangtidy'],
+\   'cpp': ['clangtidy'],
+\   'c-header': ['clangtidy'],
+\   'cpp-header': ['clangtidy'],
+\}
+
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+
 "
 " ~~~~~ Add the following lines to your `.lvimrc` file (uncommented)
 " ~~~~~   for editing C header files with the `.h` extension.
