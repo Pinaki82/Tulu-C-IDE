@@ -1940,12 +1940,16 @@ let g:ale#statusline#FirstProblem = 1
 
 let g:ale_set_quickfix = 1
 
+" Map movement through errors
+" LEFT CTRL + k = UP/PREV
+" LEFT CTRL + FULL STOP = DOWN/NEXT
+" k . UP DOWN
 " Map movement through errors without wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous)
-nmap <silent> <C-j> <Plug>(ale_next)
+nmap <silent> <C-.> <Plug>(ale_next)
 " OR map keys to use wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-.> <Plug>(ale_next_wrap)
 
 " let g:ale_cpp_gcc_header_extensions = ['h']
 
