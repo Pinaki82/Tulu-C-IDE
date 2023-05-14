@@ -1039,6 +1039,8 @@ To use `clangd`'s LSP [coc.nvim](https://github.com/neoclide/coc.nvim.git) needs
 
 [ALE](https://github.com/dense-analysis/ale.git), the linter's frontend: [ALE](https://github.com/dense-analysis/ale.git) checks for errors asynchronously. It checks the code in the unsaved buffer redirected to a temp file and provides feedback as you type without blocking the workflow. As soon as the feedback from the language server is ready, it reports, whether the file has been written to disc or not.
 
+More about [ALE](https://github.com/dense-analysis/ale.git)'s settings [later](#ale-keyboard-shortcuts).
+
 ### [Chocolatey](https://chocolatey.org/)
 
 Download PowerShell-7.2.5-win-x64 or above. The [download link](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#installing-the-msi-package) can be found in [this](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2) document published by Microsoft.
@@ -2131,6 +2133,16 @@ _NOTE:_ You'll need two LSP config files to work with the [vim-lsp](https://gith
 - Snippet expansion
 
 [vim-lsp-ale](https://github.com/rhysd/vim-lsp-ale.git): _Bridge between vim-lsp and ALE.'vim-lsp-ale' is a Vim plugin for bridge between 'vim-lsp' and 'ALE'. Diagnostics results received by 'vim-lsp' are shown in ALE's interface._ 
+
+##### ALE Keyboard shortcuts:
+
+In the `Normal Mode` (`<ESC>`), type `SHIFT`+`q`. Vim will switch to the `Command Mode`. Type `ale` and press `<TAB>` to see available options. Two of many ALE's options are `:ALEPopulateLocList` and `:ALEPopulateQuickfix`. See ALE's documentation for details, `:h ale` or `:help ale`.
+
+![ALE_options](https://github.com/Pinaki82/Tulu-C-IDE/assets/16861933/88bed4ca-7866-4423-b896-acccf73a7051)
+
+Error Navigation: In the `Normal Mode`, press `CTRL`+`.` (forward/downward navigation) and `CTRL`+`k` (backwards/upward).
+
+![ALE_err_nav](https://github.com/Pinaki82/Tulu-C-IDE/assets/16861933/12a01537-19db-454c-b2cb-97c5740bfbaa)
 
 **Using [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git):**
 
