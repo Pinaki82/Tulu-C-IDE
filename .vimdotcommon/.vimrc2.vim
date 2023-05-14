@@ -1979,6 +1979,29 @@ let g:ale_fix_on_save = 1
 "
 " ========================== (END) ALE Linter Settings ==========
 
+" ========================== TaskList.vim Settings ==========
+" Mapped Keys: <Leader>t   Display list.
+"                 The following keys are mapped to the results window:
+"
+"                     q - Quit, and restore original cursor position.
+"
+"                     e - Exit, and keep results window open note that
+"                         movements on the result window will no longer be
+"                         updated.
+"
+"                     <cr> - Quit and place the cursor on the selected line.
+"
+" Tokens: FIXME TODO NOTE XXX OPTIMIZE OPTIMISE HACK BUG SEGFAULT
+"         INSECURE WARNING NOBUG REQ RFE IDEA ??? !!! PORT CAVEAT
+"         FAQ GLOSS SEE TODOC CRED STAT RVD
+" Meanings: https://peps.python.org/pep-0350/
+"           https://stackoverflow.com/questions/1452934/what-is-the-meaning-of-xxx-in-code-comments
+"
+"
+let g:tlTokenList = ['FIXME', 'TODO', 'NOTE', 'XXX', 'OPTIMIZE', 'OPTIMISE', 'HACK', 'BUG', 'SEGFAULT', 'INSECURE', 'WARNING', 'NOBUG', 'REQ', 'RFE', 'IDEA', '???', '!!!', 'PORT', 'CAVEAT', 'FAQ', 'GLOSS', 'SEE', 'TODOC', 'CRED', 'STAT', 'RVD']
+let g:tlRememberPosition = 1
+" ========================== (END) TaskList.vim Settings ==========
+
 " -----------------------------------------
 " 'molokai_original' colour scheme settings (required)
 let g:molokai_original = 1
