@@ -1993,7 +1993,30 @@ To configure SSH and Git on your system and create a GPG ID with a backup, follo
 recently opened/edited files in Vim. This plugin automatically stores the
 file names as you open/edit them in Vim."_
 
-[TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window. Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
+[TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window.
+
+```
+Mapped Keys: <Leader>t  i.e., \t     Display list.
+                 The following keys are mapped to the results window:
+
+                     q - Quit, and restore original cursor position.
+
+                     e - Exit, and keep results window open.
+                         Note that movements on the
+                         result window will no longer be
+                         updated.
+
+                     <cr> - Quit and place the cursor
+                            on the selected line.
+```
+
+```
+Tokens: FIXME TODO NOTE XXX OPTIMIZE OPTIMISE HACK BUG SEGFAULT
+         INSECURE WARNING NOBUG REQ RFE IDEA ??? !!! PORT CAVEAT
+         FAQ GLOSS SEE TODOC CRED STAT RVD
+```
+
+Meanings: 1) https://peps.python.org/pep-0350/ , 2) https://stackoverflow.com/questions/1452934/what-is-the-meaning-of-xxx-in-code-comments . Read the plugin file [here](https://github.com/vim-scripts/TaskList.vim/blob/master/plugin/tasklist.vim) to find the instructions.
 
 [Tagbar](https://github.com/preservim/tagbar.git): A class outline viewer for Vim. See Functions, prototypes, Classes, Macros, Structures etc. in a separate vertical window and click on an item to find them in the actual file. **Usage:** `:TagbarToggle`.
 
