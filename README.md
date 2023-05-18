@@ -2144,6 +2144,8 @@ Error Navigation: In the `Normal Mode`, press `CTRL`+`.` (forward/downward navig
 
 ![ALE_err_nav](https://github.com/Pinaki82/Tulu-C-IDE/assets/16861933/12a01537-19db-454c-b2cb-97c5740bfbaa)
 
+**NOTE:** On **UNIX**-like systems, **Forward**/Downward **Navigation** is set to `CTRL`+`m`.
+
 **Using [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git):**
 
 [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) supports most common programming languages. The complete list of supported languages can be found here: https://github.com/mattn/vim-lsp-settings
