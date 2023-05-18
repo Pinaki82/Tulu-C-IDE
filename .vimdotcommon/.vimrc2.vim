@@ -1946,10 +1946,18 @@ let g:ale_set_quickfix = 1
 " k . UP DOWN
 " Map movement through errors without wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous)
-nmap <silent> <C-.> <Plug>(ale_next)
 " OR map keys to use wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-.> <Plug>(ale_next_wrap)
+
+" CTRL-. is ale_next_wrap on Windows
+if g:osdetected == "Windows"
+  :nmap <silent> <C-.> <Plug>(ale_next)
+  :nmap <silent> <C-.> <Plug>(ale_next_wrap)
+  " CTRL-m is ale_next_wrap on UNIX-like systems
+elseif g:osdetected != "Windows"
+  :nmap <silent> <C-m> <Plug>(ale_next)
+  :nmap <silent> <C-m> <Plug>(ale_next_wrap)
+endif
 
 " let g:ale_cpp_gcc_header_extensions = ['h']
 
