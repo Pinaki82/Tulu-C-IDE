@@ -14,4 +14,4 @@ astyle --recursive --suffix=none --style=java --indent=spaces=2 --attach-namespa
        --attach-return-type-decl --keep-one-line-statements --convert-tabs \
        --remove-comment-prefix --break-after-logical \
        --mode=c --verbose \
-       *.cpp *.h *.c *.hpp *.cxx *.hxx *.cc *.hh *.ino *.pde \
+       *.cpp, *.h, *.c, *.hpp, *.cxx, *.hxx, *.cc, *.hh, *.ino, *.pde \
