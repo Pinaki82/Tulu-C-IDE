@@ -178,6 +178,20 @@ pacman -S msys/vim
 
 Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up _MSYS2 (x64) Terminal_. Type: `export PATH=/opt/node-v14.17.6-win-x64/:$PATH >> ~/.bash_profile`. Add Node.js to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> _Paste the path from the clipboard_ (`C:\msys64\opt\node-v14.17.6-win-x64`).
 
+**Install pnpm package manager:**
+
+MS Windows: https://pnpm.io/installation
+
+```
+iwr https://get.pnpm.io/install.ps1 -useb | iex
+```
+
+Or,
+
+```
+npm install -g @pnpm/exe
+```
+
 > If needed, enter the MSYS2 installation directory (C:\msys64), enter 'home\yourusername', open the files, `.bashrc`, `.bash_profile`, and `.profile` with any text editor, then at the last lines, add the following entry:
 
 > > ```
@@ -844,6 +858,7 @@ sudo apt install default-jre
 sudo apt install wmctrl
 sudo apt install -y nodejs
 sudo apt install -y npm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
 ##### Recommended:
@@ -948,6 +963,8 @@ UBUNTU 22.04:
 sudo apt install clangd
 sudo apt install curl
 sudo apt install -y nodejs
+# https://pnpm.io/installation
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
 After installation, Open GVim and hold `<SHIFT+;>` together.
