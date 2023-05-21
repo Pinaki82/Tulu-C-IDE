@@ -833,6 +833,9 @@ sudo apt install vim-gtk
 sudo apt install geany
 sudo apt install cppcheck
 sudo apt install cppcheck-gui
+sudo apt install python3-pip
+python -m pip install --upgrade pip
+pip install flawfinder
 sudo apt install splint
 sudo apt install cmake-gui
 sudo apt install cmake
