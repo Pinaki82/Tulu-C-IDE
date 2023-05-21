@@ -1,9 +1,18 @@
 Add additional libraries to the search path of the LSP:
 
-(.ccls and compile_flags.txt)
+(.ccls)
 
 Example:
 
 %var{PROJECT_DIR}=/home/YOURUSERNAME/Documents/safe_c
 -I/home/YOURUSERNAME/Documents/safe_c/include
 -I%var{PROJECT_DIR}/safe_c/include
+
+Or, simply:
+
+-I/home/YOURUSERNAME/Documents/safe_c/include
+
+compile_flags.txt
+
+-I/home/YOURUSERNAME/Documents/safe_c/include
+
