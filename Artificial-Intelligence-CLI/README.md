@@ -412,6 +412,10 @@ The above command is useful when the `pip` Python package manager cannot write f
 
 ### Install [ChatGPT Wrapper](https://github.com/mmabrouk/chatgpt-wrapper.git)
 
+**NOTE:** The latest version of [ChatGPT Wrapper](https://github.com/mmabrouk/chatgpt-wrapper.git) might or might not work with the free ChatGPT. The last time I upgraded the Python pip package to version 10.x.x, it asked for OpenAI API Key. The program seems to have switched to OpenAI Playground API. OpenAI Playground is not ChatGPT. It is a subscription-based service.
+
+Try [ChatGPT Wrapper](https://github.com/mmabrouk/chatgpt-wrapper.git) first. If it asks for any API key, I've already cloned an older version of the program that still works with ChatGPT. Here it is: [GitHub - Pinaki82/chatgpt-wrapper-clone: Clone of https://github.com/mmabrouk/chatgpt-wrapper version 0.6.1](https://github.com/Pinaki82/chatgpt-wrapper-clone.git).
+
 ```
 py -m pip install git+https://github.com/mmabrouk/chatgpt-wrapper
 ```
@@ -422,7 +426,31 @@ Ubuntu:
 python3 -m pip install git+https://github.com/mmabrouk/chatgpt-wrapper
 ```
 
-Install some dependencies:
+---
+
+##### NOTE:
+
+_If_ the regular version from the original repository _asks for any API key_ later, **uninstall** the program.
+
+```
+pip uninstall -y chatGPT
+```
+
+Then, install the older version from the cloned repository:
+
+```
+py -m pip install git+https://github.com/Pinaki82/chatgpt-wrapper-clone
+```
+
+Ubuntu:
+
+```
+python3 -m pip install git+https://github.com/Pinaki82/chatgpt-wrapper-clone
+```
+
+---
+
+Install some dependencies (if required/`chatgpt-wrapper` already installs a version of `setuptools`:
 
 ```
 py -m pip install setuptools
@@ -733,6 +761,12 @@ Codeium understands your comments. The AI engine of Codeium can write code by ge
    And
 
    https://github.com/Exafunction/codeium.vim.
+
+My take on [Codeium](https://codeium.com/):
+
+After using [Codeium AI Vim plugin](https://codeium.com/download) for two months, I found the AI engine has been _improved immensely_, and now the engine for coding is **unimaginably impressive!**
+
+My review: **Codeium is Hard to Beat.**
 
 # [Cursor](https://www.cursor.so/) AI Editor
 
