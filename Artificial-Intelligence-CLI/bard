@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bard-rs -m -e .env -p ./ \

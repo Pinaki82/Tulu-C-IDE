@@ -1,5 +1,15 @@
 # Power up your Terminal with AI
 
+- [Bard](#bard-rs)
+  - [Install dependencies](#install-dependencies)
+  - [Install or re-install Rust](#install-or-re-install-rust)
+  - [Get the session cookie](#get-the-session-cookie)
+  - [Prepare the Google Bard CLI](#prepare-the-google-bard-cli)
+  - [Find the conversation history as a Markdown file](#find-the-conversation-history-as-a-markdown-file)
+  - [Commands](#commands)
+  - [Configure SHELL utilities](#configure-shell-utilities)
+  - [Install the script](#install-the-script)
+  - [Run the program](#run-the-program)
 - [OpenAI](#openai)
   - [Python, pip, and OpenAI Credentials](#python-pip-and-openai-credentials)
   - [Install OpenAI](#install-openai)
@@ -17,6 +27,187 @@
 There are a lot of (at least two) [OpenAI](https://openai.com/) [ChatGPT](https://chat.openai.com/chat) plugins available for Vim.  Unfortunately, none of them worked as expected on my Microsoft Windows 10 box. That doesn't mean you cannot power your terminal with OpenAI's console applications for finding the right directions with an AI search query. When you code, you spend most of your time on the console. Firing up a Terminal Emulator takes less time and computing resources than opening a browser. Being able to access ChatGPT from the console will save you time, as a plus. Opening a browser, logging into the ChatGPT portal, and creating a new chat thread all of which take time. The command line makes it a breeze in no time.
 
 We will see how to get AI support right into your Terminal Emulator.
+
+## [bard-rs](https://lib.rs/crates/bard-rs):
+
+_Google Bard CLI_
+
+Google Bard in the command line.
+
+### Install dependencies:
+
+https://github.com/rust-lang/cargo/issues/174
+
+Cargo-build will fail without it.
+
+```
+sudo apt install libssl-dev
+```
+
+## Install or re-install Rust (if you already have Rust on your machine): <a name="install-or-re-install-rust"></a>
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+```
+source "$HOME/.cargo/env"
+```
+
+## Install [bard-rs](https://lib.rs/crates/bard-rs)
+
+```
+cargo install bard-rs
+```
+
+### Before using the Google Bard CLI, you need to obtain your session cookie. To get the session cookie, follow these steps: <a name="get-the-session-cookie"></a>
+
+1. Go to [Google Bard](https://bard.google.com/) in Firefox.
+
+2. Open Firefox Developer Tools (Ctrl + Shift + i).
+
+3. Go to the "Storage" tab.
+
+4. Under "Storage" > "Cookies", click on "https://bard.google.com".
+
+Find the cookie with the name `__Secure-1PSID`, and copy its value. (It is found within "." usually). Example: `__Secure-1PSID:"WgRg4O3Y2Wy0PnDYB0CFTjBCfIgft8SwtLtcZYvoKyDC-pVW9QL1aFNWiOsDXQDdxc_Yuw."`.
+
+![](attachments/bard-01.png)
+
+R-click and copy the ID value to clipboard.
+
+![](attachments/bard-02.png)
+
+## Prepare the Google Bard CLI:
+
+Supported options: `-s` (session cookie), `-m` (if present, it'll print other Bard's responses for your prompt), `-p` (if present with path, it'll save your chat history as markdown.), `-e` (if present with `.env` file location, it'll use that session cookie)
+
+The `.env` file will be helpful in particular. Once you create this file, you'll be able to use the program without manually entering you session ID.
+
+```
+__Secure-1PSID:"WgRg4O3Y2Wy0PnDYB0CFTjBCfIgft8SwtLtcZYvoKyDC-pVW9QL1aFNWiOsDXQDdxc_Yuw."
+```
+
+Of which, you'll need the part below:
+
+```
+WgRg4O3Y2Wy0PnDYB0CFTjBCfIgft8SwtLtcZYvoKyDC-pVW9QL1aFNWiOsDXQDdxc_Yuw.
+```
+
+Run the CLI program for testing: `bard-rs --session WgRg4O3Y2Wy0PnDYB0CFTjBCfIgft8SwtLtcZYvoKyDC-pVW9QL1aFNWiOsDXQDdxc_Yuw. --path ./`
+
+Create a key file that will be accessed by `bard-rs` so that you won't have to type the ID every time you open the program: `echo SESSION_ID=WgRg4O3Y2Wy0PnDYB0CFTjBCfIgft8SwtLtcZYvoKyDC-pVW9QL1aFNWiOsDXQDdxc_Yuw. > .env`.
+
+Test again, without passing the session ID:
+
+```
+bard-rs -m -e .env -p ./
+```
+
+Ask something.
+
+Exit.
+
+```
+!exit
+```
+
+### Find the conversation history as a Markdown file in `~/` <a name="find-the-conversation-history-as-a-markdown-file"></a>
+
+### Commands:
+
+Type your message and press `Enter` to send it to Google Bard.
+
+Type `!reset` to reset the conversation.
+
+Type `!exit` to exit the CLI.
+
+Type `!show` to see other Bard's answers for your last message.
+
+Create a shell script for easy access with the command you used: `bard-rs -m -e .env -p ./`.
+
+File: `bard` (not `bard.sh` in this case).
+
+```
+cd ~/
+```
+
+```
+touch bard
+```
+
+```
+nano bard
+```
+
+Paste the following (usually, CTRL+SHIFT+v):
+
+```
+#!/bin/bash
+
+bard-rs -m -e .env -p ./ \
+```
+
+Or, find the script in this directory's root.
+
+### Configure SHELL utilities before installing the  `bard` script: <a name="configure-shell-utilities"></a>
+
+BASH Shell:
+
+Open `$HOME/.bashrc` or `$HOME/.bash_aliases` with a text editor and paste the following line in the beginning:
+
+```
+export PATH="$HOME/.local/bin/:$PATH"
+```
+
+Reload the BASH configuration:
+
+```
+source .bashrc
+```
+
+```
+source .bash_aliases
+```
+
+Fish Shell:
+
+Open `$HOME/.config/fish/config.fish` with a text editor and paste the following lines in the beginning:
+
+```
+# --------------
+
+# $HOME/.local/bin
+
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH
+
+# --------------
+```
+
+Run: `source $HOME/.config/fish/config.fish` to reload the configuration.
+
+## Install the script:
+
+```
+chmod +x bard
+```
+
+```
+install -m 755 bard $HOME/.local/bin
+```
+
+`755` means permission for read+write+execute.
+
+Go to `~/.local/bin/` and see the file and related permission parameters from the GUI file manager if you prefer.
+
+## Run the program:
+
+```
+bard
+```
+
+NOTE: Installation of [bard-rs](https://lib.rs/crates/bard-rs) on MS Windows will be documented soon.
 
 ## [OpenAI](https://openai.com/)
 
