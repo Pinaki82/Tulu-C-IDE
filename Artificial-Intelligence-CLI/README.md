@@ -44,6 +44,8 @@ Cargo-build will fail without it.
 sudo apt install libssl-dev
 ```
 
+NOTE: I didn't have to install 'libssl' on my Windows box in the presence of my MSYS2 setup. Your mileage may vary.
+
 ## Install or re-install Rust (if you already have Rust on your machine): <a name="install-or-re-install-rust"></a>
 
 ```
@@ -52,6 +54,30 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ```
 source "$HOME/.cargo/env"
+```
+
+**MS Windows:**
+
+Open the MSYS2 shell.
+
+Update the existing MSYS2 installation.
+
+```
+pacman -Syu
+```
+
+If Rust is already installed on the system, everything, including Rust and Cargo, will be updated to the latest version.
+
+If you haven't installed Rust and Cargo yet, refer to the [README](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/README.md) of [Tulu-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git).
+
+Usually, the commands are:
+
+```
+pacman -S mingw-w64-x86_64-rust
+```
+
+```
+pacman -S mingw-w64-x86_64-cargo-c
 ```
 
 ## Install [bard-rs](https://lib.rs/crates/bard-rs)
@@ -112,7 +138,81 @@ Exit.
 !exit
 ```
 
-### Find the conversation history as a Markdown file in `~/` <a name="find-the-conversation-history-as-a-markdown-file"></a>
+**MS Windows:**
+
+Fire up your Windows Terminal (CMD.EXE). Do not run the command prompt in administrator mode. Run it normally. You will see your username when you launch `cmd` normally, `C:\Users\YOUR_USERNAME>`. 
+
+Run CMD.EXE:
+
+`WINDOWS+r` -> `cmd` -> `Enter`.
+
+Install the [bard-rs](https://lib.rs/crates/bard-rs) package from Rust's package manager Cargo. Type the following into the command prompt and hit Enter.
+
+```
+cargo install bard-rs
+```
+
+Wait a few minutes, [bard-rs](https://lib.rs/crates/bard-rs) will be built and ready.
+
+Let's assume that your Bard session ID is `__Secure-1PSID:"WxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxA."` on the Windows machine, so you'll need to take note of the part `WxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxA.`.
+
+Test Bard:
+
+`bard-rs --session WxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxA.  --path ./`
+
+Run `CMD.EXE` again, this time in **administrator** mode.
+
+`WINDOWS+r` -> `cmd` -> `CTRL+SHIFT+ENTER`.
+
+You won't see your username here. The command prompt will show its current working directory as `C:\Windows\system32>` rather than your `%USERPROFILE%`.
+
+```
+C:\Windows\system32>
+```
+
+Go to the system's root directory.
+
+```
+cd C:\
+```
+
+Create a file `.env` there.
+
+```
+notepad .env
+```
+
+Fill the file with your Bard session ID followed by `SESSION_ID=`, as shown below:
+
+```
+SESSION_ID=WxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxA.
+```
+
+Exit the command prompt.
+
+```
+exit
+```
+
+Run the command prompt in normal mode as usual, `WINDOWS+r` -> `cmd`.
+
+`cmd` will show its current working directory `C:\Users\YOUR_USERNAME>`.
+
+Type `bard-rs -m -e .env -p ./` and ask questions.
+
+```
+bard-rs -m -e .env -p ./
+```
+
+On MS Windows, the conversation history will be saved into `%USERPROFILE%`.
+
+In the command prompt, `explorer %USERPROFILE%`, or at the address bar of Windows Explorer (File Manager) `%USERPROFILE%` and `Enter`.
+
+NOTE: You'll have to switch to a location somewhere in the system drive (`C:\`) to use [bard-rs](https://lib.rs/crates/bard-rs). If you are on a different drive, type `C:` and hit `Enter` to switch.
+
+Exit [bard-rs](https://lib.rs/crates/bard-rs) CLI: `!exit`.
+
+### Linux: Find the conversation history as a Markdown file in `~/` <a name="find-the-conversation-history-as-a-markdown-file"></a>
 
 ### Commands:
 
@@ -123,6 +223,8 @@ Type `!reset` to reset the conversation.
 Type `!exit` to exit the CLI.
 
 Type `!show` to see other Bard's answers for your last message.
+
+**Create a shell script for easy access on Linux:**
 
 Create a shell script for easy access with the command you used: `bard-rs -m -e .env -p ./`.
 
@@ -149,6 +251,46 @@ bard-rs -m -e .env -p ./ \
 ```
 
 Or, find the script in this directory's root.
+
+**MS Windows:** Create a launcher script:
+
+Run the command prompt in **admin** mode, `WINDOWS+r` -> `cmd` -> `CTRL+SHIFT+ENTER`.
+
+Create a folder `bard-cli` at the root of your `C:\` drive.
+
+```
+mkdir bard-cli
+```
+
+Go inside that directory and create the launcher script.
+
+```
+notepad bard.CMD
+```
+
+Fill the file with the following (do not put anything more than this):
+
+```
+bard-rs -m -e .env -p ./
+```
+
+Exit the command prompt.
+
+```
+exit
+```
+
+**Add this `bard-rs` folder to the system's search PATH Environment:**
+
+Run Launcer (`WINDOWS+r`) -> `systempropertiesadvanced` -> Advanced Tab -> Environment Variables Button -> 'System variables' section -> Path - Edit... -> New.
+
+Paste `C:\bard-cli` -> `OK` -> `OK` -> `OK`.
+
+Run [bard-rs](https://lib.rs/crates/bard-rs).
+
+```
+bard
+```
 
 ### Configure SHELL utilities before installing the  `bard` script: <a name="configure-shell-utilities"></a>
 
@@ -206,8 +348,6 @@ Go to `~/.local/bin/` and see the file and related permission parameters from th
 ```
 bard
 ```
-
-NOTE: Installation of [bard-rs](https://lib.rs/crates/bard-rs) on MS Windows will be documented soon.
 
 ## [OpenAI](https://openai.com/)
 
