@@ -1,0 +1,1 @@
+bard-rs -e .env -p ./
