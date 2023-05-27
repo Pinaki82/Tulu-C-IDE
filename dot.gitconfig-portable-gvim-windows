@@ -1,0 +1,57 @@
+[user]
+	email = xxxxxxyyyyyy@gmail.com
+	name = Your Name
+	signingkey = CBXYXYXYXYXYXYEC
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg.exe
+	# ------------------------OR
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+	# ------------------------OR
+	#                               Leave BLANK on Linux
+[core]
+	editor = 'C:\\Program Files\\Notepad2\\Notepad2.exe'
+	# ------------------------OR
+	editor = geany
+	# ------------------------OR
+	editor = nano
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[merge]
+    tool = winmerge
+    # ------------------------OR
+	tool = meld
+[diff]
+	tool = winmerge
+	# ------------------------OR
+	tool = meld
+[difftool "winmerge"]
+	path = C:\\Program Files\\WinMerge\\WinMergeU.exe
+	# ------------------------OR
+[difftool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[difftool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool]
+	prompt = false
+	trustExitCode = true
+	keepBackup = false
+[mergetool "winmerge"]
+	path = C:\\Program Files\\WinMerge\\WinMergeU.exe
+	# ------------------------OR
+[mergetool "meld"]
+	path = C:\\msys64\\mingw64\\bin\\meld
+[cola]
+	spellcheck = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
