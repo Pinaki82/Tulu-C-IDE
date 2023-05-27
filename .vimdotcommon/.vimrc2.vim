@@ -1106,6 +1106,8 @@ if has("gui_running")
     :amenu Utilities.Open\ with\ Notepad++ :silent !start "C:\Program Files\Notepad++\notepad++.exe" "%:p" <CR><Esc><CR>
     :amenu Utilities.Notepad2-mod :silent!!start /min cmd /c "C:\Program Files\Notepad2\Notepad2.exe" <CR><Esc><CR>
     :amenu Utilities.Open\ with\ Notepad2-mod :silent !start "C:\Program Files\Notepad2\Notepad2.exe" "%:p" <CR><Esc><CR>
+    :amenu Utilities.Kate :silent!!start /min cmd /c "C:\Program Files\Kate\bin\kate.exe" <CR><Esc>
+    :amenu Utilities.Open\ with\ Kate :silent !start "C:\Program Files\Kate\bin\kate.exe" "%:p" <CR><Esc>
     fun Win_calculator()
       :silent!!start "calc" <Esc>
     endfun
@@ -1135,6 +1137,8 @@ if has("gui_running")
     :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
     :amenu Utilities.Geany :call Geany_open() <CR><Esc><CR>
     :amenu Utilities.Open\ with\ Geany :call Open_w_Geany() <CR><Esc><CR>
+    :amenu Utilities.Kate :call Kate_open() <CR><Esc><CR>
+    :amenu Utilities.Open\ with\ Kate :call Open_w_Kate() <CR><Esc><CR>
     :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
     :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <CR><Esc><CR>
 
@@ -1157,6 +1161,12 @@ if has("gui_running")
     endfun
     fun! Open_w_Geany()
       :!geany % &
+    endfun
+    fun! Kate_open()
+      :silent!!kate &
+    endfun
+    fun! Open_w_Kate()
+      :!kate % &
     endfun
     fun! Meld_diff_viewer()
       :silent!!meld &
@@ -2129,6 +2139,43 @@ if has("gui_running")
 
 	command! CursorAIEditor :silent!!cursor &
 	:amenu AI.Cursor\ AI\ Editor\ \(\:\CursorAIEditor\) :silent! :call CursorLinuxAppImage() <Esc>
+  endif
+endif
+" -----------------------------------------
+
+" -----------------------------------------
+" bard-rs Console
+"             Find relevant info in the folder 'Artificial-Intelligence-CLI'.
+if has("gui_running")
+  " Opens bard-rs via console
+  if g:osdetected == "Windows"
+    :amenu AI.Google\ Bard\ Console :silent !start cmd /k bard <Esc>
+
+  elseif g:osdetected == "Linux"
+        function! BardLinux()
+        	set shell=bash\ -i
+        	:silent! :!/usr/bin/sakura --execute bard &
+	    endfunction
+	set shell=bash\ -i
+	"
+	" ChatGPT:
+	"   `set shell=bash\ -i` sets the Vim shell to execute commands
+	"   using bash externally in interactive mode. The -i option
+	"   makes Bash start in interactive mode. This is useful
+	"   when running commands that require user input or produce
+	"   output to an external terminal.
+    "   By default, Vim uses /bin/sh as the shell, which is
+    "   often a symlink to another shell like Bash or Dash.
+    "   However, some advanced shell features or aliases
+    "   may not be available in /bin/sh, so setting the shell
+    "   to a specific shell like Bash ensures that Vim can
+    "   execute all commands correctly.
+    "
+    " `--execute` is a 'Sakura Terminal'-related option which means 'Execute command'.
+    " `sakura --help` will show you `-x, --execute               Execute command`.
+    "
+	command! Bard :silent! :!/usr/bin/sakura --execute bard &
+	:amenu AI.Google\ Bard\ Console\ \(\:\Bard\) :silent! :call BardLinux() <Esc>
   endif
 endif
 " -----------------------------------------
