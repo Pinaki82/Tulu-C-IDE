@@ -204,6 +204,14 @@ Type `bard-rs -m -e .env -p ./` and ask questions.
 bard-rs -m -e .env -p ./
 ```
 
+The option `-m` shows additional bard responses, which can sometimes lead to confusion. In that case, you may use the same command without the `-m` flag, as shown below.
+
+```
+bard-rs -e .env -p ./
+```
+
+You can always show additional outputs from the Bard AI engine by typing `!show`.
+
 On MS Windows, the conversation history will be saved into `%USERPROFILE%`.
 
 In the command prompt, `explorer %USERPROFILE%`, or at the address bar of Windows Explorer (File Manager) `%USERPROFILE%` and `Enter`.
@@ -226,7 +234,7 @@ Type `!show` to see other Bard's answers for your last message.
 
 **Create a shell script for easy access on Linux:**
 
-Create a shell script for easy access with the command you used: `bard-rs -m -e .env -p ./`.
+Create a shell script for easy access with the command you used: `bard-rs -e .env -p ./`.
 
 File: `bard` (not `bard.sh` in this case).
 
@@ -247,7 +255,7 @@ Paste the following (usually, CTRL+SHIFT+v):
 ```
 #!/bin/bash
 
-bard-rs -m -e .env -p ./ \
+bard-rs -e .env -p ./ \
 ```
 
 Or, find the script in this directory's root.
@@ -271,7 +279,7 @@ notepad bard.CMD
 Fill the file with the following (do not put anything more than this):
 
 ```
-bard-rs -m -e .env -p ./
+bard-rs -e .env -p ./
 ```
 
 Exit the command prompt.
