@@ -1727,6 +1727,8 @@ Plug 'https://github.com/WolfgangMehner/vim-plugins.git'
 
 Plug 'https://github.com/lambdalisue/gina.vim.git'
 
+Plug 'https://github.com/Pinaki82/git-difftool.git'
+
 Plug 'https://github.com/weynhamz/vim-plugin-minibufexpl.git'
 
 Plug 'https://github.com/xuhdev/SingleCompile.git'
