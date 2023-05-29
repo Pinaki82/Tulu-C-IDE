@@ -1108,10 +1108,14 @@ if has("gui_running")
     :amenu Utilities.Open\ with\ Notepad2-mod :silent !start "C:\Program Files\Notepad2\Notepad2.exe" "%:p" <CR><Esc><CR>
     :amenu Utilities.Kate :silent!!start /min cmd /c "C:\Program Files\Kate\bin\kate.exe" <CR><Esc>
     :amenu Utilities.Open\ with\ Kate :silent !start "C:\Program Files\Kate\bin\kate.exe" "%:p" <CR><Esc>
+    :amenu Utilities.WinMergeU :silent!!start /min cmd /c "C:\Program Files\WinMerge\WinMergeU.exe" <Esc>
+    :amenu Utilities.Open\ with\ WinMergeU\ on\ one\ side :silent !start "C:\Program Files\WinMerge\WinMergeU.exe" "%:p" <Esc>
+    :amenu Utilities.Meld\ diff\ viewer\ \(\32-bit\) :silent!!start /min cmd /c "C:\Program Files (x86)\Meld\Meld.exe" <Esc>
+
     fun Win_calculator()
       :silent!!start "calc" <Esc>
     endfun
-    :amenu Utilities.Calculator :call Win_calculator() <CR><Esc><CR>
+    :amenu Utilities.Calculator :call Win_calculator() <Esc>
 
 
     " Open File with Default Application
@@ -1337,7 +1341,7 @@ if has("gui_running")
     :tmenu icon=$HOME/\.vim/bitmaps/saveas.bmp 1.410 ToolBar.SaveAs Save As
     :amenu ToolBar.SaveAs :browse confirm saveas <cr>
     :tmenu icon=$HOME/\.vim/bitmaps/calc.bmp 1.420 ToolBar.Calculator Calculator
-    :amenu ToolBar.Calculator :silent!!calc.exe <CR><Esc><CR>
+    :amenu ToolBar.Calculator :call Win_calculator() <Esc>
 
   elseif g:osdetected == "Linux"
     :tmenu icon=$HOME/.vim/bitmaps/new.bmp 1.400 ToolBar.NewFile New File
