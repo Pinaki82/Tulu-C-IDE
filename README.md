@@ -796,6 +796,8 @@ Creating a Bash Alias: https://davidwalsh.name/alias-bash
 
 [Node.js](https://nodejs.org/en/download/)
 
+[pnpm](https://pnpm.io/installation)
+
 [Cmake](https://cmake.org/)
 
 ##### Recommended Programs:
@@ -861,6 +863,18 @@ sudo apt install default-jre
 sudo apt install wmctrl
 sudo apt install -y nodejs
 sudo apt install -y npm
+
+# Update Node.js with NPM (Node Package Manager)
+# https://phoenixnap.com/kb/update-node-js-version
+# coc.nvim requires the latest version of Node.js.
+
+npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+# pnpm package manager
+# https://pnpm.io/installation
+
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
