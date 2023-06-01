@@ -1073,20 +1073,20 @@ endif
 if has("gui_running")
   " Opens Explorer
   if g:osdetected == "Windows"
-    :amenu Utilities.Explorer\.exe :!start Explorer.exe <CR><Esc><CR>
+    :amenu Utilities.Explorer\.exe :!start Explorer.exe <Esc>
     " Locates in the Explorer, XP only
-    :amenu Utilities.Locate\ in\ Explorer\ (\XP\ only\) :silent !start explorer /e,,%:p:h,/select,%:p <CR><Esc><CR>
+    :amenu Utilities.Locate\ in\ Explorer\ (\XP\ only\) :silent !start explorer /e,,%:p:h,/select,%:p <Esc>
     " Open Containing Folder XP, Win7
     :amenu Utilities.Open\ Containing\ Folder\ (\XP\,\ Win7\) :silent !start explorer %:p:h<Esc>
   endif
 
   " Opens Directory via console
   if g:osdetected == "Windows"
-    :amenu Utilities.Open\ Directory\ via\ Console :silent !start cmd.exe /k pushd %:p:h <CR><Esc><CR>
+    :amenu Utilities.Open\ Directory\ via\ Console :silent !start cmd.exe /k pushd %:p:h <Esc>
   endif
 
   " Opens Directory via NERDTree Plugin
-  :amenu Utilities.Open\ Directory\ via\ NERDTree\ Plugin :NERDTree %:p:h <CR><Esc><CR>
+  :amenu Utilities.Open\ Directory\ via\ NERDTree\ Plugin :NERDTree %:p:h <Esc>
   " Put NERDTree to Command
   :amenu Utilities.Put\ NERDTree\ to\ Command\ Mode :NERDTree
   " Put NERDTreeToggle
@@ -1100,14 +1100,14 @@ if has("gui_running")
 
   " Opens Useful Apps and Programs
   if g:osdetected == "Windows"
-    :amenu Utilities.notepad :silent!!start "notepad.exe" <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ notepad :silent !start "notepad.exe" "%:p" <CR><Esc><CR>
-    :amenu Utilities.Notepad++ :silent!!start /min cmd /c "C:\Program Files\Notepad++\notepad++.exe" <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ Notepad++ :silent !start "C:\Program Files\Notepad++\notepad++.exe" "%:p" <CR><Esc><CR>
-    :amenu Utilities.Notepad2-mod :silent!!start /min cmd /c "C:\Program Files\Notepad2\Notepad2.exe" <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ Notepad2-mod :silent !start "C:\Program Files\Notepad2\Notepad2.exe" "%:p" <CR><Esc><CR>
-    :amenu Utilities.Kate :silent!!start /min cmd /c "C:\Program Files\Kate\bin\kate.exe" <CR><Esc>
-    :amenu Utilities.Open\ with\ Kate :silent !start "C:\Program Files\Kate\bin\kate.exe" "%:p" <CR><Esc>
+    :amenu Utilities.notepad :silent!!start "notepad.exe" <Esc>
+    :amenu Utilities.Open\ with\ notepad :silent !start "notepad.exe" "%:p" <Esc>
+    :amenu Utilities.Notepad++ :silent!!start /min cmd /c "C:\Program Files\Notepad++\notepad++.exe" <Esc>
+    :amenu Utilities.Open\ with\ Notepad++ :silent !start "C:\Program Files\Notepad++\notepad++.exe" "%:p" <Esc>
+    :amenu Utilities.Notepad2-mod :silent!!start /min cmd /c "C:\Program Files\Notepad2\Notepad2.exe" <Esc>
+    :amenu Utilities.Open\ with\ Notepad2-mod :silent !start "C:\Program Files\Notepad2\Notepad2.exe" "%:p" <Esc>
+    :amenu Utilities.Kate :silent!!start /min cmd /c "C:\Program Files\Kate\bin\kate.exe" <Esc>
+    :amenu Utilities.Open\ with\ Kate :silent !start "C:\Program Files\Kate\bin\kate.exe" "%:p" <Esc>
     :amenu Utilities.WinMergeU :silent!!start /min cmd /c "C:\Program Files\WinMerge\WinMergeU.exe" <Esc>
     :amenu Utilities.Open\ with\ WinMergeU\ on\ one\ side :silent !start "C:\Program Files\WinMerge\WinMergeU.exe" "%:p" <Esc>
     :amenu Utilities.Meld\ diff\ viewer\ \(\32-bit\) :silent!!start /min cmd /c "C:\Program Files (x86)\Meld\Meld.exe" <Esc>
@@ -1129,22 +1129,22 @@ if has("gui_running")
     " man -k calculator
     " man -k camera
 
-    :amenu Utilities.Open\ File\ with\ Default\ Application\ (\LINUX\ only\) :call Open_File_with_Default_Application() <CR><Esc><CR>
-    :amenu Utilities.Explore\ Current\ File's\ Directory\ (\LINUX\ only\) :call Explore_file_PWD() <CR><Esc><CR>
-    :amenu Utilities.kitty\ Terminal\ Emulator :call Kitty_Terminal_Emulator() <CR><Esc><CR>
-    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ kitty-terminal :call Kitty_Terminal_current_file_s_dir() <CR><Esc><CR>
-    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Sakura\ Terminal\ Emulator :call Sakura_Terminal_current_file_s_dir() <CR><Esc><CR>
-    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ GITK\ GIT\ Client :call GITK() <CR><Esc><CR>
-    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Giggle\ GIT\ Client :call Giggle() <CR><Esc><CR>
-    :amenu Utilities.Open\ dir\ tree\ with\ Data\ Display\ Debugger\ (\DDD\) :call Data_Display_Debugger_in_th_current_file_s_dir() <CR><Esc><CR>
-    :amenu Utilities.xedit :call Xedit_open() <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <CR><Esc><CR>
-    :amenu Utilities.Geany :call Geany_open() <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ Geany :call Open_w_Geany() <CR><Esc><CR>
-    :amenu Utilities.Kate :call Kate_open() <CR><Esc><CR>
-    :amenu Utilities.Open\ with\ Kate :call Open_w_Kate() <CR><Esc><CR>
-    :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <CR><Esc><CR>
-    :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <CR><Esc><CR>
+    :amenu Utilities.Open\ File\ with\ Default\ Application\ (\LINUX\ only\) :call Open_File_with_Default_Application() <Esc>
+    :amenu Utilities.Explore\ Current\ File's\ Directory\ (\LINUX\ only\) :call Explore_file_PWD() <Esc>
+    :amenu Utilities.kitty\ Terminal\ Emulator :call Kitty_Terminal_Emulator() <Esc>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ kitty-terminal :call Kitty_Terminal_current_file_s_dir() <Esc>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Sakura\ Terminal\ Emulator :call Sakura_Terminal_current_file_s_dir() <Esc>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ GITK\ GIT\ Client :call GITK() <Esc>
+    :amenu Utilities.Open\ Current\ File's\ Directory\ via\ Giggle\ GIT\ Client :call Giggle() <Esc>
+    :amenu Utilities.Open\ dir\ tree\ with\ Data\ Display\ Debugger\ (\DDD\) :call Data_Display_Debugger_in_th_current_file_s_dir() <Esc>
+    :amenu Utilities.xedit :call Xedit_open() <Esc>
+    :amenu Utilities.Open\ with\ xedit :call Open_w_Xedit() <Esc>
+    :amenu Utilities.Geany :call Geany_open() <Esc>
+    :amenu Utilities.Open\ with\ Geany :call Open_w_Geany() <Esc>
+    :amenu Utilities.Kate :call Kate_open() <Esc>
+    :amenu Utilities.Open\ with\ Kate :call Open_w_Kate() <Esc>
+    :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <Esc>
+    :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <Esc>
 
     " ---------------------------------------------- install 'cdecl' and 'cutils' first,
     " sudo apt install cdecl
@@ -1274,13 +1274,13 @@ endif
 
 " Opens Explorer
 if g:osdetected == "Windows"
-  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <CR><Esc><CR>
+  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToWindowsNMacOSXClipboard() <Esc>
   command! Pwdtoclip :call CopyPWDToWindowsNMacOSXClipboard()
 elseif (g:osdetected == "Linux")
-  :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <CR><Esc><CR>
+  :amenu Utilities.Copy\ pwd\ to\ Linux\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToLinuxClipboard() <Esc>
   command! Pwdtoclip :call CopyPWDToLinuxClipboard()
 else
-  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <CR><Esc><CR>
+  :amenu Utilities.Copy\ pwd\ to\ System\ Clipboard\ (\:Pwdtoclip\) :call CopyPWDToSystemClipboard() <Esc>
   command! Pwdtoclip :call CopyPWDToSystemClipboard()
 endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1349,7 +1349,7 @@ if has("gui_running")
     :tmenu icon=$HOME/.vim/bitmaps/saveas.bmp 1.410 ToolBar.SaveAs Save As
     :amenu ToolBar.SaveAs :browse confirm saveas <cr>
     :tmenu icon=$HOME/.vim/bitmaps/calc.bmp 1.420 ToolBar.Calculator Calculator
-    :amenu ToolBar.Calculator :call X_window_System_Calculator() <CR><Esc><CR>
+    :amenu ToolBar.Calculator :call X_window_System_Calculator() <Esc>
 
     fun! X_window_System_Calculator()
       :silent!!xcalc &
