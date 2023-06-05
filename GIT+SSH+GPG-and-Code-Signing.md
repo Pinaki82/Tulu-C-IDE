@@ -209,6 +209,22 @@ Type the command to export a backup of the GPG key pair:
 gpg --armor --export-secret-keys axxxxxxxxxx7@gmail.com | gpg --armor --symmetric --output backup-2021-02-11-05-43-pm.sec.asc
 ```
 
+Or,
+
+```
+ gpg --list-secret-keys --keyid-format LONG    6.9s  Mon Jun  5 17:34:39 2023
+/home/YourUsername/.gnupg/pubring.kbx
+---------------------------------
+sec   rsa3072/73XXXXXXXXXXX71B 2023-06-04 [SC] [expires: 2024-06-03]
+      4E0ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ71B
+uid                 [ultimate] Pinaki Gupta <appugupta007@gmail.com>
+ssb   rsa3072/8F2YYYYYYYYYY9FB 2023-06-04 [E] [expires: 2024-06-03]
+```
+
+```
+gpg --armor --export-secret-keys 73XXXXXXXXXXX71B | gpg --armor --symmetric --output gpg-backup-2023-06-04-02-09-pm.sec.asc
+```
+
 ![2021-02-11 18_42_21-Command Prompt](https://user-images.githubusercontent.com/16861933/107744620-09358d00-6d39-11eb-855a-cff49da66a4b.png)
 
 ---------------------------------------------------------
@@ -239,6 +255,12 @@ Open a terminal (or cmd.exe) and type:
 gpg --export -a axxxxxxxxxx7@gmail.com > %userprofile%\Desktop\axxxxxxxxxx7@gmail.com.publickey.asc.txt
 ```
 
+Or,
+
+```
+gpg --armor --export 73XXXXXXXXXXX71B
+```
+
 Open the file with any advanced text editor program and see how it looks like. It should be something like this:
 
 ```
@@ -255,6 +277,22 @@ mQGNBF+JP/IBDADDLAlM5l50awl......................
 ```
 
 Change the Line Endings (EOL convention) to Linux (for some editors, UNIX).
+
+Or, redirect the output to a text file:
+
+```
+gpg --armor --export -a 73XXXXXXXXXXX71B > axxxxxxxxxx7@gmail.com.publickey.asc.txt
+```
+
+Delete expired GPG keys:
+
+```
+gpg --list-secret-keys --keyid-format LONG
+```
+
+```
+gpg --delete-secret-key 7EAFFE7F1DE64E58 (old)
+```
 
 ---------------------------------------------------------
 
@@ -283,7 +321,17 @@ gpg --list-secret-keys --keyid-format LONG
 
 ![2021-02-11 18_39_40-Command Prompt](https://user-images.githubusercontent.com/16861933/107744507-cf648680-6d38-11eb-9827-f7d0435b45b1.png)
 
-Copy the Secret Key ID (encircled in the red box above). On Windows, select the text you need then hit `<Enter>` to copy the selection.
+```
+ gpg --list-secret-keys --keyid-format LONG    6.9s  Mon Jun  5 17:34:39 2023
+/home/YourUsername/.gnupg/pubring.kbx
+---------------------------------
+sec   rsa3072/73XXXXXXXXXXX71B 2023-06-04 [SC] [expires: 2024-06-03]
+      4E0ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ71B
+uid                 [ultimate] Pinaki Gupta <appugupta007@gmail.com>
+ssb   rsa3072/8F2YYYYYYYYYY9FB 2023-06-04 [E] [expires: 2024-06-03]
+```
+
+Copy the Secret Key ID (encircled in the red box above. Ex: 73XXXXXXXXXXX71B). On Windows, select the text you need then hit `<Enter>` to copy the selection.
 
 - Windows 10 Git Bash
 
