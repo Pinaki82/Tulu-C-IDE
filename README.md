@@ -915,6 +915,16 @@ sudo apt install ninja-build
 sudo apt install xclip
 ```
 
+Install a [CMake](https://en.wikipedia.org/wiki/CMake) project generator [cmake-init](https://github.com/friendlyanon/cmake-init):
+
+Open the MSYS2 console/Any Terminal Emulator on Linux:
+
+```
+pip install cmake-init
+```
+
+Or `pip3 install cmake-init`.
+
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 █ **NOTE:** Press and hold <`SHIFT`+`;`>, type `q!` to exit Vim. `q!` is the only way to exit Vim from a terminal window.
