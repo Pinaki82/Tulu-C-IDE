@@ -249,7 +249,7 @@ shred -fuz pgp_key_dump/backup_20yy-mm-dd.sec.pgp
 
 **Copy your GPG public key.**
 
-Open a terminal (or cmd.exe) and type:
+Open a terminal (or cmd.exe) and type (redirect the output to a text file):
 
 ```
 gpg --export -a axxxxxxxxxx7@gmail.com > %userprofile%\Desktop\axxxxxxxxxx7@gmail.com.publickey.asc.txt
@@ -258,7 +258,7 @@ gpg --export -a axxxxxxxxxx7@gmail.com > %userprofile%\Desktop\axxxxxxxxxx7@gmai
 Or,
 
 ```
-gpg --armor --export 73XXXXXXXXXXX71B
+gpg --armor --export -a 73XXXXXXXXXXX71B > axxxxxxxxxx7@gmail.com.publickey.asc.txt
 ```
 
 Open the file with any advanced text editor program and see how it looks like. It should be something like this:
@@ -277,12 +277,6 @@ mQGNBF+JP/IBDADDLAlM5l50awl......................
 ```
 
 Change the Line Endings (EOL convention) to Linux (for some editors, UNIX).
-
-Or, redirect the output to a text file:
-
-```
-gpg --armor --export -a 73XXXXXXXXXXX71B > axxxxxxxxxx7@gmail.com.publickey.asc.txt
-```
 
 Delete expired GPG keys:
 
