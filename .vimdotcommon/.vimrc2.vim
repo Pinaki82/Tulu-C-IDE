@@ -1145,6 +1145,8 @@ if has("gui_running")
     :amenu Utilities.Open\ with\ Kate :call Open_w_Kate() <Esc>
     :amenu Utilities.Open\ meld\ (\file\ compare\ utility\) :call Meld_diff_viewer() <Esc>
     :amenu Utilities.Open\ w\ meld\ one\ side\ (\file\ compare\ utility\) :call Open_w_Meld_diff_viewer_One_side() <Esc>
+    " XMaxima CAS. *-Ubuntu: sudo apt install xmaxima
+    :amenu Utilities.Open\ XMaxima\ Computer\ Algebra\ System :call XMaxima_open() <Esc>
 
     " ---------------------------------------------- install 'cdecl' and 'cutils' first,
     " sudo apt install cdecl
@@ -1177,6 +1179,10 @@ if has("gui_running")
     endfun
     fun! Open_w_Meld_diff_viewer_One_side()
       :!meld % &
+    endfun
+    " XMaxima CAS. *-Ubuntu: sudo apt install xmaxima
+    fun! XMaxima_open()
+      :silent!!xmaxima &
     endfun
     fun! Kitty_Terminal_Emulator()
       :silent!!kitty &
