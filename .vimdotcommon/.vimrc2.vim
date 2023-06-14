@@ -1111,6 +1111,7 @@ if has("gui_running")
     :amenu Utilities.WinMergeU :silent!!start /min cmd /c "C:\Program Files\WinMerge\WinMergeU.exe" <Esc>
     :amenu Utilities.Open\ with\ WinMergeU\ on\ one\ side :silent !start "C:\Program Files\WinMerge\WinMergeU.exe" "%:p" <Esc>
     :amenu Utilities.Meld\ diff\ viewer\ \(\32-bit\) :silent!!start /min cmd /c "C:\Program Files (x86)\Meld\Meld.exe" <Esc>
+    :amenu Utilities.Open\ XMaxima\ Computer\ Algebra\ System :silent!!start /min cmd /c "C:\maxima-5.47.0\bin\xmaxima.bat" <Esc>
 
     fun Win_calculator()
       :silent!!start "calc" <Esc>
