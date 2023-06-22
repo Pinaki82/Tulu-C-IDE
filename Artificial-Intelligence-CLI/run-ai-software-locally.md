@@ -169,7 +169,43 @@ To run [LlamaGPTJ-chat](https://github.com/kuvaus/LlamaGPTJ-chat.git) command-li
 chat-windows-latest-avx2.exe -j %USERPROFILE%\gpt4all\chat.json
 ```
 
+Or, simply:
+
+```
+chat-windows-latest-avx2.exe -m "N:\GPT4All\ggml-mpt-7b-chat.bin" -t 4
+```
+
+A WinBATCH/BASH/FISH/ZSH script should work as well. The AI model `ggml-wizardLM-7B.q4_2.bin` generated almost perfect code, the last time I checked.
+
 Feel free to experiment with the parameters. Change models and parameters in the `json` file. You need the `json` file to quickly insert flags into the [LlamaGPTJ-chat](https://github.com/kuvaus/LlamaGPTJ-chat.git) model runner. The `json` file is unrelated to the [GPT4All](https://gpt4all.io/index.html) GUI model runner program.
+
+You might want to keep an eye on a similar program [koboldcpp](https://github.com/LostRuins/koboldcpp.git). It can run many AI model formats. The program is small, nearly 20MB.
+
+For more details on [koboldcpp](https://github.com/LostRuins/koboldcpp.git):
+
+https://github.com/LostRuins/koboldcpp
+
+https://huggingface.co/TheBloke/WizardCoder-15B-1.0-GGML/blob/main/README.md
+
+https://huggingface.co/TheBloke/WizardCoder-15B-1.0-GPTQ
+
+https://huggingface.co/TheBloke/MPT-7B-Storywriter-GGML/discussions/2#6475d914e9b57ce0caa68888
+
+Running [koboldcpp](https://github.com/LostRuins/koboldcpp.git):
+
+```
+koboldcpp.exe --help
+```
+
+```
+koboldcpp.exe --model "N:\GPT4All\ggml-wizard-13b-uncensored.bin" --smartcontext --nommap
+```
+
+```
+koboldcpp.exe --model "N:\GPT4All\WizardCoder-15B-1.0.ggmlv3.q4_1.bin" --smartcontext --nommap
+```
+
+Drop [koboldcpp](https://github.com/LostRuins/koboldcpp.git)'s compiled binary in the same folder where you have your [LlamaGPTJ-chat](https://github.com/kuvaus/LlamaGPTJ-chat.git) (`chat-windows-latest-avx2.exe`).
 
 **NOTE:**
 
