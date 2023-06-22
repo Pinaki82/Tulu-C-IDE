@@ -52,6 +52,7 @@ pacman -S ssh-pageant-git && \
 pacman -S git && \
 pacman -S git-extras && \
 pacman -S git-flow && \
+pacman -S mingw-w64-x86_64-git-lfs && \
 
 # pacman -S diffutils && \
 # pacman -S diffstat && \

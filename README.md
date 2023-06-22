@@ -132,6 +132,7 @@ pacman -S ssh-pageant-git
 pacman -S git
 pacman -S git-extras
 pacman -S git-flow
+pacman -S mingw-w64-x86_64-git-lfs
 pacman -S mingw-w64-x86_64-meld3
 pacman -S ctags
 pacman -S markdown
@@ -845,6 +846,7 @@ sudo apt install wget
 sudo apt install git
 sudo apt install gitk
 sudo apt install git-gui
+sudo apt install git-lfs
 sudo apt install ddd
 sudo apt install valgrind
 sudo apt install cgdb
