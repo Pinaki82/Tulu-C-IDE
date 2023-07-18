@@ -216,3 +216,7 @@ Drop [koboldcpp](https://github.com/LostRuins/koboldcpp.git)'s compiled binary i
 3. Requires a reasonably capable machine; at least 16GB DDR3 RAM and a 2GHz quad-core CPU. That requirement is the real minimum.
 
 4. The models cannot be integrated into commercial chatbots, like AI chatbots in customer care services. Most of these models are derivative works of Meta's LLaMA model. Some of them are fine-tuned using OpenAI's responses.
+
+5. For a trouble-free experience, use GPT4ALL in its default settings. It is the best overall model runner around.
+
+Find a detailed review of AI models that you can run locally with GPT4ALL, `ai-model-test.txt`. The review is left as it is with no spelling/grammatical inconsistency correction.
