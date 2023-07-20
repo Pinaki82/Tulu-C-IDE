@@ -1,0 +1,63 @@
+" ~~~~~~~~
+" Localvimrc for Tulu-C-IDE Lite (Command-Line) Edition
+" ~~~~~~~~
+" Localvimrc Settings: https://github.com/embear/vim-localvimrc.git
+" Add to your .vimrc
+"
+" let g:localvimrc_sandbox=0
+" let g:localvimrc_ask=0
+" let g:localvimrc_persistent=2
+" ~~~~~~~~
+" ~~~~~~~~ To set a 'colourscheme' (theme), please uncomment one of the lines
+" ~~~~~~~~~~~ that starts with the command 'colo' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~ (Delete the double quotation mark) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" colorscheme anycolour
+" or (the short-form),
+" colo anyothercolour
+"
+" preferred: Linux: tokyonight MS-Win palenight
+" colorscheme palenight
+" colorscheme tokyonight
+" colorscheme desert
+" colorscheme slate
+" colorscheme evening
+"
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" add current directory's generated tags file to available tags
+" even if exubarent-ctags is not in use.
+" NOTE: Ctags will not be used in the lite version of Tulu-C-IDE.
+set tags+=./tags
+set tags+=./tags;/
+set tags+=./tags;/.
+set path+=./;/
+
+" ========================== List all sub-directories in a folder and produce an output to a text file:
+" https://stackoverflow.com/questions/35560540/batch-file-to-list-directories-recursively-in-windows-as-in-linux
+" dir /a:d /s /b /o:n > list.txt
+
+" ========================== ALE Linter Settings for .lvimrc ==========
+" ==================== UNCOMMENT the entire ALE Linter SETTINGS if
+" ====================== you chose the OPTION TWO for autocompletion and code
+" ====================== checking ===============================
+
+let g:ale_lint_on_text_changed = 1 " Change to ZERO from ONE on Laptops to save battery power
+" Set this in your vimrc file to disabling highlighting
+" let g:ale_set_highlights = 0
+let g:ale_cpp_cppcheck_options = '--enable-all'
+"
+" ~~~~~ Add the following lines to your `.lvimrc` file (uncommented)
+" ~~~~~   for editing C header files with the `.h` extension.
+" ~~~~~ Some GCC/Clang versions along with certain versions of certain plugins might cause troubles with C header files [E.g., clang version 16.0.2 (MSYS2), gcc version 13.1.0 (MSYS2)].
+" ~~~~~ Setting the file type as C will temporarily solve the problem.
+" ~~~~~ :set filetype=c
+" ~~~~~ However, this is not ideal since reloading the file will bring back the same issues.
+" ~~~~~ So, you may like to add the following lines to your LocalVimrc config `.lvimrc` file.
+"
+let g:ale_cpp_gcc_header_extensions = ['h'] " Bing Chat gave me the solution
+autocmd BufNewFile,BufRead *.h set filetype=c
+"
+" ========================== (END) ALE Linter Settings for .lvimrc ==========
+
+set tags+=./tags;/
+set path+=./;/
