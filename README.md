@@ -1034,15 +1034,58 @@ NOTE: Avoid trying to install the 'coc-extensions' again by typing the following
 
 Otherwise, your installation might be messed up.
 
-**NOTE:** I do not recommend you to install CCLS on Windows. CCLS doesn't work properly on Windows, although it can be installed using the [Chocolatey Package Manager](https://chocolatey.org/) with the command `choco install -y ccls`. More about Chocolatey later. It is an excellent package manager for Microsoft Windows which can be compared to the central repository concept in Linux distributions.
+**NOTE:** I recommend you build CCLS from source on Windows. CCLS doesn't work properly on Windows if installed from the [Chocolatey Package Manager](https://chocolatey.org/)'s repository with the command `choco install -y ccls`. More about Chocolatey later. It is an excellent package manager for Microsoft Windows which can be compared to the central repository concept in Linux distributions.
 
-However, CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been incorporated.
+Find the build instruction for CCLS in the file `CCLS-WINDOWS-BUILD.txt`.
+
+Here's a brief overview of the build process for CCLS: If you have installed MSYS2 in the default location, `C:\msys64`, then,
+
+**MSYS2x64 (x64. Blue.)**
+
+```bash
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+cmake -H. -BRelease -G Ninja -DCMAKE_CXX_FLAGS=-D__STDC_FORMAT_MACROS
+ninja -C Release
+yes | cp Release/ccls.exe /c/msys64/mingw64/bin
+```
+
+```bash
+touch ccls_vim_lsp.vim
+notepad ccls_vim_lsp.vim
+```
+
+Paste:
+
+```vim
+" Register ccls C++ lanuage server.
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+      \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+
+" Key bindings for vim-lsp.
+nn <silent> <M-d> :LspDefinition<cr>
+nn <silent> <M-r> :LspReferences<cr>
+nn <f2> :LspRename<cr>
+nn <silent> <M-a> :LspWorkspaceSymbol<cr>
+nn <silent> <M-l> :LspDocumentSymbol<cr>
+```
+
+Copy 'ccls_vim_lsp.vim' to '.vim\plugin' dir [INCLUDED here].
+
+CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been incorporated.
 
 Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
 
 Paste the contents written below.
 
-```
+```json
 "diagnostic.displayByAle": true
 
 "languageserver": {
