@@ -1,0 +1,196 @@
+https://github.com/MaskRay/ccls/wiki/Build
+
+
+whereis clang
+clang: /mingw64/bin/clang.exe
+whereis lld
+lld: /mingw64/bin/lld.exe
+C:\msys64\mingw64\bin
+/c/msys64/mingw64/bin
+"C:/msys64/mingw64/bin"
+
+MSYS2 (Normal. Purple.)
+
+pacman -S mingw-w64-x86_64-clang mingw-w64-x86_64-clang-tools-extra mingw64/mingw-w64-x86_64-polly mingw-w64-x86_64-cmake mingw-w64-x86_64-jq mingw-w64-x86_64-ninja mingw-w64-x86_64-ncurses mingw-w64-x86_64-rapidjson mingw-w64-x86_64-clang-analyzer mingw-w64-x86_64-mlir
+
+pacman -S mingw64/mingw-w64-x86_64-polly mingw-w64-x86_64-jq mingw-w64-x86_64-mlir
+
+# Then,
+
+pacman -S cmake ninja clang
+
+MSYS2x64 (x64. Blue.)
+
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+cmake -H. -BRelease -G Ninja -DCMAKE_CXX_FLAGS=-D__STDC_FORMAT_MACROS
+ninja -C Release
+
+yes | cp Release/ccls.exe /c/msys64/mingw64/bin
+
+https://github.com/MaskRay/ccls/wiki/vim-lsp
+ccls vim config for https://github.com/prabirshrestha/vim-lsp
+
+touch ccls_vim_lsp.vim
+
+notepad ccls_vim_lsp.vim
+
+Paste:
+
+----------------------------
+" Register ccls C++ lanuage server.
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+      \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+
+" Key bindings for vim-lsp.
+nn <silent> <M-d> :LspDefinition<cr>
+nn <silent> <M-r> :LspReferences<cr>
+nn <f2> :LspRename<cr>
+nn <silent> <M-a> :LspWorkspaceSymbol<cr>
+nn <silent> <M-l> :LspDocumentSymbol<cr>
+----------------------------
+
+Copy 'ccls_vim_lsp.vim' to '.vim\plugin' dir [INCLUDED].
+
+================================================================================
+ninja -C Release
+ninja: Entering directory `Release'
+[14/43] Building CXX object CMakeFiles/ccls.dir/src/query.cc.obj
+In file included from N:/ccls/src/indexer.hh:6,
+                 from N:/ccls/src/query.hh:6,
+                 from N:/ccls/src/query.cc:4:
+In constructor 'ccls::SymbolInformation::SymbolInformation(ccls::SymbolInformation&&)',
+    inlined from 'constexpr std::_Optional_payload_base<_Tp>::_Storage<_Up, false>::_Storage(std::in
+_place_t, _Args&& ...) [with _Args = {ccls::SymbolInformation}; _Up = ccls::SymbolInformation; _Tp =
+ ccls::SymbolInformation]' at C:/msys64/mingw64/include/c++/13.1.0/optional:244:8,
+    inlined from 'constexpr std::_Optional_payload_base<_Tp>::_Optional_payload_base(std::in_place_t
+, _Args&& ...) [with _Args = {ccls::SymbolInformation}; _Tp = ccls::SymbolInformation]' at C:/msys64
+/mingw64/include/c++/13.1.0/optional:126:4,
+    inlined from 'constexpr std::_Optional_payload<ccls::SymbolInformation, true, false, false>::_Op
+tional_payload(std::in_place_t, _Args&& ...) [with _Args = {ccls::SymbolInformation}][inherited from
+ std::_Optional_payload_base<ccls::SymbolInformation>]' at C:/msys64/mingw64/include/c++/13.1.0/opti
+onal:397:42,
+    inlined from 'constexpr std::_Optional_payload<ccls::SymbolInformation, false, false, false>::_O
+ptional_payload(std::in_place_t, _Args&& ...) [with _Args = {ccls::SymbolInformation}][inherited fro
+m std::_Optional_payload_base<ccls::SymbolInformation>]' at C:/msys64/mingw64/include/c++/13.1.0/opt
+ional:431:57,
+    inlined from 'constexpr std::_Optional_base<_Tp, <anonymous>, <anonymous> >::_Optional_base(std:
+:in_place_t, _Args&& ...) [with _Args = {ccls::SymbolInformation}; typename std::enable_if<is_constr
+uctible_v<_Tp, _Args ...>, bool>::type <anonymous> = false; _Tp = ccls::SymbolInformation; bool <ano
+nymous> = false; bool <anonymous> = false]' at C:/msys64/mingw64/include/c++/13.1.0/optional:521:4,
+    inlined from 'constexpr std::optional<_Tp>::optional(_Up&&) [with _Up = ccls::SymbolInformation;
+ typename std::enable_if<__and_v<std::__not_<std::is_same<std::optional<_Tp>, typename std::remove_c
+v<typename std::remove_reference<_Up>::type>::type> >, std::__not_<std::is_same<std::in_place_t, typ
+ename std::remove_cv<typename std::remove_reference<_Up>::type>::type> >, std::is_constructible<_Tp,
+ _Up>, std::is_convertible<_Up, _Tp> >, bool>::type <anonymous> = true; _Tp = ccls::SymbolInformatio
+n]' at C:/msys64/mingw64/include/c++/13.1.0/optional:749:47,
+    inlined from 'std::optional<ccls::SymbolInformation> ccls::getSymbolInfo(DB*, SymbolIdx, bool)'
+at N:/ccls/src/query.cc:779:12:
+N:/ccls/src/lsp.hh:179:8: warning: 'info.ccls::SymbolInformation::kind' may be used uninitialized [-
+Wmaybe-uninitialized]
+  179 | struct SymbolInformation {
+      |        ^~~~~~~~~~~~~~~~~
+N:/ccls/src/query.cc: In function 'std::optional<ccls::SymbolInformation> ccls::getSymbolInfo(DB*, S
+ymbolIdx, bool)':
+N:/ccls/src/query.cc:770:23: note: 'info' declared here
+  770 |     SymbolInformation info;
+      |                       ^~~~
+[17/43] Building CXX object CMakeFiles/ccls.dir/src/project.cc.obj
+In file included from C:/msys64/mingw64/include/clang/Basic/FileManager.h:21,
+                 from N:/ccls/src/clang_tu.hh:8,
+                 from N:/ccls/src/project.cc:6:
+In member function 'unsigned int llvm::SmallDenseMap<KeyT, ValueT, InlineBuckets, KeyInfoT, BucketT>
+::getNumBuckets() const [with KeyT = unsigned int; ValueT = int; unsigned int InlineBuckets = 4; Key
+InfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]',
+    inlined from 'unsigned int llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::getNum
+Buckets() const [with DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT
+ = int; KeyInfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned i
+nt, int>]' at C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:525:62,
+    inlined from 'BucketT* llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::getBuckets
+End() [with DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; Ke
+yInfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]'
+ at C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:529:40,
+    inlined from 'void llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::initEmpty() [w
+ith DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; KeyInfoT =
+ llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]' at C:/m
+sys64/mingw64/include/llvm/ADT/DenseMap.h:380:55,
+    inlined from 'void llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::moveFromOldBuc
+kets(BucketT*, BucketT*) [with DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned in
+t; ValueT = int; KeyInfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<u
+nsigned int, int>]' at C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:396:14,
+    inlined from 'void llvm::SmallDenseMap<KeyT, ValueT, InlineBuckets, KeyInfoT, BucketT>::grow(uns
+igned int) [with KeyT = unsigned int; ValueT = int; unsigned int InlineBuckets = 4; KeyInfoT = llvm:
+:DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]' at C:/msys64/
+mingw64/include/llvm/ADT/DenseMap.h:1077:31,
+    inlined from 'void llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::grow(unsigned
+int) [with DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; Key
+InfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]'
+at C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:537:40,
+    inlined from 'BucketT* llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::InsertInto
+BucketImpl(const KeyT&, const LookupKeyT&, BucketT*) [with LookupKeyT = unsigned int; DerivedT = llv
+m::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; KeyInfoT = llvm::DenseMapInf
+o<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]' at C:/msys64/mingw64/incl
+ude/llvm/ADT/DenseMap.h:586:17,
+    inlined from 'BucketT* llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::InsertInto
+Bucket(BucketT*, KeyArg&&, ValueArgs&& ...) [with KeyArg = const unsigned int&; ValueArgs = {}; Deri
+vedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; KeyInfoT = llvm::D
+enseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]' at C:/msys64/mi
+ngw64/include/llvm/ADT/DenseMap.h:547:37,
+    inlined from 'llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::value_type& llvm::D
+enseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::FindAndConstruct(const KeyT&) [with DerivedT
+ = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT = int; KeyInfoT = llvm::Dense
+MapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int, int>]' at C:/msys64/mingw6
+4/include/llvm/ADT/DenseMap.h:326:29,
+    inlined from 'ValueT& llvm::DenseMapBase<DerivedT, KeyT, ValueT, KeyInfoT, BucketT>::operator[](
+const KeyT&) [with DerivedT = llvm::SmallDenseMap<unsigned int, int>; KeyT = unsigned int; ValueT =
+int; KeyInfoT = llvm::DenseMapInfo<unsigned int>; BucketT = llvm::detail::DenseMapPair<unsigned int,
+ int>]' at C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:330:28,
+    inlined from 'int ccls::{anonymous}::computeGuessScore(std::string_view, std::string_view)' at N
+:/ccls/src/project.cc:322:12,
+    inlined from 'ccls::Project::Entry ccls::Project::findEntry(const std::string&, bool, bool)' at
+N:/ccls/src/project.cc:553:44:
+C:/msys64/mingw64/include/llvm/ADT/DenseMap.h:1170:18: warning: '*(const llvm::SmallDenseMap<unsigne
+d int, int, 4, llvm::DenseMapInfo<unsigned int, void>, llvm::detail::DenseMapPair<unsigned int, int>
+ >::LargeRep*)((char*)&m + offsetof(llvm::SmallDenseMap<unsigned int, int, 4, llvm::DenseMapInfo<uns
+igned int, void>, llvm::detail::DenseMapPair<unsigned int, int> >,llvm::SmallDenseMap<unsigned int,
+int, 4, llvm::DenseMapInfo<unsigned int, void>, llvm::detail::DenseMapPair<unsigned int, int> >::sto
+rage.llvm::AlignedCharArrayUnion<llvm::detail::DenseMapPair<unsigned int, int>[4], llvm::SmallDenseM
+ap<unsigned int, int, 4, llvm::DenseMapInfo<unsigned int, void>, llvm::detail::DenseMapPair<unsigned
+ int, int> >::LargeRep>::buffer[0])).llvm::SmallDenseMap<unsigned int, int>::LargeRep::NumBuckets' m
+ay be used uninitialized [-Wmaybe-uninitialized]
+ 1170 |     return Small ? InlineBuckets : getLargeRep()->NumBuckets;
+      |            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+N:/ccls/src/project.cc: In member function 'ccls::Project::Entry ccls::Project::findEntry(const std:
+:string&, bool, bool)':
+N:/ccls/src/project.cc:317:38: note: 'm' declared here
+  317 |   llvm::SmallDenseMap<unsigned, int> m;
+      |                                      ^
+[29/43] Building CXX object CMakeFiles/ccls.dir/src/messages/textDocument_code.cc.obj
+In file included from C:/msys64/mingw64/include/llvm/Support/FormatVariadic.h:34,
+                 from N:/ccls/src/messages/textDocument_code.cc:8:
+In static member function 'static size_t llvm::detail::HelperFunctions::consumeNumHexDigits(llvm::St
+ringRef&, llvm::HexPrintStyle, size_t)',
+    inlined from 'static void llvm::format_provider<T, typename std::enable_if<llvm::detail::use_int
+egral_formatter<T>::value, void>::type>::format(const T&, llvm::raw_ostream&, llvm::StringRef) [with
+ T = int]' at C:/msys64/mingw64/include/llvm/Support/FormatProviders.h:135:35,
+    inlined from 'void llvm::detail::provider_format_adapter<T>::format(llvm::raw_ostream&, llvm::St
+ringRef) [with T = int&]' at C:/msys64/mingw64/include/llvm/Support/FormatVariadicDetails.h:40:45:
+C:/msys64/mingw64/include/llvm/Support/FormatProviders.h:95:27: warning: 'HS' may be used uninitiali
+zed [-Wmaybe-uninitialized]
+   95 |     if (isPrefixedHexStyle(Style))
+      |         ~~~~~~~~~~~~~~~~~~^~~~~~~
+C:/msys64/mingw64/include/llvm/Support/FormatProviders.h: In member function 'void llvm::detail::pro
+vider_format_adapter<T>::format(llvm::raw_ostream&, llvm::StringRef) [with T = int&]':
+C:/msys64/mingw64/include/llvm/Support/FormatProviders.h:132:19: note: 'HS' was declared here
+  132 |     HexPrintStyle HS;
+      |                   ^~
+[43/43] Linking CXX executable ccls.exe
+
+
