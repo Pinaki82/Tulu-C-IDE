@@ -16,12 +16,21 @@
 " colo anyothercolour
 "
 " preferred: Linux: tokyonight MS-Win palenight
-" colorscheme palenight
-" colorscheme tokyonight
-" colorscheme desert
-" colorscheme slate
-" colorscheme evening
-"
+" NOTE: ctermbg problem: Load palenight first in Linux before loading tokyonight [FIXED]
+
+" https://vi.stackexchange.com/questions/30987/check-if-vim-is-opened-in-tty
+if $TERM == 'linux'
+  set background=dark
+  colo murphy
+elseif !has("gui_running")
+  " NOTE: ctermbg problem: Load palenight first in Linux before loading tokyonight
+  colorscheme palenight
+  colorscheme tokyonight
+  " colorscheme desert
+  " colorscheme slate
+  " colorscheme evening
+endif
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " add current directory's generated tags file to available tags
