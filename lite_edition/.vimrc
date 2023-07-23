@@ -66,13 +66,6 @@ endif
 " ============================================
 
 " ============================================
-""     setting up a dark colorscheme at startup (Terminal)
-if !has("gui_running")
-    colo slate
-endif
-" ============================================
-
-" ============================================
 "  ******************************************
 " ============================================
 " http://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
@@ -863,7 +856,14 @@ endfunction
 command! CodeiumLangServerBinDir :silent! call OpenCodeiumLSDirectory()
 :amenu AI.Codeium.Explore\ \Codeium\ \Language\ \Server\ \bin\ \Directory\ \(\:CodeiumLangServerBinDir\) :call OpenCodeiumLSDirectory() <Esc>
 
-let g:airline_section_y = '{…}%3{codeium#GetStatusString()}'
+let g:airline_section_y = '{}%3{codeium#GetStatusString()}'
+
+" Clear current suggestion	codeium#Clear()	<C-]>
+" Next suggestion	codeium#CycleCompletions(1)	<M-]>
+" Previous suggestion	codeium#CycleCompletions(-1)	<M-[>
+" Insert suggestion	codeium#Accept()	<Tab>
+" Manually trigger suggestion	codeium#Complete()	<M-Bslash>
+"
 
 " -----------------------------------------
 
@@ -1008,6 +1008,20 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " ============================================================================
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" ============================================
+""     setting up a dark colorscheme at startup (Terminal)
+
+" https://vi.stackexchange.com/questions/30987/check-if-vim-is-opened-in-tty
+if $TERM == 'linux'
+  set background=dark
+  colo murphy
+elseif !has("gui_running")
+  " NOTE: ctermbg problem: Load palenight first in Linux before loading tokyonight
+  colo palenight
+  colo tokyonight
+endif
+" ============================================
 
 "  ===========================================================
 "  ===========================================================
