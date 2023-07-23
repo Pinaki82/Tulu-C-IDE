@@ -1726,9 +1726,9 @@ Plug 'https://github.com/matze/vim-move.git'
 Plug 'https://github.com/preservim/nerdcommenter.git'
 
 " ------------------- vimcaps (Linux-only)
-if g:osdetected != "Windows"
-  Plug 'https://github.com/suxpert/vimcaps.git'
-endif
+" if g:osdetected != "Windows"
+  " Plug 'https://github.com/suxpert/vimcaps.git'
+" endif
 
 Plug 'https://github.com/vim-scripts/AutoClose.git'
 
