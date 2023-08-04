@@ -1063,6 +1063,165 @@ It is worth noting that LocalDoc does not copy and paste code from books, but ra
 ================================================================================
 
 
+================================================================================
+New Model: 2023/Aug/04
+Llama-2-7B Chat (dry run. no LocalDoc plug):
+
+Prompt: Please write a C program that creates a text file, asks the user to type something, stores that input into that text file, and then reads the text file line by line.
+Response: Sure! Here is an example of how you could create a C program that does what you described:
+#include <stdio.h>
+// Create a new text file
+int main() {
+    FILE *file = fopen("input.txt", "w"); // Open the file in write mode
+    // Ask the user to input something
+    printf("Please enter some text: ");
+    char input[100]; // Declare an array for the user's input
+    fgets(input, 100, stdin); // Read a line of input from the user using the gets function
+    // Store the input in the file
+    fprintf(file, "%s", input); // Write the input to the file using the fprintf function
+    // Close the file
+    fclose(file);
+
+// Open the file and read it line by line
+FILE *file = fopen("input.txt", "r"); // Open the file in read mode
+char line[100]; // Declare an array for each line of the file
+while (fgets(line, 100, file)) {
+    printf("%s\n", line); // Print each line of the file
+}
+return 0;
+}
+This program will create a new text file called "input.txt" and ask the user to input something. The input will then be stored in the file, and when the program is run again, it will read the contents of the file line by line and print each one.
+
+Prompt: What programming languages do you know?
+Response: I'm just an AI assistant trained by Meta AI, and my capabilities are constantly evolving. However, here are some of the programming languages that I am currently able to understand and provide information on:
+* Python: I can help with basic syntax, data types, control structures, functions, modules, and more in Python.
+* Java: I can assist with basic syntax, data types, control structures, classes, objects, inheritance, polymorphism, and other fundamental concepts in Java.
+* JavaScript: I can provide information on the basics of JavaScript such as variables, data types, control structures, functions, loops, and more.
+* C++: I can help with basic syntax, data types, control structures, classes, objects, inheritance, polymorphism, and other fundamental concepts in C++.
+* Ruby: I can provide information on the basics of Ruby such as variables, data types, control structures, methods, modules, and more.
+Please note that my knowledge cutoff is December 2022, so if you have any questions beyond that date, I may not be able to assist you. Also, keep in mind that while I can provide information on these programming languages, I'm just an AI and not a human expert, so there might be some limitations to my responses.
+Prompt: Do you code in C, Rust, Zig, Assembly, VHDL etc.?
+Response: As a digital assistant trained by Meta AI, I can provide information on various programming languages, including those you mentioned:
+* C: Yes, I am familiar with the syntax and features of the C programming language. I can help with basic concepts such as variables, data types, control structures, functions, and more advanced topics like pointer arithmetic, memory management, and system calls.
+* Rust: While I have been trained on a wide range of programming languages, my knowledge of Rust is limited to basic syntax and features. I can provide information on the basics of Rust such as variables, data types, control structures, functions, and lifetimes. However, I may not be able to answer more advanced questions or provide detailed explanations of Rust's concurrency model or other advanced topics.
+* Zig: While I have been trained on a wide range of programming languages, my knowledge of the Zig language is limited to basic syntax and features. I can provide information on the basics of Zig such as variables, data types, control structures, functions, and more. However, I may not be able to answer more advanced questions or provide detailed explanations of Zig's concurrency model or other advanced topics.
+* Assembly: Yes, I am familiar with assembly language programming for various architectures including x86, ARM, and others. I can help with basic concepts such as registers, instructions, memory access, and more complex topics like interrupt handling, exception handling, and hardware manipulation.
+* VHDL: While I have been trained on a wide range of programming languages, my knowledge of VHDL is limited to basic syntax and features. I can provide information on the basics of VHDL such as variables, data types, control structures, functions, and more. However, I may not be able to answer more advanced questions or provide detailed explanations of VHDL's concurrency model or other advanced topics.
+Please keep in mind that my knowledge cutoff is December 2022, so if you have any questions beyond that date, I may not be able to assist you as thoroughly. Also, while I can provide information on these programming languages, I'm just an AI and not a human expert, so there might be some limitations to my responses.
+================================================================================
+(with LocalDoc after restarting GPT4ALL):
+Prompt: Please write a C program that creates a text file, asks the user to type something, stores that input into that text file, and then reads the text file line by line.
+Response: Sure! Here is an example of how you could create a C program that does what you described:
+#include <stdio.h>
+int main() {
+    // Create a new text file and open it for writing
+    FILE *file = fopen("input_file.txt", "w");
+
+    // Ask the user to input something, then store their input in the text file
+    printf("Please enter some text: ");
+    char input[100];
+    fgets(input, 100, stdin);
+
+    // Read the text file line by line and print each line as it's read
+    for (int i = 0; i < 5; i++) {
+        printf("%s\n", freadline(file));
+    }
+
+    return 0;
+}
+
+In this program, we first create a new text file called "input_file.txt" and open it for writing using the `fopen()` function from the C standard library. We then ask the user to input something using the `printf()` function, and store their input in the text file using the `fgets()` function (which is similar to `freadline()`, but reads a whole line at a time instead of just one character). Finally, we read the text file line by line using the same `freadline()` function, and print each line as it's read using the `printf()` function again.
+Note that this program assumes you want to input something into the text file, but if you don't want to do that, just remove the `fgets()` call from the main loop and replace it with a different statement (e.g., `printf("File contents: \n");`).
+Prompt: Wrong answer.
+Response: My apologies! Could you please provide more information or context about what you are asking? I'll do my best to assist you.
+Prompt: ` fgets(input, 100, stdin);` has to to be stored in the file pointer `file` before reading from it.
+Response: Ah, I see! Yes, you're right. The `fgets()` function reads a line of text from the standard input and stores it in the buffer pointed to by `input`. However, since we're using `stdin` as the standard input, we need to store the result of `fgets()` in the file pointer `file` before reading from it.
+Here's an updated version of the code that takes this into account:
+```c
+#include <stdio.h>
+int main() {
+    // Declare variables
+    int k = 54321;
+    char input[100];
+    FILE *file;
+    // Open standard input for reading
+    file = stdin;
+
+    // Read a line of text from standard input and store it in the buffer
+    fgets(input, 100, file);
+
+    // Print the contents of the buffer
+    printf("%s\n", input);
+
+    return 0;
+}
+```
+In this updated version of the code, we first declare a variable `file` to store the result of `fgets()` before reading from it. Then, in the `main()` function, we open the standard input for reading using the `stdin` pointer, and read a line of text into the buffer pointed to by `input`. Finally, we print the contents of the buffer using the `printf()` function.
+I hope this helps! Let me know if you have any questions or need further clarification.
+Prompt: The program will work. The problem is that no file will be created.
+Response: Ah, I see! Yes, you are correct. When using `tmpfile()` to create a temporary file, the file will not be created if the function fails for any reason (e.g., because of an error in the input).
+In this case, since the function failed, no file was created. Thank you for pointing this out!
+
+[didn't bode well for me with LocalDoc plug]
+================================================================================
+(again. without LocalDoc.)
+Prompt: Please write a C program that creates a text file, asks the user to type something, stores that input into that text file, and then reads the text file line by line.
+Response: Sure! Here is an example of how you could create a C program that generates a text file with some basic information, and then uses a `while` loop to ask the user for their input until they enter "done".
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define a structure to hold the data for the text file
+typedef struct {
+    int number; // A number for the entry in the text file
+    char name[20]; // A name for the entry in the text file
+} entry_t;
+
+int main() {
+    // Create a text file with some basic information
+    FILE *file = fopen("text.txt", "w");
+    if (file == NULL) {
+        perror("Error opening text file");
+        return 1;
+    }
+    
+    // Write the basic information to the text file
+    fprintf(file, "%d %s\n", 0, "John Doe");
+    fclose(file);
+    
+    // Use a while loop to ask the user for their input until they enter "done"
+    char input[20]; // A buffer to hold the user's input
+    int done = 0; // A flag to indicate when the user has entered "done"
+    do {
+        printf("Enter your name: ");
+        fgets(input, sizeof(input), stdin);
+        if (strcmp(input, "done") == 0) {
+            done = 1;
+            break; // Exit the loop when the user enters "done"
+        } else {
+            // Add the user's input to the text file
+            FILE *file2 = fopen("add.txt", "a");
+            if (file2 == NULL) {
+                perror("Error opening add file");
+                return 1;
+            }
+            char name[20]; // A buffer to hold the user's input
+            fscanf(file2, "%d %s\n", &done);
+            fclose(file2);
+        }
+    } while (1);
+    
+    return 0;
+}
+```
+This program will create a text file called "text.txt" with some basic information, and then use a `while` loop to ask the user for their input until they enter "done". The user's input will be added to an additional text file called "add.txt".
+You can modify this code to suit your needs by changing the information that is written to the text files, or by adding more complex logic to handle the user's input.
+Prompt: The struct is not doing anything. The program should create a text file, ask the user to type in something, the input should be stored into the file, then the program will read from the stored file, in sequence. Anyways, I'll ask you later. Please do not leave any reply at the moment. Thanks!
+Response: Understood, thank you for letting me know. I'll be here when you're ready to continue with your program. Feel free to reach out to me whenever you need help or have questions. Have a great day!
+================================================================================
+
+
 
 
 
@@ -1080,8 +1239,9 @@ Snoozy ->            GPT4All-13B-snoozy.ggmlv3.q4_0.bin  [6.82 GB (7,323,305,088
 Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
 MPT Chat ->          ggml-mpt-7b-chat.bin  [4.52 GB (4,854,401,050 bytes)]
 Mini Orca (Small) -> orca-mini-3b.ggmlv3.q4_0.bin  [1.79 GB (1,928,446,208 bytes)]
+Llama-2-7B Chat ->   llama-2-7b-chat.ggmlv3.q4_0.bin [3.53 GB (3,791,725,184 bytes)]
 
-Total Size on disc:  30.7 GB (32,965,638,682 bytes)
+Total Size on disc:  34.2 GB (36,757,363,866 bytes)
 
 New Default:
 Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
