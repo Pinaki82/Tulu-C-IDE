@@ -175,6 +175,8 @@ pacman -Ss msys2-launcher
 pacman -S msys/vim
 ```
 
+For a detailed overview of the essential packages needed, please look at the MSYS2 package install script '[install_script.sh](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/MSYS2-DEOTFILES-BACKUP/BACKUP/install_script.sh)'.
+
 **Install Node.js:**
 
 Visit https://nodejs.org/en/download/. Download the ZIP file (Windows Binary (.zip) 64-bit). Extract the ZIP file to "`C:\msys64\opt\`". Fire up _MSYS2 (x64) Terminal_. Type: `export PATH=/opt/node-v14.17.6-win-x64/:$PATH >> ~/.bash_profile`. Add Node.js to Windows System Path: `<WINDOWS+R>` ---> Type: `systempropertiesadvanced` ---> `Advanced` Tab ---> `Environment Variables` Button ---> `System Variables` (Group) ---> Select `Path` ---> Select `Edit` ---> `New` Button ---> _Paste the path from the clipboard_ (`C:\msys64\opt\node-v14.17.6-win-x64`).
