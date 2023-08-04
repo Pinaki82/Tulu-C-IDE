@@ -175,7 +175,7 @@ pacman -Ss msys2-launcher
 pacman -S msys/vim
 ```
 
-For a detailed overview of the essential packages needed, please look at the MSYS2 package install script '[install_script.sh](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/MSYS2-DEOTFILES-BACKUP/BACKUP/install_script.sh)'.
+For a detailed overview of the essential packages, please look at the MSYS2 package install script '[install_script.sh](https://github.com/Pinaki82/Tulu-C-IDE/blob/main/MSYS2-DEOTFILES-BACKUP/BACKUP/install_script.sh)'.
 
 **Install Node.js:**
 
