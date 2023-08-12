@@ -3480,9 +3480,10 @@ I dedicate [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) as a Memoria
 _A NEW JOURNEY BEGINS._
 
 > August 3, 2023>
+> 
 > Bram Moolenaar, the visionary creator of Vim, leaves us with a wealth of wisdom and expertise for generations to come, conferring us a new responsibility to carry on with his unremitting crusade.
 
-Bram, on behalf of a user of Vim and many others who have been deeply influenced by your life’s work, I would like to urge the community by calling for a stronger effort to continue with your work. As you bid us adieu on 3 August 2023, at the age of 62, we collectively mourn this loss as a community and take a vow to maintain and improve Vim, which will fuel us to continue reflecting upon the incredible impact you had on the OSS landscape through your dedication towards improving humanity via contribution to open-source technology and charity. While words cannot replace what has been lost, rest in our minds and soul in peace knowing how much joy and purpose you brought into the lives of destitute orphans in Uganda and innumerable programmers' daily workflow. "One individual may die for an idea, but that idea will, after his death,
+Bram, as an avid user of Vim, on behalf of innumerable users of Vim as well, and many others who have been deeply influenced by your life’s work, I would like to urge the community by calling for a stronger effort to continue with your work. As you bid us adieu on 3 August 2023, at the age of 62, we collectively mourn this loss as a community and take a vow to maintain and improve Vim, which will fuel us to continue reflecting upon the incredible impact you had on the OSS landscape through your dedication towards improving humanity via contribution to open-source technology and charity. While words cannot replace what has been lost, rest in our minds and soul in peace knowing how much joy and purpose you brought into the lives of destitute orphans in Uganda and innumerable programmers' daily workflow. "One individual may die for an idea, but that idea will, after his death,
  incarnate itself in a thousand lives." - Netaji Subhas Chandra Bose
 
 > _- P. S. Gupta_
