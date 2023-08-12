@@ -3474,3 +3474,21 @@ We are mortal beings. We die. The vibe reincarnates and manifests into ten thous
 I dedicate [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) as a Memorial to Chandra Sekhar Gupta. [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) is a project in commemoration of my father, who left us only with his words of enlightenment.
 
 --------
+
+(Saturday, August 12, 2023)
+
+_A NEW JOURNEY BEGINS._
+
+> August 3, 2023>
+> Bram Moolenaar, the visionary creator of Vim, leaves us with a wealth of wisdom and expertise for generations to come, conferring us a new responsibility to carry on with his unremitting crusade.
+
+Bram, on behalf of a user of Vim and many others who have been deeply influenced by your life’s work, I would like to urge the community by calling for a stronger effort to continue with your work. As you bid us adieu on 3 August 2023, at the age of 62, we collectively mourn this loss as a community and take a vow to maintain and improve Vim, which will fuel us to continue reflecting upon the incredible impact you had on the OSS landscape through your dedication towards improving humanity via contribution to open-source technology and charity. While words cannot replace what has been lost, rest in our minds and soul in peace knowing how much joy and purpose you brought into the lives of destitute orphans in Uganda and innumerable programmers' daily workflow. "One individual may die for an idea, but that idea will, after his death,
+ incarnate itself in a thousand lives." - Netaji Subhas Chandra Bose
+
+> _- P. S. Gupta_
+
+The importance of continuing Bram’s legacy extends beyond just memorialising an exceptional individual; it is about preserving a key element of modern computing infrastructure that empowers developers worldwide to create and collaborate effectively across different platforms. With millions of developers depending on the incontestable power of the VIM TEXT EDITOR every day as part of their workflow, there remains a responsibility not only to continue developing Vim but also to ensure its users witness the progress more than ever. This may entail absorbing new feature sets such as NeoVim's Lua integration alongside Vim9 script and regular vimscript support, NeoVim's built-in LSP etc., which could enhance the Vim core in meaningful ways while providing a unique value proposition compared to Vim in its existing state. Ultimately the goal of enhancing Vim will move forward honours for Bram’s commitment towards excellence in coding tools as well as ensure his ideals around his charitable foundation [ICCF](https://en.wikipedia.org/wiki/ICCF_Holland) thrive happily.
+
+As we move forward as a community, we must recognise that the future holds great opportunities for growth through hardship. We owe it to ourselves to find new paths towards this new responsibility that requires effort and coordination. In order to keep the momentum behind open source technologies alive and thriving, we need individuals, developers, and contributors willing to step up and take ownership of responsibilities to maintain Vim and their foundation [ICCF Holland](https://en.wikipedia.org/wiki/ICCF_Holland) for the causes they support. By doing so, together we shall achieve more than any single project could ever accomplish alone. A New Day Has Come.
+
+--------
