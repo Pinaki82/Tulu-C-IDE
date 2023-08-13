@@ -195,6 +195,27 @@ Custom configuration file: `config.toml` -> `%AppData%\helix` [Linux: `~/.config
 
 Helix offers precompiled binary distributions of the editor on their GitHub [Release](https://github.com/helix-editor/helix/releases) page. Download Helix from there and extract the archive, after which you can copy the folders/files in the respective directories on your system.
 
+On Linux, choose either the Flatpak version or the AppImage package.
+
+Flatpak:
+
+```bash
+flatpak install flathub com.helix_editor.Helix
+flatpak run com.helix_editor.Helix
+```
+
+AppImage:
+
+```bash
+chmod +x helix-*.AppImage #change permission parameters
+```
+
+Create a Symlink if necessary:
+
+```bash
+ln -s ~/PortablePrograms/helix-*.AppImage ~/.local/bin/hx
+```
+
 A detailed build instruction can be found here: [Installation](https://docs.helix-editor.com/install.html#pre-built-binaries).
 
 ## How will you use Helix:
