@@ -21,7 +21,7 @@ git clone https://github.com/helix-editor/helix
 
 cd helix
 
-cargo install --path helix-term
+cargo install --path helix-term --locked
 
 xcopy /e /i runtime %AppData%\helix\runtime
 
@@ -33,6 +33,12 @@ cd runtime\
 
 xcopy /e /i grammars %AppData%\helix\runtime\grammars
 
+Optionally,
+
+hx --grammar fetch
+
+hx --grammar build
+
 where hx
 
 C:\Users\YOUR_USERNAME\.cargo\bin\hx.exe
@@ -41,10 +47,12 @@ Linux XYZUbuntu:
 
 git clone https://github.com/helix-editor/helix
 cd helix
-cargo install --path helix-term
+cargo install --path helix-term --locked
 mkdir ~/.config/helix/runtime
 cp -r $PWD/runtime/ ~/.config/helix/
 cp -r ~/.config/helix/runtime/themes ~/.config/helix/themes
 cp $PWD/config.toml ~/.config/helix/
 
 whereis hx
+
+hx --health

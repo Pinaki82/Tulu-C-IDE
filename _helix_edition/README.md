@@ -55,7 +55,7 @@ cd helix
 Build & Install Helix.
 
 ```
-cargo install --path helix-term
+cargo install --path helix-term --locked
 ```
 
 Wait a couple of minutes till the build process is complete. Don't close the Command Prompt. Keep it open.
@@ -74,6 +74,16 @@ In the Command Prompt, type:
 
 ```
 xcopy /e /i runtime %AppData%\helix\runtime
+```
+
+Optionally,
+
+```
+hx --grammar fetch
+```
+
+```
+hx --grammar build
 ```
 
 Helix will look for 'theme' files in `%AppData%\helix\themes` (Linux: `~/.config/helix/themes`). The cloned repository comes with a plethora of themes. The folder `runtime` contains all the themes that were also copied along with the `runtime` files. We will have to copy the `themes` folder to `%AppData%\helix` from `%AppData%\helix\runtime` (Linux: from `~/.config/helix/runtime` to `~/.config/helix`).
@@ -145,6 +155,47 @@ Means,
 ```
 whereis hx
 ```
+
+Run Helix health check to see whether everything is set up as expected:
+
+```
+hx --health
+```
+
+Helix will show the LSPs installed.
+
+```
+Language            LSP                 DAP                 Highlight           Textobject          Indent
+c                   ✓ clangd            ✓ lldb-vscode       ✓                   ✓                   ✓
+cpp                 ✓ clangd            ✓ lldb-vscode       ✓                   ✓                   ✓
+opencl              ✓ clangd            None                ✓                   ✓                   ✓
+rust                ✓ rust-analyzer     ✓ lldb-vscode       ✓                   ✓                   ✓
+zig                 ✘ zls               ✓ lldb-vscode       ✓                   ✓                   ✓
+```
+
+## Alternative Installation Method:
+
+In a nutshell, Helix requires the following files in their respective directories as follows:
+
+Executable: `hx.exe` -> `%USERPROFILE%\.cargo\bin` [Linux: `~/.cargo/bin`]
+
+Folder: `runtime` ->  `%AppData%\helix\runtime` [Linux: `~/.config/helix/runtime`]
+
+The folder `runtime` contains three subfolders and one text file:
+
+`grammars`
+
+`queries`
+
+`themes`
+
+`tutor` (file)
+
+Custom configuration file: `config.toml` -> `%AppData%\helix` [Linux: `~/.config/helix/`]
+
+Helix offers precompiled binary distributions of the editor on their GitHub [Release](https://github.com/helix-editor/helix/releases) page. Download Helix from there and extract the archive, after which you can copy the folders/files in the respective directories on your system.
+
+A detailed build instruction can be found here: [Installation](https://docs.helix-editor.com/install.html#pre-built-binaries).
 
 ## How will you use Helix:
 
