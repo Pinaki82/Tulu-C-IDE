@@ -212,6 +212,12 @@ chmod +x helix-*.AppImage #change permission parameters
 
 Create a Symlink if necessary:
 
+[Delete the old symlink while creating a new one for a newer version of Helix.]
+
+```bash
+rm -rf ~/.local/bin/hx
+```
+
 ```bash
 ln -s ~/PortablePrograms/helix-*.AppImage ~/.local/bin/hx
 ```
