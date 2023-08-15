@@ -52,9 +52,23 @@ Enter the directory containing the source files of 'helix'.
 cd helix
 ```
 
+```
+git pull
+```
+
+You'll have to add some folders from that downloaded source code directory to your system environment before you can compile the program. Since you have already downloaded the source into a directory on your system, you'll have to find the required directories from there.
+
+Say you have downloaded the code into `D:\helix` or,`%userprofile%\some_source_to_build\helix` or, `$HOME/helix`. In that case, temporarily set your environment variable in your Windows Terminal, here, `cmd.exe`, as `setx HELIX_RUNTIME "D:\helix\runtime"` or `setx HELIX_RUNTIME "%userprofile%\some_source_to_build\helix\runtime"`. On Linux, add a line to either your `.bashrc` or `.bash_aliases` as `HELIX_RUNTIME=/home/YOUR_USERNAME/helix/runtime/` assuming your source is downloaded into `$HOME/helix`. Do you use `musl-libc` instead of `glibc` on a Linux distribution like Alpine? If yes, paste the following command into your Terminal Emulator before compiling the code. If not, skip setting  the `RUSTFLAGS` and move on to the `cargo install` step.
+
+```bash
+RUSTFLAGS="-C target-feature=-crt-static"
+```
+
 Build & Install Helix.
 
-```
+Try compiling the code from the command prompt (Windows) first. If that doesn't work, type `msysb` (find it in `msysb.cmd/msysb.cmd`) or simply fire up the MSYS2-x64 console (Blue).
+
+```bash
 cargo install --path helix-term --locked
 ```
 
@@ -215,7 +229,7 @@ Create a Symlink if necessary:
 [Delete the old symlink while creating a new one for a newer version of Helix.]
 
 ```bash
-rm -rf ~/.local/bin/hx
+rm ~/.local/bin/hx
 ```
 
 ```bash

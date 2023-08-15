@@ -21,6 +21,19 @@ git clone https://github.com/helix-editor/helix
 
 cd helix
 
+git pull
+
+nano .bash_aliases or nano .bashrc
+
+HELIX_RUNTIME=/home/appu/helix/runtime/
+
+Windows CMD:
+
+setx HELIX_RUNTIME "D:\helix\runtime"
+setx HELIX_RUNTIME "%userprofile%\some_source_to_build\helix\runtime"
+
+etc.
+
 cargo install --path helix-term --locked
 
 xcopy /e /i runtime %AppData%\helix\runtime
@@ -47,6 +60,10 @@ Linux XYZUbuntu:
 
 git clone https://github.com/helix-editor/helix
 cd helix
+git pull
+nano .bash_aliases or nano .bashrc
+Add:
+HELIX_RUNTIME=/home/appu/helix/runtime/
 cargo install --path helix-term --locked
 mkdir ~/.config/helix/runtime
 cp -r $PWD/runtime/ ~/.config/helix/
