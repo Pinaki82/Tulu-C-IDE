@@ -1756,6 +1756,14 @@ Plug 'https://github.com/Pinaki82/TimeStamp2.git'
 
 Plug 'https://github.com/Shougo/echodoc.vim.git'
 
+" ---------------
+" https://github.com/severin-lemaignan/vim-minimap
+" A code minimap for Vim
+"     NOTE: Not tested on MS Windows! (2023.Sept.10)
+
+Plug 'severin-lemaignan/vim-minimap'
+"                 ---------------
+
 Plug 'https://github.com/vim-scripts/stlrefvim.git'
 
 Plug 'https://github.com/Pinaki82/crefvim2.git'
