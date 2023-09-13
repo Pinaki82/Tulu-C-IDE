@@ -1221,6 +1221,286 @@ Prompt: The struct is not doing anything. The program should create a text file,
 Response: Understood, thank you for letting me know. I'll be here when you're ready to continue with your program. Feel free to reach out to me whenever you need help or have questions. Have a great day!
 ================================================================================
 
+2023/Sept/13
+
+Model: llama-2-7b-chat.Q2_K.gguf
+Runner: llama.cpp
+
+./main -m models/llama-2-7b-chat.Q2_K.gguf -p "in pure C programming language, write a function to create a Fibonacci sequence" -n 400 -e
+
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q2_K:   65 tensors
+llama_model_loader: - type q3_K:  160 tensors
+llama_model_loader: - type q6_K:    1 tensors
+llm_load_print_meta: format         = GGUF V2 (latest)
+llm_load_print_meta: arch           = llama
+llm_load_print_meta: vocab type     = SPM
+llm_load_print_meta: n_vocab        = 32000
+llm_load_print_meta: n_merges       = 0
+llm_load_print_meta: n_ctx_train    = 4096
+llm_load_print_meta: n_ctx          = 512
+llm_load_print_meta: n_embd         = 4096
+llm_load_print_meta: n_head         = 32
+llm_load_print_meta: n_head_kv      = 32
+llm_load_print_meta: n_layer        = 32
+llm_load_print_meta: n_rot          = 128
+llm_load_print_meta: n_gqa          = 1
+llm_load_print_meta: f_norm_eps     = 1.0e-05
+llm_load_print_meta: f_norm_rms_eps = 1.0e-06
+llm_load_print_meta: n_ff           = 11008
+llm_load_print_meta: freq_base      = 10000.0
+llm_load_print_meta: freq_scale     = 1
+llm_load_print_meta: model type     = 7B
+llm_load_print_meta: model ftype    = mostly Q2_K
+llm_load_print_meta: model size     = 6.74 B
+llm_load_print_meta: general.name   = LLaMA v2
+llm_load_print_meta: BOS token = 1 '<s>'
+llm_load_print_meta: EOS token = 2 '</s>'
+llm_load_print_meta: UNK token = 0 '<unk>'
+llm_load_print_meta: LF token  = 13 '<0x0A>'
+llm_load_tensors: ggml ctx size =    0.09 MB
+llm_load_tensors: mem required  = 2694.41 MB (+  256.00 MB per state)
+.................................................................................................
+llama_new_context_with_model: kv self size  =  256.00 MB
+llama_new_context_with_model: compute buffer total size =   71.97 MB
+
+system_info: n_threads = 2 / 2 | AVX = 0 | AVX2 = 0 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 0 | NEON = 0 | ARM_FMA = 0 | F16C = 0 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+sampling: repeat_last_n = 64, repeat_penalty = 1.100000, presence_penalty = 0.000000, frequency_penalty = 0.000000, top_k = 40, tfs_z = 1.000000, top_p = 0.950000, typical_p = 1.000000, temp = 0.800000, mirostat = 0, mirostat_lr = 0.100000, mirostat_ent = 5.000000
+generate: n_ctx = 512, n_batch = 512, n_predict = 400, n_keep = 0
+
+
+ in pure C programming language, write a function to create a Fibonacci sequence. Einzeln can be 0 or any positive integer.
+Here is an example of how to write such a function in C:
+```
+#include <stdio.h>
+#include <math.h>
+
+int fibonacci(int number) {
+    if (number == 0 || number == 1) {
+        return number;
+    } else {
+        return fibonacci(number - 1) + fibonacci(number - 2);
+    }
+}
+
+int main() {
+    int num = 3; // change this to the number you want to compute the Fibonacci sequence for
+    printf("The %dth Fibonacci number is: ", num);
+    int result = fibonacci(num);
+    printf("%d\n", result);
+    return 0;
+}
+```
+This function will take an integer `number` as input and calculate the `n`-th Fibonacci number. The function will return `0` if the input is `0`, otherwise it will recursively call itself to compute the `Fibonacci(n-1)` and `Fibonacci(n-2)` values, and then add them together to get the final result.
+For example, if you run the program with `num=3`, it will print `The 3rd Fibonacci number is: 1`. [end of text]
+
+llama_print_timings:        load time = 11987.38 ms
+llama_print_timings:      sample time =   177.55 ms /   304 runs   (    0.58 ms per token,  1712.23 tokens per second)
+llama_print_timings: prompt eval time = 24768.50 ms /    18 tokens ( 1376.03 ms per token,     0.73 tokens per second)
+llama_print_timings:        eval time = 444381.95 ms /   303 runs   ( 1466.61 ms per token,     0.68 tokens per second)
+llama_print_timings:       total time = 469556.81 ms
+
+------------------------------------------------------------------------
+Model: codellama-7b-instruct.Q4_K_S.gguf
+Runner: llama.cpp
+
+./main -m models/codellama-7b-instruct.Q4_K_S.gguf -p "in pure C programming language, write a program to create a Fibonacci sequence" -n 400 -e
+Did not work as expected. This model generates random unrelated answers.
+
+------------------------------------------------------------------------
+Model: codellama-7b-instruct.Q2_K.gguf
+Runner: llama.cpp
+
+./main -m models/codellama-7b-instruct.Q2_K.gguf -p "in pure C programming language, write a function to create a Fibonacci sequence" -n 400 -e
+
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q2_K:   65 tensors
+llama_model_loader: - type q3_K:  160 tensors
+llama_model_loader: - type q6_K:    1 tensors
+llm_load_print_meta: format         = GGUF V2 (latest)
+llm_load_print_meta: arch           = llama
+llm_load_print_meta: vocab type     = SPM
+llm_load_print_meta: n_vocab        = 32016
+llm_load_print_meta: n_merges       = 0
+llm_load_print_meta: n_ctx_train    = 16384
+llm_load_print_meta: n_ctx          = 512
+llm_load_print_meta: n_embd         = 4096
+llm_load_print_meta: n_head         = 32
+llm_load_print_meta: n_head_kv      = 32
+llm_load_print_meta: n_layer        = 32
+llm_load_print_meta: n_rot          = 128
+llm_load_print_meta: n_gqa          = 1
+llm_load_print_meta: f_norm_eps     = 1.0e-05
+llm_load_print_meta: f_norm_rms_eps = 1.0e-05
+llm_load_print_meta: n_ff           = 11008
+llm_load_print_meta: freq_base      = 1000000.0
+llm_load_print_meta: freq_scale     = 1
+llm_load_print_meta: model type     = 7B
+llm_load_print_meta: model ftype    = mostly Q2_K
+llm_load_print_meta: model size     = 6.74 B
+llm_load_print_meta: general.name   = codellama_codellama-7b-instruct-hf
+llm_load_print_meta: BOS token = 1 '<s>'
+llm_load_print_meta: EOS token = 2 '</s>'
+llm_load_print_meta: UNK token = 0 '<unk>'
+llm_load_print_meta: LF token  = 13 '<0x0A>'
+llm_load_tensors: ggml ctx size =    0.09 MB
+llm_load_tensors: mem required  = 2694.49 MB (+  256.00 MB per state)
+.................................................................................................
+llama_new_context_with_model: kv self size  =  256.00 MB
+llama_new_context_with_model: compute buffer total size =   72.00 MB
+
+system_info: n_threads = 2 / 2 | AVX = 0 | AVX2 = 0 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 0 | NEON = 0 | ARM_FMA = 0 | F16C = 0 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+sampling: repeat_last_n = 64, repeat_penalty = 1.100000, presence_penalty = 0.000000, frequency_penalty = 0.000000, top_k = 40, tfs_z = 1.000000, top_p = 0.950000, typical_p = 1.000000, temp = 0.800000, mirostat = 0, mirostat_lr = 0.100000, mirostat_ent = 5.000000
+generate: n_ctx = 512, n_batch = 512, n_predict = 400, n_keep = 0
+
+
+ in pure C programming language, write a function to create a Fibonacci sequence. "
+//https://www.geeksforgeeks.org/c-program-for-fibonacci-sequence/
+
+{
+    int fib(int n) {
+        if (n <= 1) return n;
+        else return fib(n-1) + fib(n-2);
+    }
+} [end of text]
+
+llama_print_timings:        load time = 12673.19 ms
+llama_print_timings:      sample time =    43.01 ms /    75 runs   (    0.57 ms per token,  1743.94 tokens per second)
+llama_print_timings: prompt eval time = 25742.50 ms /    18 tokens ( 1430.14 ms per token,     0.70 tokens per second)
+llama_print_timings:        eval time = 121153.02 ms /    74 runs   ( 1637.20 ms per token,     0.61 tokens per second)
+llama_print_timings:       total time = 147003.25 ms
+Log end
+
+------------------------------------------------------------------------
+Model: codellama-7b-instruct.Q2_K.gguf
+Runner: llama.cpp
+
+./main -m models/codellama-7b-instruct.Q2_K.gguf -p "in pure C programming language, write a program to create a Fibonacci sequence" -n 400 -e
+
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q2_K:   65 tensors
+llama_model_loader: - type q3_K:  160 tensors
+llama_model_loader: - type q6_K:    1 tensors
+llm_load_print_meta: format         = GGUF V2 (latest)
+llm_load_print_meta: arch           = llama
+llm_load_print_meta: vocab type     = SPM
+llm_load_print_meta: n_vocab        = 32016
+llm_load_print_meta: n_merges       = 0
+llm_load_print_meta: n_ctx_train    = 16384
+llm_load_print_meta: n_ctx          = 512
+llm_load_print_meta: n_embd         = 4096
+llm_load_print_meta: n_head         = 32
+llm_load_print_meta: n_head_kv      = 32
+llm_load_print_meta: n_layer        = 32
+llm_load_print_meta: n_rot          = 128
+llm_load_print_meta: n_gqa          = 1
+llm_load_print_meta: f_norm_eps     = 1.0e-05
+llm_load_print_meta: f_norm_rms_eps = 1.0e-05
+llm_load_print_meta: n_ff           = 11008
+llm_load_print_meta: freq_base      = 1000000.0
+llm_load_print_meta: freq_scale     = 1
+llm_load_print_meta: model type     = 7B
+llm_load_print_meta: model ftype    = mostly Q2_K
+llm_load_print_meta: model size     = 6.74 B
+llm_load_print_meta: general.name   = codellama_codellama-7b-instruct-hf
+llm_load_print_meta: BOS token = 1 '<s>'
+llm_load_print_meta: EOS token = 2 '</s>'
+llm_load_print_meta: UNK token = 0 '<unk>'
+llm_load_print_meta: LF token  = 13 '<0x0A>'
+llm_load_tensors: ggml ctx size =    0.09 MB
+llm_load_tensors: mem required  = 2694.49 MB (+  256.00 MB per state)
+.................................................................................................
+llama_new_context_with_model: kv self size  =  256.00 MB
+llama_new_context_with_model: compute buffer total size =   72.00 MB
+
+system_info: n_threads = 2 / 2 | AVX = 0 | AVX2 = 0 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 0 | NEON = 0 | ARM_FMA = 0 | F16C = 0 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+sampling: repeat_last_n = 64, repeat_penalty = 1.100000, presence_penalty = 0.000000, frequency_penalty = 0.000000, top_k = 40, tfs_z = 1.000000, top_p = 0.950000, typical_p = 1.000000, temp = 0.800000, mirostat = 0, mirostat_lr = 0.100000, mirostat_ent = 5.000000
+generate: n_ctx = 512, n_batch = 512, n_predict = 400, n_keep = 0
+
+
+ in pure C programming language, write a program to create a Fibonacci sequence upto 100 numbers using function call. 
+```
+fib(n) = fib(n-2) + fib(n-1)
+```
+
+#include<stdio.h>
+#include<stdlib.h>
+int fib(int n);
+void main()
+{
+    int i;
+    for (i=0; i<=100; i++) {
+        printf("%d ",fib(i));
+    }
+}
+int fib(int n) {
+if (n==0) return 0;
+else if (n == 1) return 1;
+return fib(n-2) + fib(n-1);
+}
+ [end of text]
+
+llama_print_timings:        load time =  3016.46 ms
+llama_print_timings:      sample time =    88.47 ms /   156 runs   (    0.57 ms per token,  1763.23 tokens per second)
+llama_print_timings: prompt eval time = 23677.46 ms /    18 tokens ( 1315.41 ms per token,     0.76 tokens per second)
+llama_print_timings:        eval time = 218889.56 ms /   155 runs   ( 1412.19 ms per token,     0.71 tokens per second)
+llama_print_timings:       total time = 242783.39 ms
+Log end
+
+------------------------------------------------------------------------
+Model: codellama-7b-instruct.Q2_K.gguf
+Runner: llama.cpp
+
+> Write a simple program in pure C programming language that demonstrates how to use structures in C.
+
+#include<stdio.h>
+struct student{
+    int rollno;
+    char name[20];
+    float marks;
+};
+int main()
+{
+    struct student s1={1,"vishal",95.67};
+    printf("rollno=%d\nname=%s\nmarks=%.2f",s1.rollno,s1.name,s1.marks);
+    printf("\nmarks=%f", s1.marks);
+    return 0;
+}
+
+------
+/*
+gcc -Wall -Wextra -pedantic codetst.c -o codetst
+./codetst
+rollno=1
+name=vishal
+marks=95.67
+*/
+
+
+------------------------------------------------------------------------
+Model: llama-2-7b-chat.Q2_K.gguf
+Runner: llama.cpp
+
+llama-chat.desktop
+
+> A friend of mine will come to my city, Calcutta. He wants to see some important places in Calcutta. Could you please suggest me some places to visit here that my friend will enjoy? 
+Of course! Calcutta is a vibrant and culturally rich city with many interesting places to visit. Here are some suggestions for your friend:
+
+1. Howrah Bridge: This iconic bridge is an engineering marvel and an integral part of Calcutta's skyline. Your friend can take a stroll on the bridge and enjoy the views of the Hooghly River.
+2. Victoria Memorial: This magnificent building is a testament to the city's colonial past and is now a museum showcasing the history of Calcutta. Your friend can admire the beautiful architecture and learn about the city's rich history.
+3. Eden Gardens: This large public park is a popular spot for locals and tourists alike, offering a peaceful escape from the hustle and bustle of the city. Your friend can enjoy a leisurely stroll or have a picnic in the park.
+4. Dakshineswar Kali Temple: This ancient temple is an important pilgrimage site for Hindus and offers a glimpse into the spiritual side of Calcutta. Your friend can learn about the religious practices and beliefs of the locals.
+5. Marble Arch: This impressive arch is a replica of the famous London landmark and stands as a symbol of the city's cultural diversity. Your friend can take photos in front of this iconic structure.
+6. Calcutta Museum: This museum showcases the art, culture, and history of Calcutta. Your friend can learn about the city's rich heritage through its artifacts and exhibits.
+7. St. Paul's Cathedral: This beautiful cathedral is an important religious site for Christians in Calcutta and offers stunning views of the city from its dome. Your friend can attend a service or take a guided tour of the cathedral.
+8. National Library: This impressive library houses a vast collection of books, manuscripts, and other documents related to the history and culture of Calcutta. Your friend can spend hours browsing through the shelves and learning about the city's literary heritage.
+9. Indian Museum: This museum showcases the art, culture, and history of India, with a particular focus on Calcutta. Your friend can learn about the city's role in Indian history and see artifacts from different eras and cultures.
+10. Belur Math: This beautiful temple is an important pilgrimage site for Hindus and offers a glimpse into the spiritual side of Calcutta. Your friend can learn about the religious practices and beliefs of the locals and enjoy the peaceful surroundings.
+I hope these suggestions help your friend plan their trip to Calcutta!
+
+> 
+
+
 
 
 
@@ -1248,7 +1528,14 @@ Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
 
 For Vicuna, Alpaca, Dolly, FastChat etc., I'll visit https://chat.lmsys.org/
 
+================================================================================
+On my Linux (Debian) Machine:
 
+Runner: llama.cpp
 
+Models:
 
+llama-2-7b-chat.Q2_K.gguf        [2.6 GiB (2,82,59,40,672 bytes)]
+codellama-7b-instruct.Q2_K.gguf  [2.6 GiB (2,82,60,16,448 bytes)]
+Total Size on disc:              [5.3 GiB (5,65,19,57,120 bytes)]
 
