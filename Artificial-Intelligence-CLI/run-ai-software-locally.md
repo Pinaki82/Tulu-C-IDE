@@ -207,6 +207,200 @@ koboldcpp.exe --model "N:\GPT4All\WizardCoder-15B-1.0.ggmlv3.q4_1.bin" --smartco
 
 Drop [koboldcpp](https://github.com/LostRuins/koboldcpp.git)'s compiled binary in the same folder where you have your [LlamaGPTJ-chat](https://github.com/kuvaus/LlamaGPTJ-chat.git) (`chat-windows-latest-avx2.exe`).
 
+---
+
+# Run small LLMs on low-end hardware under Linux
+
+Most of the instructions you'll see in this part are inspired by a GitHub [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) demonstrated by [Gary Explains](https://github.com/garyexplains). This gentleman has tested the process of running LLMs for us on low-end hardware devices such as a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) 8GB. It works on ARM CPUs, as well as x86 CPUs. You're encouraged to read the process in detail from his [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md). Here's a quick overview of the steps:
+
+[How to Run a ChatGPT-like AI Bot on a Raspberry Pi](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md)
+
+Models will be downloaded from:
+
+1. Hugging Face - TheBloke/Llama-2-7b-Chat-GGUF: https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+
+2. Hugging Face - TheBloke/CodeLlama-7B-Instruct-GGUF: https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+Thanks to [Hugging Face](https://huggingface.co/) for providing the LLMs.
+
+The model runner application in this instance is [llama.cpp](https://github.com/ggerganov/llama.cpp.git). It has to be built before it can be used. Make sure you have Python 3 on the system and you can access Python from the terminal: `python3 --version`. On my Debian machine, the version of Python found is 3.11.2.
+
+Set up your build environment:
+
+Update the system and the installed packages.
+
+```bash
+sudo apt update
+```
+
+Install the C/C++ compiler toolchain.
+
+```bash
+sudo apt install bash git g++ wget build-essential sakura
+```
+
+Clone the source code of the model runner application.
+
+```bash
+git clone https://github.com/ggerganov/llama.cpp.git
+```
+
+Enter the source directory of the app.
+
+```bash
+cd llama.cpp
+```
+
+Build the app.
+
+```bash
+make -j
+```
+
+Or,
+
+```bash
+make -j2/j4/j8 (depending on the actual cores of the CPU on the machine)
+```
+
+Now, we will download the model files. Here's a simple analogy, model runners are like audio players whereas the model files (LLMs) are like MP3 files. We need files to run the program.
+
+```bash
+cd models
+```
+
+```bash
+wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q2_K.gguf
+```
+
+```bash
+wget https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q2_K.gguf
+```
+
+Switch to the source directory (move back to one directory level). The compiled program binary files are placed in the source directory for this program, "llama.cpp".
+
+```bash
+cd ../
+```
+
+Test the setup.
+
+```bash
+./main -m models/llama-2-7b-chat.Q2_K.gguf -p "in pure C programming language, write a function to create a Fibonacci sequence" -n 400 -e
+```
+
+```bash
+./main -m models/codellama-7b-instruct.Q2_K.gguf -p "in pure C programming language, write a function to create a Fibonacci sequence" -n 400 -e
+```
+
+```bash
+./main -m models/codellama-7b-instruct.Q2_K.gguf -p "in pure C programming language, write a program to create a Fibonacci sequence" -n 400 -e
+```
+
+Expect to get satisfactory answers from the AI Chatbot.
+
+Interactive chat:
+
+```bash
+./main  -m models/llama-2-7b-chat.Q2_K.gguf --color \
+       --ctx_size 2048 \
+       -n -1 \
+       -ins -b 256 \
+       --top_k 10000 \
+       --temp 0.2 \
+       --repeat_penalty 1.1
+```
+
+```bash
+./main  -m models/codellama-7b-instruct.Q2_K.gguf --color \
+       --ctx_size 2048 \
+       -n -1 \
+       -ins -b 256 \
+       --top_k 10000 \
+       --temp 0.2 \
+       --repeat_penalty 1.1
+```
+
+Create bash shell scripts and desktop entry files for easy access.
+
+NOTE: Replace `YOUR_USERNAME` with your actual username, `echo $(whoami)`.
+
+```bash
+echo $(whoami)
+```
+
+Find the following files in the folder `Tulu-C-IDE/Artificial-Intelligence-CLI/llama.cpp`. Open the files with a text editor and make the necessary changes.
+
+The launcher scripts (bash):
+
+`interactive-codellama-instruct.sh`
+
+```bash
+#!/bin/bash
+
+cd /home/YOUR_USERNAME/PortablePrograms/llama.cpp \
+
+./main  -m models/codellama-7b-instruct.Q2_K.gguf --color \
+       --ctx_size 2048 \
+       -n -1 \
+       -ins -b 256 \
+       --top_k 10000 \
+       --temp 0.2 \
+       --repeat_penalty 1.1
+```
+
+`interactive-llama-chat.sh`
+
+```bash
+#!/bin/bash
+
+cd /home/YOUR_USERNAME/PortablePrograms/llama.cpp \
+
+./main  -m models/llama-2-7b-chat.Q2_K.gguf --color \
+       --ctx_size 2048 \
+       -n -1 \
+       -ins -b 256 \
+       --top_k 10000 \
+       --temp 0.2 \
+       --repeat_penalty 1.1
+```
+
+Desktop entries for easy access:
+
+`llama-chat.desktop`
+
+```bash
+[Desktop Entry]
+Type=Application
+Name=llama-chat
+Comment=AI Chat LLaMA
+Icon=fbmessenger
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-llama-chat.sh
+Terminal=false
+Categories=;
+```
+
+`codellama.desktop`
+
+```bash
+[Desktop Entry]
+Type=Application
+Name=codellama
+Comment=AI Chat LLaMA Code Instruct
+Icon=fbmessenger
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-codellama-instruct.sh
+Terminal=false
+Categories=;
+```
+
+Copy the two desktop entry files that you've created to the `~/.local/share/applications` directory. Your launcher should show the entries. Type the following into the address bar of your file manager to enter the `~/.local/share/applications` directory.
+
+```bash
+~/.local/share/applications
+```
+
+---
+
 **NOTE:**
 
 1. Too **high CPU/RAM usage**. Jokes apart, be prepared to heat up your room with your computer.
