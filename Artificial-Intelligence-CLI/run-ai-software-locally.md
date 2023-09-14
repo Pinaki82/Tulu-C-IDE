@@ -211,7 +211,7 @@ Drop [koboldcpp](https://github.com/LostRuins/koboldcpp.git)'s compiled binary i
 
 # Run small LLMs on low-end hardware under Linux
 
-Most of the instructions you'll see in this part are inspired by a GitHub [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) demonstrated by [Gary Explains](https://github.com/garyexplains). This gentleman has tested the process of running LLMs for us on low-end hardware devices such as a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) 8GB. It works on ARM CPUs, as well as x86 CPUs. You're encouraged to read the process in detail from his [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md). Here's a quick overview of the steps:
+Most of the instructions you'll see in this part are inspired by a GitHub [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) demonstrated by [Gary Explains](https://github.com/garyexplains). This gentleman has tested the process of running LLMs for us on low-end hardware devices such as a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) 8GB. It works on ARM CPUs, as well as x86 CPUs. Visit his [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) to read the process in detail. Here's a quick overview of the steps:
 
 [How to Run a ChatGPT-like AI Bot on a Raspberry Pi](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md)
 
