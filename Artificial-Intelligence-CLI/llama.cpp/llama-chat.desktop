@@ -8,7 +8,7 @@
 Type=Application
 Name=llama-chat
 Comment=AI Chat LLaMA
-Icon=fbmessenger
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
 Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-llama-chat.sh
 Terminal=false
 Categories=;

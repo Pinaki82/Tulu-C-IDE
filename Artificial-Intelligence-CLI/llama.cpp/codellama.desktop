@@ -8,7 +8,7 @@
 Type=Application
 Name=codellama
 Comment=AI Chat LLaMA Code Instruct
-Icon=fbmessenger
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
 Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-codellama-instruct.sh
 Terminal=false
 Categories=;
