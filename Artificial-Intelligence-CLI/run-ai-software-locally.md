@@ -209,7 +209,7 @@ Drop [koboldcpp](https://github.com/LostRuins/koboldcpp.git)'s compiled binary i
 
 ---
 
-# Run small LLMs on low-end hardware under Linux
+# Run small LLMs on low-end hardware under Linux (even without AVX/AVX2 support and GPUs)
 
 Most of the instructions you'll see in this part are inspired by a GitHub [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) demonstrated by [Gary Explains](https://github.com/garyexplains). This gentleman has tested the process of running LLMs for us on low-end hardware devices such as a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) 8GB. It works on ARM CPUs, as well as x86 CPUs. Visit his [page](https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md) to read the process in detail. Here's a quick overview of the steps:
 
@@ -398,6 +398,38 @@ Copy the two desktop entry files that you've created to the `~/.local/share/appl
 ```bash
 ~/.local/share/applications
 ```
+
+## WizardCoder-Python
+
+If you have a more powerful machine, like a Core i5 4th-gen, give WizardCoder-Python a try.
+
+https://github.com/nlpxucan/WizardLM/blob/main/WizardCoder/README.md
+
+https://www.reddit.com/r/WizardCoder/comments/164xemb/20230826_we_released_wizardcoderpython34bv10/
+
+The 13B-Q2_K GGUF version can be downloaded from here:
+
+https://huggingface.co/TheBloke/WizardCoder-Python-13B-V1.0-GGUF/tree/main
+
+```bash
+wget https://huggingface.co/TheBloke/WizardCoder-Python-13B-V1.0-GGUF/resolve/main/wizardcoder-python-13b-v1.0.Q2_K.gguf
+```
+
+A 34B-Q2_K version of WizardCoder-Python is available. Download that if you have a capable machine to run such a large model file.
+
+https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/tree/main
+
+```
+wget https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/resolve/main/wizardcoder-python-34b-v1.0.Q2_K.gguf
+```
+
+# LLaMA.CPP for Microsoft Windows
+
+LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downloaded from their GitHub release page: https://github.com/ggerganov/llama.cpp/releases
+
+Download non-AVX versions if your CPU does not support AVX/AVX2. Download AVX2 for AVX2-supported CPUs. On my Windows machine, the archive `llama-bxxxx-bin-win-avx2-x64.zip` was the right option.
+
+Make sure you download the `models` directory separately, `llama.cpp/models`. The folder `models` contains some configuration files required by `LLaMA.CPP`.
 
 ---
 
