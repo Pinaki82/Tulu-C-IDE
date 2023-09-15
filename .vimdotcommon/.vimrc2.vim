@@ -1759,7 +1759,11 @@ Plug 'https://github.com/Shougo/echodoc.vim.git'
 " ---------------
 " https://github.com/severin-lemaignan/vim-minimap
 " A code minimap for Vim
+" Requires Python3. Python3 must be found on the PATH.
 "     NOTE: Not tested on MS Windows! (2023.Sept.10)
+"     Tested on MS Windows (2023.Sept.15)
+"     python3 --version
+"     Python 3.11.5
 
 Plug 'severin-lemaignan/vim-minimap'
 "                 ---------------
