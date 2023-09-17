@@ -1770,24 +1770,29 @@ Models:
 Wizard v1.1 ->       wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin  [6.82 GB (7,323,310,848 bytes)]
 Wizard Uncensored -> wizardLM-13B-Uncensored.ggmlv3.q4_0.bin  [6.82 GB (7,323,310,848 bytes)]
 Snoozy ->            GPT4All-13B-snoozy.ggmlv3.q4_0.bin  [6.82 GB (7,323,305,088 bytes)]
-Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
-MPT Chat ->          ggml-mpt-7b-chat.bin  [4.52 GB (4,854,401,050 bytes)]
 Mini Orca (Small) -> orca-mini-3b.ggmlv3.q4_0.bin  [1.79 GB (1,928,446,208 bytes)]
 Llama-2-7B Chat ->   llama-2-7b-chat.ggmlv3.q4_0.bin [3.53 GB (3,791,725,184 bytes)]
 
-Total Size on disc:  34.2 GB (36,757,363,866 bytes)
+Total Size on disc:  25.7 GB (27,690,098,176 bytes)
 
 New Default:
-Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
+Wizard Uncensored ->  wizardLM-13B-Uncensored.ggmlv3.q4_0.bin  [6.82 GB (7,323,310,848 bytes)]
 
 For Vicuna, Alpaca, Dolly, FastChat etc., I'll visit https://chat.lmsys.org/
 
+The following two models are no longer supported by GPT4ALL:
+
+MPT Chat ->          ggml-mpt-7b-chat.bin  [4.52 GB (4,854,401,050 bytes)]
+Wizard ->            ggml-wizardLM-7B.q4_2.bin  [3.92 GB (4,212,864,640 bytes)]
 
 With LLaMA.CPP 'llama-b1226-bin-win-avx2-x64.zip':
 
 codellama-7b-instruct.Q2_K.gguf       [2.63 GB (2,826,016,448 bytes)]
 llama-2-7b-chat.Q2_K.gguf             [2.63 GB (2,825,940,672 bytes)]
 wizardcoder-python-13b-v1.0.Q2_K.gguf [5.05 GB (5,429,354,240 bytes)]
+codellama-13b-instruct.Q2_K.gguf      [5.05 GB (5,429,442,816 bytes)]
+
+Total Size on disc:  [15.3 GB (16,510,754,176 bytes)]
 
 
 I planned on deleting
@@ -1796,7 +1801,12 @@ I planned on deleting
 1. Wizard Uncensored produces better outputs, and 'ggml-wizardLM-7B.q4_2.bin' is
 smaller and produces nearly the same results
 2. 'Llama-2-7B Chat' has a better alternative,
-'llama-2-7b-chat.Q2_K.gguf', and the model is derived from the llama-2.
+'llama-2-7b-chat.Q2_K.gguf', and the model is derived from llama-2.
+'llama-2-7b-chat.Q2_K.gguf' runs on
+CPUs without AVX/AVX2 support with LLaMA.CPP. It is a Q2 version, which
+means, it has a lower hardware requirement.
+
+
 
 ================================================================================
 On my Linux (Debian) Machine:
