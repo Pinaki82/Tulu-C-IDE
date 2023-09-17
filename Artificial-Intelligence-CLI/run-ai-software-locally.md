@@ -423,6 +423,12 @@ https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/tree/main
 wget https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/resolve/main/wizardcoder-python-34b-v1.0.Q2_K.gguf
 ```
 
+The 13B version of CodeLlama:
+
+```
+wget https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/resolve/main/codellama-13b-instruct.Q2_K.gguf
+```
+
 # LLaMA.CPP for Microsoft Windows
 
 LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downloaded from their GitHub release page: https://github.com/ggerganov/llama.cpp/releases
@@ -430,6 +436,22 @@ LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downl
 Download non-AVX versions if your CPU does not support AVX/AVX2. Download AVX2 for AVX2-supported CPUs. On my Windows machine, the archive `llama-bxxxx-bin-win-avx2-x64.zip` was the right option.
 
 Make sure you download the `models` directory separately, `llama.cpp/models`. The folder `models` contains some configuration files required by `LLaMA.CPP`.
+
+Multiline text input in LLaMA:
+
+When you run LLaMA.CPP in interactive mode, you will not be able to hit Enter to break your input.
+
+```
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to LLaMa.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+```
+
+You'll have to add the string ` \` to continue to the subsequent lines. Doing that manually is a daunting task. Initially, I thought I would write two separate C programs using Win32 and GTK+ 3 to do that, with the plan of merging the programs into a single one employing a preprocessor directive. However, a simple web app can serve the purpose. I don't understand HTML/Javascript/CSS, to be honest. So, I asked `wizardcoder-python-13b-v1.0.Q2_K.gguf` to give me a solution. It worked, although the code had minor glitches that were later ironed out by ChatGPT.
+
+If you need to insert multiple lines to LLaMA.CPP, open `formatted-copy.html` in your preferred browser. Type your prompts there. Format your prompts. Then, press a button to add ` \` at the end of each line, so you can copy the text in the exact format required by the runner, LLaMA.CPP.
 
 ---
 

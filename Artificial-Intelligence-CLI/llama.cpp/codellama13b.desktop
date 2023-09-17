@@ -6,9 +6,9 @@
 
 [Desktop Entry]
 Type=Application
-Name=WizardCoder-7B-Q2K
-Comment=AI Chat WizardCoder
+Name=codellama13b
+Comment=AI Chat LLaMA Code Instruct 13b
 Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
-Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-wizardcoder-python.sh
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-codellama-instruct-13b.sh
 Terminal=false
 Categories=;
