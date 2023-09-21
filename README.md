@@ -3473,6 +3473,33 @@ We are mortal beings. We die. The vibe reincarnates and manifests into ten thous
 
 I dedicate [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) as a Memorial to Chandra Sekhar Gupta. [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) is a project in commemoration of my father, who left us only with his words of enlightenment.
 
+---
+
+(Thursday, September 21, 2023)
+
+It has been almost two years since my beloved father passed away, leaving behind some inspirational words of wisdom. He held sincere admiration for several remarkable individuals, including former Indian President Dr. A.P.J. Abdul Kalam, as well as notable figures such as poets Kazi Nazrul Islam and Rabindranath Tagore, authors Shibram Chakraborty and Sarat Chandra Chattopadhyay, and renowned thinkers such as George Bernard Shaw, Bertrand Arthur William Russell, Aldous Leonard Huxley, Mark Twain, Narendranath Datta (also known as Swami Vivekananda), and numerous other esteemed personalities. On this momentous occasion marking what would have been my father's 76th birthday - September 21st, 2023 (from this day of 1947, coinciding with India's Year of Independence in 1947, on August 15th) - let us honour his legacy by recalling his motivating thoughts and acknowledging his revered mentor, Dr. Kalam. Although I cannot precisely recollect which particular statements of Sir Kalam appealed to my father the most due to his frequent references to him, I am pleased to share a selection of Dr. Kalam's insightful quotations that offer guidance on how to lead our lives. I do not want to lose this opportunity to celebrate the indelible memory of my father by honouring his venerable hero.
+
+> "This is my belief: that through difficulties and problems God gives us 
+> the opportunity to grow. So when your hopes and dreams and goals are 
+> dashed, search among the wreckage, you may find a golden opportunity 
+> hidden in the ruins."
+> 
+> - Dr. A.P.J. Abdul Kalam
+
+> "All Birds find shelter during a rain.  
+> But Eagle avoids rain by flying above  
+> the Clouds.  
+> 
+> Problems are common, but attitude  
+> makes the difference!!!"
+> 
+> - Dr. A. P. J. Abdul Kalam
+
+> "We are all born with a divine fire in us. Our efforts should be to give
+>  wings to this fire and fill the world with the glow of its goodness."
+> 
+> - A.P.J. Abdul Kalam, Wings of Fire
+
 --------
 
 (Saturday, August 12, 2023)
