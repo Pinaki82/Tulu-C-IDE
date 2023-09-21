@@ -1415,6 +1415,16 @@ let g:acp_completeoptPreview = 1
 :amenu Plugin.:Vista!! :Vista!! <CR><Esc>
 " ====================================
 
+" ========= Minimap Toggle setup =======
+" ====================================
+:amenu Plugin.Minimap.:MinimapToggle\ \(\:MinimapToggle\) :MinimapToggle <CR><Esc>
+" ====================================
+
+" ========= Minimap Update setup =======
+" ====================================
+:amenu Plugin.Minimap.:MinimapUpdate\ \(\:MinimapUpdate\) :MinimapUpdate <CR><Esc>
+" ====================================
+
 " ====================================
 " ========= stlrefvim setup =======
 " ====================================
