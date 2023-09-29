@@ -419,14 +419,44 @@ A 34B-Q2_K version of WizardCoder-Python is available. Download that if you have
 
 https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/tree/main
 
-```
+```bash
 wget https://huggingface.co/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/resolve/main/wizardcoder-python-34b-v1.0.Q2_K.gguf
 ```
 
 The 13B version of CodeLlama:
 
-```
+```bash
 wget https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/resolve/main/codellama-13b-instruct.Q2_K.gguf
+```
+
+### Additional AI Models Available for Download
+
+In addition to the conversational AI models described previously, a variety of other AI models are available for download. These models are typically derived from the base models and are therefore not as performant as the conversational AI models. However, they offer a wider range of capabilities, and many of them have been fine-tuned by individuals and small teams, rather than large corporations.
+
+These models are able to generate code, but it is important to be specific in your queries and to break them down into step-by-step instructions, each step of which should be provided in complete detail. For chat-style conversations, it is recommended to choose the chat/instruction versions of AI models.
+
+[Marcoroni-7b-GGUF](https://huggingface.co/TheBloke/Marcoroni-7b-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/Marcoroni-7b-GGUF/resolve/main/marcoroni-7b.Q2_K.gguf
+```
+
+[tulu-7B-GGUF](https://huggingface.co/TheBloke/tulu-7B-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/tulu-7B-GGUF/resolve/main/tulu-7b.Q2_K.gguf
+```
+
+[Mistral-7B-v0.1-GGUF](https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7b-v0.1.Q2_K.gguf
+```
+
+[gorilla-7B-GGUF](https://huggingface.co/TheBloke/gorilla-7B-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_K.gguf
 ```
 
 # LLaMA.CPP for Microsoft Windows
