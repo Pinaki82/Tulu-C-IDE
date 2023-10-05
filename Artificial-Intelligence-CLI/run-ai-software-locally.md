@@ -459,6 +459,12 @@ wget https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7
 wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_K.gguf
 ```
 
+[openllama-3b-v2-gguf](https://huggingface.co/klosax/openllama-3b-v2-gguf)
+
+```bash
+wget https://huggingface.co/klosax/openllama-3b-v2-gguf/resolve/main/openllama-3b-v2-q4_0.gguf
+```
+
 # LLaMA.CPP for Microsoft Windows
 
 LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downloaded from their GitHub release page: https://github.com/ggerganov/llama.cpp/releases

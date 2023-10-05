@@ -9,3 +9,4 @@ wget https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7
 wget https://huggingface.co/TheBloke/Marcoroni-7b-GGUF/resolve/main/marcoroni-7b.Q2_K.gguf
 wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_K.gguf
 wget https://huggingface.co/TheBloke/tulu-7B-GGUF/resolve/main/tulu-7b.Q2_K.gguf
+wget https://huggingface.co/klosax/openllama-3b-v2-gguf/resolve/main/openllama-3b-v2-q4_0.gguf

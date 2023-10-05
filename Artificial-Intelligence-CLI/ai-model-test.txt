@@ -1756,6 +1756,267 @@ Terminate batch job (Y/N)?
 
 ------------------------------------------------------------------------
 
+2023/October/06
+
+Model: mistral-7b-v0.1.Q2_K.gguf
+Runner: llama.cpp
+Platform: Linux Debian
+
+
+Be specific. Break questions into bullet points.
+Each point must contain a specific query that tells the AI to do one thing and not more than that.
+
+Prompt:
+
+Write a C program that   \
+1. creates a text file,   \
+2. asks the user to type something,   \
+3. stores that input into that text file,   \
+4. and then reads the text file line by line. \
+
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q2_K:   65 tensors
+llama_model_loader: - type q3_K:  160 tensors
+llama_model_loader: - type q6_K:    1 tensors
+llm_load_print_meta: format           = GGUF V2 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = SPM
+llm_load_print_meta: n_vocab          = 32000
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: n_ctx_train      = 32768
+llm_load_print_meta: n_embd           = 4096
+llm_load_print_meta: n_head           = 32
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_layer          = 32
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_gqa            = 4
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: n_ff             = 14336
+llm_load_print_meta: freq_base_train  = 10000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: model type       = 7B
+llm_load_print_meta: model ftype      = mostly Q2_K
+llm_load_print_meta: model params     = 7.24 B
+llm_load_print_meta: model size       = 2.87 GiB (3.41 BPW) 
+llm_load_print_meta: general.name   = mistralai_mistral-7b-v0.1
+llm_load_print_meta: BOS token = 1 '<s>'
+llm_load_print_meta: EOS token = 2 '</s>'
+llm_load_print_meta: UNK token = 0 '<unk>'
+llm_load_print_meta: LF token  = 13 '<0x0A>'
+llm_load_tensors: ggml ctx size =    0.09 MB
+llm_load_tensors: mem required  = 2939.66 MB
+.................................................................................................
+llama_new_context_with_model: n_ctx      = 2048
+llama_new_context_with_model: freq_base  = 10000.0
+llama_new_context_with_model: freq_scale = 1
+llama_new_context_with_model: kv self size  =  256.00 MB
+llama_new_context_with_model: compute buffer total size = 83.88 MB
+
+system_info: n_threads = 2 / 2 | AVX = 0 | AVX2 = 0 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 0 | NEON = 0 | ARM_FMA = 0 | F16C = 0 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+main: interactive mode on.
+Reverse prompt: '### Instruction:
+
+'
+sampling: repeat_last_n = 64, repeat_penalty = 1.100000, presence_penalty = 0.000000, frequency_penalty = 0.000000, top_k = 10000, tfs_z = 1.000000, top_p = 0.950000, typical_p = 1.000000, temp = 0.200000, mirostat = 0, mirostat_lr = 0.100000, mirostat_ent = 5.000000
+generate: n_ctx = 2048, n_batch = 256, n_predict = -1, n_keep = 1
+
+
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to LLaMa.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+
+> Write a C program that  
+1. creates a text file,  
+2. asks the user to type something,  
+3. stores that input into that text file,  
+4. and then reads the text file line by line.  
+
+```c
+#include <stdio.h>
+int main() {
+    FILE *fp;
+    char str[100];
+    fp = fopen("test.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    while(fgets(str, sizeof(str), stdin)) {
+        fprintf(fp, "%s", str);
+    }
+    fclose(fp);
+    fp = fopen("test.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    while(fgets(str, sizeof(str), fp)) {
+        printf("%s", str);
+    }
+    fclose(fp);
+    return 0;
+}
+```
+
+The code had to be altered slightly.
+
+```c
+// Last Change: 2023-10-06  Friday: 12:45:03 AM
+#include <stdio.h>
+int main() {
+  FILE *fp;
+  char str[100];
+  fp = fopen("test.txt", "w");
+
+  if(fp == NULL) {
+    printf("Error opening file\n");
+    return 1;
+  }
+
+  int i = 0;
+  printf("Type something.\n");
+
+  while((fgets(str, sizeof(str), stdin)) && (i < 1)) {
+    fprintf(fp, "%s", str);
+    i++;
+  }
+
+  i = 0;
+  fclose(fp);
+  fp = fopen("test.txt", "r");
+
+  if(fp == NULL) {
+    printf("Error opening file\n");
+    return 1;
+  }
+
+  while(fgets(str, sizeof(str), fp)) {
+    printf("%s", str);
+  }
+
+  fclose(fp);
+  return 0;
+}
+```
+
+------------------------------------------------------------------------
+
+2023/October/06
+
+Model: openllama-3b-v2-q4_0.gguf
+Runner: llama.cpp
+Platform: Linux Debian
+
+Be specific. Break questions into bullet points.
+
+Prompt:
+
+Write a C program that   \
+1. creates a text file,   \
+2. asks the user to type something,   \
+3. stores that input into that text file,   \
+4. and then reads the text file line by line. \
+
+llama_model_loader: - type  f32:   53 tensors
+llama_model_loader: - type q4_0:  184 tensors
+llm_load_print_meta: format           = GGUF V1 (support until nov 2023)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = SPM
+llm_load_print_meta: n_vocab          = 32000
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: n_ctx_train      = 2048
+llm_load_print_meta: n_embd           = 3200
+llm_load_print_meta: n_head           = 32
+llm_load_print_meta: n_head_kv        = 32
+llm_load_print_meta: n_layer          = 26
+llm_load_print_meta: n_rot            = 100
+llm_load_print_meta: n_gqa            = 1
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-06
+llm_load_print_meta: n_ff             = 8640
+llm_load_print_meta: freq_base_train  = 10000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: model type       = 3B
+llm_load_print_meta: model ftype      = mostly Q4_0 (guessed)
+llm_load_print_meta: model params     = 3.43 B
+llm_load_print_meta: model size       = 1.80 GiB (4.50 BPW) 
+llm_load_print_meta: general.name   = openllama-3b-v2
+llm_load_print_meta: BOS token = 1 '<s>'
+llm_load_print_meta: EOS token = 2 '</s>'
+llm_load_print_meta: UNK token = 0 '<unk>'
+llm_load_print_meta: PAD token = 0 '<unk>'
+llm_load_print_meta: LF token  = 13 '<0x0A>'
+llm_load_tensors: ggml ctx size =    0.08 MB
+llm_load_tensors: mem required  = 1838.74 MB
+.................................................................................................
+llama_new_context_with_model: n_ctx      = 2048
+llama_new_context_with_model: freq_base  = 10000.0
+llama_new_context_with_model: freq_scale = 1
+llama_new_context_with_model: kv self size  =  650.00 MB
+llama_new_context_with_model: compute buffer total size = 81.25 MB
+
+system_info: n_threads = 2 / 2 | AVX = 0 | AVX2 = 0 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 0 | NEON = 0 | ARM_FMA = 0 | F16C = 0 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+main: interactive mode on.
+Reverse prompt: '### Instruction:
+
+'
+sampling: repeat_last_n = 64, repeat_penalty = 1.100000, presence_penalty = 0.000000, frequency_penalty = 0.000000, top_k = 10000, tfs_z = 1.000000, top_p = 0.950000, typical_p = 1.000000, temp = 0.200000, mirostat = 0, mirostat_lr = 0.100000, mirostat_ent = 5.000000
+generate: n_ctx = 2048, n_batch = 256, n_predict = -1, n_keep = 1
+
+
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to LLaMa.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+
+> Write a C program that    
+1. creates a text file,    
+2. asks the user to type something,    
+3. stores that input into that text file,    
+4. and then reads the text file line by line.  
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    FILE *fp;
+    char buffer[256];
+    int i;
+    fp = fopen("test.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    printf("Enter something: ");
+    fgets(buffer, sizeof buffer, stdin);
+    fputs(buffer, fp);
+    for (i = 0; i < strlen(buffer); ++i) {
+        if (buffer[i] == '\n') {
+            fputc('\n', fp);
+        } else {
+            fputc(buffer[i], fp);
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+```
+
+> 
+
+The generated code is okay. However, it clearly needs some modification.
+
+
+------------------------------------------------------------------------
+
 
 
 
@@ -1817,5 +2078,7 @@ Models:
 
 llama-2-7b-chat.Q2_K.gguf        [2.6 GiB (2,82,59,40,672 bytes)]
 codellama-7b-instruct.Q2_K.gguf  [2.6 GiB (2,82,60,16,448 bytes)]
-Total Size on disc:              [5.3 GiB (5,65,19,57,120 bytes)]
+mistral-7b-v0.1.Q2_K.gguf        [2.9 GiB (3,08,30,97,728 bytes)]
+openllama-3b-v2-q4_0.gguf        [1.8 GiB (1,92,86,25,664 bytes)]
+Total Size on disc:              [9.9 GiB (10,66,36,80,512 bytes)]
 
