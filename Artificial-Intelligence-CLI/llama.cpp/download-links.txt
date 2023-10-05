@@ -1,0 +1,11 @@
+https://github.com/ggerganov/llama.cpp.git
+https://github.com/ggerganov/llama.cpp/releases
+
+wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q2_K.gguf
+wget https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q2_K.gguf
+wget https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/resolve/main/codellama-13b-instruct.Q2_K.gguf
+wget https://huggingface.co/TheBloke/WizardCoder-Python-13B-V1.0-GGUF/resolve/main/wizardcoder-python-13b-v1.0.Q2_K.gguf
+wget https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7b-v0.1.Q2_K.gguf
+wget https://huggingface.co/TheBloke/Marcoroni-7b-GGUF/resolve/main/marcoroni-7b.Q2_K.gguf
+wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_K.gguf
+wget https://huggingface.co/TheBloke/tulu-7B-GGUF/resolve/main/tulu-7b.Q2_K.gguf

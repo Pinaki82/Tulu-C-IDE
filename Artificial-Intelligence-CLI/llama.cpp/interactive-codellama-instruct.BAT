@@ -1,4 +1,5 @@
 @echo off
+REM https://github.com/ggerganov/llama.cpp/releases
 REM https://superuser.com/questions/225692/why-is-cd-in-windows-not-able-to-switch-between-drives
 doskey cd=chdir/d $*
 REM Enter the LLaMA program directory

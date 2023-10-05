@@ -1,0 +1,14 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+# https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md
+# https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+# https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+[Desktop Entry]
+Type=Application
+Name=Gorilla-7B
+Comment=AI Chat Gorilla-7B
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/interactive-Gorilla-7B.sh
+Terminal=false
+Categories=;
