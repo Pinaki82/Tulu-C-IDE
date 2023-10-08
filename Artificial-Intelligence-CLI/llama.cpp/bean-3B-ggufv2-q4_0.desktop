@@ -1,0 +1,17 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+# https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md
+# https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+# https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+# https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf
+# https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf/tree/main
+
+[Desktop Entry]
+Type=Application
+Name=bean-3B-ggufv2-q4_0
+Comment=AI Chat bean-3B-ggufv2-q4_0
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/bean-3B-ggufv2-q4_0.sh
+Terminal=false
+Categories=;

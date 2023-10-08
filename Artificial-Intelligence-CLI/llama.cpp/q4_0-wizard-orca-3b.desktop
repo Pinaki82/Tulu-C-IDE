@@ -1,0 +1,17 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+# https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md
+# https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+# https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+# https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf
+# https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf/tree/main
+
+[Desktop Entry]
+Type=Application
+Name=q4_0-wizard-orca-3b
+Comment=AI Chat q4_0-wizard-orca-3b
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/q4_0-wizard-orca-3b.sh
+Terminal=false
+Categories=;

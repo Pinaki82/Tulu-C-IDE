@@ -10,3 +10,17 @@ wget https://huggingface.co/TheBloke/Marcoroni-7b-GGUF/resolve/main/marcoroni-7b
 wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_K.gguf
 wget https://huggingface.co/TheBloke/tulu-7B-GGUF/resolve/main/tulu-7b.Q2_K.gguf
 wget https://huggingface.co/klosax/openllama-3b-v2-gguf/resolve/main/openllama-3b-v2-q4_0.gguf
+https://huggingface.co/TheBloke/Luna-AI-Llama2-Uncensored-GGUF
+wget https://huggingface.co/TheBloke/Luna-AI-Llama2-Uncensored-GGUF/resolve/main/luna-ai-llama2-uncensored.Q2_K.gguf
+https://huggingface.co/TheBloke/Guanaco-7B-Uncensored-GGUF
+wget https://huggingface.co/TheBloke/Guanaco-7B-Uncensored-GGUF/resolve/main/guanaco-7b-uncensored.Q2_K.gguf
+https://huggingface.co/models?sort=trending&search=3b+gguf
+https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf
+wget https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf/resolve/main/q4_0-wizard-orca-3b.gguf
+https://huggingface.co/alexedelsburg/Puma-3b-GGUF
+wget https://huggingface.co/alexedelsburg/Puma-3b-GGUF/resolve/main/puma-3b.q4_1.gguf
+https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf
+wget https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf/resolve/main/bean-3B-ggufv2-q4_0.gguf
+https://huggingface.co/Aryanne/Calypso-3B-alpha-v2-gguf
+https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf
+wget https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf/resolve/main/q4_0-tinyllama-1.1b-chat-v0.3.gguf
