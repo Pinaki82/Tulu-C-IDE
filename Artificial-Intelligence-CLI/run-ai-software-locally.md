@@ -465,6 +465,48 @@ wget https://huggingface.co/TheBloke/gorilla-7B-GGUF/resolve/main/Gorilla-7B.Q2_
 wget https://huggingface.co/klosax/openllama-3b-v2-gguf/resolve/main/openllama-3b-v2-q4_0.gguf
 ```
 
+[Luna-AI-Llama2-Uncensored-GGUF](https://huggingface.co/TheBloke/Luna-AI-Llama2-Uncensored-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/Luna-AI-Llama2-Uncensored-GGUF/resolve/main/luna-ai-llama2-uncensored.Q2_K.gguf
+```
+
+[Guanaco-7B-Uncensored-GGUF](https://huggingface.co/TheBloke/Guanaco-7B-Uncensored-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/Guanaco-7B-Uncensored-GGUF/resolve/main/guanaco-7b-uncensored.Q2_K.gguf
+```
+
+[Aryanne/Wizard-Orca-3B-gguf · Hugging Face](https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf)
+
+```bash
+wget https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf/resolve/main/q4_0-wizard-orca-3b.gguf
+```
+
+[alexedelsburg/Puma-3b-GGUF · Hugging Face](https://huggingface.co/alexedelsburg/Puma-3b-GGUF)
+
+```bash
+wget https://huggingface.co/alexedelsburg/Puma-3b-GGUF/resolve/main/puma-3b.q4_1.gguf
+```
+
+[Aryanne/Bean-3B-ggml-and-gguf · Hugging Face](https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf)
+
+```bash
+wget https://huggingface.co/Aryanne/Bean-3B-ggml-and-gguf/resolve/main/bean-3B-ggufv2-q4_0.gguf
+```
+
+[Aryanne/Calypso-3B-alpha-v2-gguf · Hugging Face](https://huggingface.co/Aryanne/Calypso-3B-alpha-v2-gguf)
+
+```bash
+wget 
+```
+
+[Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf · Hugging Face](https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf)
+
+```bash
+wget https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf/resolve/main/q4_0-tinyllama-1.1b-chat-v0.3.gguf
+```
+
 # LLaMA.CPP for Microsoft Windows
 
 LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downloaded from their GitHub release page: https://github.com/ggerganov/llama.cpp/releases
