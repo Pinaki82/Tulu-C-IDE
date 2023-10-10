@@ -477,6 +477,12 @@ wget https://huggingface.co/TheBloke/Luna-AI-Llama2-Uncensored-GGUF/resolve/main
 wget https://huggingface.co/TheBloke/Guanaco-7B-Uncensored-GGUF/resolve/main/guanaco-7b-uncensored.Q2_K.gguf
 ```
 
+[TheBloke/WizardCoder-Python-7B-V1.0-GGUF · Hugging Face](https://huggingface.co/TheBloke/WizardCoder-Python-7B-V1.0-GGUF)
+
+```bash
+wget https://huggingface.co/TheBloke/WizardCoder-Python-7B-V1.0-GGUF/resolve/main/wizardcoder-python-7b-v1.0.Q2_K.gguf
+```
+
 [Aryanne/Wizard-Orca-3B-gguf · Hugging Face](https://huggingface.co/Aryanne/Wizard-Orca-3B-gguf)
 
 ```bash
@@ -505,6 +511,12 @@ wget
 
 ```bash
 wget https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf/resolve/main/q4_0-tinyllama-1.1b-chat-v0.3.gguf
+```
+
+[Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf · Hugging Face](https://huggingface.co/Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf)
+
+```bash
+wget https://huggingface.co/Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf/resolve/main/q4_0-tinyllama-1.1b-1t-openorca.gguf
 ```
 
 # LLaMA.CPP for Microsoft Windows
