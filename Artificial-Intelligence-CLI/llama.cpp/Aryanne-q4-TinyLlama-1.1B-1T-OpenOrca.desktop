@@ -1,0 +1,17 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+# https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md
+# https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+# https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+# https://huggingface.co/Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf
+# wget https://huggingface.co/Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf/resolve/main/q4_0-tinyllama-1.1b-1t-openorca.gguf
+
+[Desktop Entry]
+Type=Application
+Name=Aryanne-q4-TinyLlama-1.1B-1T-OpenOrca
+Comment=AI Chat Aryanne-q4-TinyLlama-1.1B-1T-OpenOrca
+Icon=/home/YOUR_USERNAME/.local/share/icons/LLaMA.CPP.svg
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/Aryanne-q4-TinyLlama-1.1B-1T-OpenOrca.sh
+Terminal=false
+Categories=;
