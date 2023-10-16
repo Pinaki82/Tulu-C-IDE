@@ -6,7 +6,10 @@
 
 cd /home/YOUR_USERNAME/PortablePrograms/llama.cpp \
 
+# Add the following line before the line containing `--ctx_size 2048 \`.
+#        -i -r "User:" -f prompts/custom_prompt_template.txt \
 ./main  -m models/mistral-7b-v0.1.Q2_K.gguf --color \
+
        --ctx_size 2048 \
        -n -1 \
        -ins -b 256 \

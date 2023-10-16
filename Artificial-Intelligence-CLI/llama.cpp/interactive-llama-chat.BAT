@@ -9,6 +9,9 @@ cd N:\llama.cpp\llama-b1226-bin-win-avx2-x64
 REM Set the path to the LLaMA program directory
 set LlamaPath=N:\llama.cpp\llama-b1226-bin-win-avx2-x64
 
+REM Add the following line before the line containing `--ctx_size 2048  ^`.
+REM -i -r "User:" -f prompts/custom_prompt_template.txt  ^
+
 @echo on
 
 "%LlamaPath%\main.exe" ^
