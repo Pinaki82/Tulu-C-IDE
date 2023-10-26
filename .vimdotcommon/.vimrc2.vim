@@ -1902,6 +1902,25 @@ call plug#end()
 
 " =======================================================================
 
+
+" ------------------- prabirshrestha/vim-lsp plugin settings
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
+" -------------------------------------- bash-lsp/bash-language-server plugin for prabirshrestha/vim-lsp
+" -------------------------------------- Bash Language Server
+" ---------- https://github.com/bash-lsp/bash-language-server.git
+" ---------- sudo npm i -g bash-language-server
+" ---------- bash-language-server --help
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'allowlist': ['sh', 'bash'],
+        \ })
+endif
+" ------------------- (END) prabirshrestha/vim-lsp plugin settings
+
 " ------------------- echodoc plugin settings
 " To use echodoc, you must increase 'cmdheight' value.
 " https://github.com/Shougo/echodoc.vim.git
