@@ -519,6 +519,18 @@ wget https://huggingface.co/Aryanne/TinyLlama-1.1B-Chat-v0.3-gguf/resolve/main/q
 wget https://huggingface.co/Aryanne/TinyLlama-1.1B-1T-OpenOrca-gguf/resolve/main/q4_0-tinyllama-1.1b-1t-openorca.gguf
 ```
 
+[TheBloke/dolphin-2.1-mistral-7B-GGUF at main](https://huggingface.co/TheBloke/dolphin-2.1-mistral-7B-GGUF/tree/main)
+
+```bash
+wget https://huggingface.co/TheBloke/dolphin-2.1-mistral-7B-GGUF/resolve/main/dolphin-2.1-mistral-7b.Q2_K.gguf
+```
+
+[Nomic AI - GPT4All - mistral-7b-instruct-v0.1.Q4_0.gguf](https://gpt4all.io/index.html)
+
+```bash
+wget https://gpt4all.io/models/gguf/mistral-7b-instruct-v0.1.Q4_0.gguf
+```
+
 # LLaMA.CPP for Microsoft Windows
 
 LLaMA.CPP runs on MS Windows. An appropriate version for Windows 10 can be downloaded from their GitHub release page: https://github.com/ggerganov/llama.cpp/releases

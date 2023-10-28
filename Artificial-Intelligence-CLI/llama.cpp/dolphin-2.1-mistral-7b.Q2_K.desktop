@@ -1,0 +1,17 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+# https://github.com/garyexplains/examples/blob/master/how-to-run-llama-cpp-on-raspberry-pi.md
+# https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/tree/main
+# https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/tree/main
+
+# https://huggingface.co/TheBloke/dolphin-2.1-mistral-7B-GGUF/tree/main
+# wget https://huggingface.co/TheBloke/dolphin-2.1-mistral-7B-GGUF/resolve/main/dolphin-2.1-mistral-7b.Q2_K.gguf
+
+[Desktop Entry]
+Type=Application
+Name=dolphin-2.1-mistral-7b.Q2_K
+Comment=AI Chat dolphin-2.1-mistral-7b.Q2_K
+Icon=/home/appu/.local/share/icons/LLaMA.CPP.svg
+Exec=sakura -e /home/YOUR_USERNAME/PortablePrograms/llama.cpp/dolphin-2.1-mistral-7b.Q2_K.sh
+Terminal=false
+Categories=;
