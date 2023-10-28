@@ -2123,8 +2123,24 @@ function! OpenCodeiumLSDirectory()
   endif
 endfunction
 
+function! CodeiumLSPExecutableDownload()
+" Link shortened using https://bitly.com/. Target link: https://github.com/Exafunction/codeium/releases
+  if has("win64") || has("win32") || has("win16") || has("win32unix")
+    :call timer_start(200, { -> execute('!explorer "https://bit.ly/codeiumreleases"') })
+    :execute "silent !start \"" . substitute($HOME . "/.codeium/bin/", "\"", "\\\"", "g") . "\""
+  elseif g:osdetected == "Linux"
+     :silent!!xdg-open "https://bit.ly/codeiumreleases" &
+     if !has("gui_running")
+        :silent!!xdg-open "$HOME/.codeium/bin" &
+     endif
+  endif
+endfunction
+
 command! CodeiumLangServerBinDir :silent! call OpenCodeiumLSDirectory()
 :amenu AI.Codeium.Explore\ \Codeium\ \Language\ \Server\ \bin\ \Directory\ \(\:CodeiumLangServerBinDir\) :call OpenCodeiumLSDirectory() <Esc>
+
+command! CodeiumLSPExecutableDownload :silent! call CodeiumLSPExecutableDownload()
+:amenu AI.Codeium.Download\ \Codeium\ \Language\ \Server\ \Executable\ \(\:CodeiumLSPExecutableDownload\) :call CodeiumLSPExecutableDownload() <Esc>
 
 " -----------------------------------------
 
