@@ -2130,9 +2130,7 @@ function! CodeiumLSPExecutableDownload()
     :execute "silent !start \"" . substitute($HOME . "/.codeium/bin/", "\"", "\\\"", "g") . "\""
   elseif g:osdetected == "Linux"
      :silent!!xdg-open "https://bit.ly/codeiumreleases" &
-     if !has("gui_running")
-        :silent!!xdg-open "$HOME/.codeium/bin" &
-     endif
+     :silent!!xdg-open "$HOME/.codeium/bin" &
   endif
 endfunction
 
