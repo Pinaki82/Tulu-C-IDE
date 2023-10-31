@@ -1107,24 +1107,7 @@ After using [Codeium AI Vim plugin](https://codeium.com/download) for two months
 
 My review: **Codeium is Hard to Beat.**
 
-# [Cursor](https://www.cursor.so/) AI Editor
-
-Cursor is another AI gentleman in the block.
-
-From [GitHub - getcursor/cursor: An editor made for programming with AI 🤖](https://github.com/getcursor/cursor#cursor):
-
-> Cursor:
-
-> **[Cursor](https://cursor.so) is an editor made for programming with AI.** It's early days, but right now Cursor can help you with a few things...
-
-> - **Write**: Generate 10-100 lines of code with an AI that's smarter than Copilot
-> - **Diff**: Ask the AI to edit a block of code, see only proposed changes
-> - **Chat**: ChatGPT-style interface that understands your current file
-> - **And more**: ask to fix lint errors, generate tests/comments on hover, etc.
-
-Download Cursor from https://www.cursor.so/.
-
-After installing Cursor, add the Cursor's program files to the Environment Variable (System Path).
+After installing any of the programs above, if you need to access the program from the Windows Terminal, you'll have to add its executable file to the Environment Variable (System Path).
 
 MS Windows:
 
@@ -1148,30 +1131,22 @@ Click the New button.
 
 ![](attachments/2023-03-29-02-32-33-image.png)
 
-Fill the field with the path containing `Cursor.exe`; typically, `C:\Users\YOUR_USERNAME\AppData\Local\Programs\Cursor\` (i.e., `%LOCALAPPDATA%\Programs\Cursor\`). It is usually the default installation folder where Cursor installs its program and data files.
+Fill the field with the path containing `theProgram.exe`
 
 Ubuntu Linux:
 
 The syntax to create symbolic links in Linux is `ln -s target_file link_name`.
 
-That means, you'll have to type `sudo ln -s /path/to/your/appimage/folder/Cursor-0.m.n.AppImage /usr/local/bin/cursor` in a terminal emulator.
+That means, you'll have to type `sudo ln -s /path/to/your/appimage/folder/theProgram.AppImage /usr/local/bin/theProgram` in a terminal emulator.
 
 Example:
 
 ```
-sudo ln -s ~/PortablePrograms/Cursor-0.1.9.AppImage /usr/local/bin/cursor
+sudo ln -s ~/PortablePrograms/theProgram.AppImage /usr/local/bin/theProgram
 ```
 
-Delete the existing link when Cursor updates itself to a newer version, then repeat the same steps.
+Delete the existing link when the program updates itself to a newer version, then repeat the same steps.
 
 ```
-sudo rm /usr/local/bin/cursor
+sudo rm /usr/local/bin/theProgram
 ```
-
-Cursor can now be launched from the GUI or with a command, `:CursorAIEditor`.
-
-![](attachments/2023-03-29-02-45-33-image.png)
-
-![](attachments/2023-03-29-02-46-19-image.png)
-
-Cursor is supported by OpenAI. It is specifically designed to be a code editing assistant using OpenAI's abilities to generate code. Think of it as the shorter version of ChatGPT, designed exclusively for code. You can even ask questions to the editor in a chat box. Questions unrelated to programming are rejected.
