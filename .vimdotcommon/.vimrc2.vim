@@ -2173,45 +2173,6 @@ let g:localvimrc_persistent=2 " Make the decisions given when asked before
 " -----------------------------------------
 
 " -----------------------------------------
-" Launch Cursor AI Editor
-" See the instructions at https://github.com/Pinaki82/Tulu-C-IDE/blob/main/Artificial-Intelligence-CLI/README.md.
-" sudo rm /usr/local/bin/cursor
-" ln -s target_file link_name
-" sudo ln -s /path/to/your/appimage/folder/Cursor-0.m.n.AppImage /usr/local/bin/cursor
-" Example:
-" sudo ln -s ~/PortablePrograms/Cursor-0.1.9.AppImage /usr/local/bin/cursor
-"
-" On MS Windows, add Cursor's installation folder to the Environment Variable (System PATH).
-" On MS Windows, Press the WindowsButton + r,
-" type systempropertiesadvanced, and press OK
-" Environment Variables... -> System variables -> Path -> Edit... ->
-" -> New
-" Fill the field with the path containing Cursor.exe.
-" Typically, C:\Users\YOUR_USERNAME\AppData\Local\Programs\Cursor\
-" Which is, %LOCALAPPDATA%\Programs\Cursor\
-" The installer responsible for the installation of the Cursor Editor generally places the program and data in that location.
-"
-"
-if has("gui_running")
-  " Runs Cursor AI Editor
-  if g:osdetected == "Windows"
-    :amenu AI.CursorAIEditor\ \(\:\CursorAIEditor\) :silent!!start "Cursor.exe" <Esc>
-    command! CursorAIEditor :silent!!start "Cursor.exe" <Esc>
-
-  elseif g:osdetected == "Linux"
-        function! CursorLinuxAppImage()
-        	" See the instructions at https://github.com/Pinaki82/Tulu-C-IDE/blob/main/Artificial-Intelligence-CLI/README.md.
-        	"
-        	:silent!!cursor &
-	    endfunction
-
-	command! CursorAIEditor :silent!!cursor &
-	:amenu AI.Cursor\ AI\ Editor\ \(\:\CursorAIEditor\) :silent! :call CursorLinuxAppImage() <Esc>
-  endif
-endif
-" -----------------------------------------
-
-" -----------------------------------------
 " bard-rs Console
 "             Find relevant info in the folder 'Artificial-Intelligence-CLI'.
 if has("gui_running")
