@@ -66,6 +66,8 @@ RUSTFLAGS="-C target-feature=-crt-static"
 
 Build & Install Helix.
 
+MS Windows:
+
 Try compiling the code from the command prompt (Windows) first. If that doesn't work, type `msysb` (find it in `msysb.cmd/msysb.cmd`) or simply fire up the MSYS2-x64 console (Blue).
 
 ```bash
@@ -73,6 +75,92 @@ cargo install --path helix-term --locked
 ```
 
 Wait a couple of minutes till the build process is complete. Don't close the Command Prompt. Keep it open.
+
+Specific build instructions for MS Windows:
+
+Open `cmd.exe` with Administrator Privilege. WINDOWS + r -> cmd -> CTRL + SHIFT + ENTER.
+
+create a file `config` in `%USERPROFILE%\.cargo`.
+
+```
+notepad %USERPROFILE%\.cargo\config
+```
+
+Paste the following lines into the file `config`, [reference](https://stackoverflow.com/questions/47379214/step-by-step-instruction-to-install-rust-and-cargo-for-mingw-with-msys2).
+
+```
+[target.x86_64-pc-windows-gnu]
+linker = "C:\\msys64\\mingw64\\bin\\gcc.exe"
+ar = "C:\\msys64\\mingw64\\bin\\ar.exe"
+```
+
+Type `msysb`. Find the MSYS2-x64 configuration for Windows Command Prompt in the `console-config/` directory.
+
+Clone the Helix GIT repository.
+
+```
+git clone https://github.com/helix-editor/helix
+```
+
+```
+cd helix
+```
+
+```
+exit
+```
+
+(The MSYS2-x64 shell is no longer needed.)
+
+In the Command Prompt,
+
+```
+cd helix
+```
+
+```
+setx HELIX_RUNTIME /n/helix
+```
+
+```
+cd %appdata%\helix mklink /D runtime "N:\helix\runtime"
+```
+
+Edit the Helix build configuration:
+
+```
+notepad Cargo.toml
+```
+
+Add the following lines at the beginning of the file, [reference](https://stackoverflow.com/questions/47379214/step-by-step-instruction-to-install-rust-and-cargo-for-mingw-with-msys2).
+
+```toml
+default_toolchain = [
+  "stable-x86_64-pc-windows-gnu"
+  ]
+```
+
+The build command `cargo install --path helix-term --locked` was expected to work. However, the recent changes to the Helix editor seem to have trouble linking the compiled binary files against MinGW-w64 supplied library files provided by MSYS2. The issue is expected to be resolved in the near future.
+
+Check your GCC version:
+
+```
+gcc -v
+```
+
+Try each of the following commands successively if one command fails. Ref: [Cross compiling issue with static linking - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/cross-compiling-issue-with-static-linking/63929)
+
+```
+cargo install --target="x86_64-pc-windows-gnu" --path helix-term --locked
+```
+
+```
+cargo install --target="x86_64-pc-msys" --path helix-term --locked
+```
+
+```
+cargo install --target="x86_64-w64-mingw32" --path helix-term --locked
+```
 
 Helix will be installed into `%USERPROFILE%\.cargo\bin` (Linux: `~/.cargo/bin`). The name of the Helix executable is `hx.exe`. On Linux: `~/.cargo/bin/hx`.
 
@@ -105,6 +193,20 @@ Helix will look for 'theme' files in `%AppData%\helix\themes` (Linux: `~/.config
 ```
 xcopy /e /i %AppData%\helix\runtime\themes %AppData%\helix\themes
 ```
+
+The best way to get Helix work on MS Windows is to grab the latest build from Helix's GitHub repository.
+
+Helix's GitHub repository: https://github.com/helix-editor/helix/releases
+
+Extract the ZIP archive.
+
+Open the Windows File Manager. Type `%APPDATA%\helix` at the address bar and enter `%APPDATA%\helix`. Copy the folders `contrib` and `runtime` from the extracted ZIP archive to `%APPDATA%\helix`.
+
+Enter `%USERPROFILE%\.cargo\bin\` from the GUI File Manager as well. Copy `hx.exe` from the extracted archive to that folder.
+
+If any of the folders (either `%APPDATA%\helix` or `%USERPROFILE%\.cargo\bin\`) does not exist on your system, create the same using the `mkdir` command. Example: `mkdir %USERPROFILE%\.cargo\bin\`.
+
+If Helix has been built without any trouble on your MS Windows system, follow the steps mentioned below.
 
 ###### Ubuntu:
 
