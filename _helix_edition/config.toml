@@ -42,12 +42,44 @@ auto-pairs = true # defaults to `true`
     # Highlights matching brackets
 bufferline = "multiple"
     # Renders a line at the top of the editor displaying open buffers.
+auto-completion = true
+    # Enable automatic pop up of auto-completion
+auto-format = true
+    # Enable automatic formatting on save
+default-line-ending = "lf"
+    # The line ending to use for new documents.
+    # Can be native, lf, crlf, ff, cr or nel.
+    # native uses the platform's native line ending
+    # (crlf on Windows, otherwise lf).
 
 [editor.indent-guides]
 render = true
     # Displays indent guide (faded vertical lines following brackets and blocks)
 character = "|"
     # Indentation is expressed by a faded | character
+skip-levels = 1
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+    # A vector of gutters to display
+
+[editor.gutters.line-numbers]
+min-width = 1
+    # The minimum number of characters to use
+
+[editor.soft-wrap] # Options for soft wrapping lines that exceed the view width:
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+    # Maximum free space left at the end of the line.
+max-indent-retain = 0
+    # Maximum indentation to carry over when soft wrapping a line.
+wrap-indicator = "↪"  # set wrap-indicator to "" to hide it
+    # Text inserted before soft wrapped lines, highlighted with ui.virtual.wrap
+
+[editor.smart-tab]
+enable = true
+supersede-menu = false
+    # Normally, when a menu is on screen, such as when auto complete is triggered, the tab key is bound to cycling through the items. This means when menus are on screen, one cannot use the tab key to trigger the smart-tab command. If this option is set to true, the smart-tab command always takes precedence, which means one cannot use the tab key to cycle through menu items. One of the other bindings must be used instead, such as arrow keys or C-n/C-p.
 
 [editor.cursor-shape]
 insert = "bar"
@@ -78,9 +110,9 @@ k = { j = "normal_mode" } # Maps `kj` to exit insert mode
     # Type 'kj' to leave the Insert Mode and go to the Normal Mode.
 
 [editor.statusline]
-left = ["mode", "spinner"]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "total-line-numbers", "selections", "primary-selection-length", "version-control", "register"]
 center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type",  "workspace-diagnostics"]
 separator = "│"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
