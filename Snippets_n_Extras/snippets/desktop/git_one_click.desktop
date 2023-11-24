@@ -1,0 +1,10 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+[Desktop Entry]
+Type=Application
+Name=One-click GIT commit
+Comment=One-click GIT commit
+Icon=github
+Exec=/path/to/git_one_click.sh
+Terminal=true
+Categories=;
