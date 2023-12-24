@@ -215,11 +215,11 @@ mkdir ~/.config/helix/runtime
 ```
 
 ```
-cp -r $PWD/runtime/ ~/.config/helix/
+yes | cp -r $PWD/runtime/ ~/.config/helix/
 ```
 
 ```
-cp -r ~/.config/helix/runtime/themes ~/.config/helix/themes
+yes | cp -r ~/.config/helix/runtime/themes ~/.config/helix/themes
 ```
 
 ## Helix configuration file
