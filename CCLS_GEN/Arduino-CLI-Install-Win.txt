@@ -40,6 +40,45 @@ https://arduino.github.io/arduino-cli/0.26/installation/
 https://arduino.github.io/arduino-cli/0.26/command-line-completion/
 https://arduino.github.io/arduino-cli/0.26/getting-started/
 
+================================================================================
+LINUX:
+
+https://www.arduino.cc/en/software
+https://github.com/arduino/arduino-cli
+https://arduino.github.io/arduino-cli/1.1/installation/
+https://arduino.github.io/arduino-cli/1.1/getting-started/
+
+
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
+
+Update the Arduino Core and install a microcontroller-specific toolchain (e.g., Arduino AVR):
+arduino-cli core update-index
+arduino-cli core install arduino:avr
+arduino-cli core list
+
+List installed toolchains:
+arduino-cli board list
+
+Generate and install the completion files:
+
+cd ~/
+
+Bash:
+bash
+arduino-cli completion bash > arduino-cli.sh
+sudo mv arduino-cli.sh /etc/bash_completion.d/
+exit
+
+Fish:
+fish
+arduino-cli completion fish > arduino-cli.fish
+mkdir -p ~/.config/fish/completions/
+mv arduino-cli.fish ~/.config/fish/completions/
+exit
+
+================================================================================
+
+
 arduino-cli core update-index
 arduino-cli config init
 arduino-cli sketch new MyFirstSketch
