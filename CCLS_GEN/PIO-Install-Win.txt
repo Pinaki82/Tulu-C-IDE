@@ -1,3 +1,5 @@
+https://platformio.org/install/cli
+
 pacman -S curl
 pacman -S ripgrep
 pacman -S mingw-w64-x86_64-python-pynvim
@@ -21,6 +23,24 @@ If you need an access to `platformio.exe` from other applications, please instal
 
 See https://docs.platformio.org/page/installation.html#install-shell-commands
 <-----
+
+========================================================================
+LINUX:
+
+```bash
+curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+python3 get-platformio.py
+```
+Add the following line to ~/.bash_aliases, ~/.profile, and ~/.bash_profile after installation.
+export PATH=$PATH:$HOME/.local/bin
+
+In ~/.local/bin, create symbolic links to a few PlatformIO programs:
+
+ln -s ~/.platformio/penv/bin/platformio ~/.local/bin/platformio
+ln -s ~/.platformio/penv/bin/pio ~/.local/bin/pio
+ln -s ~/.platformio/penv/bin/piodebuggdb ~/.local/bin/piodebuggdb
+========================================================================
+
 
 Installed into:
 %USERPROFILE%\.platformio
