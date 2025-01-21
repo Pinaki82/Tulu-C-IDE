@@ -23,6 +23,7 @@ sudo apt install libgtk-3-dev libcurl4-openssl-dev libwebkit2gtk-4.1-dev mesa-co
 1. Download the source code:
    
    ```bash
+   cd ~/
    git clone --depth 1 https://github.com/frang75/nappgui_src.git
    cd nappgui_src
    ```
