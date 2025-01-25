@@ -53,6 +53,7 @@ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.
 
 Update the Arduino Core and install a microcontroller-specific toolchain (e.g., Arduino AVR):
 arduino-cli core update-index
+arduino-cli config init
 arduino-cli core install arduino:avr
 arduino-cli core list
 
