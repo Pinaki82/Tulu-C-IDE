@@ -121,6 +121,10 @@ Load a circuit:
 
 Click the 'Compile' button in the Top Panel.
 
+![Compilation success](https://private-user-images.githubusercontent.com/16861933/406733823-c7e4f505-3f80-4b0a-944f-aa5b29082029.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc4OTc2ODcsIm5iZiI6MTczNzg5NzM4NywicGF0aCI6Ii8xNjg2MTkzMy80MDY3MzM4MjMtYzdlNGY1MDUtM2Y4MC00YjBhLTk0NGYtYWE1YjI5MDgyMDI5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI2VDEzMTYyN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg0YTQyMmJkZWRkYjhiNGUzOTFlNGE0ZmZkZDQ5ZDlhZDNlNTVmMTIxNWM4YjA4ODRhNTYyMjM1YTQ0Y2I1NWMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.An074wappPqZ9ixXg8IaCD6i7txf5psz3cy8B4guPXA)
+
+`$HOME/.local/share/simulide/codeeditor/buildIno/build/` will accommodate the compiled binary (*.elf, *.hex, *.eep, *.bin).
+
 ## Additional Resources
 
 - [SimulIDE Knowledge Base](https://simulide.com/p/simulidekb/)
