@@ -1,0 +1,10 @@
+# https://askubuntu.com/questions/902672/registering-appimage-files-as-a-desktop-app?rq=1
+
+[Desktop Entry]
+Type=Application
+Name=Astyle Format Code
+Comment=Code Formatter
+Icon=format-indent-less-rtl
+Exec=astyle --recursive --suffix=none --style=java --indent=spaces=2 --attach-namespaces --attach-classes --attach-inlines --attach-extern-c --attach-closing-while --indent-classes --indent-switches --indent-cases --indent-namespaces --indent-continuation=4 --indent-labels --indent-preproc-block --indent-preproc-define --indent-col1-comments --min-conditional-indent=1 --max-continuation-indent=70 --break-blocks=all --pad-oper --pad-comma --unpad-paren --delete-empty-lines --align-pointer=name --align-reference=name --break-closing-braces --break-one-line-headers --add-braces --attach-return-type --attach-return-type-decl --keep-one-line-statements --convert-tabs --remove-comment-prefix --break-after-logical --mode=c --verbose *.c,*.h,*.cpp,*.hpp,*.cxx,*.hxx,*.cc,*.hh,*.ino,*.pde
+Terminal=true
+Categories=;
