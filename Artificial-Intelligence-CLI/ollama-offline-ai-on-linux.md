@@ -24,9 +24,24 @@ This comprehensive guide walks you through setting up an offline AI environment 
 
 **Important Notes:**
 
-- Model files are stored in `/usr/share/ollama/.ollama/models`
-- Configuration files are located in `$HOME/.ollama`
-- The models' directory can be relocated using symbolic links (`sudo ln -s`)
+**Model Storage and Backup Guidelines**
+
+The Ollama models are stored in one of the following locations:
+
+- `/usr/share/ollama/.ollama/models`
+- `$HOME/.ollama/models`
+
+Configuration files are stored in `$HOME/.ollama`. To create a backup of the models, use `tar` to compress the `models` directory:
+
+```bash
+sudo tar -cvf '/mnt/hdd/backup/models.tar' '/usr/share/ollama/.ollama/models'
+```
+
+or
+
+```bash
+tar -cvf '/mnt/hdd/backup/models.tar' '$HOME/.ollama/models'
+```
 
 ### Server Management
 
