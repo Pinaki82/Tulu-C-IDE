@@ -1,4 +1,4 @@
-// Last Change: 2025-02-01  Saturday: 08:48:07 PM
+// Last Change: 2025-02-07  Friday: 11:18:49 AM
 
 /*
    Program Description:
@@ -87,6 +87,7 @@
 #include <unistd.h> // chdir(), system()
 #include <ctype.h>   // isspace()
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 #include <signal.h>
 
@@ -111,6 +112,7 @@ Config load_config(const char *filename);
 void execute_command(const char *command);
 void launch_browser(const char *browser_command, const char *url);
 void kill_existing_processes(const char *process_name);
+double get_file_size(const char *path);
 
 void enter_config_path(void) {
   const char *home_dir = getenv("HOME");
@@ -328,6 +330,16 @@ void kill_existing_processes(const char *process_name) {
   }
 }
 
+double get_file_size(const char *path) {
+  struct stat st;
+
+  if(stat(path, &st) == 0) {
+    return (double)st.st_size / (1024 * 1024 * 1024); // Size in GB
+  }
+
+  return -1.0;
+}
+
 int main() {
   enter_config_path();
   Config config = load_config("llama_runner.ini");
@@ -348,7 +360,8 @@ int main() {
     printf("Available models:\n");
 
     for(int i = 0; config.model_paths[i] != NULL && i < MAX_MODELS; i++) {
-      printf("%d) %s\n", i + 1, config.model_paths[i]);
+      double size = get_file_size(config.model_paths[i]);
+      printf("%d) %s SIZE: %.2f GB\n", i + 1, config.model_paths[i], size);
     }
 
     int model_choice;
