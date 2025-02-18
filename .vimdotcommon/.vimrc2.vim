@@ -1821,6 +1821,8 @@ Plug 'https://github.com/Pinaki82/vim-jsnippets.git'
 
 Plug 'https://github.com/drmingdrmer/xptemplate.git'
 
+Plug 'https://github.com/dstein64/vim-menu.git'
+
 " ----- https://nickjanetakis.com/blog/writing-and-previewing-markdown-in-real-time-with-vim-8
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
