@@ -1,0 +1,183 @@
+###############################################################################
+# C/C++ Compilation and Build Artifacts
+###############################################################################
+
+# Object files, libraries, and executables
+*.o
+*.obj
+*.lo
+*.la
+*.gch
+*.so
+*.dll
+*.dSYM/
+*.dylib
+*.a
+*.lib
+*.exe
+*.exp
+*.out
+*.app
+*.eep
+*.elf
+*.hex
+*.bin
+
+# Debugging and profiling files
+*.gcno
+*.gcda
+
+# Precompiled headers and dependency files (gcc/clang)
+*.d
+.dep/
+
+###############################################################################
+# Build Directories and Intermediate Files
+###############################################################################
+
+# Common build directories
+/build/
+/bin/
+/lib/
+/Debug/
+/Release/
+/cmake-build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+install_manifest.txt
+
+# Autotools/Autoconf
+autom4te.cache/
+aclocal.m4
+configure
+config.log
+config.status
+Makefile
+Makefile.in
+
+# CCLS generated cache files
+/.ccls-cache-*/
+
+###############################################################################
+# IDE, Editor, and Tool-Specific Files
+###############################################################################
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains IDEs (e.g., CLion, Qt Creator)
+.idea/
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+
+# Eclipse (if using CDT)
+.project
+.cproject
+
+###############################################################################
+# Operating System Files
+###############################################################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux (optional temporary files)
+*~
+
+###############################################################################
+# Backup, Temporary, and Log Files
+###############################################################################
+
+# Editor backup files and swap files
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Log files
+*.log
+
+###############################################################################
+# Additional Files (Optional)
+###############################################################################
+
+# Generated documentation (if applicable)
+doc/html/
+
+# Custom temporary directories (adjust as needed)
+tmp/
+temp/
+
+###############################################################################
+# https://github.com/github/gitignore/blob/main/C.gitignore
+# https://stackoverflow.com/questions/846639/git-ignore-file-for-c-projects
+###############################################################################
+*.i*86
+*.idb
+# I keep these, since I prefer having the reference of the final build
+*.ilk
+# Kernel Module Compile Results
+*.ko
+# Libraries
+# Linker output
+*.lss
+*.lst
+# make and build files
+*.map
+Mkfile.old
+*.mod*
+modules.order
+Module.symvers
+# Object files
+*.pch
+*.pdb
+post-update.sample
+pre-applypatch.sample
+pre-commit.sample
+# Precompiled Headers
+pre-merge-commit.sample
+prepare-commit-msg.sample
+pre-push.sample
+pre-rebase.sample
+pre-receive.sample
+# Prerequisites
+push-to-checkout.sample
+.settings/
+# Shared objects (inc. Windows DLLs)
+*.so.*
+#Some of these are related to eclipse. So i keep them out of my repo
+*.su
+*.sym
+tags
+.tmp_versions/
+update.sample
+*.x86_64
