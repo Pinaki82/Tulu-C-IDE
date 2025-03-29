@@ -245,7 +245,7 @@ If you already have added MSYS2 bin folders to the system's search path, you can
 
 Alternatively, you can also download the compiler from https://forge.rust-lang.org/infra/other-installation-methods.html and choose `x86_64-pc-windows-gnu`. Since we are using the GNU-toolchain, we need the GNU variant of the compiler, not the version that was built for MSVC. The Rust compiler and cargo-c together will occupy around 500 MB drive space.
 
-We won't be using RUSTUP ([rustup-init.exe](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe)) since it may try to download Microsoft Visual Studio Build Tools and you'll have to find workarounds. Nothing's wrong with Visual Studio Build Tools. We will avoid using it for consistency with our existing setup. [Here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE)'s what we did (essentially the same) for setting up the Raspberry Pi Pico SDK. We had to figure out how to stick with our MSYS2 environment (MinGW GCC toolchain) without installing another compiler, aka Microsoft Visual Studio Build Tools.
+We won't be using RUSTUP ([rustup-init.exe](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe)) since it may try to download Microsoft Visual Studio Build Tools and you'll have to find workarounds. Nothing's wrong with Visual Studio Build Tools. We will avoid using it for consistency with our existing setup. [Here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE)'s what we did (essentially the same) for setting up the Raspberry Pi Pico SDK. We had to figure out how to stick with our MSYS2 environment (MinGW GCC toolchain) without installing another compiler, aka Microsoft Visual Studio Build Tools.
 
 MSYS2 will provide that consistency.
 
@@ -373,7 +373,7 @@ The LSP will be installed. Do not expect autocompletion for Rust source files fr
 
 2) Using a CARGO project:
 
-[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) works fine if it finds that the code is managed by the native build environment CARGO. In fact, CARGO managed code files when loaded into GVim will be dealt with [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).  Again, for RUST, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) will exceed your expectations.
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) works fine if it finds that the code is managed by the native build environment CARGO. In fact, CARGO managed code files when loaded into GVim will be dealt with [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).  Again, for RUST, [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) will exceed your expectations.
 
 We will see how we can create a CARGO project later. CARGO will be used as a build tool and package manger here, with essentially the same code. It's an extra advantage.
 
@@ -526,7 +526,7 @@ cargo install --force --path .
 exit
 ```
 
-Rustlings will be downloaded into `%USERPROFILE%\rustlings` i.e., 
+Rustlings will be downloaded into `%USERPROFILE%\rustlings` i.e., 
 
 `C:\Users\YOUR_USERNAME\rustlings`
 
@@ -1081,7 +1081,7 @@ nn <silent> <M-l> :LspDocumentSymbol<cr>
 
 Copy 'ccls_vim_lsp.vim' to '.vim\plugin' dir [INCLUDED here].
 
-CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been incorporated.
+CCLS is needed by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). It ([vim-lsp](https://github.com/prabirshrestha/vim-lsp.git)) has been configured to be installed by default. Please visit [this](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/LocalVimrc_templates/PLUGIN_CHOICE_ONE) link to get an overview of the basic CCLS configuration. An automated solution is on the roadmap which can be found [here](https://github.com/Pinaki82/Tulu-C-IDE/tree/main/CCLS_GEN). The automated solution doesn't have thorough documentation at the moment. The code executes and works as intended. Read the comment section of the code files. PlatformIO and Arduino-CLI support on Linux and Windows has been incorporated.
 
 Enter command mode again: `<SHIFT+;>`. Type `q!` and hit `Enter` to quit Vim. Open Vim. Go to command mode again and type `:CocConfig`. A new file `coc-settings.json` will be created in `$HOME/vimfiles` (Windows) or `$HOME/.vim` (Linux) and the editor window will load the same.
 
@@ -1346,7 +1346,7 @@ _Did you know MSYS2 can be found in Chocolatey's repository?_ (^__^)
 
 [TULU-C-IDE](https://github.com/Pinaki82/Tulu-C-IDE.git) heavily relied on [vim-clang](https://github.com/justmao945/vim-clang.git) and [Syntastic](https://github.com/vim-syntastic/syntastic.git) for many years. Both the plugins have their merits and drawbacks. [Syntastic](https://github.com/vim-syntastic/syntastic.git) still outperforms other linter frontends in some areas. It has support for more linters. Auto checking can be performed while saving the file or on-demand. Different config files for different linters make [Syntastic](https://github.com/vim-syntastic/syntastic.git) hard to manage. Swiftness is lost in setting up the config files.
 
-On the other hand, [vim-clang](https://github.com/justmao945/vim-clang.git) is way better than all other clang-based completion plugins. [vim-clang](https://github.com/justmao945/vim-clang.git) **rocks even today.** Pros: Zero dependencies other than `clang` itself. It works out of the box without the need for external interpreters like Python, Node.js etc. If the project folder contains a `.clang` or a `.clang.ow` file with necessary include paths and compiler flags listed, it works like a charm. Cons: Unlike [coc.nvim](https://github.com/neoclide/coc.nvim.git), it's not a full-fledged ecosystem. You get autocompletion only.
+On the other hand, [vim-clang](https://github.com/justmao945/vim-clang.git) is way better than all other clang-based completion plugins. [vim-clang](https://github.com/justmao945/vim-clang.git) **rocks even today.** Pros: Zero dependencies other than `clang` itself. It works out of the box without the need for external interpreters like Python, Node.js etc. If the project folder contains a `.clang` or a `.clang.ow` file with necessary include paths and compiler flags listed, it works like a charm. Cons: Unlike [coc.nvim](https://github.com/neoclide/coc.nvim.git), it's not a full-fledged ecosystem. You get autocompletion only.
 Nevertheless, a `.clang` template can be reused, and some other plugins can fill the gaps conveniently. [vim-clang](https://github.com/justmao945/vim-clang.git) is less demanding on hardware requirements. It also works asynchronously, which means autocompletion will not block the workflow. Works with `compile_commands.json`, although it didn't work for me when I was testing the plugin's capabilities on a codebase targetting [Raspberry Pi RP2040 ARM-Cortex-M0+ Boards](https://www.raspberrypi.org/documentation/rp2040/getting-started/). Neither [coc.nvim](https://github.com/neoclide/coc.nvim.git) worked. [coc.nvim](https://github.com/neoclide/coc.nvim.git) reported that the language server crashed four times, and the server will not start. I generated the JSON DB with the command
 
 ```
@@ -1377,9 +1377,9 @@ Now, do `:PlugInstall`, which will install the plugins. Both [vim-clang](https:/
 
 [Omni-Completion-at-CTRL-SPACE](https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git): _"Vim/GVim Omni Completion at CTRL+SPACE. Can be customised."_
 
-[code_complete](https://github.com/Pinaki82/code_complete.git): Function parameter complete, code snippets, and much more.
+[Code Connector](https://github.com/Pinaki82/code_connector.git): The Code Connector plugin is designed to enhance the Vim editing experience by providing advanced features such as function parameter completion, code snippets, and more. It leverages LLVM Clang for code completion and is optimised for seamless integration with C/C++ projects.
 
-_NOTE:_ You need ctags to use this plugin. Also, you'll have to generate tags in the include directories of the system. On Linux systems, drop the lines to `$HOME/.vimdotlinux/tagspath.txt` shown below:
+This plugin can be used in conjunction with [Vista.vim](https://github.com/liuchengxu/vista.vim.git). You will require ctags in order to utilise the [Tagbar](https://github.com/preservim/tagbar.git) plugin (if you still want to use Tagbar for some reason), and you will have to generate tags in the system's include directories. Drop the lines to `$HOME/.vimdotlinux/tagspath.txt` for Linux computers as indicated below:
 
 ```
 set tags+=/usr/include/c++/11/tags;/
@@ -2089,18 +2089,18 @@ file names as you open/edit them in Vim."_
 [TaskList.vim](https://github.com/vim-scripts/TaskList.vim.git): _"This script is based on the eclipse Task List. It will search the file for FIXME, TODO, and XXX (or a custom list) and put them in a handy list for you to browse which at the same time will update the location in the document so you can see exactly where the tag is located."_ **Usage:** Press `<Leader>t` then `Esc`. Or, `:TaskList`. Press `q` to close the Task List window.
 
 ```
-Mapped Keys: <Leader>t  i.e., \t     Display list.
+Mapped Keys: <Leader>t  i.e., \t     Display list.
                  The following keys are mapped to the results window:
 
                      q - Quit, and restore original cursor position.
 
                      e - Exit, and keep results window open.
-                         Note that movements on the
-                         result window will no longer be
+                         Note that movements on the
+                         result window will no longer be
                          updated.
 
                      <cr> - Quit and place the cursor
-                            on the selected line.
+                            on the selected line.
 ```
 
 ```
@@ -2217,8 +2217,8 @@ _NOTE:_ You'll need two LSP config files to work with the [vim-lsp](https://gith
 
 [ddc.vim](https://github.com/Shougo/ddc.vim.git) Dark deno-powered completion framework for neovim/Vim8. [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
 [ddc-vim-lsp](https://github.com/shun/ddc-vim-lsp.git) vim-lsp for [ddc.vim](https://github.com/Shougo/ddc.vim.git). [Required by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git). Autocompletion etc.]
-[vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git) VSCode(LSP)'s snippet feature in vim. [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
-[vim-vsnip-integ]() Plugins integration with [vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git). [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
+[vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git) VSCode(LSP)'s snippet feature in vim. [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
+[vim-vsnip-integ]() Plugins integration with [vim-vsnip](https://github.com/hrsh7th/vim-vsnip.git). [Snippet autocompletion backed by LSP and supported by [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git).]
 
 - Snippet completion
 - Snippet expansion
