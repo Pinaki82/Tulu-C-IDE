@@ -1693,7 +1693,8 @@ Plug 'rust-lang/rust.vim'
 " Plug 'https://github.com/Pinaki82/vim-clang-Settings.git'
 " Plug 'https://github.com/Pinaki82/Omni-Completion-at-CTRL-SPACE.git'
 " Plug 'https://github.com/vim-scripts/AutoComplPop.git'
-Plug 'https://github.com/Pinaki82/code_complete.git'
+"Plug 'https://github.com/Pinaki82/code_complete.git'
+Plug 'https://github.com/Pinaki82/code_connector.git'
 
 "                  ------------------- Tabnine
 "                 if g:osdetected != "Windows"
@@ -2174,116 +2175,141 @@ let g:localvimrc_persistent=2 " Make the decisions given when asked before
 
 " -----------------------------------------
 
+" AI Chat Tools
+"
+" NOTE: The paths to the browser's executable binaries must be in the system environment.
 " -----------------------------------------
-" bard-rs Console
-"             Find relevant info in the folder 'Artificial-Intelligence-CLI'.
-if has("gui_running")
-  " Opens bard-rs via console
-  if g:osdetected == "Windows"
-    :amenu AI.Google\ Bard\ Console :silent !start cmd /k bard <Esc>
-
-  elseif g:osdetected == "Linux"
-        function! BardLinux()
-        	set shell=bash\ -i
-        	:silent! :!/usr/bin/sakura --execute bard &
-	    endfunction
-	set shell=bash\ -i
-	"
-	" ChatGPT:
-	"   `set shell=bash\ -i` sets the Vim shell to execute commands
-	"   using bash externally in interactive mode. The -i option
-	"   makes Bash start in interactive mode. This is useful
-	"   when running commands that require user input or produce
-	"   output to an external terminal.
-    "   By default, Vim uses /bin/sh as the shell, which is
-    "   often a symlink to another shell like Bash or Dash.
-    "   However, some advanced shell features or aliases
-    "   may not be available in /bin/sh, so setting the shell
-    "   to a specific shell like Bash ensures that Vim can
-    "   execute all commands correctly.
-    "
-    " `--execute` is a 'Sakura Terminal'-related option which means 'Execute command'.
-    " `sakura --help` will show you `-x, --execute               Execute command`.
-    "
-	command! Bard :silent! :!/usr/bin/sakura --execute bard &
-	:amenu AI.Google\ Bard\ Console\ \(\:\Bard\) :silent! :call BardLinux() <Esc>
+" claude-3-7-sonnet-20250219-thinking-32k
+" 2025.03.26
+"
+" Function to open URL in a chosen browser
+function! OpenUrlInBrowser(url)
+  " Define platform-specific browser commands
+  let browsers = {}
+  
+  if has('win32') || has('win64')
+    let browsers = {
+          \ '1': 'firefox.exe',
+          \ '2': 'chrome.exe',
+          \ '3': 'msedge.exe',
+          \ '4': 'safari.exe',
+          \ '5': 'opera.exe',
+          \ '6': 'brave.exe',
+          \ '7': 'vivaldi.exe',
+          \ '8': 'waterfox.exe'
+          \ }
+  elseif has('mac') || has('macunix')
+    let browsers = {
+          \ '1': 'Firefox',
+          \ '2': 'Google Chrome',
+          \ '3': 'Microsoft Edge',
+          \ '4': 'Safari',
+          \ '5': 'Opera',
+          \ '6': 'Brave Browser',
+          \ '7': 'Vivaldi',
+          \ '8': 'waterfox'
+          \ }
+  else " Unix/Linux
+    let browsers = {
+          \ '1': 'firefox',
+          \ '2': 'google-chrome',
+          \ '3': 'microsoft-edge',
+          \ '4': 'safari',
+          \ '5': 'opera',
+          \ '6': 'brave-browser',
+          \ '7': 'vivaldi',
+          \ '8': 'waterfox'
+          \ }
   endif
-endif
-" -----------------------------------------
-
-" -----------------------------------------
-" ChatGPT Console
-if has("gui_running")
-  " Opens ChatGPT via console
-  if g:osdetected == "Windows"
-    :amenu AI.Open\ ChatGPT\ Console :silent !start cmd /k chatgpt <Esc>
-
-  elseif g:osdetected == "Linux"
-        function! ChatGPTLinux()
-        	" Bash shell: which chatgpt
-        	" copy the path
-        	" command! ChatGPT :silent!!sakura --execute ~/.platformio/penv/bin/chatgpt & " Not required
-        	"
-        	set shell=bash\ -i
-        	"command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
-        	:silent! :!/usr/bin/sakura --execute chatgpt &
-	    endfunction
-	set shell=bash\ -i
-	"
-	" ChatGPT:
-	"   `set shell=bash\ -i` sets the Vim shell to execute commands
-	"   using bash externally in interactive mode. The -i option
-	"   makes Bash start in interactive mode. This is useful
-	"   when running commands that require user input or produce
-	"   output to an external terminal.
-    "   By default, Vim uses /bin/sh as the shell, which is
-    "   often a symlink to another shell like Bash or Dash.
-    "   However, some advanced shell features or aliases
-    "   may not be available in /bin/sh, so setting the shell
-    "   to a specific shell like Bash ensures that Vim can
-    "   execute all commands correctly.
-    "
-    " `--execute` is a 'Sakura Terminal'-related option which means 'Execute command'.
-    " `sakura --help` will show you `-x, --execute               Execute command`.
-    "
-	command! ChatGPT :silent! :!/usr/bin/sakura --execute chatgpt &
-	:amenu AI.Open\ ChatGPT\ Console\ \(\:\ChatGPT\) :silent! :call ChatGPTLinux() <Esc>
+  
+  echo "Choose a browser:"
+  echo "1. Firefox"
+  echo "2. Chrome"
+  echo "3. Edge"
+  echo "4. Safari"
+  echo "5. Opera"
+  echo "6. Brave"
+  echo "7. Vivaldi"
+  echo "8. Waterfox"
+  echo "9. System default"
+  
+  let choice = input("Enter your choice (1-9): ")
+  
+  if choice == '9'
+    " Use system default browser
+    if has('win32') || has('win64')
+      silent exec "!start \"\" " . shellescape(a:url)
+    elseif has('mac') || has('macunix')
+      silent exec "!open " . shellescape(a:url)
+    elseif has('unix')
+      silent exec "!xdg-open " . shellescape(a:url) . " &"
+    endif
+  elseif has_key(browsers, choice)
+    let browser = browsers[choice]
+    
+    if has('win32') || has('win64')
+      silent exec "!start \"\" \"" . browser . "\" " . shellescape(a:url)
+    elseif has('mac') || has('macunix')
+      silent exec "!open -a \"" . browser . "\" " . shellescape(a:url)
+    elseif has('unix')
+      silent exec "!" . browser . " " . shellescape(a:url) . " &"
+    endif
+  else
+    echohl ErrorMsg | echo "Invalid choice" | echohl None
+    return
   endif
-endif
-" -----------------------------------------
+  
+  redraw!
+endfunction
 
-" -----------------------------------------
-" OpenAI Console
+" Define commands for AI chat websites
+command! -nargs=0 OpenChatGPT call OpenUrlInBrowser('https://chat.openai.com/chat')
+command! -nargs=0 OpenKimi call OpenUrlInBrowser('https://kimi.moonshot.cn/')
+command! -nargs=0 OpenClaude call OpenUrlInBrowser('https://claude.ai/chats')
+command! -nargs=0 OpenGemini call OpenUrlInBrowser('https://gemini.google.com/')
+command! -nargs=0 OpenHuggingFace call OpenUrlInBrowser('https://huggingface.co/chat/')
+command! -nargs=0 OpenLmArena call OpenUrlInBrowser('https://lmarena.ai/')
+command! -nargs=0 OpenGrok call OpenUrlInBrowser('https://grok.com/')
+command! -nargs=0 OpenQwen call OpenUrlInBrowser('https://chat.qwen.ai/')
+command! -nargs=0 OpenDeepSeek call OpenUrlInBrowser('https://chat.deepseek.com/')
+command! -nargs=0 OpenInfermatic call OpenUrlInBrowser('https://infermatic.ai/')
+command! -nargs=0 OpenPoe call OpenUrlInBrowser('https://poe.com/')
+
+" Define a command to open all AI chat websites at once
+function! OpenAllAIChatSites()
+  call OpenUrlInBrowser('https://chat.openai.com/chat')
+  call OpenUrlInBrowser('https://kimi.moonshot.cn/')
+  call OpenUrlInBrowser('https://claude.ai/chats')
+  call OpenUrlInBrowser('https://gemini.google.com/')
+  call OpenUrlInBrowser('https://huggingface.co/chat/')
+  call OpenUrlInBrowser('https://lmarena.ai/')
+  call OpenUrlInBrowser('https://grok.com/')
+  call OpenUrlInBrowser('https://chat.qwen.ai/')
+  call OpenUrlInBrowser('https://chat.deepseek.com/')
+  call OpenUrlInBrowser('https://infermatic.ai/')
+  call OpenUrlInBrowser('https://poe.com/')
+endfunction
+command! -nargs=0 OpenAllAIChats call OpenAllAIChatSites()
+
+" Add menu items for GVim
 if has("gui_running")
-  " Opens OpenAI via console
-  if g:osdetected == "Windows"
-    :amenu AI.Launch\ OpenAI\ Console :silent !start cmd /k py-chatgpt <Esc>
-
-  elseif g:osdetected == "Linux"
-        function! OpenAILinux()
-	           set shell=bash\ -i
-	           ":!py-chatgpt &
-	           :silent! :!/usr/bin/sakura -e bash -ic "py-chatgpt" &
-	        "
-	        " ChatGPT:
-	       	"   The -e flag tells Sakura to stay open after the command has been
-	        "   completed. `sakura -e` tells Sakura to run a specified command
-	        "   without closing the terminal emulator automatically.
-	        "   You need to manually close the terminal emulator by typing
-	        "   exit or pressing Ctrl-D in the terminal emulator window.
-	        "   The -ic option tells bash to treat itself as if it was
-	        "   a login shell, execute a specific command, and then exit.
-	        "   In this case, the specific command is py-chatgpt, which
-	        "   will be executed by Python.
-	        "   The & at the end of the line runs the command in
-	        "   the background.
-	        "
-	    endfunction
-        set shell=bash\ -i
-        
-        :amenu AI.Launch\ OpenAI\ Console\ \(\:\OpenAI\) :silent! :call OpenAILinux() <Esc>
-        command! OpenAI :silent! :!/usr/bin/sakura -e bash -ic "py-chatgpt" &
-
+  if !exists("g:loaded_ai_chat_menu")
+    let g:loaded_ai_chat_menu = 1
+    
+    " Create a new menu
+    amenu &AI.AI\ Chat\ Tools.&ChatGPT\ (:OpenChatGPT) :OpenChatGPT<CR>
+    amenu &AI.AI\ Chat\ Tools.&Kimi\ (:OpenKimi) :OpenKimi<CR>
+    amenu &AI.AI\ Chat\ Tools.&Claude\ (:OpenClaude) :OpenClaude<CR>
+    amenu &AI.AI\ Chat\ Tools.&Gemini\ (:OpenGemini) :OpenGemini<CR>
+    amenu &AI.AI\ Chat\ Tools.&HuggingFace\ (:OpenHuggingFace) :OpenHuggingFace<CR>
+    amenu &AI.AI\ Chat\ Tools.L&M\ Arena\ (:OpenLmArena) :OpenLmArena<CR>
+    amenu &AI.AI\ Chat\ Tools.&Grok\ (:OpenGrok) :OpenGrok<CR>
+    amenu &AI.AI\ Chat\ Tools.&Qwen\ (:OpenQwen) :OpenQwen<CR>
+    amenu &AI.AI\ Chat\ Tools.&DeepSeek\ (:OpenDeepSeek) :OpenDeepSeek<CR>
+    amenu &AI.AI\ Chat\ Tools.&Infermatic\ (:OpenInfermatic) :OpenInfermatic<CR>
+    amenu &AI.AI\ Chat\ Tools.&Poe\ (:OpenPoe) :OpenPoe<CR>
+    amenu &AI.AI\ Chat\ Tools.-Sep- :
+    amenu &AI.AI\ Chat\ Tools.Open\ &All\ (:OpenAllAIChats) :OpenAllAIChats<CR>
   endif
 endif
 " -----------------------------------------
