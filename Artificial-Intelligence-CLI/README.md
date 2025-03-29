@@ -980,12 +980,6 @@ Would you like to continue the conversation? (Y/N) n
 C:\Users\XXXXXXXX>
 ```
 
-## ChatGPT can be accessed from Vim's GUI <a name="chatgpt-vim-gui"></a>
-
-![](attachments/2023-03-12-21-25-28-image.png)
-
-![](attachments/2023-03-12-21-28-05-image.png)
-
 Now, ChatGPT and OpenAI are there right in your Terminal Emulator. It's up to you to make the output usable to the maximum extent possible. Since,
 
 > Plagiarism plagues when one entirely parrots a book, whereas conducting research involves selecting essential information from multiple sources.
